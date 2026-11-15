@@ -1,0 +1,259 @@
+tvabi 1
+soname libudev.so.1
+needed libgcc_s.so.1
+needed libc.so.6
+needed ld-linux.so.3
+verdef 1 base libudev.so.1
+verdef 2 - LIBUDEV_183
+verdef 3 - LIBUDEV_189 LIBUDEV_183
+verdef 4 - LIBUDEV_196 LIBUDEV_189
+verdef 5 - LIBUDEV_199 LIBUDEV_196
+verdef 6 - LIBUDEV_215 LIBUDEV_199
+verdef 7 - LIBUDEV_247 LIBUDEV_215
+def udev_device_get_action LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 160 code
+def udev_device_get_current_tags_list_entry LIBUDEV_247 @@ FUNC GLOBAL DEFAULT 176 code
+def udev_device_get_devlinks_list_entry LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 176 code
+def udev_device_get_devnode LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 144 code
+def udev_device_get_devnum LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 156 code
+def udev_device_get_devpath LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 144 code
+def udev_device_get_devtype LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 152 code
+def udev_device_get_driver LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 140 code
+def udev_device_get_is_initialized LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 76 code
+def udev_device_get_parent LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 160 code
+def udev_device_get_parent_with_subsystem_devtype LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 164 code
+def udev_device_get_properties_list_entry LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 252 code
+def udev_device_get_property_value LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 152 code
+def udev_device_get_seqnum LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 132 code
+def udev_device_get_subsystem LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 140 code
+def udev_device_get_sysattr_list_entry LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 128 code
+def udev_device_get_sysattr_value LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 144 code
+def udev_device_get_sysname LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 144 code
+def udev_device_get_sysnum LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 152 code
+def udev_device_get_syspath LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 144 code
+def udev_device_get_tags_list_entry LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 176 code
+def udev_device_get_udev LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 60 code
+def udev_device_get_usec_since_initialized LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 140 code
+def udev_device_has_current_tag LIBUDEV_247 @@ FUNC GLOBAL DEFAULT 60 code
+def udev_device_has_tag LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 60 code
+def udev_device_new_from_device_id LIBUDEV_189 @@ FUNC GLOBAL DEFAULT 108 code
+def udev_device_new_from_devnum LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 108 code
+def udev_device_new_from_environment LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 124 code
+def udev_device_new_from_subsystem_sysname LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 108 code
+def udev_device_new_from_syspath LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 108 code
+def udev_device_ref LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 52 code
+def udev_device_set_sysattr_value LIBUDEV_199 @@ FUNC GLOBAL DEFAULT 56 code
+def udev_device_unref LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 108 code
+def udev_enumerate_add_match_is_initialized LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 68 code
+def udev_enumerate_add_match_parent LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 84 code
+def udev_enumerate_add_match_property LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 76 code
+def udev_enumerate_add_match_subsystem LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 76 code
+def udev_enumerate_add_match_sysattr LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 76 code
+def udev_enumerate_add_match_sysname LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 76 code
+def udev_enumerate_add_match_tag LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 76 code
+def udev_enumerate_add_nomatch_subsystem LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 76 code
+def udev_enumerate_add_nomatch_sysattr LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 76 code
+def udev_enumerate_add_syspath LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 156 code
+def udev_enumerate_get_list_entry LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 216 code
+def udev_enumerate_get_udev LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 56 code
+def udev_enumerate_new LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 168 code
+def udev_enumerate_ref LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 48 code
+def udev_enumerate_scan_devices LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 52 code
+def udev_enumerate_scan_subsystems LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 52 code
+def udev_enumerate_unref LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 76 code
+def udev_get_log_priority LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 4 code
+def udev_get_userdata LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 48 code
+def udev_hwdb_get_properties_list_entry LIBUDEV_196 @@ FUNC GLOBAL DEFAULT 228 code
+def udev_hwdb_new LIBUDEV_196 @@ FUNC GLOBAL DEFAULT 164 code
+def udev_hwdb_ref LIBUDEV_196 @@ FUNC GLOBAL DEFAULT 48 code
+def udev_hwdb_unref LIBUDEV_196 @@ FUNC GLOBAL DEFAULT 76 code
+def udev_list_entry_get_by_name LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 24 code
+def udev_list_entry_get_name LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 6 code
+def udev_list_entry_get_next LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 24 code
+def udev_list_entry_get_value LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 6 code
+def udev_monitor_enable_receiving LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 48 code
+def udev_monitor_filter_add_match_subsystem_devtype LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 56 code
+def udev_monitor_filter_add_match_tag LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 56 code
+def udev_monitor_filter_remove LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 52 code
+def udev_monitor_filter_update LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 48 code
+def udev_monitor_get_fd LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 48 code
+def udev_monitor_get_udev LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 48 code
+def udev_monitor_new_from_netlink LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 200 code
+def udev_monitor_receive_device LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 208 code
+def udev_monitor_ref LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 48 code
+def udev_monitor_set_receive_buffer_size LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 48 code
+def udev_monitor_unref LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 68 code
+def udev_new LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 34 code
+def udev_queue_flush LIBUDEV_215 @@ FUNC GLOBAL DEFAULT 64 code
+def udev_queue_get_fd LIBUDEV_215 @@ FUNC GLOBAL DEFAULT 64 code
+def udev_queue_get_kernel_seqnum LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 6 code
+def udev_queue_get_queue_is_empty LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 16 code
+def udev_queue_get_queued_list_entry LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 16 code
+def udev_queue_get_seqnum_is_finished LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 16 code
+def udev_queue_get_seqnum_sequence_is_finished LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 16 code
+def udev_queue_get_udev LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 56 code
+def udev_queue_get_udev_is_active LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 24 code
+def udev_queue_get_udev_seqnum LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 6 code
+def udev_queue_new LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 40 code
+def udev_queue_ref LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 48 code
+def udev_queue_unref LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 68 code
+def udev_ref LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 48 code
+def udev_set_log_fn LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 2 code
+def udev_set_log_priority LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 6 code
+def udev_set_userdata LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 6 code
+def udev_unref LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 60 code
+def udev_util_encode_string LIBUDEV_183 @@ FUNC GLOBAL DEFAULT 4 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __assert_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __environ GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __fsetlocking GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __isoc99_sscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und __progname GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und __register_atfork GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __stack_chk_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __stack_chk_guard GLIBC_2.4 ld-linux.so.3 OBJECT GLOBAL
+und __tls_get_addr GLIBC_2.4 ld-linux.so.3 FUNC GLOBAL
+und _environ GLIBC_2.4 libc.so.6 OBJECT WEAK
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und access GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und asprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und basename GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und bind GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und chmod GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und clock_gettime GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und closedir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und connect GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dirfd GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dirname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und environ GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und epoll_ctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und explicit_bzero GLIBC_2.25 libc.so.6 FUNC GLOBAL
+und fchmod GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fchownat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fcntl64 GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und fdopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und feof GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ferror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fgetc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fileno GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und flockfile GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fnmatch GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fread GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fseek GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fstatat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fstatfs64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fsync GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und funlockfile GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und futimens GLIBC_2.6 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und get_current_dir_name GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getauxval GLIBC_2.16 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpwuid_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getrandom GLIBC_2.25 libc.so.6 FUNC GLOBAL
+und getsockname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getsockopt GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gettid GLIBC_2.30 libc.so.6 FUNC GLOBAL
+und gmtime_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und if_indextoname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und inotify_add_watch GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und inotify_init1 GLIBC_2.9 libc.so.6 FUNC GLOBAL
+und inotify_rm_watch GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ioctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und isatty GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und kill GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und localtime_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und lseek64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und lstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc_usable_size GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkdirat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkostemp64 GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und mmap64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und munmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und name_to_handle_at GLIBC_2.14 libc.so.6 FUNC GLOBAL
+und nl_langinfo GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und openat64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und opendir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und parse_printf_format GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ppoll GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und program_invocation_short_name GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und pthread_once GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und qsort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rand GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readdir64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readlinkat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und recvmsg GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rename GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und secure_getenv GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und sendmsg GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setlocale GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setsockopt GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setvbuf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und shutdown GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigdelset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigisemptyset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigismember GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und signalfd GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und socket GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und srand GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und statfs64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und statx GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stpcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcasecmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchrnul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcspn GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strdup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strftime GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strndup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strnlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strpbrk GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strspn GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoull GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und syscall GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sysconf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und umask GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ungetc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und unlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und usleep GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vasprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vsnprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und waitid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und writev GLIBC_2.4 libc.so.6 FUNC GLOBAL

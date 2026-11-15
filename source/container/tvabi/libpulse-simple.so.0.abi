@@ -1,0 +1,65 @@
+tvabi 1
+soname libpulse-simple.so.0
+needed libpulse.so.0
+needed libpulsecommon-15.0.so
+needed libgcc_s.so.1
+needed libc.so.6
+verdef 1 base libpulse-simple.so.0
+verdef 2 - PULSE_0
+def pa_simple_drain PULSE_0 @@ FUNC GLOBAL DEFAULT 372 code
+def pa_simple_flush PULSE_0 @@ FUNC GLOBAL DEFAULT 344 code
+def pa_simple_free PULSE_0 @@ FUNC GLOBAL DEFAULT 116 code
+def pa_simple_get_latency PULSE_0 @@ FUNC GLOBAL DEFAULT 300 code
+def pa_simple_new PULSE_0 @@ FUNC GLOBAL DEFAULT 444 code
+def pa_simple_read PULSE_0 @@ FUNC GLOBAL DEFAULT 432 code
+def pa_simple_write PULSE_0 @@ FUNC GLOBAL DEFAULT 380 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pa_bytes_to_usec PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_channel_map_valid PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_context_connect PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_context_disconnect PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_context_errno PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_context_get_state PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_context_new PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_context_set_state_callback PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_context_unref PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_log_level_meta - - FUNC GLOBAL
+und pa_operation_cancel PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_operation_get_state PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_operation_unref PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_sample_spec_valid PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_connect_playback PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_connect_record PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_drain PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_drop PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_flush PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_get_latency PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_get_sample_spec PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_get_state PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_new PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_peek PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_set_latency_update_callback PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_set_read_callback PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_set_state_callback PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_set_write_callback PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_unref PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_writable_size PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_stream_write PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_threaded_mainloop_free PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_threaded_mainloop_get_api PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_threaded_mainloop_lock PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_threaded_mainloop_new PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_threaded_mainloop_signal PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_threaded_mainloop_start PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_threaded_mainloop_stop PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_threaded_mainloop_unlock PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_threaded_mainloop_wait PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_xfree PULSE_0 libpulse.so.0 FUNC GLOBAL
+und pa_xmalloc0 PULSE_0 libpulse.so.0 FUNC GLOBAL

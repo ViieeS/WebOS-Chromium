@@ -1,0 +1,77 @@
+tvabi 1
+soname libuuid.so.1
+needed libgcc_s.so.1
+needed libc.so.6
+needed ld-linux.so.3
+verdef 1 base libuuid.so.1
+verdef 2 - UUID_1.0
+verdef 3 - UUID_2.20 UUID_1.0
+verdef 4 - UUID_2.31 UUID_2.20
+verdef 5 - UUID_2.36 UUID_2.31
+verdef 6 - UUIDD_PRIVATE
+def __uuid_generate_random UUIDD_PRIVATE @@ FUNC GLOBAL DEFAULT 134 code
+def __uuid_generate_time UUIDD_PRIVATE @@ FUNC GLOBAL DEFAULT 1056 code
+def uuid_clear UUID_1.0 @@ FUNC GLOBAL DEFAULT 12 code
+def uuid_compare UUID_1.0 @@ FUNC GLOBAL DEFAULT 94 code
+def uuid_copy UUID_1.0 @@ FUNC GLOBAL DEFAULT 20 code
+def uuid_generate UUID_1.0 @@ FUNC GLOBAL DEFAULT 32 code
+def uuid_generate_md5 UUID_2.31 @@ FUNC GLOBAL DEFAULT 124 code
+def uuid_generate_random UUID_1.0 @@ FUNC GLOBAL DEFAULT 20 code
+def uuid_generate_sha1 UUID_2.31 @@ FUNC GLOBAL DEFAULT 122 code
+def uuid_generate_time UUID_1.0 @@ FUNC GLOBAL DEFAULT 2 code
+def uuid_generate_time_safe UUID_2.20 @@ FUNC GLOBAL DEFAULT 2 code
+def uuid_get_template UUID_2.31 @@ FUNC GLOBAL DEFAULT 152 code
+def uuid_is_null UUID_1.0 @@ FUNC GLOBAL DEFAULT 34 code
+def uuid_parse UUID_1.0 @@ FUNC GLOBAL DEFAULT 36 code
+def uuid_parse_range UUID_2.36 @@ FUNC GLOBAL DEFAULT 282 code
+def uuid_time UUID_1.0 @@ FUNC GLOBAL DEFAULT 130 code
+def uuid_type UUID_1.0 @@ FUNC GLOBAL DEFAULT 22 code
+def uuid_unparse UUID_1.0 @@ FUNC GLOBAL DEFAULT 12 code
+def uuid_unparse_lower UUID_1.0 @@ FUNC GLOBAL DEFAULT 12 code
+def uuid_unparse_upper UUID_1.0 @@ FUNC GLOBAL DEFAULT 12 code
+def uuid_variant UUID_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __isoc99_fscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und __tls_get_addr GLIBC_2.4 ld-linux.so.3 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dcgettext GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fcntl64 GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und fdopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und flock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ftruncate64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getppid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getrandom GLIBC_2.25 libc.so.6 FUNC GLOBAL
+und gettimeofday GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ioctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und jrand48 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und nanosleep GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und random GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rewind GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und socket GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und srandom GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und syscall GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und time GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und umask GLIBC_2.4 libc.so.6 FUNC GLOBAL

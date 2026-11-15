@@ -2,219 +2,205 @@
 
 <h1 align="center">WebOS Chromium</h1>
 
-<p align="center">The real Chromium browser, with the full Chrome interface, running natively on LG webOS TVs.<br>
-GPU rendering and hardware video decoding. No root needed.<br>
-<b>Requires webOS 9 (webOS 24) or newer.</b></p>
+<p align="center">Chromium with the full Chrome interface, running natively on LG webOS TVs.<br>
+GPU drawing and hardware video. No root needed.<br>
+<b>Runs on webOS 4.4 and newer.</b></p>
 
 ---
 
-## Highlights
+## What it is
 
-| | |
-|---|---|
-| **Truly native** | Built for the TV's own ARM processor. It talks straight to the TV's own display server, GPU driver and video decoder. No emulation, no translation layer, no bundled display server, no chroot or container. |
-| **GPU rendering** | Pages and the browser UI are drawn on the TV's GPU (PowerVR, OpenGL ES) through the TV's own driver. |
-| **Hardware video** | Every `<video>` on every site goes to the TV's hardware decoder (LG NDL DirectMedia), up to 1080p60. YouTube AV1 1080p60 plays with **0 dropped frames**. |
-| **Sharp 1080p** | The browser draws at the TV's full 1920x1080 resolution with a 1.5x interface, so text stays big enough for the sofa and sharp (since 0.0.48). |
-| **Full Chrome UI** | Tabs, address bar, 3-dot menu, bookmarks, history, downloads, settings, and extensions from the Chrome Web Store. |
-| **Light** | ~138 MB RAM when idle, with no extra CPU load. Fast launch with a splash screen. |
-| **No root** | Installs as a normal Developer Mode app, or through Homebrew Channel. |
+A normal desktop Chromium 151, built for the TV and running as an ordinary webOS app. You get tabs, the address
+bar, the 3-dot menu, bookmarks, history, downloads, settings, and extensions from the Chrome Web Store.
 
-## What "native" means here
+- Pages and the browser are drawn on the TV's GPU. A few older TVs whose graphics driver fails the start-up check
+  draw in software instead.
+- Video on any site goes to the TV's hardware decoder, up to 1080p60 (on webOS 4: H.264 up to 1080p30). On our test
+  TV, YouTube AV1 1080p60 played with no dropped frames.
+- The window is 1920x1080 with the interface at 1.5x, so text is sharp and big enough for the sofa.
+- The remote's arrows, OK and Back work everywhere, the Magic Remote pointer works as a mouse, and typing uses LG's
+  on-screen keyboard.
+- Bookmarks, logins and settings are kept on the TV's flash and survive reboots.
 
-Many ways of running a desktop browser on a TV bring their own environment with them: a separate display server,
-an X11 layer, a Linux userland in a chroot, or emulation. WebOS Chromium doesn't. It runs as an ordinary webOS app:
+## How it runs
 
-- **Processor:** machine code for the TV's 32-bit ARMv7 (softfp) ABI, linked against the TV's own glibc and system
-  libraries.
-- **Display:** the browser window is a normal webOS app window on LG's own compositor (LSM), the same display server
-  every LG app uses, through its webOS shell extensions. Nothing extra runs to show the window.
-- **GPU:** the TV's PowerVR driver directly through EGL / OpenGL ES 2, with no ANGLE or software GL in between.
-- **Video:** LG's NDL DirectMedia, the same hardware decoding library LG's own apps use.
-- **Input:** the remote's keys and pointer arrive as normal input events; typing uses LG's own on-screen keyboard.
+There's no emulation, no extra display server and no Linux userland in a container. The browser is built for the
+TV's 32-bit ARM processor and links against the TV's own libraries. Its window is a normal app window on LG's
+compositor, it draws with the TV's OpenGL ES driver, and video goes to LG's NDL DirectMedia, the same decoder library
+LG's own apps use.
 
-The only helper is a small launcher, `bin/run` (written in C). webOS gives media access only to an app's own main
-executable, so the launcher starts Chromium and holds the TV's media connection. Chromium hands it compressed video,
-and it passes the data unchanged to the hardware decoder. Nothing is converted or re-encoded.
+The only helper is a small launcher, `bin/run`, written in C. webOS lets only an app's main program use the TV's
+media services, so the launcher starts Chromium and holds that connection. Chromium hands it the compressed video,
+and the launcher passes it to the decoder unchanged.
 
-## Built-in TV Tools extension
+## TV Tools
 
-WebOS Chromium comes with **TV Tools**, an extension made for the TV. Its button is pinned to the toolbar; press it
-for quick settings, or open **All settings** for the full page. Everything can be changed or turned off.
+The browser comes with TV Tools, an extension made for the TV. Its button is pinned to the toolbar: press it for
+quick settings, or open All settings for the full page. Everything can be changed or turned off.
 
 | Setting | Options | What it does |
 |---|---|---|
-| Lite mode | Off, On | Lighter pages: no animations, images and frames load only when you scroll to them, and muted videos don't start by themselves. |
-| Website version | TV (default), Desktop, Custom | TV asks every site for its TV layout (YouTube opens its TV interface, made for the remote). Desktop asks for normal desktop pages. Custom sends a user agent you type in. |
-| Per-site version | TV / desktop for the current site | Keeps a site on its desktop version while everything else uses the TV version. |
-| Maximum video resolution | Auto, 4K, 1080p, 720p, 480p, 360p | Limits the video quality on **every site**, not only YouTube. Lower uses less memory and data. **4K** is opt-in and may stutter or lag, especially when a video starts; go back to Auto or 1080p if it does. |
-| Maximum frame rate | Auto, 60 fps, 30 fps | Skips streams above the chosen frame rate. |
-| Video codec | Auto, H.264 only | H.264 only is the most compatible choice if a video won't play. |
-| Per-site video limits | On / off for the current site | Turns the video limits off on a site where you want the site's own choice. |
+| Lite mode | Off, On | Lighter pages: no animations, images and frames load when you scroll to them, muted videos don't start by themselves. |
+| Website version | TV (default), Desktop, Custom | TV asks sites for their TV layout (YouTube opens its TV interface, made for the remote). Desktop asks for normal pages. Custom sends a user agent you type in. |
+| Per-site version | TV or desktop for the current site | Keeps one site on its desktop version. A site that shows a Cloudflare check switches to desktop by itself. |
+| Maximum video resolution | Auto, 4K, 1080p, 720p, 480p, 360p | Limits video quality on every site, not only YouTube. 4K is opt-in and can stutter when a video starts. |
+| Maximum frame rate | Auto, 60 fps, 30 fps | Skips streams above that frame rate. |
+| Video codec | Auto, H.264 only | H.264 only is the safest choice if a video won't play. |
+| Per-site video limits | On or off for the current site | Lets a site make its own choice. |
 | Unload background tabs | Never, 5 min, 15 min, 30 min, 1 hour | Frees memory from tabs you haven't looked at. They reload when you open them. |
-| Maximum open tabs | No limit, 3, 5, 8, 10 | Opening one more tab closes the tab you used least recently. |
-| Pause videos in background tabs | Off, On | Pauses a video when you switch to another tab. |
+| Maximum open tabs | No limit, 3, 5, 8, 10 | Opening one more tab closes the one you used least recently. |
+| Pause videos in background tabs | Off, On | Pauses a video when you switch tabs. |
 
-Tabs playing sound and pinned tabs are never unloaded or closed.
+Tabs playing sound and pinned tabs are never unloaded or closed. Auto means up to 1080p60 in any codec the TV's
+decoder supports. On webOS 4, where the decoder only does H.264, Auto means H.264 up to 1080p30.
 
-**Auto** picks what suits the TV: up to 1080p60 in any codec the TV's hardware decoder supports.
-
-How the video limit works on any site:
-- It answers "not supported" when a site asks whether the TV can play a stream above the limit (this is how
-  YouTube and many other players choose).
-- It removes streams above the limit from **HLS** (`.m3u8`) and **DASH** (`.mpd`) playlists before the site's
-  player reads them. Most streaming players (hls.js, dash.js, Shaka Player, Video.js) use these formats.
-- It always keeps at least the smallest stream, so a video never ends up with nothing to play.
-- Plain single-file videos (one `.mp4` with no quality choices) play as they are.
+The video limit works on any site in two ways. When a player asks whether the TV can play a stream above the limit,
+TV Tools says no; that's how YouTube and most players choose. It also removes those streams from HLS (`.m3u8`) and
+DASH (`.mpd`) playlists before the player reads them. At least the smallest stream always stays, and a plain single
+`.mp4` plays as it is.
 
 ## Install
 
-### Homebrew Channel (recommended)
+### Homebrew Channel
 
 1. Install [Homebrew Channel](https://github.com/webosbrew/webos-homebrew-channel) on the TV (no root needed).
-2. Open Homebrew Channel, go to **Settings → Add repository**, and enter:
+2. In Homebrew Channel, go to Settings → Add repository and enter:
    ```
    https://raw.githubusercontent.com/sarahahzub/WebOS-Chromium/main/webosbrew/apps.json
    ```
-3. Go back to the app list, open **Chromium**, and select **Install**.
+3. Back in the app list, open Chromium and select Install.
 
-Updates appear in Homebrew Channel when a new release is published.
+New releases show up there as updates. Updating keeps your bookmarks and settings. If you come from 0.0.48 or
+older, update before you restart the TV: those versions kept the profile in memory, and the update moves it to flash.
 
-### Manual install (Developer Mode)
+### Developer Mode
 
-1. Enable **Developer Mode** on the TV (LG Developer Mode app) and connect your PC with `ares-setup-device`.
-2. Download `org.nativechromium.browser_<version>_arm.ipk` from [Releases](https://github.com/sarahahzub/WebOS-Chromium/releases).
-3. Install it:
-   ```
-   ares-install -d <your-tv> org.nativechromium.browser_<version>_arm.ipk
-   ```
-4. Open **Chromium** from the TV's app list.
-
-Your profile (bookmarks, logins, extensions) is stored in the app's own folder and survives reboots.
+1. Turn on Developer Mode on the TV (LG's Developer Mode app) and connect your PC with `ares-setup-device`.
+2. Download `org.nativechromium.browser_<version>_arm.ipk` from
+   [Releases](https://github.com/sarahahzub/WebOS-Chromium/releases).
+3. `ares-install -d <your-tv> org.nativechromium.browser_<version>_arm.ipk`
+4. Open Chromium from the TV's app list.
 
 ## Supported TVs
 
-> **Requires webOS 9 (webOS 24) or newer.**
+webOS 4.4 (2018-2019 models) and newer. To check yours: Settings → Support → TV Information → webOS TV Version.
+The "Software version" (for example `05.40.97`) is the firmware number, not the webOS version. On older TVs the
+app shows a short message and closes.
 
-| webOS version | Typical TVs | Works? |
+Reported working by testers:
+
+| TV | webOS | Report |
 |---|---|---|
-| webOS 9 / 24 and newer | 2024 and newer models, and older models LG has updated to webOS 24 or newer | ✅ Yes |
-| webOS 8 / 23 and older (including webOS 4, 5, 6, 7) | Most 2023 and older models | ❌ Not yet |
+| LG 43UR7500PSC | 10.3.1 | our test TV |
+| LG OLED65C3PUA (C3) | 8 | [#9](https://github.com/sarahahzub/WebOS-Chromium/issues/9) |
+| LG LQ630B6LA | 7.6.0 | [#8](https://github.com/sarahahzub/WebOS-Chromium/issues/8) |
+| LG C1 | 6.5.3 | [#2](https://github.com/sarahahzub/WebOS-Chromium/issues/2) |
+| LG OLED55GX6LA (GX) | 5.6.2 | [#11](https://github.com/sarahahzub/WebOS-Chromium/issues/11), [#12](https://github.com/sarahahzub/WebOS-Chromium/issues/12) |
+| LG OLED48CX (CX) | 5.5.0 | [#2](https://github.com/sarahahzub/WebOS-Chromium/issues/2) |
+| LG OLED65C97LA (C9) | 4.10.2 | [#6](https://github.com/sarahahzub/WebOS-Chromium/issues/6) |
 
-**How to check:** Settings → Support → TV Information → **webOS TV Version**. Don't use the "Software version"
-(for example `05.40.97`); that is the firmware number, not the webOS version.
+How fast it is depends a lot on the model. If you try it on another TV, please report it with the TV compatibility
+issue template, whether it works or not.
 
-**Why older TVs don't work:** this Chromium needs glibc 2.35, the system C library LG ships from webOS 9 on.
-webOS 5-8 have glibc 2.28-2.31, and webOS 4 and older 2.24 or less, so the TV can't load the browser. On those TVs
-the app shows a short message and closes. Support for webOS 5-8 may come later; it needs a separate build and
-testers with those TVs.
+## New in 0.0.65
 
-Tested so far:
+The first major release. Everything in it was tested in [Chromium Beta](#beta) first.
 
-| | Tested |
-|---|---|
-| TV | LG 43UR7500PSC |
-| webOS | 10.3.1 |
-| CPU | 32-bit ARMv7, 2x Cortex-A75 + 2x Cortex-A55 |
-| GPU | PowerVR BXE-4-32 |
+- Works on webOS 4.4 and newer.
+- Many fixes and improvements under the hood.
+- Bookmarks, logins and settings are kept on flash. 0.0.48 and older kept them in memory and lost them at every
+  reboot.
+- Fully open source now, see [Building from source](#building-from-source).
 
-If you try it on another TV with webOS 9 or newer, please report it with the **TV compatibility** issue template,
-whether it works or not.
+## Beta
+
+[Chromium Beta](https://github.com/sarahahzub/Beta-Apps) gets new builds first. It installs next to this app, with
+its own icon (orange B), bookmarks and settings, so trying it never touches your normal install. Each Stable release
+is a Beta build that held up.
 
 ## Using it with the remote
 
-| Key | Action |
+| Key | What it does |
 |---|---|
-| Arrows | Move focus on the page; UP from the top of a page goes to the toolbar, UP again to the tabs |
-| OK | Click; on a text field it opens LG's keyboard |
-| Back | Closes menus and popups, then goes back in history; on a page that keeps the arrows (like a video player) it jumps to the toolbar |
-| Magic Remote pointer | Works as a mouse everywhere |
+| Arrows | Move focus on the page. Up from the top of a page goes to the toolbar, Up again to the tabs. |
+| OK | Click. On a text field it opens LG's keyboard. |
+| Back | Closes menus and popups, then goes back. On a page that uses the arrows itself (like a video player) it jumps to the toolbar. |
+| Magic Remote pointer | Works as a mouse. |
 
 ## Known limitations
 
-- **No Chromium sandbox:** the TV's kernel has no user namespaces, and a Developer Mode app can't be setuid, so
-  Chromium runs with `--no-sandbox`. It still runs as its own user inside webOS's app jail.
-- **No DRM:** Widevine isn't included, so Netflix, Prime Video and similar paid streaming sites won't play.
-- **No Google account sync:** Chromium builds have no Google API keys.
-- **Memory:** the TV shares about 630 MB of RAM between all running apps, so several heavy tabs at once get slow.
+- No Chromium sandbox. The TV's kernel has no user namespaces and a Developer Mode app can't be setuid, so Chromium
+  runs with `--no-sandbox`. It still runs as its own user inside webOS's app jail.
+- No DRM: there's no Widevine, so Netflix, Prime Video and similar sites won't play.
+- No Google account sync. Chromium builds have no Google API keys.
+- Memory: the TV shares its RAM between all running apps (about 630 MB on our test TV), so several heavy tabs get
+  slow.
+- Cloudflare checks can take a while on a TV.
+- On some TVs, video still stutters a little, and with an eARC sound bar the sound can stay off until you switch
+  the TV's sound output once. We're still working on both.
 
-## Building from source
+## Roadmap
 
-WebOS Chromium is open source. The full sources, patches, build arguments and packaging scripts will be uploaded
-to this repository soon; until then, this section outlines the build so you know what to expect.
+What we're working towards, in no fixed order and without dates:
 
-WebOS Chromium is cross-compiled on a Linux x86-64 host. A first full build takes several hours on 32-64 cores and
-needs about 150 GB of disk; later rebuilds with a compile cache take minutes.
-
-1. **Source:** [webOS-ports/chromium151](https://github.com/webOS-ports/chromium151) (Chromium 151 with LG's webOS
-   platform layer), commit `0baacb2b1a4b885826fed5493262f759c6a5b469`.
-2. **Sysroot:** an ARMv7 softfp sysroot that matches the TV (glibc 2.35, `/lib/ld-linux.so.3`). The browser may only
-   link against libraries the TV already has.
-3. **Patches:** apply this project's patches in name order. They cover the softfp ABI, webOS windows and remote
-   input, the on-screen keyboard, GPU output, menus and popups on the TV's compositor, and the hardware video path.
-4. **Build arguments** (`out/tv/args.gn`), the main ones:
-   ```gn
-   target_os = "linux"
-   target_cpu = "arm"
-   arm_float_abi = "softfp"
-   is_webos = true
-   use_ozone = true
-   ozone_platform = "wayland"
-   use_x11 = false
-   is_official_build = true
-   optimize_for_size = true
-   proprietary_codecs = true
-   ffmpeg_branding = "Chrome"
-   enable_widevine = false
-   symbol_level = 0
-   ```
-5. **Compile:** `ninja -C out/tv chrome`
-6. **Launcher:** build `bin/run` with an ARM softfp GCC (for example Ubuntu's `gcc-arm-linux-gnueabi`) against the
-   TV's glibc.
-7. **Package:** collect `chrome`, its `.pak` files, `icudtl.dat`, the V8 snapshots and one locale, strip them, and
-   pack an IPK with `appinfo.json`, the launcher, the start script and the icons.
+- Sync: bookmarks, history and passwords shared with your phone or computer. Google closed Chrome sync to all other
+  Chromium builds in 2021, so this would go through another service.
+- DRM (Widevine) for Netflix, Prime Video and similar sites. It's the hardest item, and we don't know yet whether it
+  can work on the TV.
+- HDR video on TVs that support it.
+- Lower memory use, so more tabs fit on TVs with little RAM.
+- 4K video without having to turn it on in TV Tools.
+- Smoother video and faster pages on older TVs.
 
 ## Benchmarks
 
-Measured on the LG 43UR7500PSC (webOS 10.3.1), with Live TV and LG's preloaded apps running in the background as
-usual.
-
-**Current release (0.0.39-0.0.42, 2026-11-01)**
+Measured on the LG 43UR7500PSC (webOS 10.3.1) with 0.0.39 to 0.0.42, with Live TV and LG's preloaded apps running
+in the background as usual.
 
 | Test | Result |
 |---|---|
-| Download / installed size | **105 MB / 178 MB** |
-| Memory, idle on the New Tab page | **138 MB** (86 MB in RAM + 51 MB in swap) |
-| CPU while the browser is idle | No extra load (87% idle) |
-| YouTube AV1 1080p60, hardware decoded | **0 dropped of 3,914 frames** |
-| YouTube TV interface, 1080p60, hardware decoded (0.0.41) | **0 dropped of 5,299 frames** |
+| Download / installed size | 105 MB / 178 MB |
+| Memory, idle on the New Tab page | 138 MB (86 MB in RAM, 51 MB in swap) |
+| CPU while the browser is idle | no extra load (87% idle) |
+| YouTube AV1 1080p60, hardware decoded | 0 dropped of 3,914 frames |
+| YouTube TV interface, 1080p60, hardware decoded (0.0.41) | 0 dropped of 5,299 frames |
 
-**Dev build 0.0.36 (2026-10-31)**
+Earlier dev build 0.0.36 (2026-10-31):
 
 | Test | Result |
 |---|---|
-| Memory, idle on the New Tab page | 105 MB (49 MB in RAM + 56 MB in swap) |
-| CPU while the browser is idle | No extra load (66% idle without the browser, 65-73% with it) |
+| Memory, idle on the New Tab page | 105 MB (49 MB in RAM, 56 MB in swap) |
+| CPU while the browser is idle | no extra load (66% idle without the browser, 65-73% with it) |
 | Wikipedia article | 204 MB, loaded in 6.2 s |
 | Google search results | 293 MB, loaded in 14.2 s |
 | YouTube home page | 315 MB, loaded in 21.2 s |
 | BBC News | 333 MB, ready in 24.0 s |
-| YouTube AV1 1080p60, hardware decoded | **0 dropped of 9,330 frames**, while LG's background apps kept the CPU busy |
+| YouTube AV1 1080p60, hardware decoded | 0 dropped of 9,330 frames, with LG's background apps keeping the CPU busy |
 | Memory while playing that video | 292 MB |
 | Speedometer 3.0 (1 iteration) | 0.71 |
 | Splash screen | 0.8 s after launch |
-| Launch to New Tab page | ~3 s; ~12 s when the TV first has to free memory for it (LG's memory manager) |
+| Launch to New Tab page | about 3 s, or about 12 s when the TV first has to free memory |
 
-Page load times and the Speedometer score are limited by the TV's memory: during these tests only 40-110 MB was
-free and the TV was swapping heavily. They are best read as "real-world on a busy TV", not as a CPU benchmark.
+Only 40 to 110 MB was free during these tests and the TV was swapping a lot, so read the page times and the
+Speedometer score as "a busy TV in daily use", not as a CPU benchmark.
+
+## Building from source
+
+The source is in [`source/`](source/): our patches to Chromium, the build scripts, the launcher, TV Tools and the
+packaging. [`source/BUILDING.md`](source/BUILDING.md) has the steps. You don't need a TV to build it.
+
+The first build is a full Chromium build. It takes a few hours on 64 cores (roughly $15 to $30 on Modal). Later
+builds reuse its compile cache and take minutes. Each release's source is tagged with its version.
 
 ## Reporting issues
 
 Use the [issue templates](https://github.com/sarahahzub/WebOS-Chromium/issues/new/choose): bug report, TV
-compatibility report, or feature request. Please include your TV model, webOS version and the app version
-(Homebrew Channel or the TV's app list shows it).
+compatibility report or feature request. Please include your TV model, webOS version and the app version (Homebrew
+Channel or the TV's app list shows it).
 
 ## License
 
-Chromium is under the BSD license; see the Chromium source for its third-party licenses. The license for this
-project's own patches and tools is still to be added.
+This project's patches, scripts and app code are under the BSD 3-Clause license
+([`source/LICENSE`](source/LICENSE)), same as Chromium. Chromium's third-party code keeps its own licenses, and
+[`source/NOTICE.md`](source/NOTICE.md) lists the other third-party parts. This project isn't affiliated with Google or
+LG.

@@ -1,0 +1,26 @@
+# why: This GN-only build does not pass -mfloat-abi/-mfpu, so the arm-linux-gnueabihf triple made hard-float objects
+# while the TV's userland is softfp, and Chrome crashed at start (in frexp()). Add the flags from arm_float_abi
+# and arm_fpu.
+diff --git a/src/build/config/compiler_cpu_abi.gn b/src/build/config/compiler_cpu_abi.gn
+index 1113bc123..f92054a0d 100644
+--- a/src/build/config/compiler_cpu_abi.gn
++++ b/src/build/config/compiler_cpu_abi.gn
+@@ -73,6 +73,18 @@ if (is_clang && !is_android && !is_fuchsia && !is_chromeos_device &&
+       cpu_abi_cflags += [ "-march=$arm_arch" ]
+       cpu_abi_ldflags += [ "-march=$arm_arch" ]
+     }
++
++    # chromium-native: the float ABI and FPU. OE passed these in its own
++    # compiler flags; this GN-only build did not, so the gnueabihf triple made
++    # every object hard-float while the TV userland (glibc, libm) is softfp:
++    # Chrome crashed in frexp() at startup without them. Must match arm_float_abi.
++    if (arm_float_abi != "") {
++      cpu_abi_cflags += [ "-mfloat-abi=$arm_float_abi" ]
++      cpu_abi_ldflags += [ "-mfloat-abi=$arm_float_abi" ]
++    }
++    if (arm_fpu != "") {
++      cpu_abi_cflags += [ "-mfpu=$arm_fpu" ]
++    }
+   }
+ }
+ 

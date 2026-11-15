@@ -1,0 +1,23 @@
+# why: The TV loads programs with /lib/ld-linux.so.3 (softfp). With use_custom_libcxx=true the neva block that sets the
+# dynamic linker is skipped, and clang picks /lib/ld-linux-armhf.so.3 for the gnueabihf triple. Set the TV's
+# loader here.
+diff --git a/src/build/config/compiler/BUILD.gn b/src/build/config/compiler/BUILD.gn
+index a3feec6c9..4317238a9 100644
+--- a/src/build/config/compiler/BUILD.gn
++++ b/src/build/config/compiler/BUILD.gn
+@@ -572,6 +572,15 @@ config("compiler") {
+         ldflags += [ "-Wl,-dynamic-linker,/lib/ld-linux-armhf.so.3" ]
+       }
+     }
++
++    # chromium-native: LG TVs run a softfp userland whose loader is
++    # /lib/ld-linux.so.3. With the bundled libc++ (use_custom_libcxx) the block
++    # above is skipped and clang picks ld-linux-armhf.so.3 for the gnueabihf
++    # triple, which the TV does not have.
++    if (is_clang && is_webos && use_custom_libcxx && current_cpu == "arm" &&
++        arm_float_abi == "softfp") {
++      ldflags += [ "-Wl,-dynamic-linker,/lib/ld-linux.so.3" ]
++    }
+   }
+ 
+   # ChromeOS-specific compiler flags setup.

@@ -1,0 +1,166 @@
+tvabi 1
+soname libvorbis.so.0
+needed libm.so.6
+needed libogg.so.0
+needed libgcc_s.so.1
+needed libc.so.6
+def _book_maptype1_quantvals - - FUNC GLOBAL DEFAULT 192 code
+def _book_unquantize - - FUNC GLOBAL DEFAULT 500 code
+def _float32_pack - - FUNC GLOBAL DEFAULT 124 code
+def _float32_unpack - - FUNC GLOBAL DEFAULT 68 code
+def _floor_P - - OBJECT GLOBAL DEFAULT 8 data
+def _make_words - - FUNC GLOBAL DEFAULT 396 code
+def _mapping_P - - OBJECT GLOBAL DEFAULT 4 data
+def _residue_P - - OBJECT GLOBAL DEFAULT 12 data
+def _ve_envelope_clear - - FUNC GLOBAL DEFAULT 64 code
+def _ve_envelope_init - - FUNC GLOBAL DEFAULT 368 code
+def _ve_envelope_mark - - FUNC GLOBAL DEFAULT 184 code
+def _ve_envelope_search - - FUNC GLOBAL DEFAULT 458 code
+def _ve_envelope_shift - - FUNC GLOBAL DEFAULT 82 code
+def _vi_gpsy_free - - FUNC GLOBAL DEFAULT 8 code
+def _vi_psy_free - - FUNC GLOBAL DEFAULT 8 code
+def _vorbis_apply_window - - FUNC GLOBAL DEFAULT 264 code
+def _vorbis_block_alloc - - FUNC GLOBAL DEFAULT 64 code
+def _vorbis_block_ripcord - - FUNC GLOBAL DEFAULT 72 code
+def _vorbis_window_get - - FUNC GLOBAL DEFAULT 16 code
+def _vp_ampmax_decay - - FUNC GLOBAL DEFAULT 80 code
+def _vp_couple_quantize_normalize - - FUNC GLOBAL DEFAULT 1692 code
+def _vp_global_free - - FUNC GLOBAL DEFAULT 8 code
+def _vp_global_look - - FUNC GLOBAL DEFAULT 36 code
+def _vp_noisemask - - FUNC GLOBAL DEFAULT 252 code
+def _vp_offset_and_mix - - FUNC GLOBAL DEFAULT 284 code
+def _vp_psy_clear - - FUNC GLOBAL DEFAULT 126 code
+def _vp_psy_init - - FUNC GLOBAL DEFAULT 1624 code
+def _vp_tonemask - - FUNC GLOBAL DEFAULT 860 code
+def drft_backward - - FUNC GLOBAL DEFAULT 340 code
+def drft_clear - - FUNC GLOBAL DEFAULT 34 code
+def drft_forward - - FUNC GLOBAL DEFAULT 336 code
+def drft_init - - FUNC GLOBAL DEFAULT 492 code
+def floor0_exportbundle - - OBJECT GLOBAL DEFAULT 28 data
+def floor1_encode - - FUNC GLOBAL DEFAULT 1186 code
+def floor1_exportbundle - - OBJECT GLOBAL DEFAULT 28 data
+def floor1_fit - - FUNC GLOBAL DEFAULT 1732 code
+def floor1_interpolate_fit - - FUNC GLOBAL DEFAULT 126 code
+def mapping0_exportbundle - - OBJECT GLOBAL DEFAULT 20 data
+def mdct_backward - - FUNC GLOBAL DEFAULT 856 code
+def mdct_clear - - FUNC GLOBAL DEFAULT 38 code
+def mdct_forward - - FUNC GLOBAL DEFAULT 690 code
+def mdct_init - - FUNC GLOBAL DEFAULT 532 code
+def ov_ilog - - FUNC GLOBAL DEFAULT 18 code
+def res0_free_info - - FUNC GLOBAL DEFAULT 8 code
+def res0_free_look - - FUNC GLOBAL DEFAULT 88 code
+def res0_inverse - - FUNC GLOBAL DEFAULT 76 code
+def res0_look - - FUNC GLOBAL DEFAULT 384 code
+def res0_pack - - FUNC GLOBAL DEFAULT 190 code
+def res0_unpack - - FUNC GLOBAL DEFAULT 320 code
+def res1_class - - FUNC GLOBAL DEFAULT 428 code
+def res1_forward - - FUNC GLOBAL DEFAULT 66 code
+def res1_inverse - - FUNC GLOBAL DEFAULT 76 code
+def res2_class - - FUNC GLOBAL DEFAULT 326 code
+def res2_forward - - FUNC GLOBAL DEFAULT 144 code
+def res2_inverse - - FUNC GLOBAL DEFAULT 334 code
+def residue0_exportbundle - - OBJECT GLOBAL DEFAULT 32 data
+def residue1_exportbundle - - OBJECT GLOBAL DEFAULT 32 data
+def residue2_exportbundle - - OBJECT GLOBAL DEFAULT 32 data
+def vorbis_analysis - - FUNC GLOBAL DEFAULT 136 code
+def vorbis_analysis_blockout - - FUNC GLOBAL DEFAULT 618 code
+def vorbis_analysis_buffer - - FUNC GLOBAL DEFAULT 138 code
+def vorbis_analysis_headerout - - FUNC GLOBAL DEFAULT 1120 code
+def vorbis_analysis_init - - FUNC GLOBAL DEFAULT 66 code
+def vorbis_analysis_wrote - - FUNC GLOBAL DEFAULT 234 code
+def vorbis_bitrate_addblock - - FUNC GLOBAL DEFAULT 1046 code
+def vorbis_bitrate_clear - - FUNC GLOBAL DEFAULT 8 code
+def vorbis_bitrate_flushpacket - - FUNC GLOBAL DEFAULT 78 code
+def vorbis_bitrate_init - - FUNC GLOBAL DEFAULT 210 code
+def vorbis_bitrate_managed - - FUNC GLOBAL DEFAULT 14 code
+def vorbis_block_clear - - FUNC GLOBAL DEFAULT 70 code
+def vorbis_block_init - - FUNC GLOBAL DEFAULT 94 code
+def vorbis_book_clear - - FUNC GLOBAL DEFAULT 58 code
+def vorbis_book_codelen - - FUNC GLOBAL DEFAULT 16 code
+def vorbis_book_codeword - - FUNC GLOBAL DEFAULT 18 code
+def vorbis_book_decode - - FUNC GLOBAL DEFAULT 38 code
+def vorbis_book_decodev_add - - FUNC GLOBAL DEFAULT 98 code
+def vorbis_book_decodev_set - - FUNC GLOBAL DEFAULT 106 code
+def vorbis_book_decodevs_add - - FUNC GLOBAL DEFAULT 232 code
+def vorbis_book_decodevv_add - - FUNC GLOBAL DEFAULT 144 code
+def vorbis_book_encode - - FUNC GLOBAL DEFAULT 44 code
+def vorbis_book_init_decode - - FUNC GLOBAL DEFAULT 792 code
+def vorbis_book_init_encode - - FUNC GLOBAL DEFAULT 72 code
+def vorbis_comment_add - - FUNC GLOBAL DEFAULT 94 code
+def vorbis_comment_add_tag - - FUNC GLOBAL DEFAULT 78 code
+def vorbis_comment_clear - - FUNC GLOBAL DEFAULT 74 code
+def vorbis_comment_init - - FUNC GLOBAL DEFAULT 12 code
+def vorbis_comment_query - - FUNC GLOBAL DEFAULT 184 code
+def vorbis_comment_query_count - - FUNC GLOBAL DEFAULT 160 code
+def vorbis_commentheader_out - - FUNC GLOBAL DEFAULT 120 code
+def vorbis_dsp_clear - - FUNC GLOBAL DEFAULT 412 code
+def vorbis_granule_time - - FUNC GLOBAL DEFAULT 96 code
+def vorbis_info_blocksize - - FUNC GLOBAL DEFAULT 16 code
+def vorbis_info_clear - - FUNC GLOBAL DEFAULT 308 code
+def vorbis_info_init - - FUNC GLOBAL DEFAULT 26 code
+def vorbis_lpc_from_data - - FUNC GLOBAL DEFAULT 440 code
+def vorbis_lpc_predict - - FUNC GLOBAL DEFAULT 144 code
+def vorbis_lpc_to_lsp - - FUNC GLOBAL DEFAULT 444 code
+def vorbis_lsp_to_curve - - FUNC GLOBAL DEFAULT 464 code
+def vorbis_packet_blocksize - - FUNC GLOBAL DEFAULT 92 code
+def vorbis_staticbook_destroy - - FUNC GLOBAL DEFAULT 36 code
+def vorbis_staticbook_pack - - FUNC GLOBAL DEFAULT 558 code
+def vorbis_staticbook_unpack - - FUNC GLOBAL DEFAULT 646 code
+def vorbis_synthesis - - FUNC GLOBAL DEFAULT 288 code
+def vorbis_synthesis_blockin - - FUNC GLOBAL DEFAULT 1274 code
+def vorbis_synthesis_halfrate - - FUNC GLOBAL DEFAULT 34 code
+def vorbis_synthesis_halfrate_p - - FUNC GLOBAL DEFAULT 8 code
+def vorbis_synthesis_headerin - - FUNC GLOBAL DEFAULT 1124 code
+def vorbis_synthesis_idheader - - FUNC GLOBAL DEFAULT 114 code
+def vorbis_synthesis_init - - FUNC GLOBAL DEFAULT 36 code
+def vorbis_synthesis_lapout - - FUNC GLOBAL DEFAULT 386 code
+def vorbis_synthesis_pcmout - - FUNC GLOBAL DEFAULT 62 code
+def vorbis_synthesis_read - - FUNC GLOBAL DEFAULT 26 code
+def vorbis_synthesis_restart - - FUNC GLOBAL DEFAULT 84 code
+def vorbis_synthesis_trackonly - - FUNC GLOBAL DEFAULT 152 code
+def vorbis_version_string - - FUNC GLOBAL DEFAULT 12 code
+def vorbis_window - - FUNC GLOBAL DEFAULT 30 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und acosf GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und atan GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ceil GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und cos GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und exp GLIBC_2.29 libm.so.6 FUNC GLOBAL
+und floor GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ldexp GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und log GLIBC_2.29 libm.so.6 FUNC GLOBAL
+und lrint GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und lrintf GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und oggpack_adv - - FUNC GLOBAL
+und oggpack_bytes - - FUNC GLOBAL
+und oggpack_get_buffer - - FUNC GLOBAL
+und oggpack_look - - FUNC GLOBAL
+und oggpack_read - - FUNC GLOBAL
+und oggpack_readinit - - FUNC GLOBAL
+und oggpack_reset - - FUNC GLOBAL
+und oggpack_write - - FUNC GLOBAL
+und oggpack_writeclear - - FUNC GLOBAL
+und oggpack_writeinit - - FUNC GLOBAL
+und oggpack_writetrunc - - FUNC GLOBAL
+und pow GLIBC_2.29 libm.so.6 FUNC GLOBAL
+und qsort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rint GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und sin GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und sincos GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und sincosf GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL

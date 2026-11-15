@@ -1,0 +1,131 @@
+tvabi 1
+soname libcap.so.2
+needed libgcc_s.so.1
+needed libc.so.6
+def __cap_lookup_name - - FUNC GLOBAL DEFAULT 184 code
+def __execable_dl_loader - - OBJECT GLOBAL DEFAULT 19 data
+def __so_start - - FUNC GLOBAL DEFAULT 620 code
+def _libcap_initialize - - FUNC GLOBAL DEFAULT 148 code
+def _libcap_strdup - - FUNC GLOBAL DEFAULT 96 code
+def cap_clear - - FUNC GLOBAL DEFAULT 100 code
+def cap_clear_flag - - FUNC GLOBAL DEFAULT 110 code
+def cap_compare - - FUNC GLOBAL DEFAULT 214 code
+def cap_copy_ext - - FUNC GLOBAL DEFAULT 304 code
+def cap_copy_int - - FUNC GLOBAL DEFAULT 198 code
+def cap_copy_int_check - - FUNC GLOBAL DEFAULT 42 code
+def cap_drop_bound - - FUNC GLOBAL DEFAULT 84 code
+def cap_dup - - FUNC GLOBAL DEFAULT 164 code
+def cap_fill - - FUNC GLOBAL DEFAULT 8 code
+def cap_fill_flag - - FUNC GLOBAL DEFAULT 170 code
+def cap_free - - FUNC GLOBAL DEFAULT 188 code
+def cap_from_name - - FUNC GLOBAL DEFAULT 36 code
+def cap_from_text - - FUNC GLOBAL DEFAULT 1092 code
+def cap_func_launcher - - FUNC GLOBAL DEFAULT 36 code
+def cap_get_ambient - - FUNC GLOBAL DEFAULT 42 code
+def cap_get_bound - - FUNC GLOBAL DEFAULT 10 code
+def cap_get_fd - - FUNC GLOBAL DEFAULT 72 code
+def cap_get_file - - FUNC GLOBAL DEFAULT 72 code
+def cap_get_flag - - FUNC GLOBAL DEFAULT 152 code
+def cap_get_mode - - FUNC GLOBAL DEFAULT 162 code
+def cap_get_nsowner - - FUNC GLOBAL DEFAULT 88 code
+def cap_get_pid - - FUNC GLOBAL DEFAULT 48 code
+def cap_get_proc - - FUNC GLOBAL DEFAULT 38 code
+def cap_get_secbits - - FUNC GLOBAL DEFAULT 10 code
+def cap_iab_compare - - FUNC GLOBAL DEFAULT 208 code
+def cap_iab_dup - - FUNC GLOBAL DEFAULT 132 code
+def cap_iab_fill - - FUNC GLOBAL DEFAULT 234 code
+def cap_iab_from_text - - FUNC GLOBAL DEFAULT 228 code
+def cap_iab_get_pid - - FUNC GLOBAL DEFAULT 288 code
+def cap_iab_get_proc - - FUNC GLOBAL DEFAULT 122 code
+def cap_iab_get_vector - - FUNC GLOBAL DEFAULT 176 code
+def cap_iab_init - - FUNC GLOBAL DEFAULT 30 code
+def cap_iab_set_proc - - FUNC GLOBAL DEFAULT 100 code
+def cap_iab_set_vector - - FUNC GLOBAL DEFAULT 280 code
+def cap_iab_to_text - - FUNC GLOBAL DEFAULT 300 code
+def cap_init - - FUNC GLOBAL DEFAULT 104 code
+def cap_launch - - FUNC GLOBAL DEFAULT 680 code
+def cap_launcher_callback - - FUNC GLOBAL DEFAULT 92 code
+def cap_launcher_set_chroot - - FUNC GLOBAL DEFAULT 98 code
+def cap_launcher_set_iab - - FUNC GLOBAL DEFAULT 146 code
+def cap_launcher_set_mode - - FUNC GLOBAL DEFAULT 96 code
+def cap_launcher_setgroups - - FUNC GLOBAL DEFAULT 112 code
+def cap_launcher_setuid - - FUNC GLOBAL DEFAULT 96 code
+def cap_max_bits - - FUNC GLOBAL DEFAULT 12 code
+def cap_mode_name - - FUNC GLOBAL DEFAULT 76 code
+def cap_new_launcher - - FUNC GLOBAL DEFAULT 44 code
+def cap_prctl - - FUNC GLOBAL DEFAULT 4 code
+def cap_prctlw - - FUNC GLOBAL DEFAULT 96 code
+def cap_proc_root - - FUNC GLOBAL DEFAULT 24 code
+def cap_reset_ambient - - FUNC GLOBAL DEFAULT 12 code
+def cap_set_ambient - - FUNC GLOBAL DEFAULT 116 code
+def cap_set_fd - - FUNC GLOBAL DEFAULT 128 code
+def cap_set_file - - FUNC GLOBAL DEFAULT 128 code
+def cap_set_flag - - FUNC GLOBAL DEFAULT 184 code
+def cap_set_mode - - FUNC GLOBAL DEFAULT 12 code
+def cap_set_nsowner - - FUNC GLOBAL DEFAULT 92 code
+def cap_set_proc - - FUNC GLOBAL DEFAULT 12 code
+def cap_set_secbits - - FUNC GLOBAL DEFAULT 84 code
+def cap_set_syscall - - FUNC GLOBAL DEFAULT 32 code
+def cap_setgroups - - FUNC GLOBAL DEFAULT 20 code
+def cap_setuid - - FUNC GLOBAL DEFAULT 12 code
+def cap_size - - FUNC GLOBAL DEFAULT 84 code
+def cap_to_name - - FUNC GLOBAL DEFAULT 72 code
+def cap_to_text - - FUNC GLOBAL DEFAULT 1076 code
+def capgetp - - FUNC GLOBAL DEFAULT 102 code
+def capsetp - - FUNC GLOBAL DEFAULT 112 code
+def psx_load_syscalls - - FUNC WEAK DEFAULT 16 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_tolower_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und asprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und capget GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und capset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und chdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und chroot GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und execve GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fgets GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fgetxattr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fork GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fread GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fremovexattr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fsetxattr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und getxattr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und lstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und perror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pipe2 GLIBC_2.9 libc.so.6 FUNC GLOBAL
+und prctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und printf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und putchar GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und puts GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und removexattr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sched_yield GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setgid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setgroups GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setxattr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und syscall GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und waitpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und write GLIBC_2.4 libc.so.6 FUNC GLOBAL

@@ -1,0 +1,140 @@
+# why: With use_neva_appruntime, content/ and extensions/ call neva_app_runtime, watchdog and neva_user_agent functions
+# that only app_shell and browser_shell link, so //chrome:chrome fails to link. Link the small standalone parts
+# (watchdog, neva user agent, webview controller) and define the few app_runtime functions in
+# chrome/app/neva_chrome_glue.cc. Linking all of //neva/app_runtime is not an option: it pulls in neva/extensions,
+# whose API types clash with Chrome's.
+diff --git a/src/chrome/BUILD.gn b/src/chrome/BUILD.gn
+index 973a46b2a..52a8ebe3e 100644
+--- a/src/chrome/BUILD.gn
++++ b/src/chrome/BUILD.gn
+@@ -31,6 +31,7 @@ import("//tools/resources/generate_resource_allowlist.gni")
+ import("//tools/v8_context_snapshot/v8_context_snapshot.gni")
+ import("//ui/gl/features.gni")
+ import("//v8/gni/v8.gni")
++import("//neva/neva.gni")
+ 
+ assert(!is_fuchsia, "Fuchsia shouldn't use anything in //chrome")
+ 
+@@ -176,6 +177,24 @@ if (!is_android && !is_mac) {
+       deps += [ "//components/webapps/isolated_web_apps:scheme" ]
+     }
+ 
++    # chromium-native: with use_neva_appruntime, content/ and extensions/
++    # call a few neva symbols that only app_shell/browser_shell link. Link the
++    # small standalone pieces and stub the app_runtime ones (the full
++    # //neva/app_runtime brings a second extension system that clashes with
++    # the Chrome one): see app/neva_chrome_glue.cc.
++    if (is_webos && use_neva_appruntime) {
++      sources += [ "app/neva_chrome_glue.cc" ]
++      deps += [
++        "//components/media_control/browser",
++        "//components/watchdog",
++        "//content/public/browser",
++        "//neva/app_runtime:app_runtime_webview_controller",
++        "//neva/app_runtime/public/mojom",
++        "//neva/user_agent/common",
++        "//url",
++      ]
++    }
++
+     if (is_chromeos) {
+       data_deps += [ "//sandbox/linux:chrome_sandbox" ]
+       if (build_mojo_proxy) {
+diff --git a/src/chrome/app/neva_chrome_glue.cc b/src/chrome/app/neva_chrome_glue.cc
+new file mode 100644
+index 000000000..730bc7972
+--- /dev/null
++++ b/src/chrome/app/neva_chrome_glue.cc
+@@ -0,0 +1,92 @@
++// Copyright 2026 chromium-native authors. BSD-style license.
++//
++// chromium-native: with use_neva_appruntime=true (the neva default) content/
++// and extensions/ call into neva app_runtime, which only app_shell and
++// browser_shell link. Chrome cannot link all of //neva/app_runtime (it brings
++// a second extension system whose API types clash with Chrome's), so the few
++// functions Chrome needs are defined here. The class declarations below are
++// deliberately minimal: they only have to match the real names and
++// signatures (neva/app_runtime/...), so the linker resolves calls to these.
++
++#include <string>
++
++#include "base/strings/string_util.h"
++#include "content/public/browser/media_stream_request.h"
++#include "mojo/public/cpp/bindings/pending_receiver.h"
++#include "neva/app_runtime/public/mojom/installable_manager.mojom.h"
++#include "third_party/blink/public/mojom/mediastream/media_stream.mojom-shared.h"
++#include "url/gurl.h"
++#include "url/origin.h"
++#include "url/url_constants.h"
++
++namespace content {
++class RenderFrameHost;
++class WebContents;
++}  // namespace content
++
++namespace neva_app_runtime {
++
++// neva/app_runtime/file_security_origin.cc without the app_runtime content
++// client (Chrome has none; this is the original's fallback branch).
++std::string FileSchemeHostForApp(const std::string& app_id) {
++  return base::ToLowerASCII(app_id);
++}
++
++url::Origin CreateFileSecurityOriginForApp(const std::string& app_id) {
++  url::Origin origin = url::Origin::CreateFromNormalizedTuple(
++      url::kFileScheme, FileSchemeHostForApp(app_id), 0);
++  origin.set_webapp_id(app_id);
++  return origin;
++}
++
++// Chrome has no app_runtime content client; callers check for nullptr
++// (patch 0010).
++class AppRuntimeContentBrowserClient {
++ public:
++  void SetCorsCorbDisabledForURL(const GURL& url, bool disabled);
++};
++AppRuntimeContentBrowserClient* GetAppRuntimeContentBrowserClient() {
++  return nullptr;
++}
++void AppRuntimeContentBrowserClient::SetCorsCorbDisabledForURL(const GURL&,
++                                                               bool) {}
++
++// Only <webview> guests use this; GetInstance() returns nullptr and the
++// callers fall back to the normal Chrome path (patch 0010).
++class MediaCaptureDevicesDispatcher {
++ public:
++  static MediaCaptureDevicesDispatcher* GetInstance();
++  void ProcessMediaAccessRequest(content::WebContents* web_contents,
++                                 const content::MediaStreamRequest& request,
++                                 content::MediaResponseCallback callback);
++  bool CheckMediaAccessPermission(content::RenderFrameHost* render_frame_host,
++                                  const GURL& security_origin,
++                                  blink::mojom::MediaStreamType type);
++};
++MediaCaptureDevicesDispatcher* MediaCaptureDevicesDispatcher::GetInstance() {
++  return nullptr;
++}
++void MediaCaptureDevicesDispatcher::ProcessMediaAccessRequest(
++    content::WebContents*,
++    const content::MediaStreamRequest&,
++    content::MediaResponseCallback) {}
++bool MediaCaptureDevicesDispatcher::CheckMediaAccessPermission(
++    content::RenderFrameHost*,
++    const GURL&,
++    blink::mojom::MediaStreamType) {
++  return false;
++}
++
++// The webOS PWA "installable manager" (app_shell only). Chrome has its own
++// PWA install UI: drop the request (the receiver closes).
++class InstallableManager {
++ public:
++  static void BindInstallableManager(
++      mojo::PendingReceiver<mojom::InstallableManager> receiver,
++      content::RenderFrameHost* rfh);
++};
++void InstallableManager::BindInstallableManager(
++    mojo::PendingReceiver<mojom::InstallableManager>,
++    content::RenderFrameHost*) {}
++
++}  // namespace neva_app_runtime

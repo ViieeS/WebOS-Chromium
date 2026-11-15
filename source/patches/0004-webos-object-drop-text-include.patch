@@ -1,0 +1,14 @@
+# why: Drop the include of wayland-text-client-protocol.h, which is not generated. This file already includes
+# wayland-webos-extension-client-protocol.h, which defines text_model.
+diff --git a/src/ui/ozone/platform/wayland/extensions/webos/common/wayland_webos_object.cc b/src/ui/ozone/platform/wayland/extensions/webos/common/wayland_webos_object.cc
+index b3c9851e5c..258ee15a5d 100644
+--- a/src/ui/ozone/platform/wayland/extensions/webos/common/wayland_webos_object.cc
++++ b/src/ui/ozone/platform/wayland/extensions/webos/common/wayland_webos_object.cc
+@@ -16,7 +16,6 @@
+ 
+ #include "ui/ozone/platform/wayland/extensions/webos/common/wayland_webos_object.h"
+ 
+-#include <wayland-text-client-protocol.h>
+ #include <wayland-webos-extension-client-protocol.h>
+ #include <wayland-webos-input-manager-client-protocol.h>
+ #include <wayland-webos-shell-client-protocol.h>

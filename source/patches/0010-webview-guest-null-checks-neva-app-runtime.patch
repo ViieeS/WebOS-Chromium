@@ -1,0 +1,64 @@
+# why: The glue from patch 0009 returns nullptr for the app_runtime content client and the neva media capture
+# dispatcher. Their only callers, in the <webview> guest code, now check for nullptr and fall back to the normal
+# path.
+diff --git a/src/extensions/browser/guest_view/web_view/web_view_guest.cc b/src/extensions/browser/guest_view/web_view/web_view_guest.cc
+index e8b4af058..dc26ff049 100644
+--- a/src/extensions/browser/guest_view/web_view/web_view_guest.cc
++++ b/src/extensions/browser/guest_view/web_view/web_view_guest.cc
+@@ -1408,8 +1408,8 @@ WebViewGuest::~WebViewGuest() {
+ #if defined(USE_NEVA_APPRUNTIME)
+   if (!cors_exception_pdf_url_.is_empty()) {
+     // Remove the exception for the pdf URL, if not removed yet.
+-    neva_app_runtime::GetAppRuntimeContentBrowserClient()
+-        ->SetCorsCorbDisabledForURL(cors_exception_pdf_url_, false);
++    if (auto* client = neva_app_runtime::GetAppRuntimeContentBrowserClient())
++      client->SetCorsCorbDisabledForURL(cors_exception_pdf_url_, false);
+   }
+ #endif
+ 
+@@ -1521,8 +1521,8 @@ void WebViewGuest::ResourceLoadComplete(
+   if (!cors_exception_pdf_url_.is_empty() &&
+       cors_exception_pdf_url_ == resource_load_info.original_url) {
+     // PDF URL load completed. Remove PDF url from exception list
+-    neva_app_runtime::GetAppRuntimeContentBrowserClient()
+-        ->SetCorsCorbDisabledForURL(cors_exception_pdf_url_, false);
++    if (auto* client = neva_app_runtime::GetAppRuntimeContentBrowserClient())
++      client->SetCorsCorbDisabledForURL(cors_exception_pdf_url_, false);
+     cors_exception_pdf_url_ = GURL::EmptyGURL();
+   }
+ }
+@@ -1548,8 +1548,8 @@ void WebViewGuest::DidStartNavigation(
+     cors_exception_pdf_url_ =
+         GetPdfUrlFromExtensionURL(navigation_handle->GetURL());
+     if (!cors_exception_pdf_url_.is_empty()) {
+-      neva_app_runtime::GetAppRuntimeContentBrowserClient()
+-          ->SetCorsCorbDisabledForURL(cors_exception_pdf_url_, true);
++      if (auto* client = neva_app_runtime::GetAppRuntimeContentBrowserClient())
++        client->SetCorsCorbDisabledForURL(cors_exception_pdf_url_, true);
+     }
+   }
+ #endif
+diff --git a/src/extensions/browser/guest_view/web_view/web_view_permission_helper.cc b/src/extensions/browser/guest_view/web_view/web_view_permission_helper.cc
+index 252d0f22a..8495cc4fa 100644
+--- a/src/extensions/browser/guest_view/web_view/web_view_permission_helper.cc
++++ b/src/extensions/browser/guest_view/web_view/web_view_permission_helper.cc
+@@ -217,7 +217,8 @@ void WebViewPermissionHelper::RequestMediaAccessPermission(
+ #if defined(USE_NEVA_BROWSER_SERVICE)
+   if (!request.security_origin.SchemeIs(kExtensionScheme) &&
+       web_view_guest()->attached() &&
+-      web_view_guest()->embedder_web_contents()->GetDelegate()) {
++      web_view_guest()->embedder_web_contents()->GetDelegate() &&
++      neva_app_runtime::MediaCaptureDevicesDispatcher::GetInstance()) {
+     content::WebContents* source = content::WebContents::FromRenderFrameHost(
+         content::RenderFrameHost::FromID(request.render_process_id,
+                                          request.render_frame_id));
+@@ -255,7 +256,8 @@ bool WebViewPermissionHelper::CheckMediaAccessPermission(
+     return false;
+   }
+ #if defined(USE_NEVA_BROWSER_SERVICE)
+-  if (security_origin.scheme() != kExtensionScheme) {
++  if (security_origin.scheme() != kExtensionScheme &&
++      neva_app_runtime::MediaCaptureDevicesDispatcher::GetInstance()) {
+     return neva_app_runtime::MediaCaptureDevicesDispatcher::GetInstance()
+         ->CheckMediaAccessPermission(render_frame_host,
+                                      security_origin.GetURL(), type);

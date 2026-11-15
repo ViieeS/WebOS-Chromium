@@ -1,0 +1,672 @@
+tvabi 1
+soname libpbnjson_c.so.2
+needed libglib-2.0.so.0
+needed libyajl.so.2
+needed libm.so.6
+needed liburiparser.so.1
+needed libgmp.so.3
+needed libgcc_s.so.1
+needed libc.so.6
+def ARRAY_VALIDATOR_GENERIC - - OBJECT GLOBAL DEFAULT 4 data
+def EVERYTHING_VALIDATOR - - OBJECT GLOBAL DEFAULT 4 data
+def EVERYTHING_VALIDATOR_IMPL - - OBJECT GLOBAL DEFAULT 4 data
+def GENERIC_VALIDATOR - - OBJECT GLOBAL DEFAULT 4 data
+def INTEGER_VALIDATOR_GENERIC - - OBJECT GLOBAL DEFAULT 4 data
+def JINVALID - - OBJECT GLOBAL DEFAULT 32 data
+def JNULL - - OBJECT GLOBAL DEFAULT 32 data
+def JQueryParse - - FUNC GLOBAL DEFAULT 1852 code
+def JQueryParseAlloc - - FUNC GLOBAL DEFAULT 20 code
+def JQueryParseFree - - FUNC GLOBAL DEFAULT 136 code
+def JQueryScan__create_buffer - - FUNC GLOBAL DEFAULT 64 code
+def JQueryScan__delete_buffer - - FUNC GLOBAL DEFAULT 66 code
+def JQueryScan__flush_buffer - - FUNC GLOBAL DEFAULT 70 code
+def JQueryScan__scan_buffer - - FUNC GLOBAL DEFAULT 100 code
+def JQueryScan__scan_bytes - - FUNC GLOBAL DEFAULT 100 code
+def JQueryScan__scan_string - - FUNC GLOBAL DEFAULT 24 code
+def JQueryScan__switch_to_buffer - - FUNC GLOBAL DEFAULT 94 code
+def JQueryScan_alloc - - FUNC GLOBAL DEFAULT 4 code
+def JQueryScan_free - - FUNC GLOBAL DEFAULT 4 code
+def JQueryScan_get_column - - FUNC GLOBAL DEFAULT 20 code
+def JQueryScan_get_debug - - FUNC GLOBAL DEFAULT 4 code
+def JQueryScan_get_extra - - FUNC GLOBAL DEFAULT 4 code
+def JQueryScan_get_in - - FUNC GLOBAL DEFAULT 4 code
+def JQueryScan_get_leng - - FUNC GLOBAL DEFAULT 4 code
+def JQueryScan_get_lineno - - FUNC GLOBAL DEFAULT 20 code
+def JQueryScan_get_out - - FUNC GLOBAL DEFAULT 4 code
+def JQueryScan_get_text - - FUNC GLOBAL DEFAULT 4 code
+def JQueryScan_lex - - FUNC GLOBAL DEFAULT 1980 code
+def JQueryScan_lex_destroy - - FUNC GLOBAL DEFAULT 104 code
+def JQueryScan_lex_init - - FUNC GLOBAL DEFAULT 84 code
+def JQueryScan_lex_init_extra - - FUNC GLOBAL DEFAULT 110 code
+def JQueryScan_pop_buffer_state - - FUNC GLOBAL DEFAULT 74 code
+def JQueryScan_push_buffer_state - - FUNC GLOBAL DEFAULT 102 code
+def JQueryScan_realloc - - FUNC GLOBAL DEFAULT 4 code
+def JQueryScan_restart - - FUNC GLOBAL DEFAULT 94 code
+def JQueryScan_set_column - - FUNC GLOBAL DEFAULT 32 code
+def JQueryScan_set_debug - - FUNC GLOBAL DEFAULT 4 code
+def JQueryScan_set_extra - - FUNC GLOBAL DEFAULT 4 code
+def JQueryScan_set_in - - FUNC GLOBAL DEFAULT 4 code
+def JQueryScan_set_lineno - - FUNC GLOBAL DEFAULT 32 code
+def JQueryScan_set_out - - FUNC GLOBAL DEFAULT 4 code
+def JsonSchemaParser - - FUNC GLOBAL DEFAULT 5320 code
+def JsonSchemaParserAlloc - - FUNC GLOBAL DEFAULT 20 code
+def JsonSchemaParserFree - - FUNC GLOBAL DEFAULT 56 code
+def NOTHING_VALIDATOR - - OBJECT GLOBAL DEFAULT 4 data
+def NOTHING_VALIDATOR_IMPL - - OBJECT GLOBAL DEFAULT 4 data
+def NULL_VALIDATOR - - OBJECT GLOBAL DEFAULT 4 data
+def NUMBER_VALIDATOR_GENERIC - - OBJECT GLOBAL DEFAULT 4 data
+def OBJECT_VALIDATOR_GENERIC - - OBJECT GLOBAL DEFAULT 4 data
+def ObjKeyEqual - - FUNC GLOBAL DEFAULT 52 code
+def ObjKeyHash - - FUNC GLOBAL DEFAULT 34 code
+def ROOT_DEFINITIONS - - OBJECT GLOBAL DEFAULT 4 data
+def ROOT_FRAGMENT - - OBJECT GLOBAL DEFAULT 4 data
+def STRING_VALIDATOR_GENERIC - - OBJECT GLOBAL DEFAULT 4 data
+def SchemaGetErrorMessage - - FUNC GLOBAL DEFAULT 712 code
+def VISITOR_ENTER_VOID - - FUNC GLOBAL DEFAULT 2 code
+def VISITOR_EXIT_VOID - - FUNC GLOBAL DEFAULT 2 code
+def ValidationGetErrorMessage - - FUNC GLOBAL DEFAULT 320 code
+def _check_fragment - - FUNC GLOBAL DEFAULT 28 code
+def _jbuffer_free - - FUNC GLOBAL DEFAULT 16 code
+def _jbuffer_munmap - - FUNC GLOBAL DEFAULT 18 code
+def _validator_apply_features - - FUNC GLOBAL DEFAULT 10 code
+def _validator_collect_schemas - - FUNC GLOBAL DEFAULT 10 code
+def _validator_collect_uri_enter - - FUNC GLOBAL DEFAULT 10 code
+def _validator_collect_uri_exit - - FUNC GLOBAL DEFAULT 26 code
+def _validator_combine - - FUNC GLOBAL DEFAULT 22 code
+def _validator_dump_enter - - FUNC GLOBAL DEFAULT 80 code
+def _validator_dump_exit - - FUNC GLOBAL DEFAULT 62 code
+def _validator_finalize_parse - - FUNC GLOBAL DEFAULT 22 code
+def additional_feature_new - - FUNC GLOBAL DEFAULT 32 code
+def additional_feature_ref - - FUNC GLOBAL DEFAULT 4 code
+def additional_feature_set_validator - - FUNC GLOBAL DEFAULT 16 code
+def additional_feature_unref - - FUNC GLOBAL DEFAULT 4 code
+def all_of_validator_new - - FUNC GLOBAL DEFAULT 16 code
+def any_of_validator_new - - FUNC GLOBAL DEFAULT 16 code
+def array_items_add_item - - FUNC GLOBAL DEFAULT 36 code
+def array_items_equals - - FUNC GLOBAL DEFAULT 94 code
+def array_items_items_length - - FUNC GLOBAL DEFAULT 4 code
+def array_items_new - - FUNC GLOBAL DEFAULT 28 code
+def array_items_ref - - FUNC GLOBAL DEFAULT 4 code
+def array_items_set_generic_item - - FUNC GLOBAL DEFAULT 36 code
+def array_items_set_zero_items - - FUNC GLOBAL DEFAULT 40 code
+def array_items_unref - - FUNC GLOBAL DEFAULT 4 code
+def array_items_visit - - FUNC GLOBAL DEFAULT 138 code
+def array_validator_instance - - FUNC GLOBAL DEFAULT 20 code
+def array_validator_new - - FUNC GLOBAL DEFAULT 64 code
+def array_validator_release - - FUNC GLOBAL DEFAULT 38 code
+def array_validator_set_max_items - - FUNC GLOBAL DEFAULT 14 code
+def array_validator_set_min_items - - FUNC GLOBAL DEFAULT 4 code
+def array_vtable - - OBJECT GLOBAL DEFAULT 148 data
+def boolean_feature_new - - FUNC GLOBAL DEFAULT 32 code
+def boolean_feature_ref - - FUNC GLOBAL DEFAULT 4 code
+def boolean_feature_set_value - - FUNC GLOBAL DEFAULT 4 code
+def boolean_feature_unref - - FUNC GLOBAL DEFAULT 4 code
+def boolean_validator_instance - - FUNC GLOBAL DEFAULT 12 code
+def boolean_validator_new - - FUNC GLOBAL DEFAULT 32 code
+def boolean_validator_new_with_value - - FUNC GLOBAL DEFAULT 28 code
+def combined_types_validator_fill_all_types - - FUNC GLOBAL DEFAULT 120 code
+def combined_types_validator_new - - FUNC GLOBAL DEFAULT 40 code
+def combined_types_validator_release - - FUNC GLOBAL DEFAULT 42 code
+def combined_types_validator_set_type - - FUNC GLOBAL DEFAULT 56 code
+def combined_types_vtable - - OBJECT GLOBAL DEFAULT 148 data
+def combined_validator_add_enum_value - - FUNC GLOBAL DEFAULT 50 code
+def combined_validator_add_value - - FUNC GLOBAL DEFAULT 14 code
+def combined_validator_collect_errors - - FUNC GLOBAL DEFAULT 16 code
+def combined_validator_convert_to_all_of - - FUNC GLOBAL DEFAULT 12 code
+def combined_validator_convert_to_any_of - - FUNC GLOBAL DEFAULT 12 code
+def combined_validator_convert_to_enum - - FUNC GLOBAL DEFAULT 12 code
+def combined_validator_convert_to_not - - FUNC GLOBAL DEFAULT 32 code
+def combined_validator_convert_to_one_of - - FUNC GLOBAL DEFAULT 12 code
+def combined_validator_new - - FUNC GLOBAL DEFAULT 40 code
+def combined_validator_release - - FUNC GLOBAL DEFAULT 36 code
+def combined_validator_suppress_errors - - FUNC GLOBAL DEFAULT 16 code
+def combined_vtable - - OBJECT GLOBAL DEFAULT 148 data
+def count_feature_new - - FUNC GLOBAL DEFAULT 32 code
+def count_feature_ref - - FUNC GLOBAL DEFAULT 4 code
+def count_feature_set_value - - FUNC GLOBAL DEFAULT 84 code
+def count_feature_unref - - FUNC GLOBAL DEFAULT 4 code
+def definitions_add - - FUNC GLOBAL DEFAULT 108 code
+def definitions_collect_schemas - - FUNC GLOBAL DEFAULT 42 code
+def definitions_new - - FUNC GLOBAL DEFAULT 32 code
+def definitions_set_name - - FUNC GLOBAL DEFAULT 16 code
+def definitions_unref - - FUNC GLOBAL DEFAULT 4 code
+def dom_array_end - - FUNC GLOBAL DEFAULT 132 code
+def dom_array_start - - FUNC GLOBAL DEFAULT 224 code
+def dom_boolean - - FUNC GLOBAL DEFAULT 152 code
+def dom_null - - FUNC GLOBAL DEFAULT 168 code
+def dom_number - - FUNC GLOBAL DEFAULT 272 code
+def dom_object_end - - FUNC GLOBAL DEFAULT 132 code
+def dom_object_key - - FUNC GLOBAL DEFAULT 116 code
+def dom_object_start - - FUNC GLOBAL DEFAULT 224 code
+def dom_string - - FUNC GLOBAL DEFAULT 220 code
+def dom_string_memory_pool_alloc - - FUNC GLOBAL DEFAULT 116 code
+def dom_string_memory_pool_create - - FUNC GLOBAL DEFAULT 14 code
+def dom_string_memory_pool_destroy - - FUNC GLOBAL DEFAULT 4 code
+def dom_string_memory_pool_mark_as_free - - FUNC GLOBAL DEFAULT 102 code
+def enum_validator_new - - FUNC GLOBAL DEFAULT 16 code
+def escape_json_pointer - - FUNC GLOBAL DEFAULT 94 code
+def feature_apply - - FUNC GLOBAL DEFAULT 6 code
+def feature_init - - FUNC GLOBAL DEFAULT 8 code
+def feature_ref - - FUNC GLOBAL DEFAULT 10 code
+def feature_unref - - FUNC GLOBAL DEFAULT 22 code
+def generic_validator_instance - - FUNC GLOBAL DEFAULT 20 code
+def generic_validator_new - - FUNC GLOBAL DEFAULT 32 code
+def getConsumerName - - FUNC GLOBAL DEFAULT 28 code
+def instance_type_lookup - - FUNC GLOBAL DEFAULT 88 code
+def integer_validator_instance - - FUNC GLOBAL DEFAULT 20 code
+def integer_validator_new - - FUNC GLOBAL DEFAULT 12 code
+def inverse_generic_validator_instance - - FUNC GLOBAL DEFAULT 12 code
+def j_fopen - - FUNC GLOBAL DEFAULT 96 code
+def j_fopen2 - - FUNC GLOBAL DEFAULT 164 code
+def j_release - - FUNC GLOBAL DEFAULT 292 code
+def jarray_append - - FUNC GLOBAL DEFAULT 56 code
+def jarray_create - - FUNC GLOBAL DEFAULT 34 code
+def jarray_create_hint - - FUNC GLOBAL DEFAULT 72 code
+def jarray_create_var - - FUNC GLOBAL DEFAULT 80 code
+def jarray_get - - FUNC GLOBAL DEFAULT 188 code
+def jarray_insert - - FUNC GLOBAL DEFAULT 248 code
+def jarray_put - - FUNC GLOBAL DEFAULT 140 code
+def jarray_remove - - FUNC GLOBAL DEFAULT 156 code
+def jarray_set - - FUNC GLOBAL DEFAULT 164 code
+def jarray_size - - FUNC GLOBAL DEFAULT 48 code
+def jarray_splice - - FUNC GLOBAL DEFAULT 780 code
+def jarray_splice_append - - FUNC GLOBAL DEFAULT 46 code
+def jarray_splice_inject - - FUNC GLOBAL DEFAULT 42 code
+def jboolean_create - - FUNC GLOBAL DEFAULT 10 code
+def jboolean_deref_to_value - - FUNC GLOBAL DEFAULT 22 code
+def jboolean_false - - FUNC GLOBAL DEFAULT 12 code
+def jboolean_get - - FUNC GLOBAL DEFAULT 268 code
+def jboolean_true - - FUNC GLOBAL DEFAULT 12 code
+def jbuffer_equal - - FUNC GLOBAL DEFAULT 48 code
+def jdom_create - - FUNC GLOBAL DEFAULT 126 code
+def jdom_fcreate - - FUNC GLOBAL DEFAULT 96 code
+def jdom_parse - - FUNC GLOBAL DEFAULT 94 code
+def jdom_parse_file - - FUNC GLOBAL DEFAULT 94 code
+def jdomparser_alloc_memory - - FUNC GLOBAL DEFAULT 112 code
+def jdomparser_create - - FUNC GLOBAL DEFAULT 42 code
+def jdomparser_deinit - - FUNC GLOBAL DEFAULT 68 code
+def jdomparser_end - - FUNC GLOBAL DEFAULT 4 code
+def jdomparser_feed - - FUNC GLOBAL DEFAULT 4 code
+def jdomparser_free_memory - - FUNC GLOBAL DEFAULT 84 code
+def jdomparser_get_error - - FUNC GLOBAL DEFAULT 4 code
+def jdomparser_get_result - - FUNC GLOBAL DEFAULT 12 code
+def jdomparser_init - - FUNC GLOBAL DEFAULT 68 code
+def jdomparser_init_old - - FUNC GLOBAL DEFAULT 68 code
+def jdomparser_new - - FUNC GLOBAL DEFAULT 22 code
+def jdomparser_release - - FUNC GLOBAL DEFAULT 20 code
+def jdouble_to_i32 - - FUNC GLOBAL DEFAULT 352 code
+def jdouble_to_i64 - - FUNC GLOBAL DEFAULT 464 code
+def jerror_duplicate - - FUNC GLOBAL DEFAULT 32 code
+def jerror_free - - FUNC GLOBAL DEFAULT 26 code
+def jerror_set - - FUNC GLOBAL DEFAULT 40 code
+def jerror_set_formatted - - FUNC GLOBAL DEFAULT 76 code
+def jerror_to_string - - FUNC GLOBAL DEFAULT 52 code
+def jget_type - - FUNC GLOBAL DEFAULT 4 code
+def ji32_to_double - - FUNC GLOBAL DEFAULT 52 code
+def ji32_to_i64 - - FUNC GLOBAL DEFAULT 48 code
+def ji64_to_double - - FUNC GLOBAL DEFAULT 96 code
+def ji64_to_i32 - - FUNC GLOBAL DEFAULT 116 code
+def jinvalid - - FUNC GLOBAL DEFAULT 20 code
+def jis_array - - FUNC GLOBAL DEFAULT 48 code
+def jis_boolean - - FUNC GLOBAL DEFAULT 14 code
+def jis_null - - FUNC GLOBAL DEFAULT 52 code
+def jis_number - - FUNC GLOBAL DEFAULT 14 code
+def jis_object - - FUNC GLOBAL DEFAULT 48 code
+def jis_string - - FUNC GLOBAL DEFAULT 4 code
+def jis_string_unsafe - - FUNC GLOBAL DEFAULT 14 code
+def jis_valid - - FUNC GLOBAL DEFAULT 32 code
+def jnull - - FUNC GLOBAL DEFAULT 20 code
+def jnumber_compare - - FUNC GLOBAL DEFAULT 164 code
+def jnumber_compare_f64 - - FUNC GLOBAL DEFAULT 208 code
+def jnumber_compare_i64 - - FUNC GLOBAL DEFAULT 260 code
+def jnumber_create - - FUNC GLOBAL DEFAULT 184 code
+def jnumber_create_converted - - FUNC GLOBAL DEFAULT 104 code
+def jnumber_create_f64 - - FUNC GLOBAL DEFAULT 160 code
+def jnumber_create_from_pool_internal - - FUNC GLOBAL DEFAULT 88 code
+def jnumber_create_i32 - - FUNC GLOBAL DEFAULT 6 code
+def jnumber_create_i64 - - FUNC GLOBAL DEFAULT 42 code
+def jnumber_create_unsafe - - FUNC GLOBAL DEFAULT 128 code
+def jnumber_deref_i64 - - FUNC GLOBAL DEFAULT 60 code
+def jnumber_deref_raw - - FUNC GLOBAL DEFAULT 38 code
+def jnumber_get_f64 - - FUNC GLOBAL DEFAULT 132 code
+def jnumber_get_i32 - - FUNC GLOBAL DEFAULT 136 code
+def jnumber_get_i64 - - FUNC GLOBAL DEFAULT 132 code
+def jnumber_get_raw - - FUNC GLOBAL DEFAULT 176 code
+def jnumber_has_error - - FUNC GLOBAL DEFAULT 10 code
+def jobject_create - - FUNC GLOBAL DEFAULT 84 code
+def jobject_create_hint - - FUNC GLOBAL DEFAULT 4 code
+def jobject_create_var - - FUNC GLOBAL DEFAULT 110 code
+def jobject_get - - FUNC GLOBAL DEFAULT 40 code
+def jobject_get_exists - - FUNC GLOBAL DEFAULT 54 code
+def jobject_get_exists2 - - FUNC GLOBAL DEFAULT 124 code
+def jobject_get_nested - - FUNC GLOBAL DEFAULT 84 code
+def jobject_iter_init - - FUNC GLOBAL DEFAULT 88 code
+def jobject_iter_next - - FUNC GLOBAL DEFAULT 16 code
+def jobject_put - - FUNC GLOBAL DEFAULT 284 code
+def jobject_remove - - FUNC GLOBAL DEFAULT 148 code
+def jobject_set - - FUNC GLOBAL DEFAULT 124 code
+def jobject_set2 - - FUNC GLOBAL DEFAULT 116 code
+def jobject_size - - FUNC GLOBAL DEFAULT 52 code
+def jq_generator_free - - FUNC GLOBAL DEFAULT 46 code
+def jq_generator_new - - FUNC GLOBAL DEFAULT 36 code
+def jq_generator_next - - FUNC GLOBAL DEFAULT 260 code
+def jq_generator_reset - - FUNC GLOBAL DEFAULT 42 code
+def jquery_create - - FUNC GLOBAL DEFAULT 300 code
+def jquery_free - - FUNC GLOBAL DEFAULT 38 code
+def jquery_init - - FUNC GLOBAL DEFAULT 80 code
+def jquery_internal_init - - FUNC GLOBAL DEFAULT 94 code
+def jquery_new - - FUNC GLOBAL DEFAULT 26 code
+def jquery_next - - FUNC GLOBAL DEFAULT 20 code
+def jquery_pair_ptr_free - - FUNC GLOBAL DEFAULT 26 code
+def jsax_changeContext - - FUNC GLOBAL DEFAULT 4 code
+def jsax_getContext - - FUNC GLOBAL DEFAULT 4 code
+def jsax_parse - - FUNC GLOBAL DEFAULT 28 code
+def jsax_parse_ex - - FUNC GLOBAL DEFAULT 16 code
+def jsax_parse_with_callbacks - - FUNC GLOBAL DEFAULT 28 code
+def jsaxparser_alloc_memory - - FUNC GLOBAL DEFAULT 8 code
+def jsaxparser_create - - FUNC GLOBAL DEFAULT 46 code
+def jsaxparser_deinit - - FUNC GLOBAL DEFAULT 64 code
+def jsaxparser_end - - FUNC GLOBAL DEFAULT 108 code
+def jsaxparser_feed - - FUNC GLOBAL DEFAULT 98 code
+def jsaxparser_free_memory - - FUNC GLOBAL DEFAULT 4 code
+def jsaxparser_get_error - - FUNC GLOBAL DEFAULT 26 code
+def jsaxparser_init - - FUNC GLOBAL DEFAULT 496 code
+def jsaxparser_init_old - - FUNC GLOBAL DEFAULT 512 code
+def jsaxparser_new - - FUNC GLOBAL DEFAULT 30 code
+def jsaxparser_release - - FUNC GLOBAL DEFAULT 20 code
+def jschema_all - - FUNC GLOBAL DEFAULT 12 code
+def jschema_builder_create - - FUNC GLOBAL DEFAULT 44 code
+def jschema_builder_finish - - FUNC GLOBAL DEFAULT 88 code
+def jschema_builder_free - - FUNC GLOBAL DEFAULT 44 code
+def jschema_builder_key - - FUNC GLOBAL DEFAULT 56 code
+def jschema_copy - - FUNC GLOBAL DEFAULT 38 code
+def jschema_create - - FUNC GLOBAL DEFAULT 76 code
+def jschema_fcreate - - FUNC GLOBAL DEFAULT 100 code
+def jschema_info_init - - FUNC GLOBAL DEFAULT 8 code
+def jschema_jcreate - - FUNC GLOBAL DEFAULT 196 code
+def jschema_new - - FUNC GLOBAL DEFAULT 26 code
+def jschema_parse - - FUNC GLOBAL DEFAULT 80 code
+def jschema_parse_ex - - FUNC GLOBAL DEFAULT 104 code
+def jschema_parse_file - - FUNC GLOBAL DEFAULT 10 code
+def jschema_parse_file_resolve - - FUNC GLOBAL DEFAULT 364 code
+def jschema_parse_jvalue - - FUNC GLOBAL DEFAULT 216 code
+def jschema_release - - FUNC GLOBAL DEFAULT 64 code
+def jschema_resolve - - FUNC GLOBAL DEFAULT 10 code
+def jschema_resolve_ex - - FUNC GLOBAL DEFAULT 10 code
+def json_schema_keyword_lookup - - FUNC GLOBAL DEFAULT 128 code
+def jstr_to_double - - FUNC GLOBAL DEFAULT 308 code
+def jstr_to_i32 - - FUNC GLOBAL DEFAULT 50 code
+def jstr_to_i64 - - FUNC GLOBAL DEFAULT 452 code
+def jstring_create - - FUNC GLOBAL DEFAULT 20 code
+def jstring_create_copy - - FUNC GLOBAL DEFAULT 88 code
+def jstring_create_from_pool_internal - - FUNC GLOBAL DEFAULT 116 code
+def jstring_create_nocopy - - FUNC GLOBAL DEFAULT 20 code
+def jstring_create_nocopy_full - - FUNC GLOBAL DEFAULT 148 code
+def jstring_create_utf8 - - FUNC GLOBAL DEFAULT 36 code
+def jstring_empty - - FUNC GLOBAL DEFAULT 12 code
+def jstring_equal - - FUNC GLOBAL DEFAULT 88 code
+def jstring_equal2 - - FUNC GLOBAL DEFAULT 92 code
+def jstring_get - - FUNC GLOBAL DEFAULT 64 code
+def jstring_get_fast - - FUNC GLOBAL DEFAULT 64 code
+def jstring_size - - FUNC GLOBAL DEFAULT 56 code
+def jvalue_apply_schema - - FUNC GLOBAL DEFAULT 88 code
+def jvalue_check_schema - - FUNC GLOBAL DEFAULT 88 code
+def jvalue_compare - - FUNC GLOBAL DEFAULT 620 code
+def jvalue_copy - - FUNC GLOBAL DEFAULT 48 code
+def jvalue_duplicate - - FUNC GLOBAL DEFAULT 308 code
+def jvalue_equal - - FUNC GLOBAL DEFAULT 244 code
+def jvalue_feature_new - - FUNC GLOBAL DEFAULT 36 code
+def jvalue_feature_ref - - FUNC GLOBAL DEFAULT 4 code
+def jvalue_feature_unref - - FUNC GLOBAL DEFAULT 4 code
+def jvalue_init - - FUNC GLOBAL DEFAULT 8 code
+def jvalue_prettify - - FUNC GLOBAL DEFAULT 6 code
+def jvalue_stringify - - FUNC GLOBAL DEFAULT 6 code
+def jvalue_tostring - - FUNC GLOBAL DEFAULT 32 code
+def jvalue_tostring_schemainfo - - FUNC GLOBAL DEFAULT 30 code
+def jvalue_tostring_simple - - FUNC GLOBAL DEFAULT 6 code
+def jvalue_traverse - - FUNC GLOBAL DEFAULT 236 code
+def jvalue_validate - - FUNC GLOBAL DEFAULT 104 code
+def jvalue_validate_apply - - FUNC GLOBAL DEFAULT 108 code
+def keyDictionaryLookup - - FUNC GLOBAL DEFAULT 240 code
+def log_fatal - - FUNC GLOBAL DEFAULT 36 code
+def log_info - - FUNC GLOBAL DEFAULT 36 code
+def mempool_free - - FUNC GLOBAL DEFAULT 26 code
+def mempool_init - - FUNC GLOBAL DEFAULT 22 code
+def mempool_malloc - - FUNC GLOBAL DEFAULT 44 code
+def mempool_realloc - - FUNC GLOBAL DEFAULT 132 code
+def my_bounce_boolean - - FUNC GLOBAL DEFAULT 48 code
+def my_bounce_end_array - - FUNC GLOBAL DEFAULT 38 code
+def my_bounce_end_map - - FUNC GLOBAL DEFAULT 38 code
+def my_bounce_map_key - - FUNC GLOBAL DEFAULT 46 code
+def my_bounce_null - - FUNC GLOBAL DEFAULT 38 code
+def my_bounce_number - - FUNC GLOBAL DEFAULT 46 code
+def my_bounce_start_array - - FUNC GLOBAL DEFAULT 38 code
+def my_bounce_start_map - - FUNC GLOBAL DEFAULT 38 code
+def my_bounce_string - - FUNC GLOBAL DEFAULT 46 code
+def not_validator_new - - FUNC GLOBAL DEFAULT 16 code
+def null_validator_instance - - FUNC GLOBAL DEFAULT 20 code
+def null_validator_new - - FUNC GLOBAL DEFAULT 32 code
+def numberParse - - FUNC GLOBAL DEFAULT 970 code
+def number_clear - - FUNC GLOBAL DEFAULT 4 code
+def number_compare - - FUNC GLOBAL DEFAULT 4 code
+def number_copy - - FUNC GLOBAL DEFAULT 4 code
+def number_div - - FUNC GLOBAL DEFAULT 14 code
+def number_feature_new - - FUNC GLOBAL DEFAULT 76 code
+def number_feature_ref - - FUNC GLOBAL DEFAULT 4 code
+def number_feature_unref - - FUNC GLOBAL DEFAULT 4 code
+def number_fits_long - - FUNC GLOBAL DEFAULT 14 code
+def number_get_long - - FUNC GLOBAL DEFAULT 4 code
+def number_init - - FUNC GLOBAL DEFAULT 4 code
+def number_is_integer - - FUNC GLOBAL DEFAULT 14 code
+def number_is_positive - - FUNC GLOBAL DEFAULT 12 code
+def number_set - - FUNC GLOBAL DEFAULT 6 code
+def number_set_n - - FUNC GLOBAL DEFAULT 44 code
+def number_validator_add_expected_value - - FUNC GLOBAL DEFAULT 62 code
+def number_validator_add_max_constraint - - FUNC GLOBAL DEFAULT 74 code
+def number_validator_add_max_exclusive_constraint - - FUNC GLOBAL DEFAULT 6 code
+def number_validator_add_min_constraint - - FUNC GLOBAL DEFAULT 74 code
+def number_validator_add_min_exclusive_constraint - - FUNC GLOBAL DEFAULT 6 code
+def number_validator_instance - - FUNC GLOBAL DEFAULT 20 code
+def number_validator_new - - FUNC GLOBAL DEFAULT 32 code
+def number_validator_release - - FUNC GLOBAL DEFAULT 100 code
+def object_pattern_properties_add - - FUNC GLOBAL DEFAULT 110 code
+def object_pattern_properties_find - - FUNC GLOBAL DEFAULT 114 code
+def object_pattern_properties_new - - FUNC GLOBAL DEFAULT 28 code
+def object_pattern_properties_ref - - FUNC GLOBAL DEFAULT 4 code
+def object_pattern_properties_unref - - FUNC GLOBAL DEFAULT 4 code
+def object_pattern_properties_visit - - FUNC GLOBAL DEFAULT 92 code
+def object_properties_add_key - - FUNC GLOBAL DEFAULT 26 code
+def object_properties_add_key_n - - FUNC GLOBAL DEFAULT 28 code
+def object_properties_equals - - FUNC GLOBAL DEFAULT 128 code
+def object_properties_gather_default - - FUNC GLOBAL DEFAULT 136 code
+def object_properties_length - - FUNC GLOBAL DEFAULT 6 code
+def object_properties_lookup - - FUNC GLOBAL DEFAULT 6 code
+def object_properties_lookup_n - - FUNC GLOBAL DEFAULT 44 code
+def object_properties_new - - FUNC GLOBAL DEFAULT 76 code
+def object_properties_ref - - FUNC GLOBAL DEFAULT 4 code
+def object_properties_unref - - FUNC GLOBAL DEFAULT 4 code
+def object_properties_visit - - FUNC GLOBAL DEFAULT 122 code
+def object_required_add_key - - FUNC GLOBAL DEFAULT 38 code
+def object_required_add_key_n - - FUNC GLOBAL DEFAULT 80 code
+def object_required_equals - - FUNC GLOBAL DEFAULT 116 code
+def object_required_lookup_key - - FUNC GLOBAL DEFAULT 6 code
+def object_required_lookup_key_n - - FUNC GLOBAL DEFAULT 44 code
+def object_required_new - - FUNC GLOBAL DEFAULT 76 code
+def object_required_ref - - FUNC GLOBAL DEFAULT 4 code
+def object_required_size - - FUNC GLOBAL DEFAULT 6 code
+def object_required_unref - - FUNC GLOBAL DEFAULT 4 code
+def object_validator_instance - - FUNC GLOBAL DEFAULT 20 code
+def object_validator_new - - FUNC GLOBAL DEFAULT 60 code
+def object_validator_release - - FUNC GLOBAL DEFAULT 46 code
+def object_validator_set_max_properties - - FUNC GLOBAL DEFAULT 4 code
+def object_validator_set_min_properties - - FUNC GLOBAL DEFAULT 4 code
+def object_vtable - - OBJECT GLOBAL DEFAULT 148 data
+def one_of_validator_new - - FUNC GLOBAL DEFAULT 16 code
+def parse_schema - - FUNC GLOBAL DEFAULT 38 code
+def parse_schema_bare - - FUNC GLOBAL DEFAULT 8 code
+def parse_schema_n - - FUNC GLOBAL DEFAULT 292 code
+def parse_schema_no_uri - - FUNC GLOBAL DEFAULT 22 code
+def parser_context_set_error - - FUNC GLOBAL DEFAULT 6 code
+def pattern_new - - FUNC GLOBAL DEFAULT 28 code
+def pattern_set_regex - - FUNC GLOBAL DEFAULT 38 code
+def pattern_set_regex_n - - FUNC GLOBAL DEFAULT 44 code
+def reference_new - - FUNC GLOBAL DEFAULT 32 code
+def reference_ref - - FUNC GLOBAL DEFAULT 14 code
+def reference_set_target - - FUNC GLOBAL DEFAULT 24 code
+def reference_unref - - FUNC GLOBAL DEFAULT 8 code
+def schema_parsing_add_combinator - - FUNC GLOBAL DEFAULT 18 code
+def schema_parsing_add_feature - - FUNC GLOBAL DEFAULT 18 code
+def schema_parsing_new - - FUNC GLOBAL DEFAULT 32 code
+def schema_parsing_ref - - FUNC GLOBAL DEFAULT 12 code
+def schema_parsing_set_definitions - - FUNC GLOBAL DEFAULT 16 code
+def schema_parsing_set_extends - - FUNC GLOBAL DEFAULT 16 code
+def schema_parsing_set_id - - FUNC GLOBAL DEFAULT 32 code
+def schema_parsing_set_validator - - FUNC GLOBAL DEFAULT 16 code
+def schema_parsing_unref - - FUNC GLOBAL DEFAULT 4 code
+def sel_ex_binop - - FUNC GLOBAL DEFAULT 176 code
+def sel_ex_composition - - FUNC GLOBAL DEFAULT 56 code
+def sel_ex_eval - - FUNC GLOBAL DEFAULT 12 code
+def sel_ex_free - - FUNC GLOBAL DEFAULT 8 code
+def sel_ex_jvalue - - FUNC GLOBAL DEFAULT 32 code
+def sel_ex_x - - FUNC GLOBAL DEFAULT 12 code
+def selector_all - - FUNC GLOBAL DEFAULT 4 code
+def selector_ancestor - - FUNC GLOBAL DEFAULT 54 code
+def selector_contains - - FUNC GLOBAL DEFAULT 44 code
+def selector_empty - - FUNC GLOBAL DEFAULT 50 code
+def selector_expr - - FUNC GLOBAL DEFAULT 10 code
+def selector_has - - FUNC GLOBAL DEFAULT 28 code
+def selector_key - - FUNC GLOBAL DEFAULT 62 code
+def selector_nth_child - - FUNC GLOBAL DEFAULT 60 code
+def selector_only_child - - FUNC GLOBAL DEFAULT 36 code
+def selector_or - - FUNC GLOBAL DEFAULT 68 code
+def selector_parent - - FUNC GLOBAL DEFAULT 42 code
+def selector_root - - FUNC GLOBAL DEFAULT 10 code
+def selector_sibling - - FUNC GLOBAL DEFAULT 188 code
+def selector_type - - FUNC GLOBAL DEFAULT 14 code
+def selector_value - - FUNC GLOBAL DEFAULT 28 code
+def setConsumerName - - FUNC GLOBAL DEFAULT 60 code
+def string_validator_add_expected_value - - FUNC GLOBAL DEFAULT 24 code
+def string_validator_add_max_length_constraint - - FUNC GLOBAL DEFAULT 4 code
+def string_validator_add_min_length_constraint - - FUNC GLOBAL DEFAULT 4 code
+def string_validator_instance - - FUNC GLOBAL DEFAULT 20 code
+def string_validator_new - - FUNC GLOBAL DEFAULT 40 code
+def string_validator_release - - FUNC GLOBAL DEFAULT 36 code
+def string_validator_set_pattern - - FUNC GLOBAL DEFAULT 24 code
+def type_parser_parse_simple - - FUNC GLOBAL DEFAULT 36 code
+def type_parser_parse_to_type - - FUNC GLOBAL DEFAULT 32 code
+def unescape_json_pointer - - FUNC GLOBAL DEFAULT 86 code
+def uri_resolver_add_document - - FUNC GLOBAL DEFAULT 104 code
+def uri_resolver_add_validator - - FUNC GLOBAL DEFAULT 90 code
+def uri_resolver_dump - - FUNC GLOBAL DEFAULT 212 code
+def uri_resolver_free - - FUNC GLOBAL DEFAULT 20 code
+def uri_resolver_get_unresolved - - FUNC GLOBAL DEFAULT 60 code
+def uri_resolver_lookup_validator - - FUNC GLOBAL DEFAULT 24 code
+def uri_resolver_new - - FUNC GLOBAL DEFAULT 68 code
+def uri_resolver_steal_documents - - FUNC GLOBAL DEFAULT 124 code
+def uri_scope_free - - FUNC GLOBAL DEFAULT 32 code
+def uri_scope_get_document - - FUNC GLOBAL DEFAULT 40 code
+def uri_scope_get_document_length - - FUNC GLOBAL DEFAULT 52 code
+def uri_scope_get_fragment - - FUNC GLOBAL DEFAULT 24 code
+def uri_scope_new - - FUNC GLOBAL DEFAULT 6 code
+def uri_scope_pop_uri - - FUNC GLOBAL DEFAULT 42 code
+def uri_scope_push_uri - - FUNC GLOBAL DEFAULT 132 code
+def validate_json - - FUNC GLOBAL DEFAULT 34 code
+def validate_json_n - - FUNC GLOBAL DEFAULT 220 code
+def validate_json_plain - - FUNC GLOBAL DEFAULT 8 code
+def validation_check - - FUNC GLOBAL DEFAULT 32 code
+def validation_event_arr_end - - FUNC GLOBAL DEFAULT 18 code
+def validation_event_arr_start - - FUNC GLOBAL DEFAULT 18 code
+def validation_event_boolean - - FUNC GLOBAL DEFAULT 14 code
+def validation_event_null - - FUNC GLOBAL DEFAULT 10 code
+def validation_event_number - - FUNC GLOBAL DEFAULT 16 code
+def validation_event_obj_end - - FUNC GLOBAL DEFAULT 18 code
+def validation_event_obj_key - - FUNC GLOBAL DEFAULT 16 code
+def validation_event_obj_start - - FUNC GLOBAL DEFAULT 20 code
+def validation_event_string - - FUNC GLOBAL DEFAULT 16 code
+def validation_state_clear - - FUNC GLOBAL DEFAULT 24 code
+def validation_state_free - - FUNC GLOBAL DEFAULT 20 code
+def validation_state_get_context - - FUNC GLOBAL DEFAULT 8 code
+def validation_state_get_validator - - FUNC GLOBAL DEFAULT 8 code
+def validation_state_have_default_properties - - FUNC GLOBAL DEFAULT 14 code
+def validation_state_init - - FUNC GLOBAL DEFAULT 14 code
+def validation_state_issue_default_property - - FUNC GLOBAL DEFAULT 14 code
+def validation_state_new - - FUNC GLOBAL DEFAULT 30 code
+def validation_state_notify_error - - FUNC GLOBAL DEFAULT 12 code
+def validation_state_pop_context - - FUNC GLOBAL DEFAULT 24 code
+def validation_state_pop_validator - - FUNC GLOBAL DEFAULT 44 code
+def validation_state_push_context - - FUNC GLOBAL DEFAULT 14 code
+def validation_state_push_validator - - FUNC GLOBAL DEFAULT 28 code
+def validation_state_set_context - - FUNC GLOBAL DEFAULT 6 code
+def validator_apply_features - - FUNC GLOBAL DEFAULT 60 code
+def validator_check - - FUNC GLOBAL DEFAULT 14 code
+def validator_cleanup_state - - FUNC GLOBAL DEFAULT 10 code
+def validator_collect_uri - - FUNC GLOBAL DEFAULT 100 code
+def validator_combine - - FUNC GLOBAL DEFAULT 60 code
+def validator_dump - - FUNC GLOBAL DEFAULT 68 code
+def validator_equals - - FUNC GLOBAL DEFAULT 56 code
+def validator_finalize_parse - - FUNC GLOBAL DEFAULT 76 code
+def validator_get_default - - FUNC GLOBAL DEFAULT 14 code
+def validator_init - - FUNC GLOBAL DEFAULT 4 code
+def validator_init_state - - FUNC GLOBAL DEFAULT 12 code
+def validator_reactivate - - FUNC GLOBAL DEFAULT 12 code
+def validator_ref - - FUNC GLOBAL DEFAULT 16 code
+def validator_set_array_additional_items - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_array_items - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_array_max_items - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_array_min_items - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_array_unique_items - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_default - - FUNC GLOBAL DEFAULT 12 code
+def validator_set_number_maximum - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_number_maximum_exclusive - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_number_minimum - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_number_minimum_exclusive - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_number_multiple_of - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_object_additional_properties - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_object_max_properties - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_object_min_properties - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_object_pattern_properties - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_object_properties - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_object_required - - FUNC GLOBAL DEFAULT 10 code
+def validator_set_string_max_length - - FUNC GLOBAL DEFAULT 12 code
+def validator_set_string_min_length - - FUNC GLOBAL DEFAULT 12 code
+def validator_set_string_pattern - - FUNC GLOBAL DEFAULT 12 code
+def validator_unref - - FUNC GLOBAL DEFAULT 12 code
+def validator_visit - - FUNC GLOBAL DEFAULT 26 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __gmpf_clear - - FUNC GLOBAL
+und __gmpf_cmp - - FUNC GLOBAL
+und __gmpf_div - - FUNC GLOBAL
+und __gmpf_fits_slong_p - - FUNC GLOBAL
+und __gmpf_get_si - - FUNC GLOBAL
+und __gmpf_init - - FUNC GLOBAL
+und __gmpf_integer_p - - FUNC GLOBAL
+und __gmpf_set - - FUNC GLOBAL
+und __gmpf_set_str - - FUNC GLOBAL
+und __xpg_basename GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und clearerr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ferror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fileno GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fread GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und g_free - - FUNC GLOBAL
+und g_hash_table_destroy - - FUNC GLOBAL
+und g_hash_table_get_keys - - FUNC GLOBAL
+und g_hash_table_insert - - FUNC GLOBAL
+und g_hash_table_iter_get_hash_table - - FUNC GLOBAL
+und g_hash_table_iter_init - - FUNC GLOBAL
+und g_hash_table_iter_next - - FUNC GLOBAL
+und g_hash_table_iter_replace - - FUNC GLOBAL
+und g_hash_table_iter_steal - - FUNC GLOBAL
+und g_hash_table_lookup - - FUNC GLOBAL
+und g_hash_table_lookup_extended - - FUNC GLOBAL
+und g_hash_table_new - - FUNC GLOBAL
+und g_hash_table_new_full - - FUNC GLOBAL
+und g_hash_table_remove - - FUNC GLOBAL
+und g_hash_table_replace - - FUNC GLOBAL
+und g_hash_table_size - - FUNC GLOBAL
+und g_hash_table_steal - - FUNC GLOBAL
+und g_list_append - - FUNC GLOBAL
+und g_list_free - - FUNC GLOBAL
+und g_list_free_1 - - FUNC GLOBAL
+und g_list_free_full - - FUNC GLOBAL
+und g_list_remove_link - - FUNC GLOBAL
+und g_list_sort - - FUNC GLOBAL
+und g_malloc - - FUNC GLOBAL
+und g_malloc0 - - FUNC GLOBAL
+und g_regex_match - - FUNC GLOBAL
+und g_regex_new - - FUNC GLOBAL
+und g_regex_ref - - FUNC GLOBAL
+und g_regex_unref - - FUNC GLOBAL
+und g_slice_alloc - - FUNC GLOBAL
+und g_slice_free1 - - FUNC GLOBAL
+und g_slist_free - - FUNC GLOBAL
+und g_slist_free_1 - - FUNC GLOBAL
+und g_slist_free_full - - FUNC GLOBAL
+und g_slist_prepend - - FUNC GLOBAL
+und g_str_equal - - FUNC GLOBAL
+und g_str_hash - - FUNC GLOBAL
+und g_strcmp0 - - FUNC GLOBAL
+und g_strconcat - - FUNC GLOBAL
+und g_strdup - - FUNC GLOBAL
+und g_strdup_printf - - FUNC GLOBAL
+und g_strdup_vprintf - - FUNC GLOBAL
+und g_strescape - - FUNC GLOBAL
+und g_strndup - - FUNC GLOBAL
+und g_strstr_len - - FUNC GLOBAL
+und getc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpagesize GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und isatty GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und madvise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und munmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und powl GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und pthread_mutex_lock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_unlock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_once GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und qsort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stdin GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stdout GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strdup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strnlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und uriAddBaseUriA - - FUNC GLOBAL
+und uriFreeUriMembersA - - FUNC GLOBAL
+und uriParseUriA - - FUNC GLOBAL
+und uriRemoveBaseUriA - - FUNC GLOBAL
+und uriToStringA - - FUNC GLOBAL
+und uriToStringCharsRequiredA - - FUNC GLOBAL
+und uriUnixFilenameToUriStringA - - FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vsyslog GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und yajl_alloc - - FUNC GLOBAL
+und yajl_complete_parse - - FUNC GLOBAL
+und yajl_config - - FUNC GLOBAL
+und yajl_free - - FUNC GLOBAL
+und yajl_free_error - - FUNC GLOBAL
+und yajl_gen_alloc - - FUNC GLOBAL
+und yajl_gen_array_close - - FUNC GLOBAL
+und yajl_gen_array_open - - FUNC GLOBAL
+und yajl_gen_bool - - FUNC GLOBAL
+und yajl_gen_config - - FUNC GLOBAL
+und yajl_gen_free - - FUNC GLOBAL
+und yajl_gen_get_buf - - FUNC GLOBAL
+und yajl_gen_map_close - - FUNC GLOBAL
+und yajl_gen_map_open - - FUNC GLOBAL
+und yajl_gen_null - - FUNC GLOBAL
+und yajl_gen_number - - FUNC GLOBAL
+und yajl_gen_string - - FUNC GLOBAL
+und yajl_get_bytes_consumed - - FUNC GLOBAL
+und yajl_get_error - - FUNC GLOBAL
+und yajl_parse - - FUNC GLOBAL

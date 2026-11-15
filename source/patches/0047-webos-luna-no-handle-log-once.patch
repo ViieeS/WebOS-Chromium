@@ -1,0 +1,58 @@
+# why: Chrome's media session calls to LG's luna services fail without a luna handle, and each failure logged an error,
+# about once a second during video. Log each URI once, for up to 30 URIs.
+--- a/src/base/neva/webos/luna_service_client.cc
++++ b/src/base/neva/webos/luna_service_client.cc
+@@ -17,6 +17,8 @@
+ #include "base/neva/webos/luna_service_client.h"
+ 
+ #include <glib.h>
++#include <set>
++#include <string>
+ #include <unistd.h>
+ 
+ #include "base/functional/callback_helpers.h"
+@@ -25,6 +27,17 @@
+ 
+ namespace base {
+ 
++namespace {
++// chromium-native (patch 0047): "LSHandle not initialized" came once a second during video on webOS 4,
++// without saying which call. Name each luna URI once (first 30), with the start of its parameters.
++void CnLogNoHandle(const char* func, const std::string& uri, const std::string& param) {
++  static std::set<std::string>* seen = new std::set<std::string>();
++  if (seen->size() < 30 && seen->insert(uri).second) {
++    LOG(ERROR) << func << " LSHandle not initialized: " << uri << " " << param.substr(0, 200);
++  }
++}
++}  // namespace
++
+ namespace {
+ 
+ const char kURIAudio[] = "luna://com.webos.service.audio";
+@@ -129,7 +142,7 @@ bool HandleSubscribe(LSHandle* sh, LSMessage* reply, void* ctx) {
+ bool LunaServiceClient::CallAsync(const std::string& uri,
+                                   const std::string& param) {
+   if (!handle_) {
+-    LOG(ERROR) << __func__ << " LSHandle not initialized";
++    CnLogNoHandle(__func__, uri, param);  // chromium-native (patch 0047)
+     return false;
+   }
+ 
+@@ -141,7 +154,7 @@ bool LunaServiceClient::CallAsync(const std::string& uri,
+                                   const std::string& param,
+                                   const ResponseCB& callback) {
+   if (!handle_) {
+-    LOG(ERROR) << __func__ << " LSHandle not initialized";
++    CnLogNoHandle(__func__, uri, param);  // chromium-native (patch 0047)
+     return false;
+   }
+ 
+@@ -173,7 +186,7 @@ bool LunaServiceClient::Subscribe(const std::string& uri,
+                                   LSMessageToken* subscribe_key,
+                                   const ResponseCB& callback) {
+   if (!handle_) {
+-    LOG(ERROR) << __func__ << " LSHandle not initialized";
++    CnLogNoHandle(__func__, uri, param);  // chromium-native (patch 0047)
+     return false;
+   }
+ 

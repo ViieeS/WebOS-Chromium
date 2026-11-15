@@ -1,0 +1,224 @@
+tvabi 1
+soname libwayland-server.so.0
+needed libffi.so.8
+needed libPmLogLib.so.3
+needed libgcc_s.so.1
+needed libc.so.6
+def wl_array_add - - FUNC GLOBAL DEFAULT 82 code
+def wl_array_copy - - FUNC GLOBAL DEFAULT 54 code
+def wl_array_init - - FUNC GLOBAL DEFAULT 10 code
+def wl_array_release - - FUNC GLOBAL DEFAULT 16 code
+def wl_buffer_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_callback_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_client_add_destroy_listener - - FUNC GLOBAL DEFAULT 6 code
+def wl_client_add_object - - FUNC GLOBAL DEFAULT 42 code
+def wl_client_add_resource - - FUNC GLOBAL DEFAULT 72 code
+def wl_client_add_resource_created_listener - - FUNC GLOBAL DEFAULT 6 code
+def wl_client_create - - FUNC GLOBAL DEFAULT 268 code
+def wl_client_destroy - - FUNC GLOBAL DEFAULT 128 code
+def wl_client_flush - - FUNC GLOBAL DEFAULT 6 code
+def wl_client_for_each_resource - - FUNC GLOBAL DEFAULT 32 code
+def wl_client_from_link - - FUNC GLOBAL DEFAULT 4 code
+def wl_client_get_credentials - - FUNC GLOBAL DEFAULT 42 code
+def wl_client_get_destroy_listener - - FUNC GLOBAL DEFAULT 56 code
+def wl_client_get_display - - FUNC GLOBAL DEFAULT 4 code
+def wl_client_get_fd - - FUNC GLOBAL DEFAULT 6 code
+def wl_client_get_link - - FUNC GLOBAL DEFAULT 4 code
+def wl_client_get_object - - FUNC GLOBAL DEFAULT 6 code
+def wl_client_new_object - - FUNC GLOBAL DEFAULT 46 code
+def wl_client_post_implementation_error - - FUNC GLOBAL DEFAULT 60 code
+def wl_client_post_no_memory - - FUNC GLOBAL DEFAULT 16 code
+def wl_compositor_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_data_device_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_data_device_manager_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_data_offer_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_data_source_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_display_add_client_created_listener - - FUNC GLOBAL DEFAULT 6 code
+def wl_display_add_destroy_listener - - FUNC GLOBAL DEFAULT 6 code
+def wl_display_add_global - - FUNC GLOBAL DEFAULT 22 code
+def wl_display_add_protocol_logger - - FUNC GLOBAL DEFAULT 36 code
+def wl_display_add_shm_format - - FUNC GLOBAL DEFAULT 18 code
+def wl_display_add_socket - - FUNC GLOBAL DEFAULT 108 code
+def wl_display_add_socket_auto - - FUNC GLOBAL DEFAULT 156 code
+def wl_display_add_socket_fd - - FUNC GLOBAL DEFAULT 128 code
+def wl_display_create - - FUNC GLOBAL DEFAULT 452 code
+def wl_display_destroy - - FUNC GLOBAL DEFAULT 172 code
+def wl_display_destroy_clients - - FUNC GLOBAL DEFAULT 80 code
+def wl_display_flush_clients - - FUNC GLOBAL DEFAULT 76 code
+def wl_display_get_client_list - - FUNC GLOBAL DEFAULT 4 code
+def wl_display_get_destroy_listener - - FUNC GLOBAL DEFAULT 56 code
+def wl_display_get_event_loop - - FUNC GLOBAL DEFAULT 4 code
+def wl_display_get_serial - - FUNC GLOBAL DEFAULT 4 code
+def wl_display_init_shm - - FUNC GLOBAL DEFAULT 56 code
+def wl_display_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_display_next_serial - - FUNC GLOBAL DEFAULT 10 code
+def wl_display_remove_global - - FUNC GLOBAL DEFAULT 6 code
+def wl_display_run - - FUNC GLOBAL DEFAULT 82 code
+def wl_display_set_global_filter - - FUNC GLOBAL DEFAULT 6 code
+def wl_display_terminate - - FUNC GLOBAL DEFAULT 92 code
+def wl_event_loop_add_destroy_listener - - FUNC GLOBAL DEFAULT 6 code
+def wl_event_loop_add_fd - - FUNC GLOBAL DEFAULT 68 code
+def wl_event_loop_add_idle - - FUNC GLOBAL DEFAULT 56 code
+def wl_event_loop_add_signal - - FUNC GLOBAL DEFAULT 112 code
+def wl_event_loop_add_timer - - FUNC GLOBAL DEFAULT 216 code
+def wl_event_loop_create - - FUNC GLOBAL DEFAULT 108 code
+def wl_event_loop_destroy - - FUNC GLOBAL DEFAULT 108 code
+def wl_event_loop_dispatch - - FUNC GLOBAL DEFAULT 516 code
+def wl_event_loop_dispatch_idle - - FUNC GLOBAL DEFAULT 38 code
+def wl_event_loop_get_destroy_listener - - FUNC GLOBAL DEFAULT 30 code
+def wl_event_loop_get_fd - - FUNC GLOBAL DEFAULT 4 code
+def wl_event_source_check - - FUNC GLOBAL DEFAULT 12 code
+def wl_event_source_fd_update - - FUNC GLOBAL DEFAULT 60 code
+def wl_event_source_remove - - FUNC GLOBAL DEFAULT 172 code
+def wl_event_source_timer_update - - FUNC GLOBAL DEFAULT 286 code
+def wl_global_create - - FUNC GLOBAL DEFAULT 152 code
+def wl_global_destroy - - FUNC GLOBAL DEFAULT 34 code
+def wl_global_get_display - - FUNC GLOBAL DEFAULT 4 code
+def wl_global_get_interface - - FUNC GLOBAL DEFAULT 4 code
+def wl_global_get_user_data - - FUNC GLOBAL DEFAULT 4 code
+def wl_global_remove - - FUNC GLOBAL DEFAULT 68 code
+def wl_global_set_user_data - - FUNC GLOBAL DEFAULT 4 code
+def wl_keyboard_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_list_empty - - FUNC GLOBAL DEFAULT 12 code
+def wl_list_init - - FUNC GLOBAL DEFAULT 6 code
+def wl_list_insert - - FUNC GLOBAL DEFAULT 14 code
+def wl_list_insert_list - - FUNC GLOBAL DEFAULT 34 code
+def wl_list_length - - FUNC GLOBAL DEFAULT 22 code
+def wl_list_remove - - FUNC GLOBAL DEFAULT 16 code
+def wl_log_set_handler_server - - FUNC GLOBAL DEFAULT 20 code
+def wl_output_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_pointer_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_protocol_logger_destroy - - FUNC GLOBAL DEFAULT 18 code
+def wl_region_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_registry_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_resource_add_destroy_listener - - FUNC GLOBAL DEFAULT 44 code
+def wl_resource_create - - FUNC GLOBAL DEFAULT 152 code
+def wl_resource_destroy - - FUNC GLOBAL DEFAULT 78 code
+def wl_resource_find_for_client - - FUNC GLOBAL DEFAULT 38 code
+def wl_resource_from_link - - FUNC GLOBAL DEFAULT 4 code
+def wl_resource_get_class - - FUNC GLOBAL DEFAULT 6 code
+def wl_resource_get_client - - FUNC GLOBAL DEFAULT 4 code
+def wl_resource_get_destroy_listener - - FUNC GLOBAL DEFAULT 96 code
+def wl_resource_get_id - - FUNC GLOBAL DEFAULT 4 code
+def wl_resource_get_link - - FUNC GLOBAL DEFAULT 4 code
+def wl_resource_get_user_data - - FUNC GLOBAL DEFAULT 4 code
+def wl_resource_get_version - - FUNC GLOBAL DEFAULT 4 code
+def wl_resource_instance_of - - FUNC GLOBAL DEFAULT 26 code
+def wl_resource_post_error - - FUNC GLOBAL DEFAULT 62 code
+def wl_resource_post_event - - FUNC GLOBAL DEFAULT 60 code
+def wl_resource_post_event_array - - FUNC GLOBAL DEFAULT 24 code
+def wl_resource_post_no_memory - - FUNC GLOBAL DEFAULT 20 code
+def wl_resource_queue_event - - FUNC GLOBAL DEFAULT 60 code
+def wl_resource_queue_event_array - - FUNC GLOBAL DEFAULT 24 code
+def wl_resource_set_destructor - - FUNC GLOBAL DEFAULT 4 code
+def wl_resource_set_dispatcher - - FUNC GLOBAL DEFAULT 12 code
+def wl_resource_set_implementation - - FUNC GLOBAL DEFAULT 18 code
+def wl_resource_set_user_data - - FUNC GLOBAL DEFAULT 4 code
+def wl_seat_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_shell_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_shell_surface_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_shm_buffer_begin_access - - FUNC GLOBAL DEFAULT 128 code
+def wl_shm_buffer_create - - FUNC GLOBAL DEFAULT 4 code
+def wl_shm_buffer_end_access - - FUNC GLOBAL DEFAULT 112 code
+def wl_shm_buffer_get - - FUNC GLOBAL DEFAULT 56 code
+def wl_shm_buffer_get_data - - FUNC GLOBAL DEFAULT 48 code
+def wl_shm_buffer_get_format - - FUNC GLOBAL DEFAULT 4 code
+def wl_shm_buffer_get_height - - FUNC GLOBAL DEFAULT 4 code
+def wl_shm_buffer_get_stride - - FUNC GLOBAL DEFAULT 4 code
+def wl_shm_buffer_get_width - - FUNC GLOBAL DEFAULT 4 code
+def wl_shm_buffer_ref_pool - - FUNC GLOBAL DEFAULT 52 code
+def wl_shm_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_shm_pool_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_shm_pool_unref - - FUNC GLOBAL DEFAULT 88 code
+def wl_subcompositor_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_subsurface_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_surface_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_touch_interface - - OBJECT GLOBAL DEFAULT 24 data
+und PmLogGetContext - - FUNC GLOBAL
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und _PmLogMsgKV - - FUNC GLOBAL
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __assert_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __progname GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und accept GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und accept4 GLIBC_2.10 libc.so.6 FUNC GLOBAL
+und bind GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und clock_gettime GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und epoll_create GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und epoll_create1 GLIBC_2.9 libc.so.6 FUNC GLOBAL
+und epoll_ctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und epoll_wait GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und eventfd GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fcntl64 GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und ffi_call LIBFFI_BASE_8.0 libffi.so.8 FUNC GLOBAL
+und ffi_prep_cif LIBFFI_BASE_8.0 libffi.so.8 FUNC GLOBAL
+und ffi_type_pointer LIBFFI_BASE_8.0 libffi.so.8 OBJECT GLOBAL
+und ffi_type_sint32 LIBFFI_BASE_8.0 libffi.so.8 OBJECT GLOBAL
+und ffi_type_uint32 LIBFFI_BASE_8.0 libffi.so.8 OBJECT GLOBAL
+und ffi_type_void LIBFFI_BASE_8.0 libffi.so.8 OBJECT GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und flock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getsockopt GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gettimeofday GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gmtime_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und listen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und lstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkfifo GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mmap64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mremap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und munmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open_memstream GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und program_invocation_short_name GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und pthread_getspecific GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_key_create GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_once GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_self GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_setspecific GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und recvmsg GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sendmsg GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigaction GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigaddset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigemptyset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und signalfd GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und sigprocmask GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und socket GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stpcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und timerfd_create GLIBC_2.8 libc.so.6 FUNC GLOBAL
+und timerfd_settime GLIBC_2.8 libc.so.6 FUNC GLOBAL
+und unlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vsnprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und write GLIBC_2.4 libc.so.6 FUNC GLOBAL

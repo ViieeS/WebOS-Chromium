@@ -1,0 +1,37 @@
+# why: Clicks with the pointer landed in the wrong place (at half the pointer's position) with the 1080p window
+# from patch 0032. Chrome's EGL surface sent buffer scale ceil(1.5) = 2, so LSM saw a 960x540 window and sent
+# pointer positions in that size. Leave the forced scale out of the buffer scale, like WaylandFrameManager does.
+diff --git a/src/ui/ozone/platform/wayland/gpu/gl_surface_wayland.cc b/src/ui/ozone/platform/wayland/gpu/gl_surface_wayland.cc
+--- a/src/ui/ozone/platform/wayland/gpu/gl_surface_wayland.cc
++++ b/src/ui/ozone/platform/wayland/gpu/gl_surface_wayland.cc
+@@ -5,11 +5,14 @@
+ #include "ui/ozone/platform/wayland/gpu/gl_surface_wayland.h"
+ 
+ #include <wayland-egl.h>
++#include <algorithm>  // chromium-native (patch 0052)
++#include <cmath>
+ #include <memory>
+ #include <utility>
+ 
+ #include "base/functional/bind.h"
+ #include "third_party/khronos/EGL/egl.h"
++#include "ui/display/display.h"  // chromium-native (patch 0052)
+ #include "ui/gfx/geometry/size.h"
+ #include "ui/gfx/presentation_feedback.h"
+ #include "ui/gl/gl_surface_presentation_helper.h"
+@@ -52,7 +55,14 @@ bool GLSurfaceWayland::Resize(const gfx::Size& size,
+   }
+   wl_egl_window_resize(egl_window_.get(), size.width(), size.height(), 0, 0);
+   size_ = size;
+-  scale_factor_ = ceil(scale_factor);
++  // chromium-native (patch 0052): scale_factor includes the ui_scale from --force-device-scale-factor (patch 0032).
++  // WaylandFrameManager divides it out, this EGL path did not: the window got buffer scale 2, LSM saw it as 960x540
++  // and sent pointer positions at half size, so clicks landed in the wrong place.
++  if (display::Display::HasForceDeviceScaleFactor()) {
++    // Same clamp as WaylandWindowManager::DetermineUiScale.
++    scale_factor /= std::clamp(display::Display::GetForcedDeviceScaleFactor(), 0.5f, 3.0f);
++  }
++  scale_factor_ = std::max(1.0f, std::ceil(scale_factor - 0.01f));
+   return true;
+ }
+ 

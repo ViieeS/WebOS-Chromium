@@ -1,0 +1,49 @@
+# why: glibc 2.24 (webOS 4) has no memfd_create() and no F_ADD_SEALS/F_SEAL_* constants (added in 2.27). v8 calls
+# memfd_create through the raw syscall, as mojo already does, and mojo defines the kernel's seal values when the
+# headers lack them.
+--- a/src/mojo/core/channel_linux.cc
++++ b/src/mojo/core/channel_linux.cc
+@@ -13,6 +13,19 @@
+ #include <sys/utsname.h>
+ #include <unistd.h>
+ 
++// glibc < 2.27 (webOS 4 TVs) does not define the memfd seal fcntl constants, and <linux/fcntl.h> clashes with
++// <fcntl.h>. Kernel ABI values from include/uapi/linux/fcntl.h.
++#ifndef F_ADD_SEALS
++#define F_ADD_SEALS (1024 + 9)
++#define F_GET_SEALS (1024 + 10)
++#endif
++#ifndef F_SEAL_SEAL
++#define F_SEAL_SEAL 0x0001
++#define F_SEAL_SHRINK 0x0002
++#define F_SEAL_GROW 0x0004
++#define F_SEAL_WRITE 0x0008
++#endif
++
+ #include <algorithm>
+ #include <atomic>
+ #include <cstring>
+--- a/src/v8/src/wasm/wasm-memory-map-descriptor.cc
++++ b/src/v8/src/wasm/wasm-memory-map-descriptor.cc
+@@ -5,8 +5,10 @@
+ #include "include/v8config.h"  // For V8_TARGET_OS_LINUX.
+ 
+ #if V8_TARGET_OS_LINUX
++#include <linux/memfd.h>
+ #include <sys/mman.h>
+ #include <sys/stat.h>
++#include <sys/syscall.h>
+ #include <unistd.h>
+ // `sys/mman.h defines `MAP_TYPE`, but `MAP_TYPE` also gets defined within V8.
+ // Since we don't need `sys/mman.h`'s `MAP_TYPE`, we undefine it immediately
+@@ -75,7 +77,9 @@ v8::MaybeLocal<v8::Object> WasmMemoryMapDescriptor::NewFromAnonymous(
+     v8::Isolate* isolate, size_t length, v8::Local<v8::Object> wrapper) {
+   CHECK(v8_flags.wasm_memory_control);
+ #if V8_TARGET_OS_LINUX
+-  int fd = memfd_create("wasm_memory_map_descriptor", MFD_CLOEXEC);
++  // Raw syscall: glibc < 2.27 (webOS 4 TVs) has no memfd_create() (same as mojo/core/channel_linux.cc).
++  int fd = static_cast<int>(
++      syscall(__NR_memfd_create, "wasm_memory_map_descriptor", MFD_CLOEXEC));
+   if (fd == -1) return {};
+   if (ftruncate(fd, length) == -1) {
+     close(fd);

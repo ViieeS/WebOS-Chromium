@@ -1,0 +1,300 @@
+tvabi 1
+soname libpng16.so.16
+needed libz.so.1
+needed libm.so.6
+needed libgcc_s.so.1
+needed libc.so.6
+verdef 1 base libpng16.so.16
+verdef 2 - PNG16_0
+def png_access_version_number PNG16_0 @@ FUNC GLOBAL DEFAULT 6 code
+def png_benign_error PNG16_0 @@ FUNC GLOBAL DEFAULT 70 code
+def png_build_grayscale_palette PNG16_0 @@ FUNC GLOBAL DEFAULT 68 code
+def png_calloc PNG16_0 @@ FUNC GLOBAL DEFAULT 24 code
+def png_chunk_benign_error PNG16_0 @@ FUNC GLOBAL DEFAULT 22 code
+def png_chunk_error PNG16_0 @@ FUNC GLOBAL DEFAULT 26 code
+def png_chunk_warning PNG16_0 @@ FUNC GLOBAL DEFAULT 34 code
+def png_convert_from_struct_tm PNG16_0 @@ FUNC GLOBAL DEFAULT 32 code
+def png_convert_from_time_t PNG16_0 @@ FUNC GLOBAL DEFAULT 36 code
+def png_convert_to_rfc1123 PNG16_0 @@ FUNC GLOBAL DEFAULT 48 code
+def png_convert_to_rfc1123_buffer PNG16_0 @@ FUNC GLOBAL DEFAULT 296 code
+def png_create_info_struct PNG16_0 @@ FUNC GLOBAL DEFAULT 32 code
+def png_create_read_struct PNG16_0 @@ FUNC GLOBAL DEFAULT 20 code
+def png_create_read_struct_2 PNG16_0 @@ FUNC GLOBAL DEFAULT 66 code
+def png_create_write_struct PNG16_0 @@ FUNC GLOBAL DEFAULT 20 code
+def png_create_write_struct_2 PNG16_0 @@ FUNC GLOBAL DEFAULT 102 code
+def png_data_freer PNG16_0 @@ FUNC GLOBAL DEFAULT 60 code
+def png_destroy_info_struct PNG16_0 @@ FUNC GLOBAL DEFAULT 62 code
+def png_destroy_read_struct PNG16_0 @@ FUNC GLOBAL DEFAULT 276 code
+def png_destroy_write_struct PNG16_0 @@ FUNC GLOBAL DEFAULT 130 code
+def png_error PNG16_0 @@ FUNC GLOBAL DEFAULT 76 code
+def png_free PNG16_0 @@ FUNC GLOBAL DEFAULT 22 code
+def png_free_data PNG16_0 @@ FUNC GLOBAL DEFAULT 968 code
+def png_free_default PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_get_IHDR PNG16_0 @@ FUNC GLOBAL DEFAULT 104 code
+def png_get_PLTE PNG16_0 @@ FUNC GLOBAL DEFAULT 50 code
+def png_get_bKGD PNG16_0 @@ FUNC GLOBAL DEFAULT 36 code
+def png_get_bit_depth PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_get_cHRM PNG16_0 @@ FUNC GLOBAL DEFAULT 240 code
+def png_get_cHRM_XYZ PNG16_0 @@ FUNC GLOBAL DEFAULT 264 code
+def png_get_cHRM_XYZ_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 116 code
+def png_get_cHRM_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 106 code
+def png_get_channels PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_get_chunk_cache_max PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_get_chunk_malloc_max PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_get_color_type PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_get_compression_buffer_size PNG16_0 @@ FUNC GLOBAL DEFAULT 22 code
+def png_get_compression_type PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_get_copyright PNG16_0 @@ FUNC GLOBAL DEFAULT 12 code
+def png_get_current_pass_number PNG16_0 @@ FUNC GLOBAL DEFAULT 12 code
+def png_get_current_row_number PNG16_0 @@ FUNC GLOBAL DEFAULT 14 code
+def png_get_eXIf PNG16_0 @@ FUNC GLOBAL DEFAULT 20 code
+def png_get_eXIf_1 PNG16_0 @@ FUNC GLOBAL DEFAULT 50 code
+def png_get_error_ptr PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_get_filter_type PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_get_gAMA PNG16_0 @@ FUNC GLOBAL DEFAULT 72 code
+def png_get_gAMA_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 40 code
+def png_get_hIST PNG16_0 @@ FUNC GLOBAL DEFAULT 38 code
+def png_get_header_ver PNG16_0 @@ FUNC GLOBAL DEFAULT 12 code
+def png_get_header_version PNG16_0 @@ FUNC GLOBAL DEFAULT 12 code
+def png_get_iCCP PNG16_0 @@ FUNC GLOBAL DEFAULT 110 code
+def png_get_image_height PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_get_image_width PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_get_int_32 PNG16_0 @@ FUNC GLOBAL DEFAULT 32 code
+def png_get_interlace_type PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_get_io_chunk_type PNG16_0 @@ FUNC GLOBAL DEFAULT 6 code
+def png_get_io_ptr PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_get_io_state PNG16_0 @@ FUNC GLOBAL DEFAULT 6 code
+def png_get_libpng_ver PNG16_0 @@ FUNC GLOBAL DEFAULT 4 code
+def png_get_mem_ptr PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_get_oFFs PNG16_0 @@ FUNC GLOBAL DEFAULT 80 code
+def png_get_pCAL PNG16_0 @@ FUNC GLOBAL DEFAULT 144 code
+def png_get_pHYs PNG16_0 @@ FUNC GLOBAL DEFAULT 68 code
+def png_get_pHYs_dpi PNG16_0 @@ FUNC GLOBAL DEFAULT 152 code
+def png_get_palette_max PNG16_0 @@ FUNC GLOBAL DEFAULT 18 code
+def png_get_pixel_aspect_ratio PNG16_0 @@ FUNC GLOBAL DEFAULT 50 code
+def png_get_pixel_aspect_ratio_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 78 code
+def png_get_pixels_per_inch PNG16_0 @@ FUNC GLOBAL DEFAULT 44 code
+def png_get_pixels_per_meter PNG16_0 @@ FUNC GLOBAL DEFAULT 48 code
+def png_get_progressive_ptr PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_get_rgb_to_gray_status PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_get_rowbytes PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_get_rows PNG16_0 @@ FUNC GLOBAL DEFAULT 18 code
+def png_get_sBIT PNG16_0 @@ FUNC GLOBAL DEFAULT 36 code
+def png_get_sCAL PNG16_0 @@ FUNC GLOBAL DEFAULT 84 code
+def png_get_sCAL_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 120 code
+def png_get_sCAL_s PNG16_0 @@ FUNC GLOBAL DEFAULT 52 code
+def png_get_sPLT PNG16_0 @@ FUNC GLOBAL DEFAULT 36 code
+def png_get_sRGB PNG16_0 @@ FUNC GLOBAL DEFAULT 40 code
+def png_get_signature PNG16_0 @@ FUNC GLOBAL DEFAULT 18 code
+def png_get_tIME PNG16_0 @@ FUNC GLOBAL DEFAULT 38 code
+def png_get_tRNS PNG16_0 @@ FUNC GLOBAL DEFAULT 96 code
+def png_get_text PNG16_0 @@ FUNC GLOBAL DEFAULT 44 code
+def png_get_uint_16 PNG16_0 @@ FUNC GLOBAL DEFAULT 12 code
+def png_get_uint_31 PNG16_0 @@ FUNC GLOBAL DEFAULT 44 code
+def png_get_uint_32 PNG16_0 @@ FUNC GLOBAL DEFAULT 22 code
+def png_get_unknown_chunks PNG16_0 @@ FUNC GLOBAL DEFAULT 36 code
+def png_get_user_chunk_ptr PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_get_user_height_max PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_get_user_transform_ptr PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_get_user_width_max PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_get_valid PNG16_0 @@ FUNC GLOBAL DEFAULT 18 code
+def png_get_x_offset_inches PNG16_0 @@ FUNC GLOBAL DEFAULT 40 code
+def png_get_x_offset_inches_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 26 code
+def png_get_x_offset_microns PNG16_0 @@ FUNC GLOBAL DEFAULT 42 code
+def png_get_x_offset_pixels PNG16_0 @@ FUNC GLOBAL DEFAULT 38 code
+def png_get_x_pixels_per_inch PNG16_0 @@ FUNC GLOBAL DEFAULT 44 code
+def png_get_x_pixels_per_meter PNG16_0 @@ FUNC GLOBAL DEFAULT 42 code
+def png_get_y_offset_inches PNG16_0 @@ FUNC GLOBAL DEFAULT 40 code
+def png_get_y_offset_inches_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 26 code
+def png_get_y_offset_microns PNG16_0 @@ FUNC GLOBAL DEFAULT 42 code
+def png_get_y_offset_pixels PNG16_0 @@ FUNC GLOBAL DEFAULT 38 code
+def png_get_y_pixels_per_inch PNG16_0 @@ FUNC GLOBAL DEFAULT 44 code
+def png_get_y_pixels_per_meter PNG16_0 @@ FUNC GLOBAL DEFAULT 42 code
+def png_handle_as_unknown PNG16_0 @@ FUNC GLOBAL DEFAULT 104 code
+def png_image_begin_read_from_file PNG16_0 @@ FUNC GLOBAL DEFAULT 168 code
+def png_image_begin_read_from_memory PNG16_0 @@ FUNC GLOBAL DEFAULT 132 code
+def png_image_begin_read_from_stdio PNG16_0 @@ FUNC GLOBAL DEFAULT 108 code
+def png_image_finish_read PNG16_0 @@ FUNC GLOBAL DEFAULT 356 code
+def png_image_free PNG16_0 @@ FUNC GLOBAL DEFAULT 114 code
+def png_image_write_to_file PNG16_0 @@ FUNC GLOBAL DEFAULT 208 code
+def png_image_write_to_memory PNG16_0 @@ FUNC GLOBAL DEFAULT 164 code
+def png_image_write_to_stdio PNG16_0 @@ FUNC GLOBAL DEFAULT 140 code
+def png_info_init_3 PNG16_0 @@ FUNC GLOBAL DEFAULT 52 code
+def png_init_io PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_longjmp PNG16_0 @@ FUNC GLOBAL DEFAULT 22 code
+def png_malloc PNG16_0 @@ FUNC GLOBAL DEFAULT 28 code
+def png_malloc_default PNG16_0 @@ FUNC GLOBAL DEFAULT 32 code
+def png_malloc_warn PNG16_0 @@ FUNC GLOBAL DEFAULT 36 code
+def png_permit_mng_features PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_process_data PNG16_0 @@ FUNC GLOBAL DEFAULT 50 code
+def png_process_data_pause PNG16_0 @@ FUNC GLOBAL DEFAULT 42 code
+def png_process_data_skip PNG16_0 @@ FUNC GLOBAL DEFAULT 20 code
+def png_progressive_combine_row PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_read_end PNG16_0 @@ FUNC GLOBAL DEFAULT 952 code
+def png_read_image PNG16_0 @@ FUNC GLOBAL DEFAULT 132 code
+def png_read_info PNG16_0 @@ FUNC GLOBAL DEFAULT 832 code
+def png_read_png PNG16_0 @@ FUNC GLOBAL DEFAULT 368 code
+def png_read_row PNG16_0 @@ FUNC GLOBAL DEFAULT 756 code
+def png_read_rows PNG16_0 @@ FUNC GLOBAL DEFAULT 124 code
+def png_read_update_info PNG16_0 @@ FUNC GLOBAL DEFAULT 52 code
+def png_reset_zstream PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_save_int_32 PNG16_0 @@ FUNC GLOBAL DEFAULT 4 code
+def png_save_uint_16 PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_save_uint_32 PNG16_0 @@ FUNC GLOBAL DEFAULT 20 code
+def png_set_IHDR PNG16_0 @@ FUNC GLOBAL DEFAULT 148 code
+def png_set_PLTE PNG16_0 @@ FUNC GLOBAL DEFAULT 232 code
+def png_set_add_alpha PNG16_0 @@ FUNC GLOBAL DEFAULT 30 code
+def png_set_alpha_mode PNG16_0 @@ FUNC GLOBAL DEFAULT 164 code
+def png_set_alpha_mode_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 400 code
+def png_set_bKGD PNG16_0 @@ FUNC GLOBAL DEFAULT 52 code
+def png_set_background PNG16_0 @@ FUNC GLOBAL DEFAULT 56 code
+def png_set_background_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 144 code
+def png_set_benign_errors PNG16_0 @@ FUNC GLOBAL DEFAULT 26 code
+def png_set_bgr PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_set_cHRM PNG16_0 @@ FUNC GLOBAL DEFAULT 248 code
+def png_set_cHRM_XYZ PNG16_0 @@ FUNC GLOBAL DEFAULT 276 code
+def png_set_cHRM_XYZ_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 88 code
+def png_set_cHRM_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 84 code
+def png_set_check_for_invalid_index PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_set_chunk_cache_max PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_set_chunk_malloc_max PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_set_compression_buffer_size PNG16_0 @@ FUNC GLOBAL DEFAULT 108 code
+def png_set_compression_level PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_set_compression_mem_level PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_set_compression_method PNG16_0 @@ FUNC GLOBAL DEFAULT 40 code
+def png_set_compression_strategy PNG16_0 @@ FUNC GLOBAL DEFAULT 20 code
+def png_set_compression_window_bits PNG16_0 @@ FUNC GLOBAL DEFAULT 64 code
+def png_set_crc_action PNG16_0 @@ FUNC GLOBAL DEFAULT 164 code
+def png_set_eXIf PNG16_0 @@ FUNC GLOBAL DEFAULT 12 code
+def png_set_eXIf_1 PNG16_0 @@ FUNC GLOBAL DEFAULT 120 code
+def png_set_error_fn PNG16_0 @@ FUNC GLOBAL DEFAULT 12 code
+def png_set_expand PNG16_0 @@ FUNC GLOBAL DEFAULT 48 code
+def png_set_expand_16 PNG16_0 @@ FUNC GLOBAL DEFAULT 48 code
+def png_set_expand_gray_1_2_4_to_8 PNG16_0 @@ FUNC GLOBAL DEFAULT 44 code
+def png_set_filler PNG16_0 @@ FUNC GLOBAL DEFAULT 120 code
+def png_set_filter PNG16_0 @@ FUNC GLOBAL DEFAULT 296 code
+def png_set_filter_heuristics PNG16_0 @@ FUNC GLOBAL DEFAULT 2 code
+def png_set_filter_heuristics_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 2 code
+def png_set_flush PNG16_0 @@ FUNC GLOBAL DEFAULT 12 code
+def png_set_gAMA PNG16_0 @@ FUNC GLOBAL DEFAULT 40 code
+def png_set_gAMA_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 34 code
+def png_set_gamma PNG16_0 @@ FUNC GLOBAL DEFAULT 260 code
+def png_set_gamma_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 228 code
+def png_set_gray_to_rgb PNG16_0 @@ FUNC GLOBAL DEFAULT 60 code
+def png_set_hIST PNG16_0 @@ FUNC GLOBAL DEFAULT 132 code
+def png_set_iCCP PNG16_0 @@ FUNC GLOBAL DEFAULT 232 code
+def png_set_interlace_handling PNG16_0 @@ FUNC GLOBAL DEFAULT 30 code
+def png_set_invalid PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_set_invert_alpha PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_set_invert_mono PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_set_keep_unknown_chunks PNG16_0 @@ FUNC GLOBAL DEFAULT 480 code
+def png_set_longjmp_fn PNG16_0 @@ FUNC GLOBAL DEFAULT 120 code
+def png_set_mem_fn PNG16_0 @@ FUNC GLOBAL DEFAULT 12 code
+def png_set_oFFs PNG16_0 @@ FUNC GLOBAL DEFAULT 28 code
+def png_set_option PNG16_0 @@ FUNC GLOBAL DEFAULT 72 code
+def png_set_pCAL PNG16_0 @@ FUNC GLOBAL DEFAULT 420 code
+def png_set_pHYs PNG16_0 @@ FUNC GLOBAL DEFAULT 28 code
+def png_set_packing PNG16_0 @@ FUNC GLOBAL DEFAULT 30 code
+def png_set_packswap PNG16_0 @@ FUNC GLOBAL DEFAULT 24 code
+def png_set_palette_to_rgb PNG16_0 @@ FUNC GLOBAL DEFAULT 48 code
+def png_set_progressive_read_fn PNG16_0 @@ FUNC GLOBAL DEFAULT 44 code
+def png_set_quantize PNG16_0 @@ FUNC GLOBAL DEFAULT 1640 code
+def png_set_read_fn PNG16_0 @@ FUNC GLOBAL DEFAULT 72 code
+def png_set_read_status_fn PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_set_read_user_chunk_fn PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_set_read_user_transform_fn PNG16_0 @@ FUNC GLOBAL DEFAULT 18 code
+def png_set_rgb_to_gray PNG16_0 @@ FUNC GLOBAL DEFAULT 68 code
+def png_set_rgb_to_gray_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 252 code
+def png_set_rows PNG16_0 @@ FUNC GLOBAL DEFAULT 52 code
+def png_set_sBIT PNG16_0 @@ FUNC GLOBAL DEFAULT 44 code
+def png_set_sCAL PNG16_0 @@ FUNC GLOBAL DEFAULT 152 code
+def png_set_sCAL_fixed PNG16_0 @@ FUNC GLOBAL DEFAULT 104 code
+def png_set_sCAL_s PNG16_0 @@ FUNC GLOBAL DEFAULT 264 code
+def png_set_sPLT PNG16_0 @@ FUNC GLOBAL DEFAULT 256 code
+def png_set_sRGB PNG16_0 @@ FUNC GLOBAL DEFAULT 34 code
+def png_set_sRGB_gAMA_and_cHRM PNG16_0 @@ FUNC GLOBAL DEFAULT 48 code
+def png_set_scale_16 PNG16_0 @@ FUNC GLOBAL DEFAULT 44 code
+def png_set_shift PNG16_0 @@ FUNC GLOBAL DEFAULT 30 code
+def png_set_sig_bytes PNG16_0 @@ FUNC GLOBAL DEFAULT 44 code
+def png_set_strip_16 PNG16_0 @@ FUNC GLOBAL DEFAULT 44 code
+def png_set_strip_alpha PNG16_0 @@ FUNC GLOBAL DEFAULT 44 code
+def png_set_swap PNG16_0 @@ FUNC GLOBAL DEFAULT 24 code
+def png_set_swap_alpha PNG16_0 @@ FUNC GLOBAL DEFAULT 16 code
+def png_set_tIME PNG16_0 @@ FUNC GLOBAL DEFAULT 104 code
+def png_set_tRNS PNG16_0 @@ FUNC GLOBAL DEFAULT 240 code
+def png_set_tRNS_to_alpha PNG16_0 @@ FUNC GLOBAL DEFAULT 48 code
+def png_set_text PNG16_0 @@ FUNC GLOBAL DEFAULT 28 code
+def png_set_text_compression_level PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_set_text_compression_mem_level PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_set_text_compression_method PNG16_0 @@ FUNC GLOBAL DEFAULT 40 code
+def png_set_text_compression_strategy PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_set_text_compression_window_bits PNG16_0 @@ FUNC GLOBAL DEFAULT 64 code
+def png_set_unknown_chunk_location PNG16_0 @@ FUNC GLOBAL DEFAULT 112 code
+def png_set_unknown_chunks PNG16_0 @@ FUNC GLOBAL DEFAULT 224 code
+def png_set_user_limits PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_set_user_transform_info PNG16_0 @@ FUNC GLOBAL DEFAULT 60 code
+def png_set_write_fn PNG16_0 @@ FUNC GLOBAL DEFAULT 80 code
+def png_set_write_status_fn PNG16_0 @@ FUNC GLOBAL DEFAULT 8 code
+def png_set_write_user_transform_fn PNG16_0 @@ FUNC GLOBAL DEFAULT 20 code
+def png_sig_cmp PNG16_0 @@ FUNC GLOBAL DEFAULT 76 code
+def png_start_read_image PNG16_0 @@ FUNC GLOBAL DEFAULT 28 code
+def png_warning PNG16_0 @@ FUNC GLOBAL DEFAULT 120 code
+def png_write_chunk PNG16_0 @@ FUNC GLOBAL DEFAULT 124 code
+def png_write_chunk_data PNG16_0 @@ FUNC GLOBAL DEFAULT 40 code
+def png_write_chunk_end PNG16_0 @@ FUNC GLOBAL DEFAULT 42 code
+def png_write_chunk_start PNG16_0 @@ FUNC GLOBAL DEFAULT 80 code
+def png_write_end PNG16_0 @@ FUNC GLOBAL DEFAULT 316 code
+def png_write_flush PNG16_0 @@ FUNC GLOBAL DEFAULT 48 code
+def png_write_image PNG16_0 @@ FUNC GLOBAL DEFAULT 66 code
+def png_write_info PNG16_0 @@ FUNC GLOBAL DEFAULT 580 code
+def png_write_info_before_PLTE PNG16_0 @@ FUNC GLOBAL DEFAULT 288 code
+def png_write_png PNG16_0 @@ FUNC GLOBAL DEFAULT 232 code
+def png_write_row PNG16_0 @@ FUNC GLOBAL DEFAULT 620 code
+def png_write_rows PNG16_0 @@ FUNC GLOBAL DEFAULT 34 code
+def png_write_sig PNG16_0 @@ FUNC GLOBAL DEFAULT 72 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und _setjmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und adler32 - - FUNC GLOBAL
+und crc32 - - FUNC GLOBAL
+und deflate - - FUNC GLOBAL
+und deflateEnd - - FUNC GLOBAL
+und deflateInit2_ - - FUNC GLOBAL
+und deflateReset - - FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ferror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und floor GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und fopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fread GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und frexp GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gmtime GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und inflate - - FUNC GLOBAL
+und inflateEnd - - FUNC GLOBAL
+und inflateInit2_ - - FUNC GLOBAL
+und inflateReset - - FUNC GLOBAL
+und inflateReset2 ZLIB_1.2.3.4 libz.so.1 FUNC GLOBAL
+und inflateValidate ZLIB_1.2.9 libz.so.1 FUNC GLOBAL
+und longjmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und modf GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und pow GLIBC_2.29 libm.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und remove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtod GLIBC_2.4 libc.so.6 FUNC GLOBAL

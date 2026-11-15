@@ -1,0 +1,288 @@
+tvabi 1
+soname libfreetype.so.6
+needed libz.so.1
+needed libpng16.so.16
+needed libpthread.so.0
+needed libgcc_s.so.1
+needed libc.so.6
+def FTC_CMapCache_Lookup - - FUNC GLOBAL DEFAULT 360 code
+def FTC_CMapCache_New - - FUNC GLOBAL DEFAULT 20 code
+def FTC_ImageCache_Lookup - - FUNC GLOBAL DEFAULT 462 code
+def FTC_ImageCache_LookupScaler - - FUNC GLOBAL DEFAULT 542 code
+def FTC_ImageCache_New - - FUNC GLOBAL DEFAULT 16 code
+def FTC_Manager_Done - - FUNC GLOBAL DEFAULT 142 code
+def FTC_Manager_LookupFace - - FUNC GLOBAL DEFAULT 92 code
+def FTC_Manager_LookupSize - - FUNC GLOBAL DEFAULT 190 code
+def FTC_Manager_New - - FUNC GLOBAL DEFAULT 216 code
+def FTC_Manager_RemoveFaceID - - FUNC GLOBAL DEFAULT 342 code
+def FTC_Manager_Reset - - FUNC GLOBAL DEFAULT 120 code
+def FTC_Node_Unref - - FUNC GLOBAL DEFAULT 26 code
+def FTC_SBitCache_Lookup - - FUNC GLOBAL DEFAULT 546 code
+def FTC_SBitCache_LookupScaler - - FUNC GLOBAL DEFAULT 624 code
+def FTC_SBitCache_New - - FUNC GLOBAL DEFAULT 20 code
+def FT_Activate_Size - - FUNC GLOBAL DEFAULT 26 code
+def FT_Add_Default_Modules - - FUNC GLOBAL DEFAULT 44 code
+def FT_Add_Module - - FUNC GLOBAL DEFAULT 432 code
+def FT_Angle_Diff - - FUNC GLOBAL DEFAULT 32 code
+def FT_Atan2 - - FUNC GLOBAL DEFAULT 68 code
+def FT_Attach_File - - FUNC GLOBAL DEFAULT 32 code
+def FT_Attach_Stream - - FUNC GLOBAL DEFAULT 108 code
+def FT_Bitmap_Blend - - FUNC GLOBAL DEFAULT 1122 code
+def FT_Bitmap_Convert - - FUNC GLOBAL DEFAULT 844 code
+def FT_Bitmap_Copy - - FUNC GLOBAL DEFAULT 280 code
+def FT_Bitmap_Done - - FUNC GLOBAL DEFAULT 42 code
+def FT_Bitmap_Embolden - - FUNC GLOBAL DEFAULT 970 code
+def FT_Bitmap_Init - - FUNC GLOBAL DEFAULT 18 code
+def FT_Bitmap_New - - FUNC GLOBAL DEFAULT 18 code
+def FT_CeilFix - - FUNC GLOBAL DEFAULT 12 code
+def FT_ClassicKern_Free - - FUNC GLOBAL DEFAULT 10 code
+def FT_ClassicKern_Validate - - FUNC GLOBAL DEFAULT 56 code
+def FT_Cos - - FUNC GLOBAL DEFAULT 20 code
+def FT_DivFix - - FUNC GLOBAL DEFAULT 104 code
+def FT_Done_Face - - FUNC GLOBAL DEFAULT 96 code
+def FT_Done_FreeType - - FUNC GLOBAL DEFAULT 24 code
+def FT_Done_Glyph - - FUNC GLOBAL DEFAULT 32 code
+def FT_Done_Library - - FUNC GLOBAL DEFAULT 220 code
+def FT_Done_MM_Var - - FUNC GLOBAL DEFAULT 18 code
+def FT_Done_Size - - FUNC GLOBAL DEFAULT 104 code
+def FT_Error_String - - FUNC GLOBAL DEFAULT 4 code
+def FT_Face_CheckTrueTypePatents - - FUNC GLOBAL DEFAULT 4 code
+def FT_Face_GetCharVariantIndex - - FUNC GLOBAL DEFAULT 66 code
+def FT_Face_GetCharVariantIsDefault - - FUNC GLOBAL DEFAULT 44 code
+def FT_Face_GetCharsOfVariant - - FUNC GLOBAL DEFAULT 40 code
+def FT_Face_GetVariantSelectors - - FUNC GLOBAL DEFAULT 36 code
+def FT_Face_GetVariantsOfChar - - FUNC GLOBAL DEFAULT 40 code
+def FT_Face_Properties - - FUNC GLOBAL DEFAULT 168 code
+def FT_Face_SetUnpatentedHinting - - FUNC GLOBAL DEFAULT 4 code
+def FT_FloorFix - - FUNC GLOBAL DEFAULT 6 code
+def FT_Get_Advance - - FUNC GLOBAL DEFAULT 156 code
+def FT_Get_Advances - - FUNC GLOBAL DEFAULT 262 code
+def FT_Get_BDF_Charset_ID - - FUNC GLOBAL DEFAULT 76 code
+def FT_Get_BDF_Property - - FUNC GLOBAL DEFAULT 60 code
+def FT_Get_CID_From_Glyph_Index - - FUNC GLOBAL DEFAULT 64 code
+def FT_Get_CID_Is_Internally_CID_Keyed - - FUNC GLOBAL DEFAULT 64 code
+def FT_Get_CID_Registry_Ordering_Supplement - - FUNC GLOBAL DEFAULT 92 code
+def FT_Get_CMap_Format - - FUNC GLOBAL DEFAULT 60 code
+def FT_Get_CMap_Language_ID - - FUNC GLOBAL DEFAULT 60 code
+def FT_Get_Char_Index - - FUNC GLOBAL DEFAULT 30 code
+def FT_Get_Charmap_Index - - FUNC GLOBAL DEFAULT 54 code
+def FT_Get_Color_Glyph_ClipBox - - FUNC GLOBAL DEFAULT 44 code
+def FT_Get_Color_Glyph_Layer - - FUNC GLOBAL DEFAULT 58 code
+def FT_Get_Color_Glyph_Paint - - FUNC GLOBAL DEFAULT 46 code
+def FT_Get_Colorline_Stops - - FUNC GLOBAL DEFAULT 44 code
+def FT_Get_FSType_Flags - - FUNC GLOBAL DEFAULT 80 code
+def FT_Get_First_Char - - FUNC GLOBAL DEFAULT 58 code
+def FT_Get_Font_Format - - FUNC GLOBAL DEFAULT 24 code
+def FT_Get_Gasp - - FUNC GLOBAL DEFAULT 56 code
+def FT_Get_Glyph - - FUNC GLOBAL DEFAULT 126 code
+def FT_Get_Glyph_Name - - FUNC GLOBAL DEFAULT 136 code
+def FT_Get_Kerning - - FUNC GLOBAL DEFAULT 160 code
+def FT_Get_MM_Blend_Coordinates - - FUNC GLOBAL DEFAULT 66 code
+def FT_Get_MM_Var - - FUNC GLOBAL DEFAULT 62 code
+def FT_Get_MM_WeightVector - - FUNC GLOBAL DEFAULT 116 code
+def FT_Get_Module - - FUNC GLOBAL DEFAULT 66 code
+def FT_Get_Multi_Master - - FUNC GLOBAL DEFAULT 62 code
+def FT_Get_Name_Index - - FUNC GLOBAL DEFAULT 96 code
+def FT_Get_Next_Char - - FUNC GLOBAL DEFAULT 66 code
+def FT_Get_PFR_Advance - - FUNC GLOBAL DEFAULT 40 code
+def FT_Get_PFR_Kerning - - FUNC GLOBAL DEFAULT 72 code
+def FT_Get_PFR_Metrics - - FUNC GLOBAL DEFAULT 104 code
+def FT_Get_PS_Font_Info - - FUNC GLOBAL DEFAULT 52 code
+def FT_Get_PS_Font_Private - - FUNC GLOBAL DEFAULT 52 code
+def FT_Get_PS_Font_Value - - FUNC GLOBAL DEFAULT 76 code
+def FT_Get_Paint - - FUNC GLOBAL DEFAULT 58 code
+def FT_Get_Paint_Layers - - FUNC GLOBAL DEFAULT 44 code
+def FT_Get_Postscript_Name - - FUNC GLOBAL DEFAULT 76 code
+def FT_Get_Renderer - - FUNC GLOBAL DEFAULT 28 code
+def FT_Get_Sfnt_LangTag - - FUNC GLOBAL DEFAULT 208 code
+def FT_Get_Sfnt_Name - - FUNC GLOBAL DEFAULT 188 code
+def FT_Get_Sfnt_Name_Count - - FUNC GLOBAL DEFAULT 20 code
+def FT_Get_Sfnt_Table - - FUNC GLOBAL DEFAULT 56 code
+def FT_Get_SubGlyph_Info - - FUNC GLOBAL DEFAULT 92 code
+def FT_Get_Track_Kerning - - FUNC GLOBAL DEFAULT 72 code
+def FT_Get_Transform - - FUNC GLOBAL DEFAULT 40 code
+def FT_Get_TrueType_Engine_Type - - FUNC GLOBAL DEFAULT 48 code
+def FT_Get_Var_Axis_Flags - - FUNC GLOBAL DEFAULT 46 code
+def FT_Get_Var_Blend_Coordinates - - FUNC GLOBAL DEFAULT 66 code
+def FT_Get_Var_Design_Coordinates - - FUNC GLOBAL DEFAULT 66 code
+def FT_Get_WinFNT_Header - - FUNC GLOBAL DEFAULT 80 code
+def FT_Get_X11_Font_Format - - FUNC GLOBAL DEFAULT 24 code
+def FT_GlyphSlot_Embolden - - FUNC GLOBAL DEFAULT 222 code
+def FT_GlyphSlot_Oblique - - FUNC GLOBAL DEFAULT 52 code
+def FT_GlyphSlot_Own_Bitmap - - FUNC GLOBAL DEFAULT 102 code
+def FT_Glyph_Copy - - FUNC GLOBAL DEFAULT 134 code
+def FT_Glyph_Get_CBox - - FUNC GLOBAL DEFAULT 112 code
+def FT_Glyph_Stroke - - FUNC GLOBAL DEFAULT 168 code
+def FT_Glyph_StrokeBorder - - FUNC GLOBAL DEFAULT 196 code
+def FT_Glyph_To_Bitmap - - FUNC GLOBAL DEFAULT 324 code
+def FT_Glyph_Transform - - FUNC GLOBAL DEFAULT 48 code
+def FT_Gzip_Uncompress - - FUNC GLOBAL DEFAULT 160 code
+def FT_Has_PS_Glyph_Names - - FUNC GLOBAL DEFAULT 48 code
+def FT_Init_FreeType - - FUNC GLOBAL DEFAULT 48 code
+def FT_Library_SetLcdFilter - - FUNC GLOBAL DEFAULT 4 code
+def FT_Library_SetLcdFilterWeights - - FUNC GLOBAL DEFAULT 4 code
+def FT_Library_SetLcdGeometry - - FUNC GLOBAL DEFAULT 64 code
+def FT_Library_Version - - FUNC GLOBAL DEFAULT 32 code
+def FT_List_Add - - FUNC GLOBAL DEFAULT 32 code
+def FT_List_Finalize - - FUNC GLOBAL DEFAULT 62 code
+def FT_List_Find - - FUNC GLOBAL DEFAULT 20 code
+def FT_List_Insert - - FUNC GLOBAL DEFAULT 32 code
+def FT_List_Iterate - - FUNC GLOBAL DEFAULT 38 code
+def FT_List_Remove - - FUNC GLOBAL DEFAULT 30 code
+def FT_List_Up - - FUNC GLOBAL DEFAULT 38 code
+def FT_Load_Char - - FUNC GLOBAL DEFAULT 38 code
+def FT_Load_Glyph - - FUNC GLOBAL DEFAULT 1016 code
+def FT_Load_Sfnt_Table - - FUNC GLOBAL DEFAULT 80 code
+def FT_Matrix_Invert - - FUNC GLOBAL DEFAULT 90 code
+def FT_Matrix_Multiply - - FUNC GLOBAL DEFAULT 120 code
+def FT_MulDiv - - FUNC GLOBAL DEFAULT 134 code
+def FT_MulFix - - FUNC GLOBAL DEFAULT 28 code
+def FT_New_Face - - FUNC GLOBAL DEFAULT 34 code
+def FT_New_Glyph - - FUNC GLOBAL DEFAULT 124 code
+def FT_New_Library - - FUNC GLOBAL DEFAULT 70 code
+def FT_New_Memory_Face - - FUNC GLOBAL DEFAULT 40 code
+def FT_New_Size - - FUNC GLOBAL DEFAULT 204 code
+def FT_OpenType_Free - - FUNC GLOBAL DEFAULT 10 code
+def FT_OpenType_Validate - - FUNC GLOBAL DEFAULT 120 code
+def FT_Open_Face - - FUNC GLOBAL DEFAULT 16 code
+def FT_Outline_Check - - FUNC GLOBAL DEFAULT 88 code
+def FT_Outline_Copy - - FUNC GLOBAL DEFAULT 112 code
+def FT_Outline_Decompose - - FUNC GLOBAL DEFAULT 688 code
+def FT_Outline_Done - - FUNC GLOBAL DEFAULT 84 code
+def FT_Outline_Embolden - - FUNC GLOBAL DEFAULT 6 code
+def FT_Outline_EmboldenXY - - FUNC GLOBAL DEFAULT 572 code
+def FT_Outline_GetInsideBorder - - FUNC GLOBAL DEFAULT 14 code
+def FT_Outline_GetOutsideBorder - - FUNC GLOBAL DEFAULT 14 code
+def FT_Outline_Get_BBox - - FUNC GLOBAL DEFAULT 320 code
+def FT_Outline_Get_Bitmap - - FUNC GLOBAL DEFAULT 42 code
+def FT_Outline_Get_CBox - - FUNC GLOBAL DEFAULT 116 code
+def FT_Outline_Get_Orientation - - FUNC GLOBAL DEFAULT 282 code
+def FT_Outline_New - - FUNC GLOBAL DEFAULT 192 code
+def FT_Outline_Render - - FUNC GLOBAL DEFAULT 192 code
+def FT_Outline_Reverse - - FUNC GLOBAL DEFAULT 140 code
+def FT_Outline_Transform - - FUNC GLOBAL DEFAULT 46 code
+def FT_Outline_Translate - - FUNC GLOBAL DEFAULT 48 code
+def FT_Palette_Data_Get - - FUNC GLOBAL DEFAULT 64 code
+def FT_Palette_Select - - FUNC GLOBAL DEFAULT 68 code
+def FT_Palette_Set_Foreground_Color - - FUNC GLOBAL DEFAULT 42 code
+def FT_Property_Get - - FUNC GLOBAL DEFAULT 18 code
+def FT_Property_Set - - FUNC GLOBAL DEFAULT 22 code
+def FT_Reference_Face - - FUNC GLOBAL DEFAULT 20 code
+def FT_Reference_Library - - FUNC GLOBAL DEFAULT 22 code
+def FT_Remove_Module - - FUNC GLOBAL DEFAULT 252 code
+def FT_Render_Glyph - - FUNC GLOBAL DEFAULT 20 code
+def FT_Request_Size - - FUNC GLOBAL DEFAULT 112 code
+def FT_RoundFix - - FUNC GLOBAL DEFAULT 20 code
+def FT_Select_Charmap - - FUNC GLOBAL DEFAULT 92 code
+def FT_Select_Size - - FUNC GLOBAL DEFAULT 58 code
+def FT_Set_Char_Size - - FUNC GLOBAL DEFAULT 72 code
+def FT_Set_Charmap - - FUNC GLOBAL DEFAULT 84 code
+def FT_Set_Debug_Hook - - FUNC GLOBAL DEFAULT 36 code
+def FT_Set_Default_Log_Handler - - FUNC GLOBAL DEFAULT 2 code
+def FT_Set_Default_Properties - - FUNC GLOBAL DEFAULT 304 code
+def FT_Set_Log_Handler - - FUNC GLOBAL DEFAULT 2 code
+def FT_Set_MM_Blend_Coordinates - - FUNC GLOBAL DEFAULT 112 code
+def FT_Set_MM_Design_Coordinates - - FUNC GLOBAL DEFAULT 76 code
+def FT_Set_MM_WeightVector - - FUNC GLOBAL DEFAULT 76 code
+def FT_Set_Named_Instance - - FUNC GLOBAL DEFAULT 96 code
+def FT_Set_Pixel_Sizes - - FUNC GLOBAL DEFAULT 70 code
+def FT_Set_Renderer - - FUNC GLOBAL DEFAULT 116 code
+def FT_Set_Transform - - FUNC GLOBAL DEFAULT 116 code
+def FT_Set_Var_Blend_Coordinates - - FUNC GLOBAL DEFAULT 2 code
+def FT_Set_Var_Design_Coordinates - - FUNC GLOBAL DEFAULT 112 code
+def FT_Sfnt_Table_Info - - FUNC GLOBAL DEFAULT 80 code
+def FT_Sin - - FUNC GLOBAL DEFAULT 20 code
+def FT_Stream_OpenBzip2 - - FUNC GLOBAL DEFAULT 4 code
+def FT_Stream_OpenGzip - - FUNC GLOBAL DEFAULT 452 code
+def FT_Stream_OpenLZW - - FUNC GLOBAL DEFAULT 208 code
+def FT_Stroker_BeginSubPath - - FUNC GLOBAL DEFAULT 80 code
+def FT_Stroker_ConicTo - - FUNC GLOBAL DEFAULT 30 code
+def FT_Stroker_CubicTo - - FUNC GLOBAL DEFAULT 36 code
+def FT_Stroker_Done - - FUNC GLOBAL DEFAULT 104 code
+def FT_Stroker_EndSubPath - - FUNC GLOBAL DEFAULT 428 code
+def FT_Stroker_Export - - FUNC GLOBAL DEFAULT 28 code
+def FT_Stroker_ExportBorder - - FUNC GLOBAL DEFAULT 190 code
+def FT_Stroker_GetBorderCounts - - FUNC GLOBAL DEFAULT 68 code
+def FT_Stroker_GetCounts - - FUNC GLOBAL DEFAULT 76 code
+def FT_Stroker_LineTo - - FUNC GLOBAL DEFAULT 208 code
+def FT_Stroker_New - - FUNC GLOBAL DEFAULT 88 code
+def FT_Stroker_ParseOutline - - FUNC GLOBAL DEFAULT 570 code
+def FT_Stroker_Rewind - - FUNC GLOBAL DEFAULT 26 code
+def FT_Stroker_Set - - FUNC GLOBAL DEFAULT 40 code
+def FT_Tan - - FUNC GLOBAL DEFAULT 36 code
+def FT_Trace_Set_Default_Level - - FUNC GLOBAL DEFAULT 2 code
+def FT_Trace_Set_Level - - FUNC GLOBAL DEFAULT 2 code
+def FT_TrueTypeGX_Free - - FUNC GLOBAL DEFAULT 10 code
+def FT_TrueTypeGX_Validate - - FUNC GLOBAL DEFAULT 72 code
+def FT_Vector_From_Polar - - FUNC GLOBAL DEFAULT 24 code
+def FT_Vector_Length - - FUNC GLOBAL DEFAULT 184 code
+def FT_Vector_Polarize - - FUNC GLOBAL DEFAULT 186 code
+def FT_Vector_Rotate - - FUNC GLOBAL DEFAULT 282 code
+def FT_Vector_Transform - - FUNC GLOBAL DEFAULT 64 code
+def FT_Vector_Unit - - FUNC GLOBAL DEFAULT 42 code
+def TT_New_Context - - FUNC GLOBAL DEFAULT 80 code
+def TT_RunIns - - FUNC GLOBAL DEFAULT 8774 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und _setjmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fcntl64 GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und inflate - - FUNC GLOBAL
+und inflateEnd - - FUNC GLOBAL
+und inflateInit2_ - - FUNC GLOBAL
+und inflateReset - - FUNC GLOBAL
+und longjmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mmap64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und munmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und png_create_info_struct PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_create_read_struct PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_destroy_read_struct PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_error PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_get_IHDR PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_get_error_ptr PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_get_io_ptr PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_get_valid PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_read_end PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_read_image PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_read_info PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_read_update_info PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_set_expand_gray_1_2_4_to_8 PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_set_filler PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_set_gray_to_rgb PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_set_interlace_handling PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_set_longjmp_fn PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_set_packing PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_set_palette_to_rgb PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_set_read_fn PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_set_read_user_transform_fn PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_set_strip_16 PNG16_0 libpng16.so.16 FUNC GLOBAL
+und png_set_tRNS_to_alpha PNG16_0 libpng16.so.16 FUNC GLOBAL
+und qsort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL

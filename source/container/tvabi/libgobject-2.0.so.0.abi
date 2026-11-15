@@ -1,0 +1,678 @@
+tvabi 1
+soname libgobject-2.0.so.0
+needed libglib-2.0.so.0
+needed libffi.so.8
+needed libgcc_s.so.1
+needed libc.so.6
+def g_array_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_binding_dup_source - - FUNC GLOBAL DEFAULT 76 code
+def g_binding_dup_target - - FUNC GLOBAL DEFAULT 80 code
+def g_binding_flags_get_type - - FUNC GLOBAL DEFAULT 80 code
+def g_binding_get_flags - - FUNC GLOBAL DEFAULT 68 code
+def g_binding_get_source - - FUNC GLOBAL DEFAULT 88 code
+def g_binding_get_source_property - - FUNC GLOBAL DEFAULT 72 code
+def g_binding_get_target - - FUNC GLOBAL DEFAULT 88 code
+def g_binding_get_target_property - - FUNC GLOBAL DEFAULT 72 code
+def g_binding_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_binding_group_bind - - FUNC GLOBAL DEFAULT 26 code
+def g_binding_group_bind_full - - FUNC GLOBAL DEFAULT 36 code
+def g_binding_group_bind_with_closures - - FUNC GLOBAL DEFAULT 34 code
+def g_binding_group_dup_source - - FUNC GLOBAL DEFAULT 100 code
+def g_binding_group_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_binding_group_new - - FUNC GLOBAL DEFAULT 16 code
+def g_binding_group_set_source - - FUNC GLOBAL DEFAULT 596 code
+def g_binding_unbind - - FUNC GLOBAL DEFAULT 180 code
+def g_boxed_copy - - FUNC GLOBAL DEFAULT 292 code
+def g_boxed_free - - FUNC GLOBAL DEFAULT 240 code
+def g_boxed_type_register_static - - FUNC GLOBAL DEFAULT 232 code
+def g_byte_array_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_bytes_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_cclosure_marshal_BOOLEAN__BOXED_BOXED - - FUNC GLOBAL DEFAULT 148 code
+def g_cclosure_marshal_BOOLEAN__BOXED_BOXEDv - - FUNC GLOBAL DEFAULT 252 code
+def g_cclosure_marshal_BOOLEAN__FLAGS - - FUNC GLOBAL DEFAULT 148 code
+def g_cclosure_marshal_BOOLEAN__FLAGSv - - FUNC GLOBAL DEFAULT 100 code
+def g_cclosure_marshal_STRING__OBJECT_POINTER - - FUNC GLOBAL DEFAULT 148 code
+def g_cclosure_marshal_STRING__OBJECT_POINTERv - - FUNC GLOBAL DEFAULT 136 code
+def g_cclosure_marshal_VOID__BOOLEAN - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__BOOLEANv - - FUNC GLOBAL DEFAULT 52 code
+def g_cclosure_marshal_VOID__BOXED - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__BOXEDv - - FUNC GLOBAL DEFAULT 128 code
+def g_cclosure_marshal_VOID__CHAR - - FUNC GLOBAL DEFAULT 112 code
+def g_cclosure_marshal_VOID__CHARv - - FUNC GLOBAL DEFAULT 52 code
+def g_cclosure_marshal_VOID__DOUBLE - - FUNC GLOBAL DEFAULT 104 code
+def g_cclosure_marshal_VOID__DOUBLEv - - FUNC GLOBAL DEFAULT 60 code
+def g_cclosure_marshal_VOID__ENUM - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__ENUMv - - FUNC GLOBAL DEFAULT 2 code
+def g_cclosure_marshal_VOID__FLAGS - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__FLAGSv - - FUNC GLOBAL DEFAULT 2 code
+def g_cclosure_marshal_VOID__FLOAT - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__FLOATv - - FUNC GLOBAL DEFAULT 70 code
+def g_cclosure_marshal_VOID__INT - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__INTv - - FUNC GLOBAL DEFAULT 2 code
+def g_cclosure_marshal_VOID__LONG - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__LONGv - - FUNC GLOBAL DEFAULT 2 code
+def g_cclosure_marshal_VOID__OBJECT - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__OBJECTv - - FUNC GLOBAL DEFAULT 62 code
+def g_cclosure_marshal_VOID__PARAM - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__PARAMv - - FUNC GLOBAL DEFAULT 116 code
+def g_cclosure_marshal_VOID__POINTER - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__POINTERv - - FUNC GLOBAL DEFAULT 52 code
+def g_cclosure_marshal_VOID__STRING - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__STRINGv - - FUNC GLOBAL DEFAULT 116 code
+def g_cclosure_marshal_VOID__UCHAR - - FUNC GLOBAL DEFAULT 112 code
+def g_cclosure_marshal_VOID__UCHARv - - FUNC GLOBAL DEFAULT 52 code
+def g_cclosure_marshal_VOID__UINT - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__UINT_POINTER - - FUNC GLOBAL DEFAULT 100 code
+def g_cclosure_marshal_VOID__UINT_POINTERv - - FUNC GLOBAL DEFAULT 54 code
+def g_cclosure_marshal_VOID__UINTv - - FUNC GLOBAL DEFAULT 52 code
+def g_cclosure_marshal_VOID__ULONG - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__ULONGv - - FUNC GLOBAL DEFAULT 2 code
+def g_cclosure_marshal_VOID__VARIANT - - FUNC GLOBAL DEFAULT 108 code
+def g_cclosure_marshal_VOID__VARIANTv - - FUNC GLOBAL DEFAULT 116 code
+def g_cclosure_marshal_VOID__VOID - - FUNC GLOBAL DEFAULT 96 code
+def g_cclosure_marshal_VOID__VOIDv - - FUNC GLOBAL DEFAULT 44 code
+def g_cclosure_marshal_generic - - FUNC GLOBAL DEFAULT 408 code
+def g_cclosure_marshal_generic_va - - FUNC GLOBAL DEFAULT 1208 code
+def g_cclosure_new - - FUNC GLOBAL DEFAULT 72 code
+def g_cclosure_new_object - - FUNC GLOBAL DEFAULT 168 code
+def g_cclosure_new_object_swap - - FUNC GLOBAL DEFAULT 168 code
+def g_cclosure_new_swap - - FUNC GLOBAL DEFAULT 120 code
+def g_checksum_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_clear_object - - FUNC GLOBAL DEFAULT 16 code
+def g_clear_signal_handler - - FUNC GLOBAL DEFAULT 60 code
+def g_closure_add_finalize_notifier - - FUNC GLOBAL DEFAULT 292 code
+def g_closure_add_invalidate_notifier - - FUNC GLOBAL DEFAULT 296 code
+def g_closure_add_marshal_guards - - FUNC GLOBAL DEFAULT 616 code
+def g_closure_get_type - - FUNC GLOBAL DEFAULT 60 code
+def g_closure_invalidate - - FUNC GLOBAL DEFAULT 324 code
+def g_closure_invoke - - FUNC GLOBAL DEFAULT 316 code
+def g_closure_new_object - - FUNC GLOBAL DEFAULT 128 code
+def g_closure_new_simple - - FUNC GLOBAL DEFAULT 324 code
+def g_closure_ref - - FUNC GLOBAL DEFAULT 232 code
+def g_closure_remove_finalize_notifier - - FUNC GLOBAL DEFAULT 320 code
+def g_closure_remove_invalidate_notifier - - FUNC GLOBAL DEFAULT 280 code
+def g_closure_set_marshal - - FUNC GLOBAL DEFAULT 124 code
+def g_closure_set_meta_marshal - - FUNC GLOBAL DEFAULT 180 code
+def g_closure_sink - - FUNC GLOBAL DEFAULT 156 code
+def g_closure_unref - - FUNC GLOBAL DEFAULT 436 code
+def g_date_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_date_time_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_enum_complete_type_info - - FUNC GLOBAL DEFAULT 148 code
+def g_enum_get_value - - FUNC GLOBAL DEFAULT 88 code
+def g_enum_get_value_by_name - - FUNC GLOBAL DEFAULT 136 code
+def g_enum_get_value_by_nick - - FUNC GLOBAL DEFAULT 132 code
+def g_enum_register_static - - FUNC GLOBAL DEFAULT 140 code
+def g_enum_to_string - - FUNC GLOBAL DEFAULT 124 code
+def g_error_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_flags_complete_type_info - - FUNC GLOBAL DEFAULT 148 code
+def g_flags_get_first_value - - FUNC GLOBAL DEFAULT 112 code
+def g_flags_get_value_by_name - - FUNC GLOBAL DEFAULT 136 code
+def g_flags_get_value_by_nick - - FUNC GLOBAL DEFAULT 140 code
+def g_flags_register_static - - FUNC GLOBAL DEFAULT 144 code
+def g_flags_to_string - - FUNC GLOBAL DEFAULT 292 code
+def g_gstring_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_gtype_get_type - - FUNC GLOBAL DEFAULT 60 code
+def g_hash_table_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_initially_unowned_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_io_channel_get_type - - FUNC GLOBAL DEFAULT 60 code
+def g_io_condition_get_type - - FUNC GLOBAL DEFAULT 76 code
+def g_key_file_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_main_context_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_main_loop_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_mapped_file_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_markup_parse_context_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_match_info_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_normalize_mode_get_type - - FUNC GLOBAL DEFAULT 88 code
+def g_object_add_toggle_ref - - FUNC GLOBAL DEFAULT 288 code
+def g_object_add_weak_pointer - - FUNC GLOBAL DEFAULT 116 code
+def g_object_bind_property - - FUNC GLOBAL DEFAULT 26 code
+def g_object_bind_property_full - - FUNC GLOBAL DEFAULT 1108 code
+def g_object_bind_property_with_closures - - FUNC GLOBAL DEFAULT 296 code
+def g_object_class_find_property - - FUNC GLOBAL DEFAULT 132 code
+def g_object_class_install_properties - - FUNC GLOBAL DEFAULT 252 code
+def g_object_class_install_property - - FUNC GLOBAL DEFAULT 188 code
+def g_object_class_list_properties - - FUNC GLOBAL DEFAULT 88 code
+def g_object_class_override_property - - FUNC GLOBAL DEFAULT 348 code
+def g_object_compat_control - - FUNC GLOBAL DEFAULT 52 code
+def g_object_connect - - FUNC GLOBAL DEFAULT 636 code
+def g_object_disconnect - - FUNC GLOBAL DEFAULT 420 code
+def g_object_dup_data - - FUNC GLOBAL DEFAULT 124 code
+def g_object_dup_qdata - - FUNC GLOBAL DEFAULT 116 code
+def g_object_force_floating - - FUNC GLOBAL DEFAULT 120 code
+def g_object_freeze_notify - - FUNC GLOBAL DEFAULT 88 code
+def g_object_get - - FUNC GLOBAL DEFAULT 80 code
+def g_object_get_data - - FUNC GLOBAL DEFAULT 104 code
+def g_object_get_property - - FUNC GLOBAL DEFAULT 572 code
+def g_object_get_qdata - - FUNC GLOBAL DEFAULT 68 code
+def g_object_get_type - - FUNC GLOBAL DEFAULT 4 code
+def g_object_get_valist - - FUNC GLOBAL DEFAULT 624 code
+def g_object_getv - - FUNC GLOBAL DEFAULT 408 code
+def g_object_interface_find_property - - FUNC GLOBAL DEFAULT 116 code
+def g_object_interface_install_property - - FUNC GLOBAL DEFAULT 232 code
+def g_object_interface_list_properties - - FUNC GLOBAL DEFAULT 88 code
+def g_object_is_floating - - FUNC GLOBAL DEFAULT 72 code
+def g_object_new - - FUNC GLOBAL DEFAULT 46 code
+def g_object_new_valist - - FUNC GLOBAL DEFAULT 880 code
+def g_object_new_with_properties - - FUNC GLOBAL DEFAULT 500 code
+def g_object_newv - - FUNC GLOBAL DEFAULT 496 code
+def g_object_notify - - FUNC GLOBAL DEFAULT 272 code
+def g_object_notify_by_pspec - - FUNC GLOBAL DEFAULT 196 code
+def g_object_ref - - FUNC GLOBAL DEFAULT 144 code
+def g_object_ref_sink - - FUNC GLOBAL DEFAULT 136 code
+def g_object_remove_toggle_ref - - FUNC GLOBAL DEFAULT 312 code
+def g_object_remove_weak_pointer - - FUNC GLOBAL DEFAULT 116 code
+def g_object_replace_data - - FUNC GLOBAL DEFAULT 136 code
+def g_object_replace_qdata - - FUNC GLOBAL DEFAULT 116 code
+def g_object_run_dispose - - FUNC GLOBAL DEFAULT 124 code
+def g_object_set - - FUNC GLOBAL DEFAULT 80 code
+def g_object_set_data - - FUNC GLOBAL DEFAULT 116 code
+def g_object_set_data_full - - FUNC GLOBAL DEFAULT 128 code
+def g_object_set_property - - FUNC GLOBAL DEFAULT 22 code
+def g_object_set_qdata - - FUNC GLOBAL DEFAULT 108 code
+def g_object_set_qdata_full - - FUNC GLOBAL DEFAULT 120 code
+def g_object_set_valist - - FUNC GLOBAL DEFAULT 612 code
+def g_object_setv - - FUNC GLOBAL DEFAULT 376 code
+def g_object_steal_data - - FUNC GLOBAL DEFAULT 112 code
+def g_object_steal_qdata - - FUNC GLOBAL DEFAULT 104 code
+def g_object_take_ref - - FUNC GLOBAL DEFAULT 120 code
+def g_object_thaw_notify - - FUNC GLOBAL DEFAULT 104 code
+def g_object_unref - - FUNC GLOBAL DEFAULT 488 code
+def g_object_watch_closure - - FUNC GLOBAL DEFAULT 400 code
+def g_object_weak_ref - - FUNC GLOBAL DEFAULT 252 code
+def g_object_weak_unref - - FUNC GLOBAL DEFAULT 280 code
+def g_option_group_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_param_spec_boolean - - FUNC GLOBAL DEFAULT 104 code
+def g_param_spec_boxed - - FUNC GLOBAL DEFAULT 180 code
+def g_param_spec_char - - FUNC GLOBAL DEFAULT 132 code
+def g_param_spec_double - - FUNC GLOBAL DEFAULT 152 code
+def g_param_spec_enum - - FUNC GLOBAL DEFAULT 208 code
+def g_param_spec_flags - - FUNC GLOBAL DEFAULT 208 code
+def g_param_spec_float - - FUNC GLOBAL DEFAULT 148 code
+def g_param_spec_get_blurb - - FUNC GLOBAL DEFAULT 72 code
+def g_param_spec_get_default_value - - FUNC GLOBAL DEFAULT 104 code
+def g_param_spec_get_name - - FUNC GLOBAL DEFAULT 52 code
+def g_param_spec_get_name_quark - - FUNC GLOBAL DEFAULT 16 code
+def g_param_spec_get_nick - - FUNC GLOBAL DEFAULT 76 code
+def g_param_spec_get_qdata - - FUNC GLOBAL DEFAULT 68 code
+def g_param_spec_get_redirect_target - - FUNC GLOBAL DEFAULT 44 code
+def g_param_spec_gtype - - FUNC GLOBAL DEFAULT 68 code
+def g_param_spec_int - - FUNC GLOBAL DEFAULT 124 code
+def g_param_spec_int64 - - FUNC GLOBAL DEFAULT 160 code
+def g_param_spec_internal - - FUNC GLOBAL DEFAULT 416 code
+def g_param_spec_is_valid_name - - FUNC GLOBAL DEFAULT 58 code
+def g_param_spec_long - - FUNC GLOBAL DEFAULT 124 code
+def g_param_spec_object - - FUNC GLOBAL DEFAULT 136 code
+def g_param_spec_override - - FUNC GLOBAL DEFAULT 196 code
+def g_param_spec_param - - FUNC GLOBAL DEFAULT 136 code
+def g_param_spec_pointer - - FUNC GLOBAL DEFAULT 68 code
+def g_param_spec_pool_insert - - FUNC GLOBAL DEFAULT 276 code
+def g_param_spec_pool_list - - FUNC GLOBAL DEFAULT 332 code
+def g_param_spec_pool_list_owned - - FUNC GLOBAL DEFAULT 128 code
+def g_param_spec_pool_lookup - - FUNC GLOBAL DEFAULT 604 code
+def g_param_spec_pool_new - - FUNC GLOBAL DEFAULT 64 code
+def g_param_spec_pool_remove - - FUNC GLOBAL DEFAULT 152 code
+def g_param_spec_ref - - FUNC GLOBAL DEFAULT 80 code
+def g_param_spec_ref_sink - - FUNC GLOBAL DEFAULT 92 code
+def g_param_spec_set_qdata - - FUNC GLOBAL DEFAULT 104 code
+def g_param_spec_set_qdata_full - - FUNC GLOBAL DEFAULT 116 code
+def g_param_spec_sink - - FUNC GLOBAL DEFAULT 92 code
+def g_param_spec_steal_qdata - - FUNC GLOBAL DEFAULT 104 code
+def g_param_spec_string - - FUNC GLOBAL DEFAULT 84 code
+def g_param_spec_types - - OBJECT GLOBAL DEFAULT 4 data
+def g_param_spec_uchar - - FUNC GLOBAL DEFAULT 132 code
+def g_param_spec_uint - - FUNC GLOBAL DEFAULT 124 code
+def g_param_spec_uint64 - - FUNC GLOBAL DEFAULT 160 code
+def g_param_spec_ulong - - FUNC GLOBAL DEFAULT 124 code
+def g_param_spec_unichar - - FUNC GLOBAL DEFAULT 68 code
+def g_param_spec_unref - - FUNC GLOBAL DEFAULT 92 code
+def g_param_spec_value_array - - FUNC GLOBAL DEFAULT 172 code
+def g_param_spec_variant - - FUNC GLOBAL DEFAULT 224 code
+def g_param_type_register_static - - FUNC GLOBAL DEFAULT 368 code
+def g_param_value_convert - - FUNC GLOBAL DEFAULT 328 code
+def g_param_value_defaults - - FUNC GLOBAL DEFAULT 240 code
+def g_param_value_set_default - - FUNC GLOBAL DEFAULT 196 code
+def g_param_value_validate - - FUNC GLOBAL DEFAULT 236 code
+def g_param_values_cmp - - FUNC GLOBAL DEFAULT 300 code
+def g_pattern_spec_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_pointer_type_register_static - - FUNC GLOBAL DEFAULT 120 code
+def g_pollfd_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_ptr_array_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_regex_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_signal_accumulator_first_wins - - FUNC GLOBAL DEFAULT 12 code
+def g_signal_accumulator_true_handled - - FUNC GLOBAL DEFAULT 28 code
+def g_signal_add_emission_hook - - FUNC GLOBAL DEFAULT 412 code
+def g_signal_chain_from_overridden - - FUNC GLOBAL DEFAULT 864 code
+def g_signal_chain_from_overridden_handler - - FUNC GLOBAL DEFAULT 1744 code
+def g_signal_connect_closure - - FUNC GLOBAL DEFAULT 752 code
+def g_signal_connect_closure_by_id - - FUNC GLOBAL DEFAULT 588 code
+def g_signal_connect_data - - FUNC GLOBAL DEFAULT 792 code
+def g_signal_connect_object - - FUNC GLOBAL DEFAULT 292 code
+def g_signal_emit - - FUNC GLOBAL DEFAULT 28 code
+def g_signal_emit_by_name - - FUNC GLOBAL DEFAULT 360 code
+def g_signal_emit_valist - - FUNC GLOBAL DEFAULT 2556 code
+def g_signal_emitv - - FUNC GLOBAL DEFAULT 476 code
+def g_signal_get_invocation_hint - - FUNC GLOBAL DEFAULT 112 code
+def g_signal_group_block - - FUNC GLOBAL DEFAULT 384 code
+def g_signal_group_connect - - FUNC GLOBAL DEFAULT 20 code
+def g_signal_group_connect_after - - FUNC GLOBAL DEFAULT 22 code
+def g_signal_group_connect_data - - FUNC GLOBAL DEFAULT 24 code
+def g_signal_group_connect_object - - FUNC GLOBAL DEFAULT 100 code
+def g_signal_group_connect_swapped - - FUNC GLOBAL DEFAULT 22 code
+def g_signal_group_dup_target - - FUNC GLOBAL DEFAULT 96 code
+def g_signal_group_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_signal_group_new - - FUNC GLOBAL DEFAULT 76 code
+def g_signal_group_set_target - - FUNC GLOBAL DEFAULT 404 code
+def g_signal_group_unblock - - FUNC GLOBAL DEFAULT 384 code
+def g_signal_handler_block - - FUNC GLOBAL DEFAULT 216 code
+def g_signal_handler_disconnect - - FUNC GLOBAL DEFAULT 284 code
+def g_signal_handler_find - - FUNC GLOBAL DEFAULT 240 code
+def g_signal_handler_is_connected - - FUNC GLOBAL DEFAULT 124 code
+def g_signal_handler_unblock - - FUNC GLOBAL DEFAULT 208 code
+def g_signal_handlers_block_matched - - FUNC GLOBAL DEFAULT 196 code
+def g_signal_handlers_destroy - - FUNC GLOBAL DEFAULT 520 code
+def g_signal_handlers_disconnect_matched - - FUNC GLOBAL DEFAULT 196 code
+def g_signal_handlers_unblock_matched - - FUNC GLOBAL DEFAULT 196 code
+def g_signal_has_handler_pending - - FUNC GLOBAL DEFAULT 524 code
+def g_signal_is_valid_name - - FUNC GLOBAL DEFAULT 32 code
+def g_signal_list_ids - - FUNC GLOBAL DEFAULT 376 code
+def g_signal_lookup - - FUNC GLOBAL DEFAULT 228 code
+def g_signal_name - - FUNC GLOBAL DEFAULT 56 code
+def g_signal_new - - FUNC GLOBAL DEFAULT 108 code
+def g_signal_new_class_handler - - FUNC GLOBAL DEFAULT 108 code
+def g_signal_new_valist - - FUNC GLOBAL DEFAULT 108 code
+def g_signal_newv - - FUNC GLOBAL DEFAULT 2168 code
+def g_signal_override_class_closure - - FUNC GLOBAL DEFAULT 536 code
+def g_signal_override_class_handler - - FUNC GLOBAL DEFAULT 200 code
+def g_signal_parse_name - - FUNC GLOBAL DEFAULT 424 code
+def g_signal_query - - FUNC GLOBAL DEFAULT 136 code
+def g_signal_remove_emission_hook - - FUNC GLOBAL DEFAULT 224 code
+def g_signal_set_va_marshaller - - FUNC GLOBAL DEFAULT 164 code
+def g_signal_stop_emission - - FUNC GLOBAL DEFAULT 356 code
+def g_signal_stop_emission_by_name - - FUNC GLOBAL DEFAULT 552 code
+def g_signal_type_cclosure_new - - FUNC GLOBAL DEFAULT 188 code
+def g_source_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_source_set_closure - - FUNC GLOBAL DEFAULT 372 code
+def g_source_set_dummy_callback - - FUNC GLOBAL DEFAULT 40 code
+def g_strdup_value_contents - - FUNC GLOBAL DEFAULT 664 code
+def g_strv_get_type - - FUNC GLOBAL DEFAULT 100 code
+def g_thread_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_time_zone_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_tree_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_type_add_class_cache_func - - FUNC GLOBAL DEFAULT 100 code
+def g_type_add_class_private - - FUNC GLOBAL DEFAULT 268 code
+def g_type_add_instance_private - - FUNC GLOBAL DEFAULT 256 code
+def g_type_add_interface_check - - FUNC GLOBAL DEFAULT 100 code
+def g_type_add_interface_dynamic - - FUNC GLOBAL DEFAULT 248 code
+def g_type_add_interface_static - - FUNC GLOBAL DEFAULT 332 code
+def g_type_check_class_cast - - FUNC GLOBAL DEFAULT 548 code
+def g_type_check_class_is_a - - FUNC GLOBAL DEFAULT 112 code
+def g_type_check_instance - - FUNC GLOBAL DEFAULT 180 code
+def g_type_check_instance_cast - - FUNC GLOBAL DEFAULT 544 code
+def g_type_check_instance_is_a - - FUNC GLOBAL DEFAULT 116 code
+def g_type_check_instance_is_fundamentally_a - - FUNC GLOBAL DEFAULT 60 code
+def g_type_check_is_value_type - - FUNC GLOBAL DEFAULT 264 code
+def g_type_check_value - - FUNC GLOBAL DEFAULT 276 code
+def g_type_check_value_holds - - FUNC GLOBAL DEFAULT 300 code
+def g_type_children - - FUNC GLOBAL DEFAULT 128 code
+def g_type_class_add_private - - FUNC GLOBAL DEFAULT 372 code
+def g_type_class_adjust_private_offset - - FUNC GLOBAL DEFAULT 392 code
+def g_type_class_get_instance_private_offset - - FUNC GLOBAL DEFAULT 280 code
+def g_type_class_get_private - - FUNC GLOBAL DEFAULT 476 code
+def g_type_class_peek - - FUNC GLOBAL DEFAULT 76 code
+def g_type_class_peek_parent - - FUNC GLOBAL DEFAULT 204 code
+def g_type_class_peek_static - - FUNC GLOBAL DEFAULT 80 code
+def g_type_class_ref - - FUNC GLOBAL DEFAULT 1204 code
+def g_type_class_unref - - FUNC GLOBAL DEFAULT 296 code
+def g_type_class_unref_uncached - - FUNC GLOBAL DEFAULT 296 code
+def g_type_create_instance - - FUNC GLOBAL DEFAULT 508 code
+def g_type_default_interface_peek - - FUNC GLOBAL DEFAULT 68 code
+def g_type_default_interface_ref - - FUNC GLOBAL DEFAULT 544 code
+def g_type_default_interface_unref - - FUNC GLOBAL DEFAULT 248 code
+def g_type_depth - - FUNC GLOBAL DEFAULT 40 code
+def g_type_ensure - - FUNC GLOBAL DEFAULT 32 code
+def g_type_free_instance - - FUNC GLOBAL DEFAULT 420 code
+def g_type_from_name - - FUNC GLOBAL DEFAULT 80 code
+def g_type_fundamental - - FUNC GLOBAL DEFAULT 44 code
+def g_type_fundamental_next - - FUNC GLOBAL DEFAULT 44 code
+def g_type_get_instance_count - - FUNC GLOBAL DEFAULT 4 code
+def g_type_get_plugin - - FUNC GLOBAL DEFAULT 36 code
+def g_type_get_qdata - - FUNC GLOBAL DEFAULT 156 code
+def g_type_get_type_registration_serial - - FUNC GLOBAL DEFAULT 24 code
+def g_type_init - - FUNC GLOBAL DEFAULT 72 code
+def g_type_init_with_debug_flags - - FUNC GLOBAL DEFAULT 96 code
+def g_type_instance_get_private - - FUNC GLOBAL DEFAULT 176 code
+def g_type_interface_add_prerequisite - - FUNC GLOBAL DEFAULT 1360 code
+def g_type_interface_get_plugin - - FUNC GLOBAL DEFAULT 356 code
+def g_type_interface_instantiatable_prerequisite - - FUNC GLOBAL DEFAULT 252 code
+def g_type_interface_peek - - FUNC GLOBAL DEFAULT 320 code
+def g_type_interface_peek_parent - - FUNC GLOBAL DEFAULT 364 code
+def g_type_interface_prerequisites - - FUNC GLOBAL DEFAULT 328 code
+def g_type_interfaces - - FUNC GLOBAL DEFAULT 208 code
+def g_type_is_a - - FUNC GLOBAL DEFAULT 112 code
+def g_type_module_add_interface - - FUNC GLOBAL DEFAULT 340 code
+def g_type_module_get_type - - FUNC GLOBAL DEFAULT 120 code
+def g_type_module_register_enum - - FUNC GLOBAL DEFAULT 212 code
+def g_type_module_register_flags - - FUNC GLOBAL DEFAULT 212 code
+def g_type_module_register_type - - FUNC GLOBAL DEFAULT 400 code
+def g_type_module_set_name - - FUNC GLOBAL DEFAULT 84 code
+def g_type_module_unuse - - FUNC GLOBAL DEFAULT 128 code
+def g_type_module_use - - FUNC GLOBAL DEFAULT 184 code
+def g_type_name - - FUNC GLOBAL DEFAULT 104 code
+def g_type_name_from_class - - FUNC GLOBAL DEFAULT 20 code
+def g_type_name_from_instance - - FUNC GLOBAL DEFAULT 20 code
+def g_type_next_base - - FUNC GLOBAL DEFAULT 92 code
+def g_type_parent - - FUNC GLOBAL DEFAULT 36 code
+def g_type_plugin_complete_interface_info - - FUNC GLOBAL DEFAULT 136 code
+def g_type_plugin_complete_type_info - - FUNC GLOBAL DEFAULT 176 code
+def g_type_plugin_get_type - - FUNC GLOBAL DEFAULT 76 code
+def g_type_plugin_unuse - - FUNC GLOBAL DEFAULT 84 code
+def g_type_plugin_use - - FUNC GLOBAL DEFAULT 84 code
+def g_type_qname - - FUNC GLOBAL DEFAULT 36 code
+def g_type_query - - FUNC GLOBAL DEFAULT 164 code
+def g_type_register_dynamic - - FUNC GLOBAL DEFAULT 316 code
+def g_type_register_fundamental - - FUNC GLOBAL DEFAULT 496 code
+def g_type_register_static - - FUNC GLOBAL DEFAULT 492 code
+def g_type_register_static_simple - - FUNC GLOBAL DEFAULT 136 code
+def g_type_remove_class_cache_func - - FUNC GLOBAL DEFAULT 204 code
+def g_type_remove_interface_check - - FUNC GLOBAL DEFAULT 204 code
+def g_type_set_qdata - - FUNC GLOBAL DEFAULT 288 code
+def g_type_test_flags - - FUNC GLOBAL DEFAULT 228 code
+def g_type_value_table_peek - - FUNC GLOBAL DEFAULT 356 code
+def g_unicode_break_type_get_type - - FUNC GLOBAL DEFAULT 84 code
+def g_unicode_script_get_type - - FUNC GLOBAL DEFAULT 88 code
+def g_unicode_type_get_type - - FUNC GLOBAL DEFAULT 80 code
+def g_uri_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_value_array_append - - FUNC GLOBAL DEFAULT 52 code
+def g_value_array_copy - - FUNC GLOBAL DEFAULT 164 code
+def g_value_array_free - - FUNC GLOBAL DEFAULT 100 code
+def g_value_array_get_nth - - FUNC GLOBAL DEFAULT 88 code
+def g_value_array_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_value_array_insert - - FUNC GLOBAL DEFAULT 300 code
+def g_value_array_new - - FUNC GLOBAL DEFAULT 62 code
+def g_value_array_prepend - - FUNC GLOBAL DEFAULT 48 code
+def g_value_array_remove - - FUNC GLOBAL DEFAULT 180 code
+def g_value_array_sort - - FUNC GLOBAL DEFAULT 64 code
+def g_value_array_sort_with_data - - FUNC GLOBAL DEFAULT 116 code
+def g_value_copy - - FUNC GLOBAL DEFAULT 212 code
+def g_value_dup_boxed - - FUNC GLOBAL DEFAULT 112 code
+def g_value_dup_object - - FUNC GLOBAL DEFAULT 68 code
+def g_value_dup_param - - FUNC GLOBAL DEFAULT 68 code
+def g_value_dup_string - - FUNC GLOBAL DEFAULT 68 code
+def g_value_dup_variant - - FUNC GLOBAL DEFAULT 72 code
+def g_value_fits_pointer - - FUNC GLOBAL DEFAULT 96 code
+def g_value_get_boolean - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_boxed - - FUNC GLOBAL DEFAULT 104 code
+def g_value_get_char - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_double - - FUNC GLOBAL DEFAULT 64 code
+def g_value_get_enum - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_flags - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_float - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_gtype - - FUNC GLOBAL DEFAULT 68 code
+def g_value_get_int - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_int64 - - FUNC GLOBAL DEFAULT 64 code
+def g_value_get_long - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_object - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_param - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_pointer - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_schar - - FUNC GLOBAL DEFAULT 64 code
+def g_value_get_string - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_type - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_uchar - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_uint - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_uint64 - - FUNC GLOBAL DEFAULT 64 code
+def g_value_get_ulong - - FUNC GLOBAL DEFAULT 60 code
+def g_value_get_variant - - FUNC GLOBAL DEFAULT 60 code
+def g_value_init - - FUNC GLOBAL DEFAULT 200 code
+def g_value_init_from_instance - - FUNC GLOBAL DEFAULT 320 code
+def g_value_peek_pointer - - FUNC GLOBAL DEFAULT 136 code
+def g_value_register_transform_func - - FUNC GLOBAL DEFAULT 608 code
+def g_value_reset - - FUNC GLOBAL DEFAULT 124 code
+def g_value_set_boolean - - FUNC GLOBAL DEFAULT 68 code
+def g_value_set_boxed - - FUNC GLOBAL DEFAULT 148 code
+def g_value_set_boxed_take_ownership - - FUNC GLOBAL DEFAULT 4 code
+def g_value_set_char - - FUNC GLOBAL DEFAULT 60 code
+def g_value_set_double - - FUNC GLOBAL DEFAULT 68 code
+def g_value_set_enum - - FUNC GLOBAL DEFAULT 64 code
+def g_value_set_flags - - FUNC GLOBAL DEFAULT 64 code
+def g_value_set_float - - FUNC GLOBAL DEFAULT 64 code
+def g_value_set_gtype - - FUNC GLOBAL DEFAULT 68 code
+def g_value_set_instance - - FUNC GLOBAL DEFAULT 364 code
+def g_value_set_int - - FUNC GLOBAL DEFAULT 64 code
+def g_value_set_int64 - - FUNC GLOBAL DEFAULT 68 code
+def g_value_set_interned_string - - FUNC GLOBAL DEFAULT 92 code
+def g_value_set_long - - FUNC GLOBAL DEFAULT 64 code
+def g_value_set_object - - FUNC GLOBAL DEFAULT 188 code
+def g_value_set_object_take_ownership - - FUNC GLOBAL DEFAULT 4 code
+def g_value_set_param - - FUNC GLOBAL DEFAULT 140 code
+def g_value_set_param_take_ownership - - FUNC GLOBAL DEFAULT 4 code
+def g_value_set_pointer - - FUNC GLOBAL DEFAULT 64 code
+def g_value_set_schar - - FUNC GLOBAL DEFAULT 64 code
+def g_value_set_static_boxed - - FUNC GLOBAL DEFAULT 148 code
+def g_value_set_static_string - - FUNC GLOBAL DEFAULT 92 code
+def g_value_set_string - - FUNC GLOBAL DEFAULT 92 code
+def g_value_set_string_take_ownership - - FUNC GLOBAL DEFAULT 4 code
+def g_value_set_uchar - - FUNC GLOBAL DEFAULT 64 code
+def g_value_set_uint - - FUNC GLOBAL DEFAULT 64 code
+def g_value_set_uint64 - - FUNC GLOBAL DEFAULT 68 code
+def g_value_set_ulong - - FUNC GLOBAL DEFAULT 64 code
+def g_value_set_variant - - FUNC GLOBAL DEFAULT 88 code
+def g_value_take_boxed - - FUNC GLOBAL DEFAULT 144 code
+def g_value_take_object - - FUNC GLOBAL DEFAULT 172 code
+def g_value_take_param - - FUNC GLOBAL DEFAULT 120 code
+def g_value_take_string - - FUNC GLOBAL DEFAULT 84 code
+def g_value_take_variant - - FUNC GLOBAL DEFAULT 88 code
+def g_value_transform - - FUNC GLOBAL DEFAULT 176 code
+def g_value_type_compatible - - FUNC GLOBAL DEFAULT 120 code
+def g_value_type_transformable - - FUNC GLOBAL DEFAULT 104 code
+def g_value_unset - - FUNC GLOBAL DEFAULT 72 code
+def g_variant_builder_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_variant_dict_get_type - - FUNC GLOBAL DEFAULT 64 code
+def g_variant_get_gtype - - FUNC GLOBAL DEFAULT 4 code
+def g_variant_type_get_gtype - - FUNC GLOBAL DEFAULT 64 code
+def g_weak_ref_clear - - FUNC GLOBAL DEFAULT 18 code
+def g_weak_ref_get - - FUNC GLOBAL DEFAULT 84 code
+def g_weak_ref_init - - FUNC GLOBAL DEFAULT 8 code
+def g_weak_ref_set - - FUNC GLOBAL DEFAULT 308 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ffi_call LIBFFI_BASE_8.0 libffi.so.8 FUNC GLOBAL
+und ffi_prep_cif LIBFFI_BASE_8.0 libffi.so.8 FUNC GLOBAL
+und ffi_type_double LIBFFI_BASE_8.0 libffi.so.8 OBJECT GLOBAL
+und ffi_type_float LIBFFI_BASE_8.0 libffi.so.8 OBJECT GLOBAL
+und ffi_type_pointer LIBFFI_BASE_8.0 libffi.so.8 OBJECT GLOBAL
+und ffi_type_sint32 LIBFFI_BASE_8.0 libffi.so.8 OBJECT GLOBAL
+und ffi_type_sint64 LIBFFI_BASE_8.0 libffi.so.8 OBJECT GLOBAL
+und ffi_type_uint32 LIBFFI_BASE_8.0 libffi.so.8 OBJECT GLOBAL
+und ffi_type_uint64 LIBFFI_BASE_8.0 libffi.so.8 OBJECT GLOBAL
+und ffi_type_void LIBFFI_BASE_8.0 libffi.so.8 OBJECT GLOBAL
+und g_array_append_vals - - FUNC GLOBAL
+und g_array_free - - FUNC GLOBAL
+und g_array_new - - FUNC GLOBAL
+und g_array_ref - - FUNC GLOBAL
+und g_array_unref - - FUNC GLOBAL
+und g_assertion_message_expr - - FUNC GLOBAL
+und g_atomic_rc_box_acquire - - FUNC GLOBAL
+und g_atomic_rc_box_alloc0 - - FUNC GLOBAL
+und g_atomic_rc_box_release_full - - FUNC GLOBAL
+und g_byte_array_ref - - FUNC GLOBAL
+und g_byte_array_unref - - FUNC GLOBAL
+und g_bytes_ref - - FUNC GLOBAL
+und g_bytes_unref - - FUNC GLOBAL
+und g_checksum_copy - - FUNC GLOBAL
+und g_checksum_free - - FUNC GLOBAL
+und g_child_watch_funcs - - OBJECT GLOBAL
+und g_datalist_clear - - FUNC GLOBAL
+und g_datalist_get_data - - FUNC GLOBAL
+und g_datalist_get_flags - - FUNC GLOBAL
+und g_datalist_id_dup_data - - FUNC GLOBAL
+und g_datalist_id_get_data - - FUNC GLOBAL
+und g_datalist_id_remove_no_notify - - FUNC GLOBAL
+und g_datalist_id_replace_data - - FUNC GLOBAL
+und g_datalist_id_set_data_full - - FUNC GLOBAL
+und g_datalist_set_flags - - FUNC GLOBAL
+und g_datalist_unset_flags - - FUNC GLOBAL
+und g_date_copy - - FUNC GLOBAL
+und g_date_free - - FUNC GLOBAL
+und g_date_time_ref - - FUNC GLOBAL
+und g_date_time_unref - - FUNC GLOBAL
+und g_direct_hash - - FUNC GLOBAL
+und g_error_copy - - FUNC GLOBAL
+und g_error_free - - FUNC GLOBAL
+und g_free - - FUNC GLOBAL
+und g_getenv - - FUNC GLOBAL
+und g_hash_table_add - - FUNC GLOBAL
+und g_hash_table_contains - - FUNC GLOBAL
+und g_hash_table_foreach - - FUNC GLOBAL
+und g_hash_table_insert - - FUNC GLOBAL
+und g_hash_table_lookup - - FUNC GLOBAL
+und g_hash_table_new - - FUNC GLOBAL
+und g_hash_table_ref - - FUNC GLOBAL
+und g_hash_table_remove - - FUNC GLOBAL
+und g_hash_table_unref - - FUNC GLOBAL
+und g_hook_alloc - - FUNC GLOBAL
+und g_hook_destroy - - FUNC GLOBAL
+und g_hook_destroy_link - - FUNC GLOBAL
+und g_hook_first_valid - - FUNC GLOBAL
+und g_hook_insert_before - - FUNC GLOBAL
+und g_hook_list_clear - - FUNC GLOBAL
+und g_hook_list_init - - FUNC GLOBAL
+und g_hook_next_valid - - FUNC GLOBAL
+und g_idle_funcs - - OBJECT GLOBAL
+und g_intern_static_string - - FUNC GLOBAL
+und g_intern_string - - FUNC GLOBAL
+und g_io_channel_ref - - FUNC GLOBAL
+und g_io_channel_unref - - FUNC GLOBAL
+und g_io_watch_funcs - - OBJECT GLOBAL
+und g_key_file_ref - - FUNC GLOBAL
+und g_key_file_unref - - FUNC GLOBAL
+und g_list_free - - FUNC GLOBAL
+und g_list_prepend - - FUNC GLOBAL
+und g_log - - FUNC GLOBAL
+und g_main_context_ref - - FUNC GLOBAL
+und g_main_context_unref - - FUNC GLOBAL
+und g_main_loop_ref - - FUNC GLOBAL
+und g_main_loop_unref - - FUNC GLOBAL
+und g_malloc - - FUNC GLOBAL
+und g_malloc0 - - FUNC GLOBAL
+und g_malloc0_n - - FUNC GLOBAL
+und g_malloc_n - - FUNC GLOBAL
+und g_mapped_file_ref - - FUNC GLOBAL
+und g_mapped_file_unref - - FUNC GLOBAL
+und g_markup_parse_context_ref - - FUNC GLOBAL
+und g_markup_parse_context_unref - - FUNC GLOBAL
+und g_match_info_ref - - FUNC GLOBAL
+und g_match_info_unref - - FUNC GLOBAL
+und g_memdup2 - - FUNC GLOBAL
+und g_mutex_clear - - FUNC GLOBAL
+und g_mutex_init - - FUNC GLOBAL
+und g_mutex_lock - - FUNC GLOBAL
+und g_mutex_unlock - - FUNC GLOBAL
+und g_nullify_pointer - - FUNC GLOBAL
+und g_once_init_enter - - FUNC GLOBAL
+und g_once_init_leave - - FUNC GLOBAL
+und g_option_group_ref - - FUNC GLOBAL
+und g_option_group_unref - - FUNC GLOBAL
+und g_parse_debug_string - - FUNC GLOBAL
+und g_pattern_spec_copy - - FUNC GLOBAL
+und g_pattern_spec_free - - FUNC GLOBAL
+und g_ptr_array_add - - FUNC GLOBAL
+und g_ptr_array_new_with_free_func - - FUNC GLOBAL
+und g_ptr_array_ref - - FUNC GLOBAL
+und g_ptr_array_remove_index - - FUNC GLOBAL
+und g_ptr_array_steal - - FUNC GLOBAL
+und g_ptr_array_steal_index_fast - - FUNC GLOBAL
+und g_ptr_array_unref - - FUNC GLOBAL
+und g_qsort_with_data - - FUNC GLOBAL
+und g_quark_from_static_string - - FUNC GLOBAL
+und g_quark_from_string - - FUNC GLOBAL
+und g_quark_to_string - - FUNC GLOBAL
+und g_quark_try_string - - FUNC GLOBAL
+und g_realloc - - FUNC GLOBAL
+und g_realloc_n - - FUNC GLOBAL
+und g_rec_mutex_clear - - FUNC GLOBAL
+und g_rec_mutex_init - - FUNC GLOBAL
+und g_rec_mutex_lock - - FUNC GLOBAL
+und g_rec_mutex_unlock - - FUNC GLOBAL
+und g_regex_ref - - FUNC GLOBAL
+und g_regex_unref - - FUNC GLOBAL
+und g_return_if_fail_warning - - FUNC GLOBAL
+und g_rw_lock_reader_lock - - FUNC GLOBAL
+und g_rw_lock_reader_unlock - - FUNC GLOBAL
+und g_rw_lock_writer_lock - - FUNC GLOBAL
+und g_rw_lock_writer_unlock - - FUNC GLOBAL
+und g_slice_alloc - - FUNC GLOBAL
+und g_slice_alloc0 - - FUNC GLOBAL
+und g_slice_free1 - - FUNC GLOBAL
+und g_slist_append - - FUNC GLOBAL
+und g_slist_copy - - FUNC GLOBAL
+und g_slist_delete_link - - FUNC GLOBAL
+und g_slist_find - - FUNC GLOBAL
+und g_slist_free - - FUNC GLOBAL
+und g_slist_length - - FUNC GLOBAL
+und g_slist_prepend - - FUNC GLOBAL
+und g_slist_remove - - FUNC GLOBAL
+und g_slist_sort - - FUNC GLOBAL
+und g_source_destroy - - FUNC GLOBAL
+und g_source_ref - - FUNC GLOBAL
+und g_source_set_callback_indirect - - FUNC GLOBAL
+und g_source_unref - - FUNC GLOBAL
+und g_str_equal - - FUNC GLOBAL
+und g_str_hash - - FUNC GLOBAL
+und g_strcmp0 - - FUNC GLOBAL
+und g_strconcat - - FUNC GLOBAL
+und g_strdup - - FUNC GLOBAL
+und g_strdup_printf - - FUNC GLOBAL
+und g_strdupv - - FUNC GLOBAL
+und g_strescape - - FUNC GLOBAL
+und g_strfreev - - FUNC GLOBAL
+und g_string_append - - FUNC GLOBAL
+und g_string_append_printf - - FUNC GLOBAL
+und g_string_free - - FUNC GLOBAL
+und g_string_new - - FUNC GLOBAL
+und g_string_new_len - - FUNC GLOBAL
+und g_thread_ref - - FUNC GLOBAL
+und g_thread_unref - - FUNC GLOBAL
+und g_time_zone_ref - - FUNC GLOBAL
+und g_time_zone_unref - - FUNC GLOBAL
+und g_timeout_funcs - - OBJECT GLOBAL
+und g_tree_ref - - FUNC GLOBAL
+und g_tree_unref - - FUNC GLOBAL
+und g_unichar_validate - - FUNC GLOBAL
+und g_unix_fd_source_funcs - - OBJECT GLOBAL
+und g_unix_signal_funcs - - OBJECT GLOBAL
+und g_uri_ref - - FUNC GLOBAL
+und g_uri_unref - - FUNC GLOBAL
+und g_variant_builder_ref - - FUNC GLOBAL
+und g_variant_builder_unref - - FUNC GLOBAL
+und g_variant_classify - - FUNC GLOBAL
+und g_variant_compare - - FUNC GLOBAL
+und g_variant_dict_ref - - FUNC GLOBAL
+und g_variant_dict_unref - - FUNC GLOBAL
+und g_variant_equal - - FUNC GLOBAL
+und g_variant_get_type - - FUNC GLOBAL
+und g_variant_is_of_type - - FUNC GLOBAL
+und g_variant_ref_sink - - FUNC GLOBAL
+und g_variant_take_ref - - FUNC GLOBAL
+und g_variant_type_copy - - FUNC GLOBAL
+und g_variant_type_equal - - FUNC GLOBAL
+und g_variant_type_free - - FUNC GLOBAL
+und g_variant_unref - - FUNC GLOBAL
+und glib__private__ - - FUNC GLOBAL
+und glib_gettext - - FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und qsort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL

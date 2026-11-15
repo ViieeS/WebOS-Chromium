@@ -1,0 +1,30 @@
+# why: Hardware video, part 4. The TV's PowerVR driver reports 0 for GL_ALPHA_BITS (not part of GLES 3) although the
+# EGL config has 8 alpha bits, so viz drew opaque pixels over the hole. Keep RGBA output while hardware video is
+# on.
+diff --git a/src/components/viz/service/display_embedder/skia_output_device_gl.cc b/src/components/viz/service/display_embedder/skia_output_device_gl.cc
+index 5000ec1f3..bd44544f8 100644
+--- a/src/components/viz/service/display_embedder/skia_output_device_gl.cc
++++ b/src/components/viz/service/display_embedder/skia_output_device_gl.cc
+@@ -4,6 +4,8 @@
+ 
+ #include "components/viz/service/display_embedder/skia_output_device_gl.h"
+ 
++#include <cstdlib>  // chromium-native (patch 0023): getenv
++
+ #include <tuple>
+ #include <utility>
+ 
+@@ -143,6 +145,13 @@ SkiaOutputDeviceGL::SkiaOutputDeviceGL(
+   gr_context->resetContext(kRenderTarget_GrGLBackendState);
+   glGetIntegerv(GL_ALPHA_BITS, &alpha_bits);
+   CHECK_GL_ERROR();
++  // chromium-native (patch 0023): GL_ALPHA_BITS is not part of GLES 3, and the TV's PowerVR driver answers 0 although
++  // the EGL config has 8 alpha bits (buffers are ARGB8888). Chrome then drew RGBX, alpha forced to 1, so the video
++  // hole was opaque black over the TV's video plane (VIDEO capture showed the picture, DISPLAY black). With hardware
++  // video keep RGBA.
++  if (alpha_bits == 0 && getenv("CN_MEDIA_SOCK") && *getenv("CN_MEDIA_SOCK")) {
++    alpha_bits = 8;
++  }
+ 
+   auto color_type = kRGBA_8888_SkColorType;
+ 

@@ -1,0 +1,523 @@
+tvabi 1
+soname libharfbuzz.so.0
+needed libm.so.6
+needed libfreetype.so.6
+needed libglib-2.0.so.0
+needed libgcc_s.so.1
+needed libc.so.6
+def hb_aat_layout_feature_type_get_name_id - - FUNC GLOBAL DEFAULT 100 code
+def hb_aat_layout_feature_type_get_selector_infos - - FUNC GLOBAL DEFAULT 132 code
+def hb_aat_layout_get_feature_types - - FUNC GLOBAL DEFAULT 556 code
+def hb_aat_layout_has_positioning - - FUNC GLOBAL DEFAULT 44 code
+def hb_aat_layout_has_substitution - - FUNC GLOBAL DEFAULT 72 code
+def hb_aat_layout_has_tracking - - FUNC GLOBAL DEFAULT 160 code
+def hb_blob_copy_writable_or_fail - - FUNC GLOBAL DEFAULT 36 code
+def hb_blob_create - - FUNC GLOBAL DEFAULT 38 code
+def hb_blob_create_from_file - - FUNC GLOBAL DEFAULT 18 code
+def hb_blob_create_from_file_or_fail - - FUNC GLOBAL DEFAULT 308 code
+def hb_blob_create_or_fail - - FUNC GLOBAL DEFAULT 98 code
+def hb_blob_create_sub_blob - - FUNC GLOBAL DEFAULT 88 code
+def hb_blob_destroy - - FUNC GLOBAL DEFAULT 228 code
+def hb_blob_get_data - - FUNC GLOBAL DEFAULT 10 code
+def hb_blob_get_data_writable - - FUNC GLOBAL DEFAULT 40 code
+def hb_blob_get_empty - - FUNC GLOBAL DEFAULT 12 code
+def hb_blob_get_length - - FUNC GLOBAL DEFAULT 4 code
+def hb_blob_get_user_data - - FUNC GLOBAL DEFAULT 72 code
+def hb_blob_is_immutable - - FUNC GLOBAL DEFAULT 10 code
+def hb_blob_make_immutable - - FUNC GLOBAL DEFAULT 10 code
+def hb_blob_reference - - FUNC GLOBAL DEFAULT 76 code
+def hb_blob_set_user_data - - FUNC GLOBAL DEFAULT 268 code
+def hb_buffer_add - - FUNC GLOBAL DEFAULT 88 code
+def hb_buffer_add_codepoints - - FUNC GLOBAL DEFAULT 272 code
+def hb_buffer_add_latin1 - - FUNC GLOBAL DEFAULT 262 code
+def hb_buffer_add_utf16 - - FUNC GLOBAL DEFAULT 570 code
+def hb_buffer_add_utf32 - - FUNC GLOBAL DEFAULT 338 code
+def hb_buffer_add_utf8 - - FUNC GLOBAL DEFAULT 1068 code
+def hb_buffer_allocation_successful - - FUNC GLOBAL DEFAULT 6 code
+def hb_buffer_append - - FUNC GLOBAL DEFAULT 660 code
+def hb_buffer_clear_contents - - FUNC GLOBAL DEFAULT 10 code
+def hb_buffer_create - - FUNC GLOBAL DEFAULT 92 code
+def hb_buffer_create_similar - - FUNC GLOBAL DEFAULT 46 code
+def hb_buffer_deserialize_glyphs - - FUNC GLOBAL DEFAULT 156 code
+def hb_buffer_deserialize_unicode - - FUNC GLOBAL DEFAULT 150 code
+def hb_buffer_destroy - - FUNC GLOBAL DEFAULT 248 code
+def hb_buffer_diff - - FUNC GLOBAL DEFAULT 376 code
+def hb_buffer_get_cluster_level - - FUNC GLOBAL DEFAULT 4 code
+def hb_buffer_get_content_type - - FUNC GLOBAL DEFAULT 4 code
+def hb_buffer_get_direction - - FUNC GLOBAL DEFAULT 4 code
+def hb_buffer_get_empty - - FUNC GLOBAL DEFAULT 12 code
+def hb_buffer_get_flags - - FUNC GLOBAL DEFAULT 4 code
+def hb_buffer_get_glyph_infos - - FUNC GLOBAL DEFAULT 10 code
+def hb_buffer_get_glyph_positions - - FUNC GLOBAL DEFAULT 58 code
+def hb_buffer_get_invisible_glyph - - FUNC GLOBAL DEFAULT 4 code
+def hb_buffer_get_language - - FUNC GLOBAL DEFAULT 4 code
+def hb_buffer_get_length - - FUNC GLOBAL DEFAULT 4 code
+def hb_buffer_get_not_found_glyph - - FUNC GLOBAL DEFAULT 4 code
+def hb_buffer_get_replacement_codepoint - - FUNC GLOBAL DEFAULT 4 code
+def hb_buffer_get_script - - FUNC GLOBAL DEFAULT 4 code
+def hb_buffer_get_segment_properties - - FUNC GLOBAL DEFAULT 28 code
+def hb_buffer_get_unicode_funcs - - FUNC GLOBAL DEFAULT 4 code
+def hb_buffer_get_user_data - - FUNC GLOBAL DEFAULT 72 code
+def hb_buffer_guess_segment_properties - - FUNC GLOBAL DEFAULT 4 code
+def hb_buffer_has_positions - - FUNC GLOBAL DEFAULT 6 code
+def hb_buffer_normalize_glyphs - - FUNC GLOBAL DEFAULT 864 code
+def hb_buffer_pre_allocate - - FUNC GLOBAL DEFAULT 26 code
+def hb_buffer_reference - - FUNC GLOBAL DEFAULT 76 code
+def hb_buffer_reset - - FUNC GLOBAL DEFAULT 52 code
+def hb_buffer_reverse - - FUNC GLOBAL DEFAULT 244 code
+def hb_buffer_reverse_clusters - - FUNC GLOBAL DEFAULT 404 code
+def hb_buffer_reverse_range - - FUNC GLOBAL DEFAULT 310 code
+def hb_buffer_serialize - - FUNC GLOBAL DEFAULT 188 code
+def hb_buffer_serialize_format_from_string - - FUNC GLOBAL DEFAULT 12 code
+def hb_buffer_serialize_format_to_string - - FUNC GLOBAL DEFAULT 52 code
+def hb_buffer_serialize_glyphs - - FUNC GLOBAL DEFAULT 192 code
+def hb_buffer_serialize_list_formats - - FUNC GLOBAL DEFAULT 12 code
+def hb_buffer_serialize_unicode - - FUNC GLOBAL DEFAULT 136 code
+def hb_buffer_set_cluster_level - - FUNC GLOBAL DEFAULT 8 code
+def hb_buffer_set_content_type - - FUNC GLOBAL DEFAULT 4 code
+def hb_buffer_set_direction - - FUNC GLOBAL DEFAULT 8 code
+def hb_buffer_set_flags - - FUNC GLOBAL DEFAULT 8 code
+def hb_buffer_set_invisible_glyph - - FUNC GLOBAL DEFAULT 8 code
+def hb_buffer_set_language - - FUNC GLOBAL DEFAULT 8 code
+def hb_buffer_set_length - - FUNC GLOBAL DEFAULT 122 code
+def hb_buffer_set_message_func - - FUNC GLOBAL DEFAULT 48 code
+def hb_buffer_set_not_found_glyph - - FUNC GLOBAL DEFAULT 8 code
+def hb_buffer_set_replacement_codepoint - - FUNC GLOBAL DEFAULT 8 code
+def hb_buffer_set_script - - FUNC GLOBAL DEFAULT 8 code
+def hb_buffer_set_segment_properties - - FUNC GLOBAL DEFAULT 34 code
+def hb_buffer_set_unicode_funcs - - FUNC GLOBAL DEFAULT 36 code
+def hb_buffer_set_user_data - - FUNC GLOBAL DEFAULT 268 code
+def hb_color_get_alpha - - FUNC GLOBAL DEFAULT 4 code
+def hb_color_get_blue - - FUNC GLOBAL DEFAULT 4 code
+def hb_color_get_green - - FUNC GLOBAL DEFAULT 6 code
+def hb_color_get_red - - FUNC GLOBAL DEFAULT 6 code
+def hb_direction_from_string - - FUNC GLOBAL DEFAULT 62 code
+def hb_direction_to_string - - FUNC GLOBAL DEFAULT 36 code
+def hb_draw_close_path - - FUNC GLOBAL DEFAULT 104 code
+def hb_draw_cubic_to - - FUNC GLOBAL DEFAULT 116 code
+def hb_draw_funcs_create - - FUNC GLOBAL DEFAULT 76 code
+def hb_draw_funcs_destroy - - FUNC GLOBAL DEFAULT 260 code
+def hb_draw_funcs_is_immutable - - FUNC GLOBAL DEFAULT 10 code
+def hb_draw_funcs_make_immutable - - FUNC GLOBAL DEFAULT 10 code
+def hb_draw_funcs_reference - - FUNC GLOBAL DEFAULT 76 code
+def hb_draw_funcs_set_close_path_func - - FUNC GLOBAL DEFAULT 48 code
+def hb_draw_funcs_set_cubic_to_func - - FUNC GLOBAL DEFAULT 48 code
+def hb_draw_funcs_set_line_to_func - - FUNC GLOBAL DEFAULT 48 code
+def hb_draw_funcs_set_move_to_func - - FUNC GLOBAL DEFAULT 48 code
+def hb_draw_funcs_set_quadratic_to_func - - FUNC GLOBAL DEFAULT 48 code
+def hb_draw_line_to - - FUNC GLOBAL DEFAULT 82 code
+def hb_draw_move_to - - FUNC GLOBAL DEFAULT 108 code
+def hb_draw_quadratic_to - - FUNC GLOBAL DEFAULT 100 code
+def hb_face_builder_add_table - - FUNC GLOBAL DEFAULT 508 code
+def hb_face_builder_create - - FUNC GLOBAL DEFAULT 68 code
+def hb_face_collect_unicodes - - FUNC GLOBAL DEFAULT 192 code
+def hb_face_collect_variation_selectors - - FUNC GLOBAL DEFAULT 620 code
+def hb_face_collect_variation_unicodes - - FUNC GLOBAL DEFAULT 884 code
+def hb_face_count - - FUNC GLOBAL DEFAULT 356 code
+def hb_face_create - - FUNC GLOBAL DEFAULT 116 code
+def hb_face_create_for_tables - - FUNC GLOBAL DEFAULT 76 code
+def hb_face_destroy - - FUNC GLOBAL DEFAULT 168 code
+def hb_face_get_empty - - FUNC GLOBAL DEFAULT 12 code
+def hb_face_get_glyph_count - - FUNC GLOBAL DEFAULT 14 code
+def hb_face_get_index - - FUNC GLOBAL DEFAULT 4 code
+def hb_face_get_table_tags - - FUNC GLOBAL DEFAULT 76 code
+def hb_face_get_upem - - FUNC GLOBAL DEFAULT 12 code
+def hb_face_get_user_data - - FUNC GLOBAL DEFAULT 72 code
+def hb_face_is_immutable - - FUNC GLOBAL DEFAULT 10 code
+def hb_face_make_immutable - - FUNC GLOBAL DEFAULT 10 code
+def hb_face_reference - - FUNC GLOBAL DEFAULT 76 code
+def hb_face_reference_blob - - FUNC GLOBAL DEFAULT 24 code
+def hb_face_reference_table - - FUNC GLOBAL DEFAULT 28 code
+def hb_face_set_glyph_count - - FUNC GLOBAL DEFAULT 8 code
+def hb_face_set_index - - FUNC GLOBAL DEFAULT 8 code
+def hb_face_set_upem - - FUNC GLOBAL DEFAULT 8 code
+def hb_face_set_user_data - - FUNC GLOBAL DEFAULT 268 code
+def hb_feature_from_string - - FUNC GLOBAL DEFAULT 546 code
+def hb_feature_to_string - - FUNC GLOBAL DEFAULT 380 code
+def hb_font_add_glyph_origin_for_direction - - FUNC GLOBAL DEFAULT 38 code
+def hb_font_create - - FUNC GLOBAL DEFAULT 36 code
+def hb_font_create_sub_font - - FUNC GLOBAL DEFAULT 272 code
+def hb_font_destroy - - FUNC GLOBAL DEFAULT 280 code
+def hb_font_funcs_create - - FUNC GLOBAL DEFAULT 56 code
+def hb_font_funcs_destroy - - FUNC GLOBAL DEFAULT 384 code
+def hb_font_funcs_get_empty - - FUNC GLOBAL DEFAULT 12 code
+def hb_font_funcs_get_user_data - - FUNC GLOBAL DEFAULT 72 code
+def hb_font_funcs_is_immutable - - FUNC GLOBAL DEFAULT 10 code
+def hb_font_funcs_make_immutable - - FUNC GLOBAL DEFAULT 10 code
+def hb_font_funcs_reference - - FUNC GLOBAL DEFAULT 76 code
+def hb_font_funcs_set_font_h_extents_func - - FUNC GLOBAL DEFAULT 72 code
+def hb_font_funcs_set_font_v_extents_func - - FUNC GLOBAL DEFAULT 72 code
+def hb_font_funcs_set_glyph_contour_point_func - - FUNC GLOBAL DEFAULT 76 code
+def hb_font_funcs_set_glyph_extents_func - - FUNC GLOBAL DEFAULT 76 code
+def hb_font_funcs_set_glyph_from_name_func - - FUNC GLOBAL DEFAULT 76 code
+def hb_font_funcs_set_glyph_func - - FUNC GLOBAL DEFAULT 112 code
+def hb_font_funcs_set_glyph_h_advance_func - - FUNC GLOBAL DEFAULT 72 code
+def hb_font_funcs_set_glyph_h_advances_func - - FUNC GLOBAL DEFAULT 72 code
+def hb_font_funcs_set_glyph_h_kerning_func - - FUNC GLOBAL DEFAULT 76 code
+def hb_font_funcs_set_glyph_h_origin_func - - FUNC GLOBAL DEFAULT 72 code
+def hb_font_funcs_set_glyph_name_func - - FUNC GLOBAL DEFAULT 76 code
+def hb_font_funcs_set_glyph_shape_func - - FUNC GLOBAL DEFAULT 76 code
+def hb_font_funcs_set_glyph_v_advance_func - - FUNC GLOBAL DEFAULT 72 code
+def hb_font_funcs_set_glyph_v_advances_func - - FUNC GLOBAL DEFAULT 72 code
+def hb_font_funcs_set_glyph_v_kerning_func - - FUNC GLOBAL DEFAULT 76 code
+def hb_font_funcs_set_glyph_v_origin_func - - FUNC GLOBAL DEFAULT 72 code
+def hb_font_funcs_set_nominal_glyph_func - - FUNC GLOBAL DEFAULT 72 code
+def hb_font_funcs_set_nominal_glyphs_func - - FUNC GLOBAL DEFAULT 72 code
+def hb_font_funcs_set_user_data - - FUNC GLOBAL DEFAULT 268 code
+def hb_font_funcs_set_variation_glyph_func - - FUNC GLOBAL DEFAULT 72 code
+def hb_font_get_empty - - FUNC GLOBAL DEFAULT 16 code
+def hb_font_get_extents_for_direction - - FUNC GLOBAL DEFAULT 132 code
+def hb_font_get_face - - FUNC GLOBAL DEFAULT 4 code
+def hb_font_get_glyph - - FUNC GLOBAL DEFAULT 54 code
+def hb_font_get_glyph_advance_for_direction - - FUNC GLOBAL DEFAULT 52 code
+def hb_font_get_glyph_advances_for_direction - - FUNC GLOBAL DEFAULT 70 code
+def hb_font_get_glyph_contour_point - - FUNC GLOBAL DEFAULT 40 code
+def hb_font_get_glyph_contour_point_for_origin - - FUNC GLOBAL DEFAULT 104 code
+def hb_font_get_glyph_extents - - FUNC GLOBAL DEFAULT 36 code
+def hb_font_get_glyph_extents_for_origin - - FUNC GLOBAL DEFAULT 92 code
+def hb_font_get_glyph_from_name - - FUNC GLOBAL DEFAULT 54 code
+def hb_font_get_glyph_h_advance - - FUNC GLOBAL DEFAULT 20 code
+def hb_font_get_glyph_h_advances - - FUNC GLOBAL DEFAULT 40 code
+def hb_font_get_glyph_h_kerning - - FUNC GLOBAL DEFAULT 28 code
+def hb_font_get_glyph_h_origin - - FUNC GLOBAL DEFAULT 36 code
+def hb_font_get_glyph_kerning_for_direction - - FUNC GLOBAL DEFAULT 70 code
+def hb_font_get_glyph_name - - FUNC GLOBAL DEFAULT 36 code
+def hb_font_get_glyph_origin_for_direction - - FUNC GLOBAL DEFAULT 4 code
+def hb_font_get_glyph_shape - - FUNC GLOBAL DEFAULT 32 code
+def hb_font_get_glyph_v_advance - - FUNC GLOBAL DEFAULT 20 code
+def hb_font_get_glyph_v_advances - - FUNC GLOBAL DEFAULT 40 code
+def hb_font_get_glyph_v_kerning - - FUNC GLOBAL DEFAULT 28 code
+def hb_font_get_glyph_v_origin - - FUNC GLOBAL DEFAULT 36 code
+def hb_font_get_h_extents - - FUNC GLOBAL DEFAULT 38 code
+def hb_font_get_nominal_glyph - - FUNC GLOBAL DEFAULT 30 code
+def hb_font_get_nominal_glyphs - - FUNC GLOBAL DEFAULT 40 code
+def hb_font_get_parent - - FUNC GLOBAL DEFAULT 4 code
+def hb_font_get_ppem - - FUNC GLOBAL DEFAULT 14 code
+def hb_font_get_ptem - - FUNC GLOBAL DEFAULT 4 code
+def hb_font_get_scale - - FUNC GLOBAL DEFAULT 14 code
+def hb_font_get_synthetic_slant - - FUNC GLOBAL DEFAULT 4 code
+def hb_font_get_user_data - - FUNC GLOBAL DEFAULT 72 code
+def hb_font_get_v_extents - - FUNC GLOBAL DEFAULT 38 code
+def hb_font_get_var_coords_design - - FUNC GLOBAL DEFAULT 10 code
+def hb_font_get_var_coords_normalized - - FUNC GLOBAL DEFAULT 10 code
+def hb_font_get_variation_glyph - - FUNC GLOBAL DEFAULT 34 code
+def hb_font_glyph_from_string - - FUNC GLOBAL DEFAULT 284 code
+def hb_font_glyph_to_string - - FUNC GLOBAL DEFAULT 104 code
+def hb_font_is_immutable - - FUNC GLOBAL DEFAULT 10 code
+def hb_font_make_immutable - - FUNC GLOBAL DEFAULT 48 code
+def hb_font_reference - - FUNC GLOBAL DEFAULT 76 code
+def hb_font_set_face - - FUNC GLOBAL DEFAULT 176 code
+def hb_font_set_funcs - - FUNC GLOBAL DEFAULT 68 code
+def hb_font_set_funcs_data - - FUNC GLOBAL DEFAULT 38 code
+def hb_font_set_parent - - FUNC GLOBAL DEFAULT 38 code
+def hb_font_set_ppem - - FUNC GLOBAL DEFAULT 10 code
+def hb_font_set_ptem - - FUNC GLOBAL DEFAULT 8 code
+def hb_font_set_scale - - FUNC GLOBAL DEFAULT 136 code
+def hb_font_set_synthetic_slant - - FUNC GLOBAL DEFAULT 136 code
+def hb_font_set_user_data - - FUNC GLOBAL DEFAULT 268 code
+def hb_font_set_var_coords_design - - FUNC GLOBAL DEFAULT 110 code
+def hb_font_set_var_coords_normalized - - FUNC GLOBAL DEFAULT 1612 code
+def hb_font_set_var_named_instance - - FUNC GLOBAL DEFAULT 80 code
+def hb_font_set_variations - - FUNC GLOBAL DEFAULT 1196 code
+def hb_font_subtract_glyph_origin_for_direction - - FUNC GLOBAL DEFAULT 38 code
+def hb_ft_face_create - - FUNC GLOBAL DEFAULT 88 code
+def hb_ft_face_create_cached - - FUNC GLOBAL DEFAULT 64 code
+def hb_ft_face_create_referenced - - FUNC GLOBAL DEFAULT 28 code
+def hb_ft_font_changed - - FUNC GLOBAL DEFAULT 236 code
+def hb_ft_font_create - - FUNC GLOBAL DEFAULT 42 code
+def hb_ft_font_create_referenced - - FUNC GLOBAL DEFAULT 28 code
+def hb_ft_font_get_face - - FUNC GLOBAL DEFAULT 24 code
+def hb_ft_font_get_load_flags - - FUNC GLOBAL DEFAULT 24 code
+def hb_ft_font_lock_face - - FUNC GLOBAL DEFAULT 32 code
+def hb_ft_font_set_funcs - - FUNC GLOBAL DEFAULT 460 code
+def hb_ft_font_set_load_flags - - FUNC GLOBAL DEFAULT 24 code
+def hb_ft_font_unlock_face - - FUNC GLOBAL DEFAULT 24 code
+def hb_glib_blob_create - - FUNC GLOBAL DEFAULT 56 code
+def hb_glib_get_unicode_funcs - - FUNC GLOBAL DEFAULT 248 code
+def hb_glib_script_from_script - - FUNC GLOBAL DEFAULT 4 code
+def hb_glib_script_to_script - - FUNC GLOBAL DEFAULT 4 code
+def hb_glyph_info_get_glyph_flags - - FUNC GLOBAL DEFAULT 8 code
+def hb_language_from_string - - FUNC GLOBAL DEFAULT 80 code
+def hb_language_get_default - - FUNC GLOBAL DEFAULT 60 code
+def hb_language_to_string - - FUNC GLOBAL DEFAULT 2 code
+def hb_map_allocation_successful - - FUNC GLOBAL DEFAULT 4 code
+def hb_map_clear - - FUNC GLOBAL DEFAULT 92 code
+def hb_map_create - - FUNC GLOBAL DEFAULT 46 code
+def hb_map_del - - FUNC GLOBAL DEFAULT 196 code
+def hb_map_destroy - - FUNC GLOBAL DEFAULT 224 code
+def hb_map_get - - FUNC GLOBAL DEFAULT 154 code
+def hb_map_get_empty - - FUNC GLOBAL DEFAULT 12 code
+def hb_map_get_population - - FUNC GLOBAL DEFAULT 4 code
+def hb_map_get_user_data - - FUNC GLOBAL DEFAULT 72 code
+def hb_map_has - - FUNC GLOBAL DEFAULT 144 code
+def hb_map_is_empty - - FUNC GLOBAL DEFAULT 10 code
+def hb_map_reference - - FUNC GLOBAL DEFAULT 76 code
+def hb_map_set - - FUNC GLOBAL DEFAULT 304 code
+def hb_map_set_user_data - - FUNC GLOBAL DEFAULT 268 code
+def hb_ot_color_glyph_get_layers - - FUNC GLOBAL DEFAULT 188 code
+def hb_ot_color_glyph_reference_png - - FUNC GLOBAL DEFAULT 1368 code
+def hb_ot_color_glyph_reference_svg - - FUNC GLOBAL DEFAULT 148 code
+def hb_ot_color_has_layers - - FUNC GLOBAL DEFAULT 148 code
+def hb_ot_color_has_palettes - - FUNC GLOBAL DEFAULT 18 code
+def hb_ot_color_has_png - - FUNC GLOBAL DEFAULT 368 code
+def hb_ot_color_has_svg - - FUNC GLOBAL DEFAULT 188 code
+def hb_ot_color_palette_color_get_name_id - - FUNC GLOBAL DEFAULT 104 code
+def hb_ot_color_palette_get_colors - - FUNC GLOBAL DEFAULT 34 code
+def hb_ot_color_palette_get_count - - FUNC GLOBAL DEFAULT 16 code
+def hb_ot_color_palette_get_flags - - FUNC GLOBAL DEFAULT 112 code
+def hb_ot_color_palette_get_name_id - - FUNC GLOBAL DEFAULT 100 code
+def hb_ot_font_set_funcs - - FUNC GLOBAL DEFAULT 376 code
+def hb_ot_layout_collect_features - - FUNC GLOBAL DEFAULT 836 code
+def hb_ot_layout_collect_lookups - - FUNC GLOBAL DEFAULT 828 code
+def hb_ot_layout_feature_get_characters - - FUNC GLOBAL DEFAULT 296 code
+def hb_ot_layout_feature_get_lookups - - FUNC GLOBAL DEFAULT 26 code
+def hb_ot_layout_feature_get_name_ids - - FUNC GLOBAL DEFAULT 444 code
+def hb_ot_layout_feature_with_variations_get_lookups - - FUNC GLOBAL DEFAULT 344 code
+def hb_ot_layout_get_attach_points - - FUNC GLOBAL DEFAULT 228 code
+def hb_ot_layout_get_baseline - - FUNC GLOBAL DEFAULT 956 code
+def hb_ot_layout_get_baseline_with_fallback - - FUNC GLOBAL DEFAULT 1268 code
+def hb_ot_layout_get_glyph_class - - FUNC GLOBAL DEFAULT 232 code
+def hb_ot_layout_get_glyphs_in_class - - FUNC GLOBAL DEFAULT 432 code
+def hb_ot_layout_get_horizontal_baseline_tag_for_script - - FUNC GLOBAL DEFAULT 616 code
+def hb_ot_layout_get_ligature_carets - - FUNC GLOBAL DEFAULT 456 code
+def hb_ot_layout_get_size_params - - FUNC GLOBAL DEFAULT 356 code
+def hb_ot_layout_has_glyph_classes - - FUNC GLOBAL DEFAULT 192 code
+def hb_ot_layout_has_positioning - - FUNC GLOBAL DEFAULT 256 code
+def hb_ot_layout_has_substitution - - FUNC GLOBAL DEFAULT 64 code
+def hb_ot_layout_language_find_feature - - FUNC GLOBAL DEFAULT 372 code
+def hb_ot_layout_language_get_feature_indexes - - FUNC GLOBAL DEFAULT 192 code
+def hb_ot_layout_language_get_feature_tags - - FUNC GLOBAL DEFAULT 316 code
+def hb_ot_layout_language_get_required_feature - - FUNC GLOBAL DEFAULT 296 code
+def hb_ot_layout_language_get_required_feature_index - - FUNC GLOBAL DEFAULT 20 code
+def hb_ot_layout_lookup_collect_glyphs - - FUNC GLOBAL DEFAULT 488 code
+def hb_ot_layout_lookup_get_glyph_alternates - - FUNC GLOBAL DEFAULT 612 code
+def hb_ot_layout_lookup_substitute_closure - - FUNC GLOBAL DEFAULT 620 code
+def hb_ot_layout_lookup_would_substitute - - FUNC GLOBAL DEFAULT 340 code
+def hb_ot_layout_lookups_substitute_closure - - FUNC GLOBAL DEFAULT 3484 code
+def hb_ot_layout_script_find_language - - FUNC GLOBAL DEFAULT 24 code
+def hb_ot_layout_script_get_language_tags - - FUNC GLOBAL DEFAULT 256 code
+def hb_ot_layout_script_select_language - - FUNC GLOBAL DEFAULT 336 code
+def hb_ot_layout_table_choose_script - - FUNC GLOBAL DEFAULT 46 code
+def hb_ot_layout_table_find_feature_variations - - FUNC GLOBAL DEFAULT 320 code
+def hb_ot_layout_table_find_script - - FUNC GLOBAL DEFAULT 288 code
+def hb_ot_layout_table_get_feature_tags - - FUNC GLOBAL DEFAULT 192 code
+def hb_ot_layout_table_get_lookup_count - - FUNC GLOBAL DEFAULT 40 code
+def hb_ot_layout_table_get_script_tags - - FUNC GLOBAL DEFAULT 192 code
+def hb_ot_layout_table_select_script - - FUNC GLOBAL DEFAULT 416 code
+def hb_ot_math_get_constant - - FUNC GLOBAL DEFAULT 428 code
+def hb_ot_math_get_glyph_assembly - - FUNC GLOBAL DEFAULT 564 code
+def hb_ot_math_get_glyph_italics_correction - - FUNC GLOBAL DEFAULT 364 code
+def hb_ot_math_get_glyph_kerning - - FUNC GLOBAL DEFAULT 540 code
+def hb_ot_math_get_glyph_kernings - - FUNC GLOBAL DEFAULT 580 code
+def hb_ot_math_get_glyph_top_accent_attachment - - FUNC GLOBAL DEFAULT 392 code
+def hb_ot_math_get_glyph_variants - - FUNC GLOBAL DEFAULT 516 code
+def hb_ot_math_get_min_connector_overlap - - FUNC GLOBAL DEFAULT 300 code
+def hb_ot_math_has_data - - FUNC GLOBAL DEFAULT 236 code
+def hb_ot_math_is_glyph_extended_shape - - FUNC GLOBAL DEFAULT 288 code
+def hb_ot_meta_get_entry_tags - - FUNC GLOBAL DEFAULT 264 code
+def hb_ot_meta_reference_entry - - FUNC GLOBAL DEFAULT 432 code
+def hb_ot_metrics_get_position - - FUNC GLOBAL DEFAULT 6816 code
+def hb_ot_metrics_get_position_with_fallback - - FUNC GLOBAL DEFAULT 680 code
+def hb_ot_metrics_get_variation - - FUNC GLOBAL DEFAULT 176 code
+def hb_ot_metrics_get_x_variation - - FUNC GLOBAL DEFAULT 88 code
+def hb_ot_metrics_get_y_variation - - FUNC GLOBAL DEFAULT 88 code
+def hb_ot_name_get_utf16 - - FUNC GLOBAL DEFAULT 860 code
+def hb_ot_name_get_utf32 - - FUNC GLOBAL DEFAULT 872 code
+def hb_ot_name_get_utf8 - - FUNC GLOBAL DEFAULT 1020 code
+def hb_ot_name_list_names - - FUNC GLOBAL DEFAULT 172 code
+def hb_ot_shape_glyphs_closure - - FUNC GLOBAL DEFAULT 968 code
+def hb_ot_shape_plan_collect_lookups - - FUNC GLOBAL DEFAULT 38 code
+def hb_ot_tag_from_language - - FUNC GLOBAL DEFAULT 56 code
+def hb_ot_tag_to_language - - FUNC GLOBAL DEFAULT 3552 code
+def hb_ot_tag_to_script - - FUNC GLOBAL DEFAULT 358 code
+def hb_ot_tags_from_script - - FUNC GLOBAL DEFAULT 74 code
+def hb_ot_tags_from_script_and_language - - FUNC GLOBAL DEFAULT 1324 code
+def hb_ot_tags_to_script_and_language - - FUNC GLOBAL DEFAULT 230 code
+def hb_ot_var_find_axis - - FUNC GLOBAL DEFAULT 336 code
+def hb_ot_var_find_axis_info - - FUNC GLOBAL DEFAULT 308 code
+def hb_ot_var_get_axes - - FUNC GLOBAL DEFAULT 324 code
+def hb_ot_var_get_axis_count - - FUNC GLOBAL DEFAULT 16 code
+def hb_ot_var_get_axis_infos - - FUNC GLOBAL DEFAULT 360 code
+def hb_ot_var_get_named_instance_count - - FUNC GLOBAL DEFAULT 16 code
+def hb_ot_var_has_data - - FUNC GLOBAL DEFAULT 30 code
+def hb_ot_var_named_instance_get_design_coords - - FUNC GLOBAL DEFAULT 164 code
+def hb_ot_var_named_instance_get_postscript_name_id - - FUNC GLOBAL DEFAULT 88 code
+def hb_ot_var_named_instance_get_subfamily_name_id - - FUNC GLOBAL DEFAULT 80 code
+def hb_ot_var_normalize_coords - - FUNC GLOBAL DEFAULT 732 code
+def hb_ot_var_normalize_variations - - FUNC GLOBAL DEFAULT 792 code
+def hb_script_from_iso15924_tag - - FUNC GLOBAL DEFAULT 316 code
+def hb_script_from_string - - FUNC GLOBAL DEFAULT 14 code
+def hb_script_get_horizontal_direction - - FUNC GLOBAL DEFAULT 570 code
+def hb_script_to_iso15924_tag - - FUNC GLOBAL DEFAULT 2 code
+def hb_segment_properties_equal - - FUNC GLOBAL DEFAULT 50 code
+def hb_segment_properties_hash - - FUNC GLOBAL DEFAULT 12 code
+def hb_segment_properties_overlay - - FUNC GLOBAL DEFAULT 48 code
+def hb_set_add - - FUNC GLOBAL DEFAULT 324 code
+def hb_set_add_range - - FUNC GLOBAL DEFAULT 542 code
+def hb_set_allocation_successful - - FUNC GLOBAL DEFAULT 4 code
+def hb_set_clear - - FUNC GLOBAL DEFAULT 26 code
+def hb_set_copy - - FUNC GLOBAL DEFAULT 70 code
+def hb_set_create - - FUNC GLOBAL DEFAULT 56 code
+def hb_set_del - - FUNC GLOBAL DEFAULT 324 code
+def hb_set_del_range - - FUNC GLOBAL DEFAULT 1400 code
+def hb_set_destroy - - FUNC GLOBAL DEFAULT 228 code
+def hb_set_get_empty - - FUNC GLOBAL DEFAULT 12 code
+def hb_set_get_max - - FUNC GLOBAL DEFAULT 104 code
+def hb_set_get_min - - FUNC GLOBAL DEFAULT 100 code
+def hb_set_get_population - - FUNC GLOBAL DEFAULT 168 code
+def hb_set_get_user_data - - FUNC GLOBAL DEFAULT 72 code
+def hb_set_has - - FUNC GLOBAL DEFAULT 156 code
+def hb_set_intersect - - FUNC GLOBAL DEFAULT 68 code
+def hb_set_invert - - FUNC GLOBAL DEFAULT 18 code
+def hb_set_is_empty - - FUNC GLOBAL DEFAULT 116 code
+def hb_set_is_equal - - FUNC GLOBAL DEFAULT 1084 code
+def hb_set_is_subset - - FUNC GLOBAL DEFAULT 396 code
+def hb_set_next - - FUNC GLOBAL DEFAULT 126 code
+def hb_set_next_range - - FUNC GLOBAL DEFAULT 220 code
+def hb_set_previous - - FUNC GLOBAL DEFAULT 140 code
+def hb_set_previous_range - - FUNC GLOBAL DEFAULT 248 code
+def hb_set_reference - - FUNC GLOBAL DEFAULT 76 code
+def hb_set_set - - FUNC GLOBAL DEFAULT 66 code
+def hb_set_set_user_data - - FUNC GLOBAL DEFAULT 268 code
+def hb_set_subtract - - FUNC GLOBAL DEFAULT 72 code
+def hb_set_symmetric_difference - - FUNC GLOBAL DEFAULT 1600 code
+def hb_set_union - - FUNC GLOBAL DEFAULT 74 code
+def hb_shape - - FUNC GLOBAL DEFAULT 16 code
+def hb_shape_full - - FUNC GLOBAL DEFAULT 186 code
+def hb_shape_list_shapers - - FUNC GLOBAL DEFAULT 124 code
+def hb_shape_plan_create - - FUNC GLOBAL DEFAULT 22 code
+def hb_shape_plan_create2 - - FUNC GLOBAL DEFAULT 176 code
+def hb_shape_plan_create_cached - - FUNC GLOBAL DEFAULT 22 code
+def hb_shape_plan_create_cached2 - - FUNC GLOBAL DEFAULT 264 code
+def hb_shape_plan_destroy - - FUNC GLOBAL DEFAULT 232 code
+def hb_shape_plan_execute - - FUNC GLOBAL DEFAULT 448 code
+def hb_shape_plan_get_empty - - FUNC GLOBAL DEFAULT 12 code
+def hb_shape_plan_get_shaper - - FUNC GLOBAL DEFAULT 4 code
+def hb_shape_plan_get_user_data - - FUNC GLOBAL DEFAULT 72 code
+def hb_shape_plan_reference - - FUNC GLOBAL DEFAULT 76 code
+def hb_shape_plan_set_user_data - - FUNC GLOBAL DEFAULT 268 code
+def hb_style_get_value - - FUNC GLOBAL DEFAULT 1664 code
+def hb_tag_from_string - - FUNC GLOBAL DEFAULT 92 code
+def hb_tag_to_string - - FUNC GLOBAL DEFAULT 20 code
+def hb_unicode_combining_class - - FUNC GLOBAL DEFAULT 14 code
+def hb_unicode_compose - - FUNC GLOBAL DEFAULT 36 code
+def hb_unicode_decompose - - FUNC GLOBAL DEFAULT 22 code
+def hb_unicode_decompose_compatibility - - FUNC GLOBAL DEFAULT 40 code
+def hb_unicode_eastasian_width - - FUNC GLOBAL DEFAULT 14 code
+def hb_unicode_funcs_create - - FUNC GLOBAL DEFAULT 108 code
+def hb_unicode_funcs_destroy - - FUNC GLOBAL DEFAULT 292 code
+def hb_unicode_funcs_get_default - - FUNC GLOBAL DEFAULT 4 code
+def hb_unicode_funcs_get_empty - - FUNC GLOBAL DEFAULT 12 code
+def hb_unicode_funcs_get_parent - - FUNC GLOBAL DEFAULT 10 code
+def hb_unicode_funcs_get_user_data - - FUNC GLOBAL DEFAULT 72 code
+def hb_unicode_funcs_is_immutable - - FUNC GLOBAL DEFAULT 10 code
+def hb_unicode_funcs_make_immutable - - FUNC GLOBAL DEFAULT 10 code
+def hb_unicode_funcs_reference - - FUNC GLOBAL DEFAULT 76 code
+def hb_unicode_funcs_set_combining_class_func - - FUNC GLOBAL DEFAULT 46 code
+def hb_unicode_funcs_set_compose_func - - FUNC GLOBAL DEFAULT 46 code
+def hb_unicode_funcs_set_decompose_compatibility_func - - FUNC GLOBAL DEFAULT 46 code
+def hb_unicode_funcs_set_decompose_func - - FUNC GLOBAL DEFAULT 46 code
+def hb_unicode_funcs_set_eastasian_width_func - - FUNC GLOBAL DEFAULT 46 code
+def hb_unicode_funcs_set_general_category_func - - FUNC GLOBAL DEFAULT 46 code
+def hb_unicode_funcs_set_mirroring_func - - FUNC GLOBAL DEFAULT 46 code
+def hb_unicode_funcs_set_script_func - - FUNC GLOBAL DEFAULT 46 code
+def hb_unicode_funcs_set_user_data - - FUNC GLOBAL DEFAULT 268 code
+def hb_unicode_general_category - - FUNC GLOBAL DEFAULT 14 code
+def hb_unicode_mirroring - - FUNC GLOBAL DEFAULT 14 code
+def hb_unicode_script - - FUNC GLOBAL DEFAULT 14 code
+def hb_variation_from_string - - FUNC GLOBAL DEFAULT 148 code
+def hb_variation_to_string - - FUNC GLOBAL DEFAULT 284 code
+def hb_version - - FUNC GLOBAL DEFAULT 20 code
+def hb_version_atleast - - FUNC GLOBAL DEFAULT 28 code
+def hb_version_string - - FUNC GLOBAL DEFAULT 12 code
+und FT_Done_Face - - FUNC GLOBAL
+und FT_Done_FreeType - - FUNC GLOBAL
+und FT_Done_MM_Var - - FUNC GLOBAL
+und FT_Face_GetCharVariantIndex - - FUNC GLOBAL
+und FT_Get_Advance - - FUNC GLOBAL
+und FT_Get_Char_Index - - FUNC GLOBAL
+und FT_Get_Glyph_Name - - FUNC GLOBAL
+und FT_Get_Kerning - - FUNC GLOBAL
+und FT_Get_MM_Var - - FUNC GLOBAL
+und FT_Get_Name_Index - - FUNC GLOBAL
+und FT_Get_Var_Blend_Coordinates - - FUNC GLOBAL
+und FT_Init_FreeType - - FUNC GLOBAL
+und FT_Load_Glyph - - FUNC GLOBAL
+und FT_Load_Sfnt_Table - - FUNC GLOBAL
+und FT_MulFix - - FUNC GLOBAL
+und FT_New_Memory_Face - - FUNC GLOBAL
+und FT_Outline_Decompose - - FUNC GLOBAL
+und FT_Reference_Face - - FUNC GLOBAL
+und FT_Select_Charmap - - FUNC GLOBAL
+und FT_Set_Char_Size - - FUNC GLOBAL
+und FT_Set_Transform - - FUNC GLOBAL
+und FT_Set_Var_Blend_Coordinates - - FUNC GLOBAL
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __assert_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_atexit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und atanf GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ceilf GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und feof GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ferror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und floorf GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und fopen64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fread GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und freelocale GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und g_bytes_get_data - - FUNC GLOBAL
+und g_bytes_ref - - FUNC GLOBAL
+und g_bytes_unref - - FUNC GLOBAL
+und g_unichar_combining_class - - FUNC GLOBAL
+und g_unichar_compose - - FUNC GLOBAL
+und g_unichar_decompose - - FUNC GLOBAL
+und g_unichar_get_mirror_char - - FUNC GLOBAL
+und g_unichar_get_script - - FUNC GLOBAL
+und g_unichar_type - - FUNC GLOBAL
+und g_unicode_script_from_iso15924 - - FUNC GLOBAL
+und g_unicode_script_to_iso15924 - - FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mmap64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mprotect GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und munmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und newlocale GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_lock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_unlock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setlocale GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sysconf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und tanf GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und uselocale GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vsnprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL

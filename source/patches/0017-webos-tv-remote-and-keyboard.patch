@@ -1,0 +1,517 @@
+# why: Makes the LG remote and LG's on-screen keyboard work with Chrome's own UI.
+# - Arrows move focus between the page, the toolbar and the tabs (in the omnibox only while all its text is
+#   selected). Back (evdev 412) is Escape; Back on a page focuses the toolbar, because pages like YouTube keep the
+#   arrows. No key handling while a menu is open.
+# - chrome:// pages such as the New Tab page are shadow DOM, which Blink's spatial navigation does not enter, so
+#   there the arrows run a small spatial navigation script in an isolated world.
+# - LG's keyboard opens only on OK on a focused text field or on a pointer press, not on focus, and the text model
+#   is deactivated when no text field has focus.
+diff --git a/src/chrome/browser/ui/views/frame/browser_view.cc b/src/chrome/browser/ui/views/frame/browser_view.cc
+index 4a2d263..02274ac 100644
+--- a/src/chrome/browser/ui/views/frame/browser_view.cc
++++ b/src/chrome/browser/ui/views/frame/browser_view.cc
+@@ -10,6 +10,7 @@
+ #include <memory>
+ #include <optional>
+ #include <set>
++#include <string_view>
+ #include <utility>
+ 
+ #include "base/auto_reset.h"
+@@ -354,6 +355,15 @@
+ #include "ui/views/widget/root_view.h"
+ #include "ui/views/widget/sublevel_manager.h"
+ #include "ui/views/widget/widget.h"
++#include "chrome/common/chrome_isolated_world_ids.h"
++#include "base/strings/utf_string_conversions.h"
++#include "base/values.h"
++#include "content/public/common/url_constants.h"
++#include "ui/base/ime/input_method.h"
++#include "ui/base/ime/neva/input_method_neva_observer.h"
++#include "ui/views/controls/menu/menu_controller.h"
++#include "ui/base/ime/text_input_client.h"
++#include "ui/base/ime/text_input_type.h"
+ #include "ui/views/window/dialog_delegate.h"
+ #include "ui/views/window/hit_test_utils.h"
+ 
+@@ -390,6 +400,8 @@
+ #include "chrome/browser/ui/views/theme_profile_key.h"
+ #include "ui/aura/client/window_parenting_client.h"
+ #include "ui/aura/window.h"
++#include "ui/aura/window_observer.h"
++#include "ui/events/event_handler.h"
+ #include "ui/aura/window_tree_host.h"
+ #endif
+ 
+@@ -1102,7 +1114,267 @@ BrowserView::BrowserView(Browser* browser)
+   animation_controller->set_browser_view(this);
+ }
+ 
++#if defined(USE_AURA)
++namespace {
++// chromium-native (webOS): sees key presses before views' accelerators, so the
++// remote's arrows can leave the omnibox and move between toolbar, tabs and page.
++class TvRemoteKeyHandler : public ui::EventHandler, public aura::WindowObserver {
++ public:
++  TvRemoteKeyHandler(BrowserView* view, aura::Window* window)
++      : view_(view), window_(window) {
++    window_->AddPreTargetHandler(this, ui::EventTarget::Priority::kSystem);
++    window_->AddObserver(this);
++  }
++  ~TvRemoteKeyHandler() override { Detach(); }
++
++  void OnKeyEvent(ui::KeyEvent* event) override {
++    if (view_->HandleTvRemoteKey(event)) {
++      event->StopPropagation();
++    }
++  }
++  // chromium-native (patch 0022): a pointer click (Magic Remote OK in pointer
++  // mode) may open the keyboard if it lands on a text field.
++  void OnMouseEvent(ui::MouseEvent* event) override {
++    if (event->type() == ui::EventType::kMousePressed &&
++        event->IsOnlyLeftMouseButton()) {
++      ui::InputMethodNevaObserver::AllowShowOnce();
++    }
++  }
++  void OnWindowDestroying(aura::Window* window) override { Detach(); }
++
++ private:
++  void Detach() {
++    if (window_) {
++      window_->RemovePreTargetHandler(this);
++      window_->RemoveObserver(this);
++      window_ = nullptr;
++    }
++  }
++  raw_ptr<BrowserView> view_;
++  raw_ptr<aura::Window> window_;
++};
++}  // namespace
++#endif  // defined(USE_AURA)
++
++namespace {
++// chromium-native (webOS, patch 0017): Blink's spatial navigation does not look
++// into shadow DOM, and Chrome's own pages (New Tab page, settings, history) are
++// built from it, so the remote could not reach the search box or the shortcuts.
++// Moves focus to the nearest visible focusable element in direction `d`
++// ("up", "down", "left", "right"), searching every open shadow root. With
++// `edge` true it starts from the top edge of the page. Returns the focused
++// element's tag (and id), or false if nothing lies in that direction.
++constexpr char16_t kTvWebUiNavScript[] = uR"JS((function(d, edge) {
++  let cur = document.activeElement;
++  while (cur && cur.shadowRoot && cur.shadowRoot.activeElement) {
++    cur = cur.shadowRoot.activeElement;
++  }
++  if (edge || !cur || cur === document.body ||
++      cur === document.documentElement) {
++    cur = null;
++  }
++  const W = innerWidth, H = innerHeight;
++  const o = cur ? cur.getBoundingClientRect()
++                : {left: W / 2, right: W / 2, top: -1, bottom: -1};
++  const sel = 'a[href],button,input:not([type=hidden]),select,textarea,' +
++      '[tabindex],[role=button],[role=link],[role=menuitem],[role=tab],' +
++      '[role=option],[contenteditable=true]';
++  // Distance across the direction of travel: 0 when the element overlaps the
++  // current one in that axis (a wide search box right below counts as straight
++  // down), else the gap between them.
++  const hgap = (r) => Math.max(0, Math.max(r.left, o.left) - Math.min(r.right, o.right));
++  const vgap = (r) => Math.max(0, Math.max(r.top, o.top) - Math.min(r.bottom, o.bottom));
++  const ocx = (o.left + o.right) / 2, ocy = (o.top + o.bottom) / 2;
++  let best = null, bestScore = 1e9;
++  const walk = (root) => {
++    for (const el of root.querySelectorAll('*')) {
++      if (el.shadowRoot) walk(el.shadowRoot);
++      if (el === cur || !el.matches(sel) || el.tabIndex < 0 || el.disabled ||
++          el.inert) continue;
++      const r = el.getBoundingClientRect();
++      if (r.width < 4 || r.height < 4 || r.bottom < 0 || r.top > H ||
++          r.right < 0 || r.left > W) continue;
++      let main, side;
++      if (d === 'down') {
++        if (r.top < o.bottom - 4) continue;
++        main = r.top - o.bottom;
++        side = hgap(r);
++      } else if (d === 'up') {
++        if (r.bottom > o.top + 4) continue;
++        main = o.top - r.bottom;
++        side = hgap(r);
++      } else if (d === 'right') {
++        if (r.left < o.right - 4) continue;
++        main = r.left - o.right;
++        side = vgap(r);
++      } else {
++        if (r.right > o.left + 4) continue;
++        main = o.left - r.right;
++        side = vgap(r);
++      }
++      const cs = getComputedStyle(el);
++      if (cs.visibility === 'hidden' || cs.display === 'none') continue;
++      const score = Math.max(main, 0) + 2 * side +
++          0.1 * Math.hypot((r.left + r.right) / 2 - ocx, (r.top + r.bottom) / 2 - ocy);
++      if (score < bestScore) { bestScore = score; best = el; }
++    }
++  };
++  walk(document);
++  if (!best) return false;
++  best.focus({focusVisible: true});
++  best.scrollIntoView({block: 'nearest', inline: 'nearest'});
++  return best.tagName + (best.id ? '#' + best.id : '');
++}))JS";
++
++bool IsTvWebUiPage(content::WebContents* contents) {
++  return contents &&
++         contents->GetLastCommittedURL().SchemeIs(content::kChromeUIScheme);
++}
++}  // namespace
++
++void BrowserView::RunTvWebUiNav(const char* direction, bool from_edge) {
++  content::WebContents* contents = GetActiveWebContents();
++  if (!IsTvWebUiPage(contents)) {
++    return;
++  }
++  std::u16string script = kTvWebUiNavScript;
++  script += u"('" + base::ASCIIToUTF16(direction) + u"', " +
++            (from_edge ? u"true" : u"false") + u")";
++  const bool up = std::string_view(direction) == "up";
++  contents->GetPrimaryMainFrame()->ExecuteJavaScriptInIsolatedWorld(
++      script,
++      base::BindOnce(
++          [](base::WeakPtr<BrowserView> view, bool up, base::Value moved) {
++            // UP above the page's first element goes to the toolbar.
++            const bool did_move =
++                moved.is_string() || (moved.is_bool() && moved.GetBool());
++            if (view && up && !did_move) {
++              view->FocusToolbar();
++            }
++          },
++          weak_ptr_factory_.GetWeakPtr(), up),
++      ISOLATED_WORLD_ID_CHROME_INTERNAL);
++}
++
++bool BrowserView::HandleTvRemoteKey(ui::KeyEvent* event) {
++  if (event->type() != ui::EventType::kKeyPressed ||
++      (event->flags() & (ui::EF_SHIFT_DOWN | ui::EF_CONTROL_DOWN |
++                         ui::EF_ALT_DOWN | ui::EF_COMMAND_DOWN))) {
++    return false;
++  }
++  // An open menu (app menu, context menu) handles its own keys.
++  if (views::MenuController::GetActiveInstance()) {
++    return false;
++  }
++  const ui::KeyboardCode key = event->key_code();
++  // chromium-native (patch 0021): OK on a focused text field (page or omnibox)
++  // opens LG's keyboard instead of submitting. While that keyboard is open its
++  // Enter key reaches us too: then let it through (submit) and re-arm.
++  if (key == ui::VKEY_RETURN && GetWidget()) {
++    ui::InputMethod* im = GetWidget()->GetInputMethod();
++    ui::TextInputClient* client = im ? im->GetTextInputClient() : nullptr;
++    if (client && client->GetTextInputType() != ui::TEXT_INPUT_TYPE_NONE) {
++      const uintptr_t id = reinterpret_cast<uintptr_t>(client);
++      if (tv_keyboard_client_ != id) {
++        tv_keyboard_client_ = id;
++        ui::InputMethodNevaObserver::AllowShowOnce();
++        im->SetVirtualKeyboardVisibilityIfEnabled(true);
++        return true;
++      }
++      tv_keyboard_client_ = 0;
++      return false;
++    }
++    tv_keyboard_client_ = 0;
++    return false;
++  }
++  if (key == ui::VKEY_ESCAPE) {
++    tv_keyboard_client_ = 0;
++  }
++  if (key != ui::VKEY_UP && key != ui::VKEY_DOWN && key != ui::VKEY_LEFT &&
++      key != ui::VKEY_RIGHT && key != ui::VKEY_ESCAPE) {
++    return false;
++  }
++  views::FocusManager* fm = GetFocusManager();
++  views::View* fv = fm ? fm->GetFocusedView() : nullptr;
++  if (!fv) {
++    return false;
++  }
++  views::View* tabs = horizontal_tab_strip_region_view_.get();
++  const bool in_tabs = tabs && tabs->GetVisible() && tabs->Contains(fv);
++  const bool in_toolbar = toolbar_ && toolbar_->Contains(fv);
++  if (!in_tabs && !in_toolbar) {
++    return false;  // the page, menus and dialogs handle their own keys
++  }
++  // In a text field (the omnibox) the arrows stay with the text while the user
++  // edits; with all text selected (just focused) they move focus.
++  auto* tf = views::AsViewClass<views::Textfield>(fv);
++  bool tf_all = false;
++  bool at_start = false;
++  bool at_end = false;
++  if (tf) {
++    const size_t len = tf->GetText().size();
++    const gfx::Range r = tf->GetSelectedRange();
++    tf_all = len == 0 || (r.GetMin() == 0 && r.GetMax() == len);
++    at_start = r.is_empty() && r.start() == 0;
++    at_end = r.is_empty() && r.start() == len;
++  }
++  views::View* page = GetActiveContentsWebView();
++  switch (key) {
++    case ui::VKEY_DOWN:
++      if (tf && !tf_all) {
++        // Moving into the omnibox suggestions: release the webOS IME so the
++        // next OK reaches the omnibox and opens the suggestion instead of
++        // reopening the virtual keyboard (patch 0018).
++        if (in_toolbar && GetWidget() && GetWidget()->GetInputMethod()) {
++          GetWidget()->GetInputMethod()->SetVirtualKeyboardVisibilityIfEnabled(
++              false);
++        }
++        return false;  // omnibox suggestions
++      }
++      if (in_tabs) {
++        FocusToolbar();
++      } else if (page) {
++        page->RequestFocus();
++        // Chrome's own pages: focus their first element (patch 0017).
++        RunTvWebUiNav("down", /*from_edge=*/true);
++      }
++      return true;
++    case ui::VKEY_UP:
++      if (tf && !tf_all) {
++        if (in_toolbar && GetWidget() && GetWidget()->GetInputMethod()) {
++          GetWidget()->GetInputMethod()->SetVirtualKeyboardVisibilityIfEnabled(
++              false);
++        }
++        return false;
++      }
++      if (in_toolbar && tabs && tabs->GetVisible()) {
++        static_cast<views::AccessiblePaneView*>(
++            horizontal_tab_strip_region_view_.get())
++            ->SetPaneFocusAndFocusDefault();
++      }
++      return true;
++    case ui::VKEY_LEFT:
++    case ui::VKEY_RIGHT:
++      if (tf && !tf_all && !(key == ui::VKEY_LEFT ? at_start : at_end)) {
++        return false;  // move the caret
++      }
++      fm->AdvanceFocus(/*reverse=*/key == ui::VKEY_LEFT);
++      return true;
++    case ui::VKEY_ESCAPE:
++      if (tf && !tf_all) {
++        return false;  // the omnibox reverts the edit first
++      }
++      if (page) {
++        page->RequestFocus();
++      }
++      return true;
++    default:
++      return false;
++  }
++}
++
+ BrowserView::~BrowserView() {
++  tv_remote_key_handler_.reset();
+   // Remove the layout manager to avoid dangling. This needs to be earlier than
+   // other cleanups that destroy views referenced in the layout manager.
+   SetLayoutManager(nullptr);
+@@ -3140,6 +3412,18 @@ content::KeyboardEventProcessingResult BrowserView::PreHandleKeyboardEvent(
+   // - If the |browser_| is not for an app, and the |accelerator| is associated
+   //   with the browser, and it is not a reserved one, do nothing.
+ 
++  // chromium-native (webOS, patch 0020): the remote's Back (evdev 412 =
++  // Escape) on a page moves focus to the toolbar, so the browser UI is always
++  // reachable even when a page (YouTube's player) keeps the arrow keys.
++  // In fullscreen the page gets it (Escape leaves fullscreen there).
++  if (event.GetType() == blink::WebInputEvent::Type::kRawKeyDown &&
++      event.windows_key_code == ui::VKEY_ESCAPE &&
++      !(event.GetModifiers() & blink::WebInputEvent::kKeyModifiers) &&
++      !IsFullscreen()) {
++    FocusToolbar();
++    return content::KeyboardEventProcessingResult::HANDLED;
++  }
++
+   if (browser_->is_type_app() || browser_->is_type_app_popup()) {
+     // Let all keys fall through to a v1 app's web content, even accelerators.
+     // We don't use NOT_HANDLED_IS_SHORTCUT here. If we do that, the app
+@@ -3223,6 +3507,29 @@ void BrowserView::HandleDragEnded() {
+ }
+ 
+ bool BrowserView::HandleKeyboardEvent(const NativeWebKeyboardEvent& event) {
++  // chromium-native (webOS, patch 0017): keys the page did not use. UP at the
++  // top of the page moves focus to the toolbar; the remote's Back (Escape)
++  // goes back in history when it can.
++  if (event.GetType() == blink::WebInputEvent::Type::kRawKeyDown &&
++      !(event.GetModifiers() & blink::WebInputEvent::kKeyModifiers)) {
++    const int key = event.windows_key_code;
++    // Chrome's own pages (shadow DOM): our own spatial navigation; UP above
++    // the first element still reaches the toolbar.
++    if (IsTvWebUiPage(GetActiveWebContents()) &&
++        (key == ui::VKEY_UP || key == ui::VKEY_DOWN || key == ui::VKEY_LEFT ||
++         key == ui::VKEY_RIGHT)) {
++      RunTvWebUiNav(key == ui::VKEY_UP     ? "up"
++                    : key == ui::VKEY_DOWN ? "down"
++                    : key == ui::VKEY_LEFT ? "left"
++                                           : "right",
++                    /*from_edge=*/false);
++      return true;
++    }
++    if (key == ui::VKEY_UP) {
++      FocusToolbar();
++      return true;
++    }
++  }
+   if (browser_widget_->HandleKeyboardEvent(event)) {
+     return true;
+   }
+@@ -4837,6 +5144,14 @@ void BrowserView::AddedToWidget() {
+   // it later when all we have is a native view.
+   GetWidget()->SetNativeWindowProperty(kBrowserViewKey, this);
+ 
++#if defined(USE_AURA)
++  // chromium-native: TV remote focus movement (patch 0017).
++  if (GetWidget()->GetNativeWindow()) {
++    tv_remote_key_handler_ = std::make_unique<TvRemoteKeyHandler>(
++        this, GetWidget()->GetNativeWindow());
++  }
++#endif
++
+   // Stow a pointer to the browser's profile onto the window handle so that we
+   // can get it later when all we have is a native view.
+   GetWidget()->SetNativeWindowProperty(Profile::kProfileKey,
+diff --git a/src/chrome/browser/ui/views/frame/browser_view.h b/src/chrome/browser/ui/views/frame/browser_view.h
+index c6bcc52..4e039be 100644
+--- a/src/chrome/browser/ui/views/frame/browser_view.h
++++ b/src/chrome/browser/ui/views/frame/browser_view.h
+@@ -108,6 +108,8 @@ class VerticalTabStripStateController;
+ }  // namespace tabs
+ 
+ namespace ui {
++class EventHandler;
++class KeyEvent;
+ class NativeTheme;
+ }  // namespace ui
+ 
+@@ -720,6 +722,13 @@ class BrowserView : public BrowserWindow,
+   void ViewHierarchyChanged(
+       const views::ViewHierarchyChangedDetails& details) override;
+   void AddedToWidget() override;
++
++  // chromium-native (webOS): moves focus between the tab strip, the toolbar
++  // and the page with the remote's arrow keys (patch 0017).
++  bool HandleTvRemoteKey(ui::KeyEvent* event);
++  // chromium-native (webOS): spatial navigation through the shadow DOM of
++  // Chrome's own chrome:// pages (patch 0017).
++  void RunTvWebUiNav(const char* direction, bool from_edge);
+   void RemovedFromWidget() override;
+   void PaintChildren(const views::PaintInfo& paint_info) override;
+   void OnThemeChanged() override;
+@@ -1101,6 +1110,11 @@ class BrowserView : public BrowserWindow,
+   // The owning Browser object. `browser_` will outlive this.
+   const raw_ptr<Browser> browser_;
+ 
++  // chromium-native: aura pre-target handler for HandleTvRemoteKey().
++  std::unique_ptr<ui::EventHandler> tv_remote_key_handler_;
++  // chromium-native (patch 0021): text client the keyboard was opened for (compared only, never used).
++  uintptr_t tv_keyboard_client_ = 0;
++
+   base::CallbackListSubscription chip_visibility_subscription_;
+ 
+   // BrowserView layout (LTR one is pictured here).
+diff --git a/src/ui/base/ime/neva/input_method_neva_observer.cc b/src/ui/base/ime/neva/input_method_neva_observer.cc
+index c5a055c..8aa3573 100644
+--- a/src/ui/base/ime/neva/input_method_neva_observer.cc
++++ b/src/ui/base/ime/neva/input_method_neva_observer.cc
+@@ -17,6 +17,7 @@
+ #include "ui/base/ime/neva/input_method_neva_observer.h"
+ 
+ #include "base/logging.h"
++#include "base/time/time.h"
+ #include "base/strings/utf_string_conversions.h"
+ #include "ui/base/ime/neva/input_method_common.h"
+ #include "ui/base/ime/text_input_client.h"
+@@ -125,6 +126,16 @@ void InputMethodNevaObserver::OnCaretBoundsChanged(const TextInputClient* client
+   SetSurroundingText(text, cursor_position, anchor_position);
+ }
+ 
++namespace {
++// chromium-native (patch 0022): deadline of the one allowed keyboard request.
++base::TimeTicks g_allow_show_until;
++}  // namespace
++
++// static
++void InputMethodNevaObserver::AllowShowOnce() {
++  g_allow_show_until = base::TimeTicks::Now() + base::Milliseconds(1500);
++}
++
+ void InputMethodNevaObserver::SetImeEnabled(bool enable) {
+   is_enabled_ = enable;
+ }
+@@ -145,11 +156,18 @@ void InputMethodNevaObserver::OnTextInputStateChanged(
+       if (FitsScreenBounds(rectangle))
+         input_info.input_panel_rectangle = rectangle;
+       OnTextInputInfoChanged(input_info);
+-      if (!client->SystemKeyboardDisabled())
+-        OnShowIme();
++      // chromium-native (patch 0021): on the TV the keyboard opens only when
++      // the user presses OK on the field (BrowserView::HandleTvRemoteKey asks
++      // via SetVirtualKeyboardVisibilityIfEnabled), not on focus.
+     } else {
+       OnHideIme(ImeHiddenType::kDeactivate);
+     }
++  } else {
++    // chromium-native (patch 0018): Chrome's own UI has no text input client
++    // when a button or tab is focused. Without this the webOS text model stayed
++    // active after leaving the omnibox, LG's IME kept the remote's keys, and OK
++    // on any button opened the virtual keyboard.
++    OnHideIme(ImeHiddenType::kDeactivate);
+   }
+ }
+ 
+@@ -165,9 +183,14 @@ void InputMethodNevaObserver::OnVirtualKeyboardVisibilityChangedIfEnabled(
+   if (!is_enabled_)
+     return;
+ 
+-  if (should_show)
++  if (should_show) {
++    // chromium-native (patch 0022): only a request right after OK/click.
++    if (base::TimeTicks::Now() > g_allow_show_until) {
++      return;
++    }
++    g_allow_show_until = base::TimeTicks();
+     OnShowIme();
+-  else
++  } else
+     OnHideIme(ImeHiddenType::kDeactivate);
+ }
+ 
+diff --git a/src/ui/base/ime/neva/input_method_neva_observer.h b/src/ui/base/ime/neva/input_method_neva_observer.h
+index 035f3ba..4d4c03f 100644
+--- a/src/ui/base/ime/neva/input_method_neva_observer.h
++++ b/src/ui/base/ime/neva/input_method_neva_observer.h
+@@ -48,6 +48,11 @@ class COMPONENT_EXPORT(UI_BASE_IME) InputMethodNevaObserver
+                                   size_t cursor_position,
+                                   size_t anchor_position) = 0;
+   void SetImeEnabled(bool enable);
++  // chromium-native (patch 0022): the webOS keyboard opens only right after the
++  // user pressed OK (or clicked) on a text field. BrowserView calls this just
++  // before asking for the keyboard; any other request (Blink's show-on-focus,
++  // views::Textfield::OnFocus, the omnibox) is ignored.
++  static void AllowShowOnce();
+ private:
+   bool is_enabled_ = false;
+ };
+diff --git a/src/ui/ozone/platform/wayland/host/wayland_keyboard.cc b/src/ui/ozone/platform/wayland/host/wayland_keyboard.cc
+index 6bac269..ffea077 100644
+--- a/src/ui/ozone/platform/wayland/host/wayland_keyboard.cc
++++ b/src/ui/ozone/platform/wayland/host/wayland_keyboard.cc
+@@ -473,6 +473,13 @@ void WaylandKeyboard::DispatchKey(unsigned int key,
+                                   int flags,
+                                   KeyEventKind kind) {
+   DomCode dom_code = KeycodeConverter::EvdevCodeToDomCode(key);
++  // chromium-native (webOS): the LG remote's Back button is evdev 412
++  // (KEY_PREVIOUS), which has no DomCode, so Chrome dropped it. Treat it as
++  // Escape: closes menus and popups, leaves the toolbar, and BrowserView turns
++  // an Escape the page did not use into "go back" (patch 0017).
++  if (key == 412) {
++    dom_code = ui::DomCode::ESCAPE;
++  }
+   if (dom_code == ui::DomCode::NONE)
+     return;
+ 

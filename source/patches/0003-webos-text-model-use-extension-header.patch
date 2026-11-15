@@ -1,0 +1,29 @@
+# why: wayland-text-client-protocol.h is not generated from the TV's protocols, and the generated
+# wayland-webos-extension-client-protocol.h already defines text_model and text_model_factory. Include that header
+# instead.
+diff --git a/src/ui/ozone/platform/wayland/extensions/webos/host/webos_text_model_factory_wrapper.cc b/src/ui/ozone/platform/wayland/extensions/webos/host/webos_text_model_factory_wrapper.cc
+index 2f90bd8ad6..58e942494e 100644
+--- a/src/ui/ozone/platform/wayland/extensions/webos/host/webos_text_model_factory_wrapper.cc
++++ b/src/ui/ozone/platform/wayland/extensions/webos/host/webos_text_model_factory_wrapper.cc
+@@ -16,7 +16,7 @@
+ 
+ #include "ui/ozone/platform/wayland/extensions/webos/host/webos_text_model_factory_wrapper.h"
+ 
+-#include <wayland-text-client-protocol.h>
++#include <wayland-webos-extension-client-protocol.h>
+ 
+ #include "ui/ozone/platform/wayland/extensions/webos/host/wayland_window_webos.h"
+ #include "ui/ozone/platform/wayland/extensions/webos/host/webos_text_model_wrapper.h"
+diff --git a/src/ui/ozone/platform/wayland/extensions/webos/host/webos_text_model_wrapper.cc b/src/ui/ozone/platform/wayland/extensions/webos/host/webos_text_model_wrapper.cc
+index e3c5c62e24..c289d3da4b 100644
+--- a/src/ui/ozone/platform/wayland/extensions/webos/host/webos_text_model_wrapper.cc
++++ b/src/ui/ozone/platform/wayland/extensions/webos/host/webos_text_model_wrapper.cc
+@@ -19,7 +19,7 @@
+ #include "ui/ozone/platform/wayland/host/span_style.h"
+ #include "base/notimplemented.h"
+ 
+-#include <wayland-text-client-protocol.h>
++#include <wayland-webos-extension-client-protocol.h>
+ 
+ #include "neva/logging.h"
+ #include "ui/base/ime/text_input_flags.h"

@@ -1,0 +1,19 @@
+tvabi 1
+soname libbrotlicommon.so.1
+needed libgcc_s.so.1
+needed libc.so.6
+def BrotliDefaultAllocFunc - - FUNC GLOBAL DEFAULT 6 code
+def BrotliDefaultFreeFunc - - FUNC GLOBAL DEFAULT 6 code
+def BrotliGetDictionary - - FUNC GLOBAL DEFAULT 12 code
+def BrotliGetTransforms - - FUNC GLOBAL DEFAULT 12 code
+def BrotliSetDictionaryData - - FUNC GLOBAL DEFAULT 2 code
+def BrotliTransformDictionaryWord - - FUNC GLOBAL DEFAULT 424 code
+def _kBrotliContextLookupTable - - OBJECT GLOBAL DEFAULT 2048 data
+def _kBrotliPrefixCodeRanges - - OBJECT GLOBAL DEFAULT 104 data
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL

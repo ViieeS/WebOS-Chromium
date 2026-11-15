@@ -1,0 +1,125 @@
+tvabi 1
+soname libz.so.1
+needed libc.so.6
+needed libgcc_s.so.1
+verdef 1 base libz.so.1
+verdef 2 - ZLIB_1.2.0
+verdef 3 - ZLIB_1.2.0.2 ZLIB_1.2.0
+verdef 4 - ZLIB_1.2.0.8 ZLIB_1.2.0.2
+verdef 5 - ZLIB_1.2.2 ZLIB_1.2.0.8
+verdef 6 - ZLIB_1.2.2.3 ZLIB_1.2.2
+verdef 7 - ZLIB_1.2.2.4 ZLIB_1.2.2.3
+verdef 8 - ZLIB_1.2.3.3 ZLIB_1.2.2.4
+verdef 9 - ZLIB_1.2.3.4 ZLIB_1.2.3.3
+verdef 10 - ZLIB_1.2.3.5 ZLIB_1.2.3.4
+verdef 11 - ZLIB_1.2.5.1 ZLIB_1.2.3.5
+verdef 12 - ZLIB_1.2.5.2 ZLIB_1.2.5.1
+verdef 13 - ZLIB_1.2.7.1 ZLIB_1.2.5.2
+verdef 14 - ZLIB_1.2.9 ZLIB_1.2.7.1
+def adler32 - - FUNC GLOBAL DEFAULT 4 code
+def adler32_combine ZLIB_1.2.2 @@ FUNC GLOBAL DEFAULT 152 code
+def adler32_combine64 ZLIB_1.2.3.3 @@ FUNC GLOBAL DEFAULT 146 code
+def adler32_z ZLIB_1.2.9 @@ FUNC GLOBAL DEFAULT 624 code
+def compress - - FUNC GLOBAL DEFAULT 18 code
+def compress2 - - FUNC GLOBAL DEFAULT 128 code
+def compressBound ZLIB_1.2.0 @@ FUNC GLOBAL DEFAULT 18 code
+def crc32 - - FUNC GLOBAL DEFAULT 4 code
+def crc32_combine ZLIB_1.2.2 @@ FUNC GLOBAL DEFAULT 4 code
+def crc32_combine64 ZLIB_1.2.3.3 @@ FUNC GLOBAL DEFAULT 2 code
+def crc32_z ZLIB_1.2.9 @@ FUNC GLOBAL DEFAULT 720 code
+def deflate - - FUNC GLOBAL DEFAULT 2930 code
+def deflateBound ZLIB_1.2.0 @@ FUNC GLOBAL DEFAULT 168 code
+def deflateCopy - - FUNC GLOBAL DEFAULT 326 code
+def deflateEnd - - FUNC GLOBAL DEFAULT 96 code
+def deflateGetDictionary ZLIB_1.2.9 @@ FUNC GLOBAL DEFAULT 82 code
+def deflateInit2_ - - FUNC GLOBAL DEFAULT 492 code
+def deflateInit_ - - FUNC GLOBAL DEFAULT 28 code
+def deflateParams - - FUNC GLOBAL DEFAULT 276 code
+def deflatePending ZLIB_1.2.5.1 @@ FUNC GLOBAL DEFAULT 58 code
+def deflatePrime ZLIB_1.2.0.8 @@ FUNC GLOBAL DEFAULT 130 code
+def deflateReset - - FUNC GLOBAL DEFAULT 116 code
+def deflateResetKeep ZLIB_1.2.5.2 @@ FUNC GLOBAL DEFAULT 118 code
+def deflateSetDictionary - - FUNC GLOBAL DEFAULT 356 code
+def deflateSetHeader ZLIB_1.2.2 @@ FUNC GLOBAL DEFAULT 44 code
+def deflateTune ZLIB_1.2.2.3 @@ FUNC GLOBAL DEFAULT 56 code
+def get_crc_table - - FUNC GLOBAL DEFAULT 12 code
+def gzbuffer ZLIB_1.2.3.5 @@ FUNC GLOBAL DEFAULT 48 code
+def gzclearerr ZLIB_1.2.0.2 @@ FUNC GLOBAL DEFAULT 70 code
+def gzclose - - FUNC GLOBAL DEFAULT 26 code
+def gzclose_r ZLIB_1.2.3.5 @@ FUNC GLOBAL DEFAULT 96 code
+def gzclose_w ZLIB_1.2.3.5 @@ FUNC GLOBAL DEFAULT 134 code
+def gzdirect ZLIB_1.2.2.3 @@ FUNC GLOBAL DEFAULT 38 code
+def gzdopen - - FUNC GLOBAL DEFAULT 64 code
+def gzeof - - FUNC GLOBAL DEFAULT 22 code
+def gzerror - - FUNC GLOBAL DEFAULT 64 code
+def gzflush - - FUNC GLOBAL DEFAULT 70 code
+def gzfread ZLIB_1.2.9 @@ FUNC GLOBAL DEFAULT 116 code
+def gzfwrite ZLIB_1.2.9 @@ FUNC GLOBAL DEFAULT 108 code
+def gzgetc - - FUNC GLOBAL DEFAULT 98 code
+def gzgetc_ ZLIB_1.2.5.2 @@ FUNC GLOBAL DEFAULT 4 code
+def gzgets - - FUNC GLOBAL DEFAULT 258 code
+def gzoffset ZLIB_1.2.3.5 @@ FUNC GLOBAL DEFAULT 18 code
+def gzoffset64 ZLIB_1.2.3.5 @@ FUNC GLOBAL DEFAULT 86 code
+def gzopen - - FUNC GLOBAL DEFAULT 8 code
+def gzopen64 ZLIB_1.2.3.3 @@ FUNC GLOBAL DEFAULT 8 code
+def gzprintf - - FUNC GLOBAL DEFAULT 28 code
+def gzputc - - FUNC GLOBAL DEFAULT 138 code
+def gzputs - - FUNC GLOBAL DEFAULT 70 code
+def gzread - - FUNC GLOBAL DEFAULT 80 code
+def gzrewind - - FUNC GLOBAL DEFAULT 134 code
+def gzseek - - FUNC GLOBAL DEFAULT 30 code
+def gzseek64 ZLIB_1.2.3.3 @@ FUNC GLOBAL DEFAULT 356 code
+def gzsetparams - - FUNC GLOBAL DEFAULT 118 code
+def gztell - - FUNC GLOBAL DEFAULT 18 code
+def gztell64 ZLIB_1.2.3.3 @@ FUNC GLOBAL DEFAULT 50 code
+def gzungetc ZLIB_1.2.0.2 @@ FUNC GLOBAL DEFAULT 212 code
+def gzvprintf ZLIB_1.2.7.1 @@ FUNC GLOBAL DEFAULT 214 code
+def gzwrite - - FUNC GLOBAL DEFAULT 52 code
+def inflate - - FUNC GLOBAL DEFAULT 4532 code
+def inflateBack ZLIB_1.2.0 @@ FUNC GLOBAL DEFAULT 2912 code
+def inflateBackEnd ZLIB_1.2.0 @@ FUNC GLOBAL DEFAULT 38 code
+def inflateBackInit_ ZLIB_1.2.0 @@ FUNC GLOBAL DEFAULT 156 code
+def inflateCodesUsed ZLIB_1.2.9 @@ FUNC GLOBAL DEFAULT 50 code
+def inflateCopy ZLIB_1.2.0 @@ FUNC GLOBAL DEFAULT 366 code
+def inflateEnd - - FUNC GLOBAL DEFAULT 48 code
+def inflateGetDictionary ZLIB_1.2.7.1 @@ FUNC GLOBAL DEFAULT 106 code
+def inflateGetHeader ZLIB_1.2.2 @@ FUNC GLOBAL DEFAULT 54 code
+def inflateInit2_ - - FUNC GLOBAL DEFAULT 144 code
+def inflateInit_ - - FUNC GLOBAL DEFAULT 10 code
+def inflateMark ZLIB_1.2.3.4 @@ FUNC GLOBAL DEFAULT 86 code
+def inflatePrime ZLIB_1.2.2.4 @@ FUNC GLOBAL DEFAULT 102 code
+def inflateReset - - FUNC GLOBAL DEFAULT 50 code
+def inflateReset2 ZLIB_1.2.3.4 @@ FUNC GLOBAL DEFAULT 98 code
+def inflateResetKeep ZLIB_1.2.5.2 @@ FUNC GLOBAL DEFAULT 118 code
+def inflateSetDictionary - - FUNC GLOBAL DEFAULT 104 code
+def inflateSync - - FUNC GLOBAL DEFAULT 390 code
+def inflateSyncPoint - - FUNC GLOBAL DEFAULT 60 code
+def inflateUndermine ZLIB_1.2.3.3 @@ FUNC GLOBAL DEFAULT 54 code
+def inflateValidate ZLIB_1.2.9 @@ FUNC GLOBAL DEFAULT 62 code
+def uncompress - - FUNC GLOBAL DEFAULT 18 code
+def uncompress2 ZLIB_1.2.9 @@ FUNC GLOBAL DEFAULT 208 code
+def zError - - FUNC GLOBAL DEFAULT 28 code
+def zlibCompileFlags ZLIB_1.2.0.2 @@ FUNC GLOBAL DEFAULT 4 code
+def zlibVersion - - FUNC GLOBAL DEFAULT 12 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und lseek64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vsnprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und write GLIBC_2.4 libc.so.6 FUNC GLOBAL

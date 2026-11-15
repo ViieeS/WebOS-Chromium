@@ -1,0 +1,25 @@
+# why: find_stdlib lists target.json as its first output, but its depfile names libstd.rlib, so ninja re-runs it and 24
+# copy steps on every build. List the rlibs first.
+diff --git a/src/build/rust/std/BUILD.gn b/src/build/rust/std/BUILD.gn
+index 4c0361baf..07157d455 100644
+--- a/src/build/rust/std/BUILD.gn
++++ b/src/build/rust/std/BUILD.gn
+@@ -309,13 +309,17 @@ if (toolchain_has_rust) {
+         rust_abi_target,
+       ]
+ 
+-      outputs = [ "$target_out_dir/target.json" ]
++      # chromium-native: libstd.rlib (the depfile target) must be the FIRST
++      # output, else ninja 1.12 says "expected depfile to mention target.json"
++      # and re-runs this action on every build.
++      outputs = []
+       foreach(lib, all_stdlibs_to_copy) {
+         outputs += [ "$target_out_dir/lib/lib$lib.rlib" ]
+       }
+       foreach(lib, extra_sysroot_libs) {
+         outputs += [ "$target_out_dir/lib/$lib" ]
+       }
++      outputs += [ "$target_out_dir/target.json" ]
+ 
+       visibility = [ ":*" ]
+     }

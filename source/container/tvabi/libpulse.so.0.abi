@@ -1,0 +1,632 @@
+tvabi 1
+soname libpulse.so.0
+needed libpulsecommon-15.0.so
+needed libm.so.6
+needed libgcc_s.so.1
+needed libc.so.6
+verdef 1 base libpulse.so.0
+verdef 2 - PULSE_0
+def pa_ascii_filter PULSE_0 @@ FUNC GLOBAL DEFAULT 108 code
+def pa_ascii_valid PULSE_0 @@ FUNC GLOBAL DEFAULT 96 code
+def pa_bytes_per_second PULSE_0 @@ FUNC GLOBAL DEFAULT 144 code
+def pa_bytes_snprint PULSE_0 @@ FUNC GLOBAL DEFAULT 380 code
+def pa_bytes_to_usec PULSE_0 @@ FUNC GLOBAL DEFAULT 248 code
+def pa_channel_map_can_balance PULSE_0 @@ FUNC GLOBAL DEFAULT 188 code
+def pa_channel_map_can_fade PULSE_0 @@ FUNC GLOBAL DEFAULT 188 code
+def pa_channel_map_can_lfe_balance PULSE_0 @@ FUNC GLOBAL DEFAULT 176 code
+def pa_channel_map_compatible PULSE_0 @@ FUNC GLOBAL DEFAULT 272 code
+def pa_channel_map_equal PULSE_0 @@ FUNC GLOBAL DEFAULT 312 code
+def pa_channel_map_has_position PULSE_0 @@ FUNC GLOBAL DEFAULT 192 code
+def pa_channel_map_init PULSE_0 @@ FUNC GLOBAL DEFAULT 88 code
+def pa_channel_map_init_auto PULSE_0 @@ FUNC GLOBAL DEFAULT 556 code
+def pa_channel_map_init_extend PULSE_0 @@ FUNC GLOBAL DEFAULT 268 code
+def pa_channel_map_init_mono PULSE_0 @@ FUNC GLOBAL DEFAULT 84 code
+def pa_channel_map_init_stereo PULSE_0 @@ FUNC GLOBAL DEFAULT 88 code
+def pa_channel_map_mask PULSE_0 @@ FUNC GLOBAL DEFAULT 148 code
+def pa_channel_map_parse PULSE_0 @@ FUNC GLOBAL DEFAULT 568 code
+def pa_channel_map_snprint PULSE_0 @@ FUNC GLOBAL DEFAULT 376 code
+def pa_channel_map_superset PULSE_0 @@ FUNC GLOBAL DEFAULT 300 code
+def pa_channel_map_to_name PULSE_0 @@ FUNC GLOBAL DEFAULT 440 code
+def pa_channel_map_to_pretty_name PULSE_0 @@ FUNC GLOBAL DEFAULT 556 code
+def pa_channel_map_valid PULSE_0 @@ FUNC GLOBAL DEFAULT 116 code
+def pa_channel_position_from_string PULSE_0 @@ FUNC GLOBAL DEFAULT 200 code
+def pa_channel_position_to_pretty_string PULSE_0 @@ FUNC GLOBAL DEFAULT 56 code
+def pa_channel_position_to_string PULSE_0 @@ FUNC GLOBAL DEFAULT 32 code
+def pa_channels_valid PULSE_0 @@ FUNC GLOBAL DEFAULT 12 code
+def pa_context_add_autoload PULSE_0 @@ FUNC GLOBAL DEFAULT 164 code
+def pa_context_connect PULSE_0 @@ FUNC GLOBAL DEFAULT 700 code
+def pa_context_disconnect PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_context_drain PULSE_0 @@ FUNC GLOBAL DEFAULT 232 code
+def pa_context_errno PULSE_0 @@ FUNC GLOBAL DEFAULT 100 code
+def pa_context_exit_daemon PULSE_0 @@ FUNC GLOBAL DEFAULT 184 code
+def pa_context_get_autoload_info_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 164 code
+def pa_context_get_autoload_info_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 164 code
+def pa_context_get_autoload_info_list PULSE_0 @@ FUNC GLOBAL DEFAULT 164 code
+def pa_context_get_card_info_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 412 code
+def pa_context_get_card_info_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 412 code
+def pa_context_get_card_info_list PULSE_0 @@ FUNC GLOBAL DEFAULT 48 code
+def pa_context_get_client_info PULSE_0 @@ FUNC GLOBAL DEFAULT 380 code
+def pa_context_get_client_info_list PULSE_0 @@ FUNC GLOBAL DEFAULT 28 code
+def pa_context_get_index PULSE_0 @@ FUNC GLOBAL DEFAULT 220 code
+def pa_context_get_module_info PULSE_0 @@ FUNC GLOBAL DEFAULT 380 code
+def pa_context_get_module_info_list PULSE_0 @@ FUNC GLOBAL DEFAULT 28 code
+def pa_context_get_protocol_version PULSE_0 @@ FUNC GLOBAL DEFAULT 4 code
+def pa_context_get_sample_info_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 392 code
+def pa_context_get_sample_info_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 400 code
+def pa_context_get_sample_info_list PULSE_0 @@ FUNC GLOBAL DEFAULT 28 code
+def pa_context_get_server PULSE_0 @@ FUNC GLOBAL DEFAULT 220 code
+def pa_context_get_server_info PULSE_0 @@ FUNC GLOBAL DEFAULT 28 code
+def pa_context_get_server_protocol_version PULSE_0 @@ FUNC GLOBAL DEFAULT 200 code
+def pa_context_get_sink_info_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 372 code
+def pa_context_get_sink_info_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 392 code
+def pa_context_get_sink_info_list PULSE_0 @@ FUNC GLOBAL DEFAULT 28 code
+def pa_context_get_sink_input_info PULSE_0 @@ FUNC GLOBAL DEFAULT 380 code
+def pa_context_get_sink_input_info_list PULSE_0 @@ FUNC GLOBAL DEFAULT 28 code
+def pa_context_get_source_info_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 372 code
+def pa_context_get_source_info_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 392 code
+def pa_context_get_source_info_list PULSE_0 @@ FUNC GLOBAL DEFAULT 28 code
+def pa_context_get_source_output_info PULSE_0 @@ FUNC GLOBAL DEFAULT 380 code
+def pa_context_get_source_output_info_list PULSE_0 @@ FUNC GLOBAL DEFAULT 28 code
+def pa_context_get_state PULSE_0 @@ FUNC GLOBAL DEFAULT 156 code
+def pa_context_get_tile_size PULSE_0 @@ FUNC GLOBAL DEFAULT 236 code
+def pa_context_is_local PULSE_0 @@ FUNC GLOBAL DEFAULT 208 code
+def pa_context_is_pending PULSE_0 @@ FUNC GLOBAL DEFAULT 232 code
+def pa_context_kill_client PULSE_0 @@ FUNC GLOBAL DEFAULT 24 code
+def pa_context_kill_sink_input PULSE_0 @@ FUNC GLOBAL DEFAULT 24 code
+def pa_context_kill_source_output PULSE_0 @@ FUNC GLOBAL DEFAULT 24 code
+def pa_context_load_cookie_from_file PULSE_0 @@ FUNC GLOBAL DEFAULT 232 code
+def pa_context_load_module PULSE_0 @@ FUNC GLOBAL DEFAULT 344 code
+def pa_context_move_sink_input_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 368 code
+def pa_context_move_sink_input_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 384 code
+def pa_context_move_source_output_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 368 code
+def pa_context_move_source_output_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 384 code
+def pa_context_new PULSE_0 @@ FUNC GLOBAL DEFAULT 6 code
+def pa_context_new_with_proplist PULSE_0 @@ FUNC GLOBAL DEFAULT 612 code
+def pa_context_play_sample PULSE_0 @@ FUNC GLOBAL DEFAULT 436 code
+def pa_context_play_sample_with_proplist PULSE_0 @@ FUNC GLOBAL DEFAULT 472 code
+def pa_context_proplist_remove PULSE_0 @@ FUNC GLOBAL DEFAULT 372 code
+def pa_context_proplist_update PULSE_0 @@ FUNC GLOBAL DEFAULT 356 code
+def pa_context_ref PULSE_0 @@ FUNC GLOBAL DEFAULT 176 code
+def pa_context_remove_autoload_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 164 code
+def pa_context_remove_autoload_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 164 code
+def pa_context_remove_sample PULSE_0 @@ FUNC GLOBAL DEFAULT 336 code
+def pa_context_rttime_new PULSE_0 @@ FUNC GLOBAL DEFAULT 260 code
+def pa_context_rttime_restart PULSE_0 @@ FUNC GLOBAL DEFAULT 252 code
+def pa_context_send_message_to_object PULSE_0 @@ FUNC GLOBAL DEFAULT 348 code
+def pa_context_set_card_profile_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 368 code
+def pa_context_set_card_profile_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 364 code
+def pa_context_set_default_sink PULSE_0 @@ FUNC GLOBAL DEFAULT 312 code
+def pa_context_set_default_source PULSE_0 @@ FUNC GLOBAL DEFAULT 312 code
+def pa_context_set_event_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 176 code
+def pa_context_set_name PULSE_0 @@ FUNC GLOBAL DEFAULT 428 code
+def pa_context_set_port_latency_offset PULSE_0 @@ FUNC GLOBAL DEFAULT 400 code
+def pa_context_set_sink_input_mute PULSE_0 @@ FUNC GLOBAL DEFAULT 364 code
+def pa_context_set_sink_input_volume PULSE_0 @@ FUNC GLOBAL DEFAULT 412 code
+def pa_context_set_sink_mute_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 332 code
+def pa_context_set_sink_mute_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 412 code
+def pa_context_set_sink_port_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 368 code
+def pa_context_set_sink_port_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 364 code
+def pa_context_set_sink_volume_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 404 code
+def pa_context_set_sink_volume_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 472 code
+def pa_context_set_source_mute_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 332 code
+def pa_context_set_source_mute_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 412 code
+def pa_context_set_source_output_mute PULSE_0 @@ FUNC GLOBAL DEFAULT 364 code
+def pa_context_set_source_output_volume PULSE_0 @@ FUNC GLOBAL DEFAULT 432 code
+def pa_context_set_source_port_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 368 code
+def pa_context_set_source_port_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 364 code
+def pa_context_set_source_volume_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 404 code
+def pa_context_set_source_volume_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 472 code
+def pa_context_set_state_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 176 code
+def pa_context_set_subscribe_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 160 code
+def pa_context_stat PULSE_0 @@ FUNC GLOBAL DEFAULT 28 code
+def pa_context_subscribe PULSE_0 @@ FUNC GLOBAL DEFAULT 264 code
+def pa_context_suspend_sink_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 372 code
+def pa_context_suspend_sink_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 360 code
+def pa_context_suspend_source_by_index PULSE_0 @@ FUNC GLOBAL DEFAULT 364 code
+def pa_context_suspend_source_by_name PULSE_0 @@ FUNC GLOBAL DEFAULT 360 code
+def pa_context_unload_module PULSE_0 @@ FUNC GLOBAL DEFAULT 24 code
+def pa_context_unref PULSE_0 @@ FUNC GLOBAL DEFAULT 192 code
+def pa_cvolume_avg PULSE_0 @@ FUNC GLOBAL DEFAULT 184 code
+def pa_cvolume_avg_mask PULSE_0 @@ FUNC GLOBAL DEFAULT 252 code
+def pa_cvolume_channels_equal_to PULSE_0 @@ FUNC GLOBAL DEFAULT 252 code
+def pa_cvolume_compatible PULSE_0 @@ FUNC GLOBAL DEFAULT 272 code
+def pa_cvolume_compatible_with_channel_map PULSE_0 @@ FUNC GLOBAL DEFAULT 272 code
+def pa_cvolume_dec PULSE_0 @@ FUNC GLOBAL DEFAULT 212 code
+def pa_cvolume_equal PULSE_0 @@ FUNC GLOBAL DEFAULT 304 code
+def pa_cvolume_get_balance PULSE_0 @@ FUNC GLOBAL DEFAULT 324 code
+def pa_cvolume_get_fade PULSE_0 @@ FUNC GLOBAL DEFAULT 324 code
+def pa_cvolume_get_lfe_balance PULSE_0 @@ FUNC GLOBAL DEFAULT 324 code
+def pa_cvolume_get_position PULSE_0 @@ FUNC GLOBAL DEFAULT 328 code
+def pa_cvolume_inc PULSE_0 @@ FUNC GLOBAL DEFAULT 8 code
+def pa_cvolume_inc_clamp PULSE_0 @@ FUNC GLOBAL DEFAULT 216 code
+def pa_cvolume_init PULSE_0 @@ FUNC GLOBAL DEFAULT 92 code
+def pa_cvolume_max PULSE_0 @@ FUNC GLOBAL DEFAULT 172 code
+def pa_cvolume_max_mask PULSE_0 @@ FUNC GLOBAL DEFAULT 236 code
+def pa_cvolume_merge PULSE_0 @@ FUNC GLOBAL DEFAULT 384 code
+def pa_cvolume_min PULSE_0 @@ FUNC GLOBAL DEFAULT 176 code
+def pa_cvolume_min_mask PULSE_0 @@ FUNC GLOBAL DEFAULT 240 code
+def pa_cvolume_remap PULSE_0 @@ FUNC GLOBAL DEFAULT 768 code
+def pa_cvolume_scale PULSE_0 @@ FUNC GLOBAL DEFAULT 304 code
+def pa_cvolume_scale_mask PULSE_0 @@ FUNC GLOBAL DEFAULT 332 code
+def pa_cvolume_set PULSE_0 @@ FUNC GLOBAL DEFAULT 148 code
+def pa_cvolume_set_balance PULSE_0 @@ FUNC GLOBAL DEFAULT 404 code
+def pa_cvolume_set_fade PULSE_0 @@ FUNC GLOBAL DEFAULT 404 code
+def pa_cvolume_set_lfe_balance PULSE_0 @@ FUNC GLOBAL DEFAULT 404 code
+def pa_cvolume_set_position PULSE_0 @@ FUNC GLOBAL DEFAULT 380 code
+def pa_cvolume_snprint PULSE_0 @@ FUNC GLOBAL DEFAULT 372 code
+def pa_cvolume_snprint_verbose PULSE_0 @@ FUNC GLOBAL DEFAULT 612 code
+def pa_cvolume_valid PULSE_0 @@ FUNC GLOBAL DEFAULT 116 code
+def pa_direction_to_string PULSE_0 @@ FUNC GLOBAL DEFAULT 60 code
+def pa_direction_valid PULSE_0 @@ FUNC GLOBAL DEFAULT 12 code
+def pa_encoding_from_string PULSE_0 @@ FUNC GLOBAL DEFAULT 52 code
+def pa_encoding_to_string PULSE_0 @@ FUNC GLOBAL DEFAULT 24 code
+def pa_ext_device_manager_delete PULSE_0 @@ FUNC GLOBAL DEFAULT 484 code
+def pa_ext_device_manager_enable_role_device_priority_routing PULSE_0 @@ FUNC GLOBAL DEFAULT 380 code
+def pa_ext_device_manager_read PULSE_0 @@ FUNC GLOBAL DEFAULT 348 code
+def pa_ext_device_manager_reorder_devices_for_role PULSE_0 @@ FUNC GLOBAL DEFAULT 496 code
+def pa_ext_device_manager_set_device_description PULSE_0 @@ FUNC GLOBAL DEFAULT 488 code
+def pa_ext_device_manager_set_subscribe_cb PULSE_0 @@ FUNC GLOBAL DEFAULT 168 code
+def pa_ext_device_manager_subscribe PULSE_0 @@ FUNC GLOBAL DEFAULT 376 code
+def pa_ext_device_manager_test PULSE_0 @@ FUNC GLOBAL DEFAULT 348 code
+def pa_ext_device_restore_read_formats PULSE_0 @@ FUNC GLOBAL DEFAULT 420 code
+def pa_ext_device_restore_read_formats_all PULSE_0 @@ FUNC GLOBAL DEFAULT 352 code
+def pa_ext_device_restore_save_formats PULSE_0 @@ FUNC GLOBAL DEFAULT 560 code
+def pa_ext_device_restore_set_subscribe_cb PULSE_0 @@ FUNC GLOBAL DEFAULT 164 code
+def pa_ext_device_restore_subscribe PULSE_0 @@ FUNC GLOBAL DEFAULT 364 code
+def pa_ext_device_restore_test PULSE_0 @@ FUNC GLOBAL DEFAULT 348 code
+def pa_ext_stream_restore_delete PULSE_0 @@ FUNC GLOBAL DEFAULT 484 code
+def pa_ext_stream_restore_read PULSE_0 @@ FUNC GLOBAL DEFAULT 348 code
+def pa_ext_stream_restore_set_subscribe_cb PULSE_0 @@ FUNC GLOBAL DEFAULT 168 code
+def pa_ext_stream_restore_subscribe PULSE_0 @@ FUNC GLOBAL DEFAULT 380 code
+def pa_ext_stream_restore_test PULSE_0 @@ FUNC GLOBAL DEFAULT 348 code
+def pa_ext_stream_restore_write PULSE_0 @@ FUNC GLOBAL DEFAULT 616 code
+def pa_format_info_copy PULSE_0 @@ FUNC GLOBAL DEFAULT 96 code
+def pa_format_info_free PULSE_0 @@ FUNC GLOBAL DEFAULT 84 code
+def pa_format_info_free_string_array PULSE_0 @@ FUNC GLOBAL DEFAULT 36 code
+def pa_format_info_from_sample_spec PULSE_0 @@ FUNC GLOBAL DEFAULT 256 code
+def pa_format_info_from_string PULSE_0 @@ FUNC GLOBAL DEFAULT 152 code
+def pa_format_info_get_channel_map PULSE_0 @@ FUNC GLOBAL DEFAULT 224 code
+def pa_format_info_get_channels PULSE_0 @@ FUNC GLOBAL DEFAULT 224 code
+def pa_format_info_get_prop_int PULSE_0 @@ FUNC GLOBAL DEFAULT 352 code
+def pa_format_info_get_prop_int_array PULSE_0 @@ FUNC GLOBAL DEFAULT 516 code
+def pa_format_info_get_prop_int_range PULSE_0 @@ FUNC GLOBAL DEFAULT 484 code
+def pa_format_info_get_prop_string PULSE_0 @@ FUNC GLOBAL DEFAULT 356 code
+def pa_format_info_get_prop_string_array PULSE_0 @@ FUNC GLOBAL DEFAULT 520 code
+def pa_format_info_get_prop_type PULSE_0 @@ FUNC GLOBAL DEFAULT 288 code
+def pa_format_info_get_rate PULSE_0 @@ FUNC GLOBAL DEFAULT 224 code
+def pa_format_info_get_sample_format PULSE_0 @@ FUNC GLOBAL DEFAULT 236 code
+def pa_format_info_is_compatible PULSE_0 @@ FUNC GLOBAL DEFAULT 660 code
+def pa_format_info_is_pcm PULSE_0 @@ FUNC GLOBAL DEFAULT 14 code
+def pa_format_info_new PULSE_0 @@ FUNC GLOBAL DEFAULT 28 code
+def pa_format_info_set_channel_map PULSE_0 @@ FUNC GLOBAL DEFAULT 40 code
+def pa_format_info_set_channels PULSE_0 @@ FUNC GLOBAL DEFAULT 16 code
+def pa_format_info_set_prop_int PULSE_0 @@ FUNC GLOBAL DEFAULT 160 code
+def pa_format_info_set_prop_int_array PULSE_0 @@ FUNC GLOBAL DEFAULT 304 code
+def pa_format_info_set_prop_int_range PULSE_0 @@ FUNC GLOBAL DEFAULT 152 code
+def pa_format_info_set_prop_string PULSE_0 @@ FUNC GLOBAL DEFAULT 160 code
+def pa_format_info_set_prop_string_array PULSE_0 @@ FUNC GLOBAL DEFAULT 236 code
+def pa_format_info_set_rate PULSE_0 @@ FUNC GLOBAL DEFAULT 16 code
+def pa_format_info_set_sample_format PULSE_0 @@ FUNC GLOBAL DEFAULT 32 code
+def pa_format_info_snprint PULSE_0 @@ FUNC GLOBAL DEFAULT 308 code
+def pa_format_info_to_sample_spec PULSE_0 @@ FUNC GLOBAL DEFAULT 212 code
+def pa_format_info_valid PULSE_0 @@ FUNC GLOBAL DEFAULT 20 code
+def pa_frame_size PULSE_0 @@ FUNC GLOBAL DEFAULT 136 code
+def pa_get_binary_name PULSE_0 @@ FUNC GLOBAL DEFAULT 268 code
+def pa_get_fqdn PULSE_0 @@ FUNC GLOBAL DEFAULT 236 code
+def pa_get_home_dir PULSE_0 @@ FUNC GLOBAL DEFAULT 320 code
+def pa_get_host_name PULSE_0 @@ FUNC GLOBAL DEFAULT 144 code
+def pa_get_library_version PULSE_0 @@ FUNC GLOBAL DEFAULT 12 code
+def pa_get_user_name PULSE_0 @@ FUNC GLOBAL DEFAULT 264 code
+def pa_gettimeofday PULSE_0 @@ FUNC GLOBAL DEFAULT 136 code
+def pa_locale_to_utf8 PULSE_0 @@ FUNC GLOBAL DEFAULT 20 code
+def pa_mainloop_api_once PULSE_0 @@ FUNC GLOBAL DEFAULT 272 code
+def pa_mainloop_dispatch PULSE_0 @@ FUNC GLOBAL DEFAULT 784 code
+def pa_mainloop_free PULSE_0 @@ FUNC GLOBAL DEFAULT 120 code
+def pa_mainloop_get_api PULSE_0 @@ FUNC GLOBAL DEFAULT 76 code
+def pa_mainloop_get_retval PULSE_0 @@ FUNC GLOBAL DEFAULT 76 code
+def pa_mainloop_iterate PULSE_0 @@ FUNC GLOBAL DEFAULT 144 code
+def pa_mainloop_new PULSE_0 @@ FUNC GLOBAL DEFAULT 176 code
+def pa_mainloop_poll PULSE_0 @@ FUNC GLOBAL DEFAULT 512 code
+def pa_mainloop_prepare PULSE_0 @@ FUNC GLOBAL DEFAULT 600 code
+def pa_mainloop_quit PULSE_0 @@ FUNC GLOBAL DEFAULT 92 code
+def pa_mainloop_run PULSE_0 @@ FUNC GLOBAL DEFAULT 32 code
+def pa_mainloop_set_poll_func PULSE_0 @@ FUNC GLOBAL DEFAULT 80 code
+def pa_mainloop_wakeup PULSE_0 @@ FUNC GLOBAL DEFAULT 164 code
+def pa_msleep PULSE_0 @@ FUNC GLOBAL DEFAULT 56 code
+def pa_operation_cancel PULSE_0 @@ FUNC GLOBAL DEFAULT 152 code
+def pa_operation_get_state PULSE_0 @@ FUNC GLOBAL DEFAULT 152 code
+def pa_operation_ref PULSE_0 @@ FUNC GLOBAL DEFAULT 168 code
+def pa_operation_set_state_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 172 code
+def pa_operation_unref PULSE_0 @@ FUNC GLOBAL DEFAULT 300 code
+def pa_parse_sample_format PULSE_0 @@ FUNC GLOBAL DEFAULT 784 code
+def pa_path_get_filename PULSE_0 @@ FUNC GLOBAL DEFAULT 22 code
+def pa_proplist_clear PULSE_0 @@ FUNC GLOBAL DEFAULT 76 code
+def pa_proplist_contains PULSE_0 @@ FUNC GLOBAL DEFAULT 172 code
+def pa_proplist_copy PULSE_0 @@ FUNC GLOBAL DEFAULT 92 code
+def pa_proplist_equal PULSE_0 @@ FUNC GLOBAL DEFAULT 232 code
+def pa_proplist_free PULSE_0 @@ FUNC GLOBAL DEFAULT 72 code
+def pa_proplist_from_string PULSE_0 @@ FUNC GLOBAL DEFAULT 832 code
+def pa_proplist_get PULSE_0 @@ FUNC GLOBAL DEFAULT 300 code
+def pa_proplist_gets PULSE_0 @@ FUNC GLOBAL DEFAULT 196 code
+def pa_proplist_isempty PULSE_0 @@ FUNC GLOBAL DEFAULT 80 code
+def pa_proplist_iterate PULSE_0 @@ FUNC GLOBAL DEFAULT 14 code
+def pa_proplist_key_valid PULSE_0 @@ FUNC GLOBAL DEFAULT 20 code
+def pa_proplist_new PULSE_0 @@ FUNC GLOBAL DEFAULT 44 code
+def pa_proplist_set PULSE_0 @@ FUNC GLOBAL DEFAULT 372 code
+def pa_proplist_setf PULSE_0 @@ FUNC GLOBAL DEFAULT 348 code
+def pa_proplist_setp PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_proplist_sets PULSE_0 @@ FUNC GLOBAL DEFAULT 312 code
+def pa_proplist_size PULSE_0 @@ FUNC GLOBAL DEFAULT 76 code
+def pa_proplist_to_string PULSE_0 @@ FUNC GLOBAL DEFAULT 44 code
+def pa_proplist_to_string_sep PULSE_0 @@ FUNC GLOBAL DEFAULT 528 code
+def pa_proplist_unset PULSE_0 @@ FUNC GLOBAL DEFAULT 176 code
+def pa_proplist_unset_many PULSE_0 @@ FUNC GLOBAL DEFAULT 200 code
+def pa_proplist_update PULSE_0 @@ FUNC GLOBAL DEFAULT 336 code
+def pa_rtclock_now PULSE_0 @@ FUNC GLOBAL DEFAULT 20 code
+def pa_sample_format_is_be PULSE_0 @@ FUNC GLOBAL DEFAULT 18 code
+def pa_sample_format_is_le PULSE_0 @@ FUNC GLOBAL DEFAULT 120 code
+def pa_sample_format_to_string PULSE_0 @@ FUNC GLOBAL DEFAULT 24 code
+def pa_sample_format_valid PULSE_0 @@ FUNC GLOBAL DEFAULT 10 code
+def pa_sample_rate_valid PULSE_0 @@ FUNC GLOBAL DEFAULT 20 code
+def pa_sample_size PULSE_0 @@ FUNC GLOBAL DEFAULT 128 code
+def pa_sample_size_of_format PULSE_0 @@ FUNC GLOBAL DEFAULT 88 code
+def pa_sample_spec_equal PULSE_0 @@ FUNC GLOBAL DEFAULT 292 code
+def pa_sample_spec_init PULSE_0 @@ FUNC GLOBAL DEFAULT 80 code
+def pa_sample_spec_snprint PULSE_0 @@ FUNC GLOBAL DEFAULT 300 code
+def pa_sample_spec_valid PULSE_0 @@ FUNC GLOBAL DEFAULT 100 code
+def pa_signal_done PULSE_0 @@ FUNC GLOBAL DEFAULT 144 code
+def pa_signal_free PULSE_0 @@ FUNC GLOBAL DEFAULT 212 code
+def pa_signal_init PULSE_0 @@ FUNC GLOBAL DEFAULT 432 code
+def pa_signal_new PULSE_0 @@ FUNC GLOBAL DEFAULT 284 code
+def pa_signal_set_destroy PULSE_0 @@ FUNC GLOBAL DEFAULT 76 code
+def pa_stream_begin_write PULSE_0 @@ FUNC GLOBAL DEFAULT 344 code
+def pa_stream_cancel_write PULSE_0 @@ FUNC GLOBAL DEFAULT 284 code
+def pa_stream_connect_playback PULSE_0 @@ FUNC GLOBAL DEFAULT 176 code
+def pa_stream_connect_record PULSE_0 @@ FUNC GLOBAL DEFAULT 176 code
+def pa_stream_connect_upload PULSE_0 @@ FUNC GLOBAL DEFAULT 432 code
+def pa_stream_cork PULSE_0 @@ FUNC GLOBAL DEFAULT 400 code
+def pa_stream_disconnect PULSE_0 @@ FUNC GLOBAL DEFAULT 304 code
+def pa_stream_drain PULSE_0 @@ FUNC GLOBAL DEFAULT 340 code
+def pa_stream_drop PULSE_0 @@ FUNC GLOBAL DEFAULT 368 code
+def pa_stream_finish_upload PULSE_0 @@ FUNC GLOBAL DEFAULT 280 code
+def pa_stream_flush PULSE_0 @@ FUNC GLOBAL DEFAULT 324 code
+def pa_stream_get_buffer_attr PULSE_0 @@ FUNC GLOBAL DEFAULT 204 code
+def pa_stream_get_channel_map PULSE_0 @@ FUNC GLOBAL DEFAULT 176 code
+def pa_stream_get_context PULSE_0 @@ FUNC GLOBAL DEFAULT 156 code
+def pa_stream_get_device_index PULSE_0 @@ FUNC GLOBAL DEFAULT 240 code
+def pa_stream_get_device_name PULSE_0 @@ FUNC GLOBAL DEFAULT 236 code
+def pa_stream_get_format_info PULSE_0 @@ FUNC GLOBAL DEFAULT 196 code
+def pa_stream_get_index PULSE_0 @@ FUNC GLOBAL DEFAULT 200 code
+def pa_stream_get_latency PULSE_0 @@ FUNC GLOBAL DEFAULT 432 code
+def pa_stream_get_monitor_stream PULSE_0 @@ FUNC GLOBAL DEFAULT 208 code
+def pa_stream_get_sample_spec PULSE_0 @@ FUNC GLOBAL DEFAULT 176 code
+def pa_stream_get_state PULSE_0 @@ FUNC GLOBAL DEFAULT 156 code
+def pa_stream_get_time PULSE_0 @@ FUNC GLOBAL DEFAULT 324 code
+def pa_stream_get_timing_info PULSE_0 @@ FUNC GLOBAL DEFAULT 228 code
+def pa_stream_get_underflow_index PULSE_0 @@ FUNC GLOBAL DEFAULT 80 code
+def pa_stream_is_corked PULSE_0 @@ FUNC GLOBAL DEFAULT 208 code
+def pa_stream_is_suspended PULSE_0 @@ FUNC GLOBAL DEFAULT 224 code
+def pa_stream_new PULSE_0 @@ FUNC GLOBAL DEFAULT 16 code
+def pa_stream_new_extended PULSE_0 @@ FUNC GLOBAL DEFAULT 44 code
+def pa_stream_new_with_proplist PULSE_0 @@ FUNC GLOBAL DEFAULT 140 code
+def pa_stream_peek PULSE_0 @@ FUNC GLOBAL DEFAULT 456 code
+def pa_stream_prebuf PULSE_0 @@ FUNC GLOBAL DEFAULT 244 code
+def pa_stream_proplist_remove PULSE_0 @@ FUNC GLOBAL DEFAULT 392 code
+def pa_stream_proplist_update PULSE_0 @@ FUNC GLOBAL DEFAULT 380 code
+def pa_stream_readable_size PULSE_0 @@ FUNC GLOBAL DEFAULT 208 code
+def pa_stream_ref PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_stream_set_buffer_attr PULSE_0 @@ FUNC GLOBAL DEFAULT 560 code
+def pa_stream_set_buffer_attr_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_stream_set_event_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_stream_set_latency_update_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_stream_set_monitor_stream PULSE_0 @@ FUNC GLOBAL DEFAULT 232 code
+def pa_stream_set_moved_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_stream_set_name PULSE_0 @@ FUNC GLOBAL DEFAULT 460 code
+def pa_stream_set_overflow_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_stream_set_read_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_stream_set_started_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_stream_set_state_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_stream_set_suspended_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_stream_set_underflow_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_stream_set_write_callback PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_stream_trigger PULSE_0 @@ FUNC GLOBAL DEFAULT 244 code
+def pa_stream_unref PULSE_0 @@ FUNC GLOBAL DEFAULT 324 code
+def pa_stream_update_sample_rate PULSE_0 @@ FUNC GLOBAL DEFAULT 396 code
+def pa_stream_update_timing_info PULSE_0 @@ FUNC GLOBAL DEFAULT 456 code
+def pa_stream_writable_size PULSE_0 @@ FUNC GLOBAL DEFAULT 216 code
+def pa_stream_write PULSE_0 @@ FUNC GLOBAL DEFAULT 26 code
+def pa_stream_write_ext_free PULSE_0 @@ FUNC GLOBAL DEFAULT 1024 code
+def pa_strerror PULSE_0 @@ FUNC GLOBAL DEFAULT 56 code
+def pa_sw_cvolume_divide PULSE_0 @@ FUNC GLOBAL DEFAULT 376 code
+def pa_sw_cvolume_divide_scalar PULSE_0 @@ FUNC GLOBAL DEFAULT 324 code
+def pa_sw_cvolume_multiply PULSE_0 @@ FUNC GLOBAL DEFAULT 376 code
+def pa_sw_cvolume_multiply_scalar PULSE_0 @@ FUNC GLOBAL DEFAULT 324 code
+def pa_sw_cvolume_snprint_dB PULSE_0 @@ FUNC GLOBAL DEFAULT 452 code
+def pa_sw_volume_divide PULSE_0 @@ FUNC GLOBAL DEFAULT 208 code
+def pa_sw_volume_from_dB PULSE_0 @@ FUNC GLOBAL DEFAULT 104 code
+def pa_sw_volume_from_linear PULSE_0 @@ FUNC GLOBAL DEFAULT 76 code
+def pa_sw_volume_multiply PULSE_0 @@ FUNC GLOBAL DEFAULT 192 code
+def pa_sw_volume_snprint_dB PULSE_0 @@ FUNC GLOBAL DEFAULT 296 code
+def pa_sw_volume_to_dB PULSE_0 @@ FUNC GLOBAL DEFAULT 124 code
+def pa_sw_volume_to_linear PULSE_0 @@ FUNC GLOBAL DEFAULT 124 code
+def pa_thread_make_realtime PULSE_0 @@ FUNC GLOBAL DEFAULT 192 code
+def pa_threaded_mainloop_accept PULSE_0 @@ FUNC GLOBAL DEFAULT 216 code
+def pa_threaded_mainloop_free PULSE_0 @@ FUNC GLOBAL DEFAULT 204 code
+def pa_threaded_mainloop_get_api PULSE_0 @@ FUNC GLOBAL DEFAULT 76 code
+def pa_threaded_mainloop_get_retval PULSE_0 @@ FUNC GLOBAL DEFAULT 76 code
+def pa_threaded_mainloop_in_thread PULSE_0 @@ FUNC GLOBAL DEFAULT 92 code
+def pa_threaded_mainloop_lock PULSE_0 @@ FUNC GLOBAL DEFAULT 152 code
+def pa_threaded_mainloop_new PULSE_0 @@ FUNC GLOBAL DEFAULT 80 code
+def pa_threaded_mainloop_once_unlocked PULSE_0 @@ FUNC GLOBAL DEFAULT 260 code
+def pa_threaded_mainloop_set_name PULSE_0 @@ FUNC GLOBAL DEFAULT 164 code
+def pa_threaded_mainloop_signal PULSE_0 @@ FUNC GLOBAL DEFAULT 112 code
+def pa_threaded_mainloop_start PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_threaded_mainloop_stop PULSE_0 @@ FUNC GLOBAL DEFAULT 184 code
+def pa_threaded_mainloop_unlock PULSE_0 @@ FUNC GLOBAL DEFAULT 152 code
+def pa_threaded_mainloop_wait PULSE_0 @@ FUNC GLOBAL DEFAULT 220 code
+def pa_timeval_add PULSE_0 @@ FUNC GLOBAL DEFAULT 184 code
+def pa_timeval_age PULSE_0 @@ FUNC GLOBAL DEFAULT 84 code
+def pa_timeval_cmp PULSE_0 @@ FUNC GLOBAL DEFAULT 180 code
+def pa_timeval_diff PULSE_0 @@ FUNC GLOBAL DEFAULT 256 code
+def pa_timeval_load PULSE_0 @@ FUNC GLOBAL DEFAULT 38 code
+def pa_timeval_store PULSE_0 @@ FUNC GLOBAL DEFAULT 124 code
+def pa_timeval_sub PULSE_0 @@ FUNC GLOBAL DEFAULT 156 code
+def pa_usec_to_bytes PULSE_0 @@ FUNC GLOBAL DEFAULT 196 code
+def pa_utf8_filter PULSE_0 @@ FUNC GLOBAL DEFAULT 88 code
+def pa_utf8_to_locale PULSE_0 @@ FUNC GLOBAL DEFAULT 20 code
+def pa_utf8_valid PULSE_0 @@ FUNC GLOBAL DEFAULT 72 code
+def pa_volume_snprint PULSE_0 @@ FUNC GLOBAL DEFAULT 220 code
+def pa_volume_snprint_verbose PULSE_0 @@ FUNC GLOBAL DEFAULT 272 code
+def pa_xfree PULSE_0 @@ FUNC GLOBAL DEFAULT 26 code
+def pa_xmalloc PULSE_0 @@ FUNC GLOBAL DEFAULT 148 code
+def pa_xmalloc0 PULSE_0 @@ FUNC GLOBAL DEFAULT 152 code
+def pa_xmemdup PULSE_0 @@ FUNC GLOBAL DEFAULT 28 code
+def pa_xrealloc PULSE_0 @@ FUNC GLOBAL DEFAULT 156 code
+def pa_xstrdup PULSE_0 @@ FUNC GLOBAL DEFAULT 24 code
+def pa_xstrndup PULSE_0 @@ FUNC GLOBAL DEFAULT 60 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __assert_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und _exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und cbrt GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und dcgettext GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dladdr GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und execv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fork GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und freeaddrinfo GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getaddrinfo GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getgid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gethostname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gettimeofday GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und iconv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und iconv_close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und iconv_open GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und log10 GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und lround GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und main - - NOTYPE WEAK
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und nanosleep GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pa_atou - - FUNC GLOBAL
+und pa_bitset_equals - - FUNC GLOBAL
+und pa_bitset_set - - FUNC GLOBAL
+und pa_client_conf_free - - FUNC GLOBAL
+und pa_client_conf_load - - FUNC GLOBAL
+und pa_client_conf_load_cookie - - FUNC GLOBAL
+und pa_client_conf_new - - FUNC GLOBAL
+und pa_client_conf_set_cookie_file_from_application - - FUNC GLOBAL
+und pa_close_all - - FUNC GLOBAL
+und pa_close_pipe - - FUNC GLOBAL
+und pa_cmsg_ancil_data_close_fds - - FUNC GLOBAL
+und pa_common_command_register_memfd_shmid - - FUNC GLOBAL
+und pa_cond_free - - FUNC GLOBAL
+und pa_cond_new - - FUNC GLOBAL
+und pa_cond_signal - - FUNC GLOBAL
+und pa_cond_wait - - FUNC GLOBAL
+und pa_cstrerror - - FUNC GLOBAL
+und pa_detect_fork - - FUNC GLOBAL
+und pa_flist_new_with_name - - FUNC GLOBAL
+und pa_flist_pop - - FUNC GLOBAL
+und pa_flist_push - - FUNC GLOBAL
+und pa_format_info_to_sample_spec_fake - - FUNC GLOBAL
+und pa_frame_align - - FUNC GLOBAL
+und pa_getpwuid_free - - FUNC GLOBAL
+und pa_getpwuid_malloc - - FUNC GLOBAL
+und pa_hashmap_free - - FUNC GLOBAL
+und pa_hashmap_get - - FUNC GLOBAL
+und pa_hashmap_isempty - - FUNC GLOBAL
+und pa_hashmap_iterate - - FUNC GLOBAL
+und pa_hashmap_new - - FUNC GLOBAL
+und pa_hashmap_new_full - - FUNC GLOBAL
+und pa_hashmap_put - - FUNC GLOBAL
+und pa_hashmap_remove - - FUNC GLOBAL
+und pa_hashmap_remove_all - - FUNC GLOBAL
+und pa_hashmap_remove_and_free - - FUNC GLOBAL
+und pa_hashmap_size - - FUNC GLOBAL
+und pa_hexstr - - FUNC GLOBAL
+und pa_idxset_string_compare_func - - FUNC GLOBAL
+und pa_idxset_string_hash_func - - FUNC GLOBAL
+und pa_idxset_trivial_compare_func - - FUNC GLOBAL
+und pa_idxset_trivial_hash_func - - FUNC GLOBAL
+und pa_init_i18n - - FUNC GLOBAL
+und pa_init_proplist - - FUNC GLOBAL
+und pa_iochannel_creds_enable - - FUNC GLOBAL
+und pa_iochannel_creds_supported - - FUNC GLOBAL
+und pa_is_path_absolute - - FUNC GLOBAL
+und pa_json_object_equal - - FUNC GLOBAL
+und pa_json_object_free - - FUNC GLOBAL
+und pa_json_object_get_array_length - - FUNC GLOBAL
+und pa_json_object_get_array_member - - FUNC GLOBAL
+und pa_json_object_get_int - - FUNC GLOBAL
+und pa_json_object_get_object_member - - FUNC GLOBAL
+und pa_json_object_get_string - - FUNC GLOBAL
+und pa_json_object_get_type - - FUNC GLOBAL
+und pa_json_parse - - FUNC GLOBAL
+und pa_log_level_meta - - FUNC GLOBAL
+und pa_loop_write - - FUNC GLOBAL
+und pa_make_fd_nonblock - - FUNC GLOBAL
+und pa_memblock_acquire - - FUNC GLOBAL
+und pa_memblock_get_length - - FUNC GLOBAL
+und pa_memblock_is_ours - - FUNC GLOBAL
+und pa_memblock_is_read_only - - FUNC GLOBAL
+und pa_memblock_new - - FUNC GLOBAL
+und pa_memblock_new_user - - FUNC GLOBAL
+und pa_memblock_ref - - FUNC GLOBAL
+und pa_memblock_release - - FUNC GLOBAL
+und pa_memblock_unref - - FUNC GLOBAL
+und pa_memblockq_drop - - FUNC GLOBAL
+und pa_memblockq_free - - FUNC GLOBAL
+und pa_memblockq_get_length - - FUNC GLOBAL
+und pa_memblockq_new - - FUNC GLOBAL
+und pa_memblockq_peek - - FUNC GLOBAL
+und pa_memblockq_push_align - - FUNC GLOBAL
+und pa_memblockq_seek - - FUNC GLOBAL
+und pa_memchunk_reset - - FUNC GLOBAL
+und pa_mempool_block_size_max - - FUNC GLOBAL
+und pa_mempool_is_memfd_backed - - FUNC GLOBAL
+und pa_mempool_is_shared - - FUNC GLOBAL
+und pa_mempool_new - - FUNC GLOBAL
+und pa_mempool_unref - - FUNC GLOBAL
+und pa_mutex_free - - FUNC GLOBAL
+und pa_mutex_lock - - FUNC GLOBAL
+und pa_mutex_new - - FUNC GLOBAL
+und pa_mutex_unlock - - FUNC GLOBAL
+und pa_parse_boolean - - FUNC GLOBAL
+und pa_parsehex - - FUNC GLOBAL
+und pa_pdispatch_creds - - FUNC GLOBAL
+und pa_pdispatch_is_pending - - FUNC GLOBAL
+und pa_pdispatch_new - - FUNC GLOBAL
+und pa_pdispatch_register_reply - - FUNC GLOBAL
+und pa_pdispatch_run - - FUNC GLOBAL
+und pa_pdispatch_set_drain_callback - - FUNC GLOBAL
+und pa_pdispatch_take_ancil_data - - FUNC GLOBAL
+und pa_pdispatch_unref - - FUNC GLOBAL
+und pa_pdispatch_unregister_reply - - FUNC GLOBAL
+und pa_pipe_cloexec - - FUNC GLOBAL
+und pa_pstream_enable_memfd - - FUNC GLOBAL
+und pa_pstream_enable_shm - - FUNC GLOBAL
+und pa_pstream_get_shm - - FUNC GLOBAL
+und pa_pstream_is_pending - - FUNC GLOBAL
+und pa_pstream_new - - FUNC GLOBAL
+und pa_pstream_register_memfd_mempool - - FUNC GLOBAL
+und pa_pstream_send_memblock - - FUNC GLOBAL
+und pa_pstream_send_tagstruct_with_creds - - FUNC GLOBAL
+und pa_pstream_set_die_callback - - FUNC GLOBAL
+und pa_pstream_set_drain_callback - - FUNC GLOBAL
+und pa_pstream_set_receive_memblock_callback - - FUNC GLOBAL
+und pa_pstream_set_receive_packet_callback - - FUNC GLOBAL
+und pa_pstream_set_srbchannel - - FUNC GLOBAL
+und pa_pstream_unlink - - FUNC GLOBAL
+und pa_pstream_unref - - FUNC GLOBAL
+und pa_read - - FUNC GLOBAL
+und pa_readlink - - FUNC GLOBAL
+und pa_realpath - - FUNC GLOBAL
+und pa_rtclock_from_wallclock - - FUNC GLOBAL
+und pa_rtclock_get - - FUNC GLOBAL
+und pa_run_once - - FUNC GLOBAL
+und pa_runtime_path - - FUNC GLOBAL
+und pa_smoother_free - - FUNC GLOBAL
+und pa_smoother_get - - FUNC GLOBAL
+und pa_smoother_new - - FUNC GLOBAL
+und pa_smoother_pause - - FUNC GLOBAL
+und pa_smoother_put - - FUNC GLOBAL
+und pa_smoother_resume - - FUNC GLOBAL
+und pa_snprintf - - FUNC GLOBAL
+und pa_socket_client_is_local - - FUNC GLOBAL
+und pa_socket_client_new_string - - FUNC GLOBAL
+und pa_socket_client_set_callback - - FUNC GLOBAL
+und pa_socket_client_unref - - FUNC GLOBAL
+und pa_split - - FUNC GLOBAL
+und pa_split_spaces - - FUNC GLOBAL
+und pa_sprintf_malloc - - FUNC GLOBAL
+und pa_srbchannel_new_from_template - - FUNC GLOBAL
+und pa_strbuf_isempty - - FUNC GLOBAL
+und pa_strbuf_new - - FUNC GLOBAL
+und pa_strbuf_printf - - FUNC GLOBAL
+und pa_strbuf_puts - - FUNC GLOBAL
+und pa_strbuf_putsn - - FUNC GLOBAL
+und pa_strbuf_to_string_free - - FUNC GLOBAL
+und pa_strip - - FUNC GLOBAL
+und pa_strlcpy - - FUNC GLOBAL
+und pa_strlist_free - - FUNC GLOBAL
+und pa_strlist_parse - - FUNC GLOBAL
+und pa_strlist_pop - - FUNC GLOBAL
+und pa_strlist_prepend - - FUNC GLOBAL
+und pa_tagstruct_eof - - FUNC GLOBAL
+und pa_tagstruct_free - - FUNC GLOBAL
+und pa_tagstruct_get_boolean - - FUNC GLOBAL
+und pa_tagstruct_get_channel_map - - FUNC GLOBAL
+und pa_tagstruct_get_cvolume - - FUNC GLOBAL
+und pa_tagstruct_get_format_info - - FUNC GLOBAL
+und pa_tagstruct_get_proplist - - FUNC GLOBAL
+und pa_tagstruct_get_sample_spec - - FUNC GLOBAL
+und pa_tagstruct_get_timeval - - FUNC GLOBAL
+und pa_tagstruct_get_usec - - FUNC GLOBAL
+und pa_tagstruct_get_volume - - FUNC GLOBAL
+und pa_tagstruct_gets - - FUNC GLOBAL
+und pa_tagstruct_gets64 - - FUNC GLOBAL
+und pa_tagstruct_getu32 - - FUNC GLOBAL
+und pa_tagstruct_getu64 - - FUNC GLOBAL
+und pa_tagstruct_getu8 - - FUNC GLOBAL
+und pa_tagstruct_new - - FUNC GLOBAL
+und pa_tagstruct_put - - FUNC GLOBAL
+und pa_tagstruct_put_arbitrary - - FUNC GLOBAL
+und pa_tagstruct_put_boolean - - FUNC GLOBAL
+und pa_tagstruct_put_channel_map - - FUNC GLOBAL
+und pa_tagstruct_put_cvolume - - FUNC GLOBAL
+und pa_tagstruct_put_cvolume_ramp - - FUNC GLOBAL
+und pa_tagstruct_put_format_info - - FUNC GLOBAL
+und pa_tagstruct_put_proplist - - FUNC GLOBAL
+und pa_tagstruct_put_sample_spec - - FUNC GLOBAL
+und pa_tagstruct_put_timeval - - FUNC GLOBAL
+und pa_tagstruct_puts - - FUNC GLOBAL
+und pa_tagstruct_puts64 - - FUNC GLOBAL
+und pa_tagstruct_putu32 - - FUNC GLOBAL
+und pa_tagstruct_putu8 - - FUNC GLOBAL
+und pa_thread_free - - FUNC GLOBAL
+und pa_thread_is_running - - FUNC GLOBAL
+und pa_thread_join - - FUNC GLOBAL
+und pa_thread_new - - FUNC GLOBAL
+und pa_thread_self - - FUNC GLOBAL
+und pa_thread_set_name - - FUNC GLOBAL
+und pa_timespec_store - - FUNC GLOBAL
+und pa_timeval_rtstore - - FUNC GLOBAL
+und pa_unescape - - FUNC GLOBAL
+und pa_vsprintf_malloc - - FUNC GLOBAL
+und pa_write - - FUNC GLOBAL
+und poll GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pow GLIBC_2.29 libm.so.6 FUNC GLOBAL
+und ppoll GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und prctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_self GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_setschedparam GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_sigmask GLIBC_2.32 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigaction GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigdelset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigemptyset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigfillset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigismember GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcasecmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcspn GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und waitpid GLIBC_2.4 libc.so.6 FUNC GLOBAL

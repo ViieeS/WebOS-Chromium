@@ -1,0 +1,8 @@
+tvabi 1
+soname libicudata.so.70
+needed libc.so.6
+def icudt70_dat - - OBJECT GLOBAL DEFAULT 29466000 data
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK

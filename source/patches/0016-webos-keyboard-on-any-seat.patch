@@ -1,0 +1,59 @@
+# why: WaylandConnection::IsKeyboardAvailable() looks at one wl_seat only. The TV has several seats and the remote is
+# not on the first, so Chrome thought there was no keyboard and deactivated its window. Any seat with a keyboard
+# now counts. Patch 0015 covers the remaining activation cases.
+diff --git a/src/ui/ozone/platform/wayland/host/wayland_connection.cc b/src/ui/ozone/platform/wayland/host/wayland_connection.cc
+index 8ed3cf8e3..b2c754a8c 100644
+--- a/src/ui/ozone/platform/wayland/host/wayland_connection.cc
++++ b/src/ui/ozone/platform/wayland/host/wayland_connection.cc
+@@ -409,7 +409,9 @@ bool WaylandConnection::SupportsSetWindowGeometry() const {
+ }
+ 
+ bool WaylandConnection::IsKeyboardAvailable() const {
+-  return seat_ && seat_->keyboard();
++  // chromium-native: look at every seat, not only the first (patch 0016).
++  return (seat_ && seat_->keyboard()) ||
++         (seat_manager_ && seat_manager_->HasKeyboard());
+ }
+ 
+ wl::Object<wl_surface> WaylandConnection::CreateSurface() {
+diff --git a/src/ui/ozone/platform/wayland/host/wayland_seat_manager.cc b/src/ui/ozone/platform/wayland/host/wayland_seat_manager.cc
+index f6a29137c..19ed3ba60 100644
+--- a/src/ui/ozone/platform/wayland/host/wayland_seat_manager.cc
++++ b/src/ui/ozone/platform/wayland/host/wayland_seat_manager.cc
+@@ -22,6 +22,7 @@
+ #include "ui/events/devices/touchscreen_device.h"
+ #include "ui/events/event_switches.h"
+ #include "ui/ozone/platform/wayland/host/wayland_cursor.h"
++#include "ui/ozone/platform/wayland/host/wayland_seat.h"
+ #include "ui/ozone/platform/wayland/host/wayland_touch.h"
+ 
+ namespace ui {
+@@ -110,4 +111,13 @@ int WaylandSeatManager::GetMaxTouchPoints() const {
+   return kDefaultMaxTouchPoints;
+ }
+ 
++bool WaylandSeatManager::HasKeyboard() const {
++  for (const auto& [id, seat] : seat_map_) {
++    if (seat && seat->keyboard()) {
++      return true;
++    }
++  }
++  return false;
++}
++
+ }  // namespace ui
+diff --git a/src/ui/ozone/platform/wayland/host/wayland_seat_manager.h b/src/ui/ozone/platform/wayland/host/wayland_seat_manager.h
+index 087421778..1fcdcfe78 100644
+--- a/src/ui/ozone/platform/wayland/host/wayland_seat_manager.h
++++ b/src/ui/ozone/platform/wayland/host/wayland_seat_manager.h
+@@ -50,6 +50,10 @@ class WaylandSeatManager {
+   void AddSeat(WaylandConnection* connection,
+                std::uint32_t seat_id,
+                wl_seat* seat);
++  // chromium-native (webOS): true when any seat has a keyboard. The TV has 5
++  // seats and the remote's keys come on one that is not the first.
++  bool HasKeyboard() const;
++
+   // Returns the very first WaylandSeat wrapper.
+   WaylandSeat* GetFirstSeat() const { return first_seat_; }
+ 

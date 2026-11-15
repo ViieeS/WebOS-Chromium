@@ -1,0 +1,30 @@
+# why: content's PlatformNotificationService::DisplayPersistentNotification takes service_worker_registration_id, but
+# the override in PlatformNotificationServiceImpl lacks it, so the class stays abstract. Add the parameter.
+diff --git a/src/chrome/browser/notifications/platform_notification_service_impl.cc b/src/chrome/browser/notifications/platform_notification_service_impl.cc
+index e617356dc4..bb031c8ed2 100644
+--- a/src/chrome/browser/notifications/platform_notification_service_impl.cc
++++ b/src/chrome/browser/notifications/platform_notification_service_impl.cc
+@@ -317,7 +317,8 @@ void PlatformNotificationServiceImpl::DisplayPersistentNotification(
+     const GURL& service_worker_scope,
+     const GURL& origin,
+     const blink::PlatformNotificationData& notification_data,
+-    const blink::NotificationResources& notification_resources) {
++    const blink::NotificationResources& notification_resources,
++    const int64_t service_worker_registration_id) {
+   DCHECK_CURRENTLY_ON(BrowserThread::UI);
+ 
+   closed_notifications_.erase(notification_id);
+diff --git a/src/chrome/browser/notifications/platform_notification_service_impl.h b/src/chrome/browser/notifications/platform_notification_service_impl.h
+index 76c0d0763c..240803f113 100644
+--- a/src/chrome/browser/notifications/platform_notification_service_impl.h
++++ b/src/chrome/browser/notifications/platform_notification_service_impl.h
+@@ -66,7 +66,8 @@ class PlatformNotificationServiceImpl
+       const GURL& service_worker_scope,
+       const GURL& origin,
+       const blink::PlatformNotificationData& notification_data,
+-      const blink::NotificationResources& notification_resources) override;
++      const blink::NotificationResources& notification_resources,
++      const int64_t service_worker_registration_id) override;
+   void CloseNotification(const std::string& notification_id) override;
+   void ClosePersistentNotification(const std::string& notification_id) override;
+   void GetDisplayedNotifications(

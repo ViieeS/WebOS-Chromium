@@ -1,0 +1,77 @@
+# why: Hardware video on webOS 4. H.264 B-frames arrive in decode order, and gating each frame on its display time sent
+# them in bursts; the old decoder shows frames as they arrive, so 1080p stuttered. Frames are now sent at an even
+# pace in decode order (frame k at base + k x frame duration, kept within pts - 6 frames .. pts).
+--- a/src/content/renderer/media/cn_ndl_renderer.cc
++++ b/src/content/renderer/media/cn_ndl_renderer.cc
+@@ -527,9 +527,12 @@ class CnNdlRenderer : public media::Renderer {
+   void Pump() {
+     if (!started_ || fallback_mode_) return;
+     const base::TimeDelta now = MediaTime();
+-    if (pending_video_ && (playing_ ? pending_video_->timestamp() - now <= lead_ : !sent_first_video_)) {
++    if (pending_video_ &&
++        (playing_ ? VideoDue(pending_video_->timestamp()) - now <= lead_ : !sent_first_video_)) {
++      const base::TimeDelta pts = pending_video_->timestamp();
+       SendVideo(*pending_video_);
+       pending_video_.reset();
++      VideoSent(pts);
+     }
+     while (playing_ && !audio_queue_.empty() && audio_queue_.front()->timestamp() - now <= lead_) {
+       SendAudio(*audio_queue_.front());
+@@ -548,6 +551,57 @@ class CnNdlRenderer : public media::Renderer {
+     }
+   }
+ 
++  // chromium-native (patch 0048): decode-order pacing for NDL API 1 (webOS 4). The old decoder ignores
++  // timestamps and shows a frame as soon as it can. Frames arrive in decode order (H.264 with B-frames: I P B B ...),
++  // and gating each one on its display time held the P frame back ~3 frames and then sent it with the B frames in a
++  // burst: every 5 s the launcher measured an even 41.7 ms average at 24p but a 132 ms worst gap. Now frame k of a run
++  // is due at base + k * frame duration (one frame every frame duration, like a decode timestamp), kept between
++  // pts - 6 frames and pts so that it can't drift from the timeline; base starts 2 frames before the first pts to
++  // cover the decoder's reorder delay. The frame duration is the smallest step between the last 16 timestamps.
++  // NDL API 2 (webOS 5+) schedules by timestamp and keeps the display-time gate.
++  base::TimeDelta CnFrameDur() const {
++    std::vector<base::TimeDelta> v(cn_hist_.begin(), cn_hist_.end());
++    std::sort(v.begin(), v.end());
++    base::TimeDelta d = base::TimeDelta::Max();
++    for (size_t i = 1; i < v.size(); ++i) {
++      const base::TimeDelta step = v[i] - v[i - 1];
++      if (step >= base::Milliseconds(4) && step < d) d = step;
++    }
++    if (d == base::TimeDelta::Max()) d = base::Milliseconds(33);
++    return std::clamp(d, base::Milliseconds(8), base::Milliseconds(100));
++  }
++  base::TimeDelta VideoDue(base::TimeDelta pts) {
++    if (!OldNdlApi()) return pts;
++    if (!sent_first_video_) {  // new stream or after a seek: start a new run
++      cn_k_ = 0;
++      cn_hist_.clear();
++    }
++    const base::TimeDelta dur = CnFrameDur();
++    if (cn_k_ == 0) cn_base_ = pts - 2 * dur;
++    base::TimeDelta due = cn_base_ + cn_k_ * dur;
++    const base::TimeDelta lo = pts - 6 * dur, hi = pts;
++    if (due < lo || due > hi) {
++      due = std::clamp(due, lo, hi);
++      cn_base_ = due - cn_k_ * dur;  // re-anchor: frame rate changed or the estimate was off
++    }
++    return due;
++  }
++  void VideoSent(base::TimeDelta pts) {
++    if (!OldNdlApi()) return;
++    if (cn_k_ == 1) {
++      LOG(ERROR) << "cn-ndl: NDL API 1 decode-order pacing";
++    }
++    ++cn_k_;
++    cn_hist_.push_back(pts);
++    if (cn_hist_.size() > 16) cn_hist_.pop_front();
++    if (cn_k_ == 48) {
++      LOG(ERROR) << "cn-ndl: frame duration " << CnFrameDur().InMillisecondsF() << " ms";
++    }
++  }
++  int64_t cn_k_ = 0;
++  base::TimeDelta cn_base_;
++  std::deque<base::TimeDelta> cn_hist_;
++
+   std::unique_ptr<media::Renderer> fallback_;
+   scoped_refptr<base::SequencedTaskRunner> task_runner_;
+   raw_ptr<media::VideoRendererSink> sink_;

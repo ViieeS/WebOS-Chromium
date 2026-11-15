@@ -1,0 +1,139 @@
+tvabi 1
+soname liblzma.so.5
+needed libpthread.so.0
+needed libgcc_s.so.1
+needed libc.so.6
+verdef 1 base liblzma.so.5
+verdef 2 - XZ_5.0
+verdef 3 - XZ_5.2 XZ_5.0
+def lzma_alone_decoder XZ_5.0 @@ FUNC GLOBAL DEFAULT 68 code
+def lzma_alone_encoder XZ_5.0 @@ FUNC GLOBAL DEFAULT 56 code
+def lzma_auto_decoder XZ_5.0 @@ FUNC GLOBAL DEFAULT 70 code
+def lzma_block_buffer_bound XZ_5.0 @@ FUNC GLOBAL DEFAULT 70 code
+def lzma_block_buffer_decode XZ_5.0 @@ FUNC GLOBAL DEFAULT 206 code
+def lzma_block_buffer_encode XZ_5.0 @@ FUNC GLOBAL DEFAULT 28 code
+def lzma_block_compressed_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 88 code
+def lzma_block_decoder XZ_5.0 @@ FUNC GLOBAL DEFAULT 56 code
+def lzma_block_encoder XZ_5.0 @@ FUNC GLOBAL DEFAULT 56 code
+def lzma_block_header_decode XZ_5.0 @@ FUNC GLOBAL DEFAULT 390 code
+def lzma_block_header_encode XZ_5.0 @@ FUNC GLOBAL DEFAULT 306 code
+def lzma_block_header_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 160 code
+def lzma_block_total_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 30 code
+def lzma_block_uncomp_encode XZ_5.2 @@ FUNC GLOBAL DEFAULT 34 code
+def lzma_block_unpadded_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 132 code
+def lzma_check_is_supported XZ_5.0 @@ FUNC GLOBAL DEFAULT 20 code
+def lzma_check_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 24 code
+def lzma_code XZ_5.0 @@ FUNC GLOBAL DEFAULT 420 code
+def lzma_cputhreads XZ_5.2 @@ FUNC GLOBAL DEFAULT 4 code
+def lzma_crc32 XZ_5.0 @@ FUNC GLOBAL DEFAULT 252 code
+def lzma_crc64 XZ_5.0 @@ FUNC GLOBAL DEFAULT 276 code
+def lzma_easy_buffer_encode XZ_5.0 @@ FUNC GLOBAL DEFAULT 60 code
+def lzma_easy_decoder_memusage XZ_5.0 @@ FUNC GLOBAL DEFAULT 36 code
+def lzma_easy_encoder XZ_5.0 @@ FUNC GLOBAL DEFAULT 38 code
+def lzma_easy_encoder_memusage XZ_5.0 @@ FUNC GLOBAL DEFAULT 36 code
+def lzma_end XZ_5.0 @@ FUNC GLOBAL DEFAULT 54 code
+def lzma_filter_decoder_is_supported XZ_5.0 @@ FUNC GLOBAL DEFAULT 56 code
+def lzma_filter_encoder_is_supported XZ_5.0 @@ FUNC GLOBAL DEFAULT 56 code
+def lzma_filter_flags_decode XZ_5.0 @@ FUNC GLOBAL DEFAULT 108 code
+def lzma_filter_flags_encode XZ_5.0 @@ FUNC GLOBAL DEFAULT 110 code
+def lzma_filter_flags_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 56 code
+def lzma_filters_copy XZ_5.0 @@ FUNC GLOBAL DEFAULT 276 code
+def lzma_filters_update XZ_5.0 @@ FUNC GLOBAL DEFAULT 180 code
+def lzma_get_check XZ_5.0 @@ FUNC GLOBAL DEFAULT 14 code
+def lzma_get_progress XZ_5.2 @@ FUNC GLOBAL DEFAULT 36 code
+def lzma_index_append XZ_5.0 @@ FUNC GLOBAL DEFAULT 664 code
+def lzma_index_block_count XZ_5.0 @@ FUNC GLOBAL DEFAULT 6 code
+def lzma_index_buffer_decode XZ_5.0 @@ FUNC GLOBAL DEFAULT 198 code
+def lzma_index_buffer_encode XZ_5.0 @@ FUNC GLOBAL DEFAULT 136 code
+def lzma_index_cat XZ_5.0 @@ FUNC GLOBAL DEFAULT 420 code
+def lzma_index_checks XZ_5.0 @@ FUNC GLOBAL DEFAULT 20 code
+def lzma_index_decoder XZ_5.0 @@ FUNC GLOBAL DEFAULT 76 code
+def lzma_index_dup XZ_5.0 @@ FUNC GLOBAL DEFAULT 404 code
+def lzma_index_encoder XZ_5.0 @@ FUNC GLOBAL DEFAULT 56 code
+def lzma_index_end XZ_5.0 @@ FUNC GLOBAL DEFAULT 680 code
+def lzma_index_file_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 116 code
+def lzma_index_hash_append XZ_5.0 @@ FUNC GLOBAL DEFAULT 142 code
+def lzma_index_hash_decode XZ_5.0 @@ FUNC GLOBAL DEFAULT 598 code
+def lzma_index_hash_end XZ_5.0 @@ FUNC GLOBAL DEFAULT 4 code
+def lzma_index_hash_init XZ_5.0 @@ FUNC GLOBAL DEFAULT 102 code
+def lzma_index_hash_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 36 code
+def lzma_index_init XZ_5.0 @@ FUNC GLOBAL DEFAULT 66 code
+def lzma_index_iter_init XZ_5.0 @@ FUNC GLOBAL DEFAULT 8 code
+def lzma_index_iter_locate XZ_5.0 @@ FUNC GLOBAL DEFAULT 184 code
+def lzma_index_iter_next XZ_5.0 @@ FUNC GLOBAL DEFAULT 318 code
+def lzma_index_iter_rewind XZ_5.0 @@ FUNC GLOBAL DEFAULT 20 code
+def lzma_index_memusage XZ_5.0 @@ FUNC GLOBAL DEFAULT 168 code
+def lzma_index_memused XZ_5.0 @@ FUNC GLOBAL DEFAULT 12 code
+def lzma_index_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 36 code
+def lzma_index_stream_count XZ_5.0 @@ FUNC GLOBAL DEFAULT 6 code
+def lzma_index_stream_flags XZ_5.0 @@ FUNC GLOBAL DEFAULT 66 code
+def lzma_index_stream_padding XZ_5.0 @@ FUNC GLOBAL DEFAULT 76 code
+def lzma_index_stream_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 52 code
+def lzma_index_total_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 6 code
+def lzma_index_uncompressed_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 6 code
+def lzma_lzma_preset XZ_5.0 @@ FUNC GLOBAL DEFAULT 188 code
+def lzma_memlimit_get XZ_5.0 @@ FUNC GLOBAL DEFAULT 54 code
+def lzma_memlimit_set XZ_5.0 @@ FUNC GLOBAL DEFAULT 52 code
+def lzma_memusage XZ_5.0 @@ FUNC GLOBAL DEFAULT 54 code
+def lzma_mf_is_supported XZ_5.0 @@ FUNC GLOBAL DEFAULT 26 code
+def lzma_mode_is_supported XZ_5.0 @@ FUNC GLOBAL DEFAULT 12 code
+def lzma_physmem XZ_5.0 @@ FUNC GLOBAL DEFAULT 4 code
+def lzma_properties_decode XZ_5.0 @@ FUNC GLOBAL DEFAULT 104 code
+def lzma_properties_encode XZ_5.0 @@ FUNC GLOBAL DEFAULT 80 code
+def lzma_properties_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 92 code
+def lzma_raw_buffer_decode XZ_5.0 @@ FUNC GLOBAL DEFAULT 260 code
+def lzma_raw_buffer_encode XZ_5.0 @@ FUNC GLOBAL DEFAULT 174 code
+def lzma_raw_decoder XZ_5.0 @@ FUNC GLOBAL DEFAULT 72 code
+def lzma_raw_decoder_memusage XZ_5.0 @@ FUNC GLOBAL DEFAULT 16 code
+def lzma_raw_encoder XZ_5.0 @@ FUNC GLOBAL DEFAULT 76 code
+def lzma_raw_encoder_memusage XZ_5.0 @@ FUNC GLOBAL DEFAULT 16 code
+def lzma_stream_buffer_bound XZ_5.0 @@ FUNC GLOBAL DEFAULT 22 code
+def lzma_stream_buffer_decode XZ_5.0 @@ FUNC GLOBAL DEFAULT 252 code
+def lzma_stream_buffer_encode XZ_5.0 @@ FUNC GLOBAL DEFAULT 346 code
+def lzma_stream_decoder XZ_5.0 @@ FUNC GLOBAL DEFAULT 70 code
+def lzma_stream_encoder XZ_5.0 @@ FUNC GLOBAL DEFAULT 62 code
+def lzma_stream_encoder_mt XZ_5.2 @@ FUNC GLOBAL DEFAULT 62 code
+def lzma_stream_encoder_mt_memusage XZ_5.2 @@ FUNC GLOBAL DEFAULT 226 code
+def lzma_stream_flags_compare XZ_5.0 @@ FUNC GLOBAL DEFAULT 132 code
+def lzma_stream_footer_decode XZ_5.0 @@ FUNC GLOBAL DEFAULT 112 code
+def lzma_stream_footer_encode XZ_5.0 @@ FUNC GLOBAL DEFAULT 108 code
+def lzma_stream_header_decode XZ_5.0 @@ FUNC GLOBAL DEFAULT 96 code
+def lzma_stream_header_encode XZ_5.0 @@ FUNC GLOBAL DEFAULT 72 code
+def lzma_version_number XZ_5.0 @@ FUNC GLOBAL DEFAULT 10 code
+def lzma_version_string XZ_5.0 @@ FUNC GLOBAL DEFAULT 12 code
+def lzma_vli_decode XZ_5.0 @@ FUNC GLOBAL DEFAULT 316 code
+def lzma_vli_encode XZ_5.0 @@ FUNC GLOBAL DEFAULT 184 code
+def lzma_vli_size XZ_5.0 @@ FUNC GLOBAL DEFAULT 30 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und __sched_cpucount GLIBC_2.6 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und clock_gettime GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_signal GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_timedwait GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_wait GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_condattr_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_condattr_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_condattr_setclock GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_create GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_join GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_mutex_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_lock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_unlock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_sigmask GLIBC_2.32 libc.so.6 FUNC GLOBAL
+und sched_getaffinity GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigfillset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sysconf GLIBC_2.4 libc.so.6 FUNC GLOBAL

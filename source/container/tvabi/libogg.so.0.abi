@@ -1,0 +1,87 @@
+tvabi 1
+soname libogg.so.0
+needed libgcc_s.so.1
+needed libc.so.6
+def ogg_packet_clear - - FUNC GLOBAL DEFAULT 24 code
+def ogg_page_bos - - FUNC GLOBAL DEFAULT 10 code
+def ogg_page_checksum_set - - FUNC GLOBAL DEFAULT 66 code
+def ogg_page_continued - - FUNC GLOBAL DEFAULT 10 code
+def ogg_page_eos - - FUNC GLOBAL DEFAULT 10 code
+def ogg_page_granulepos - - FUNC GLOBAL DEFAULT 14 code
+def ogg_page_packets - - FUNC GLOBAL DEFAULT 32 code
+def ogg_page_pageno - - FUNC GLOBAL DEFAULT 8 code
+def ogg_page_serialno - - FUNC GLOBAL DEFAULT 8 code
+def ogg_page_version - - FUNC GLOBAL DEFAULT 6 code
+def ogg_stream_check - - FUNC GLOBAL DEFAULT 20 code
+def ogg_stream_clear - - FUNC GLOBAL DEFAULT 50 code
+def ogg_stream_destroy - - FUNC GLOBAL DEFAULT 24 code
+def ogg_stream_eos - - FUNC GLOBAL DEFAULT 20 code
+def ogg_stream_flush - - FUNC GLOBAL DEFAULT 8 code
+def ogg_stream_flush_fill - - FUNC GLOBAL DEFAULT 6 code
+def ogg_stream_init - - FUNC GLOBAL DEFAULT 108 code
+def ogg_stream_iovecin - - FUNC GLOBAL DEFAULT 358 code
+def ogg_stream_packetin - - FUNC GLOBAL DEFAULT 42 code
+def ogg_stream_packetout - - FUNC GLOBAL DEFAULT 30 code
+def ogg_stream_packetpeek - - FUNC GLOBAL DEFAULT 30 code
+def ogg_stream_pagein - - FUNC GLOBAL DEFAULT 612 code
+def ogg_stream_pageout - - FUNC GLOBAL DEFAULT 70 code
+def ogg_stream_pageout_fill - - FUNC GLOBAL DEFAULT 68 code
+def ogg_stream_reset - - FUNC GLOBAL DEFAULT 56 code
+def ogg_stream_reset_serialno - - FUNC GLOBAL DEFAULT 34 code
+def ogg_sync_buffer - - FUNC GLOBAL DEFAULT 118 code
+def ogg_sync_check - - FUNC GLOBAL DEFAULT 6 code
+def ogg_sync_clear - - FUNC GLOBAL DEFAULT 38 code
+def ogg_sync_destroy - - FUNC GLOBAL DEFAULT 24 code
+def ogg_sync_init - - FUNC GLOBAL DEFAULT 22 code
+def ogg_sync_pageout - - FUNC GLOBAL DEFAULT 50 code
+def ogg_sync_pageseek - - FUNC GLOBAL DEFAULT 292 code
+def ogg_sync_reset - - FUNC GLOBAL DEFAULT 28 code
+def ogg_sync_wrote - - FUNC GLOBAL DEFAULT 32 code
+def oggpackB_adv - - FUNC GLOBAL DEFAULT 4 code
+def oggpackB_adv1 - - FUNC GLOBAL DEFAULT 4 code
+def oggpackB_bits - - FUNC GLOBAL DEFAULT 4 code
+def oggpackB_bytes - - FUNC GLOBAL DEFAULT 4 code
+def oggpackB_get_buffer - - FUNC GLOBAL DEFAULT 4 code
+def oggpackB_look - - FUNC GLOBAL DEFAULT 160 code
+def oggpackB_look1 - - FUNC GLOBAL DEFAULT 32 code
+def oggpackB_read - - FUNC GLOBAL DEFAULT 194 code
+def oggpackB_read1 - - FUNC GLOBAL DEFAULT 76 code
+def oggpackB_readinit - - FUNC GLOBAL DEFAULT 4 code
+def oggpackB_reset - - FUNC GLOBAL DEFAULT 4 code
+def oggpackB_write - - FUNC GLOBAL DEFAULT 224 code
+def oggpackB_writealign - - FUNC GLOBAL DEFAULT 18 code
+def oggpackB_writecheck - - FUNC GLOBAL DEFAULT 4 code
+def oggpackB_writeclear - - FUNC GLOBAL DEFAULT 4 code
+def oggpackB_writecopy - - FUNC GLOBAL DEFAULT 36 code
+def oggpackB_writeinit - - FUNC GLOBAL DEFAULT 4 code
+def oggpackB_writetrunc - - FUNC GLOBAL DEFAULT 52 code
+def oggpack_adv - - FUNC GLOBAL DEFAULT 64 code
+def oggpack_adv1 - - FUNC GLOBAL DEFAULT 30 code
+def oggpack_bits - - FUNC GLOBAL DEFAULT 10 code
+def oggpack_bytes - - FUNC GLOBAL DEFAULT 20 code
+def oggpack_get_buffer - - FUNC GLOBAL DEFAULT 4 code
+def oggpack_look - - FUNC GLOBAL DEFAULT 156 code
+def oggpack_look1 - - FUNC GLOBAL DEFAULT 28 code
+def oggpack_read - - FUNC GLOBAL DEFAULT 192 code
+def oggpack_read1 - - FUNC GLOBAL DEFAULT 68 code
+def oggpack_readinit - - FUNC GLOBAL DEFAULT 14 code
+def oggpack_reset - - FUNC GLOBAL DEFAULT 18 code
+def oggpack_write - - FUNC GLOBAL DEFAULT 220 code
+def oggpack_writealign - - FUNC GLOBAL DEFAULT 18 code
+def oggpack_writecheck - - FUNC GLOBAL DEFAULT 22 code
+def oggpack_writeclear - - FUNC GLOBAL DEFAULT 26 code
+def oggpack_writecopy - - FUNC GLOBAL DEFAULT 36 code
+def oggpack_writeinit - - FUNC GLOBAL DEFAULT 38 code
+def oggpack_writetrunc - - FUNC GLOBAL DEFAULT 48 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL

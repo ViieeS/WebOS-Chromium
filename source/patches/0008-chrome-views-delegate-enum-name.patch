@@ -1,0 +1,15 @@
+# why: The USE_SINGLE_WINDOW_MODE branch uses the old enum name NATIVE_WIDGET_AURA. In this version it is
+# kNativeWidgetAura, as the other branch already uses.
+diff --git a/src/chrome/browser/ui/views/chrome_views_delegate_linux.cc b/src/chrome/browser/ui/views/chrome_views_delegate_linux.cc
+index 703b9b807a..37303df0a2 100644
+--- a/src/chrome/browser/ui/views/chrome_views_delegate_linux.cc
++++ b/src/chrome/browser/ui/views/chrome_views_delegate_linux.cc
+@@ -89,7 +89,7 @@ views::NativeWidget* ChromeViewsDelegate::CreateNativeWidget(
+ #if defined(USE_SINGLE_WINDOW_MODE)
+   if (!params->parent && !params->context)
+     params->parent = aura::Env::GetRootWindow();
+-  return ::CreateNativeWidget(NativeWidgetType::NATIVE_WIDGET_AURA, params,
++  return ::CreateNativeWidget(NativeWidgetType::kNativeWidgetAura, params,
+                               delegate);
+ #endif
+   return ::CreateNativeWidget(GetNativeWidgetTypeForInitParams(*params), params,

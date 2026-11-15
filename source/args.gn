@@ -1,0 +1,98 @@
+# args.gn for out/tv: chromium151 for the LG TV (32-bit ARMv7, softfp, glibc 2.35, webOS Wayland, no root).
+# container/build.sh copies this file to out/tv/args.gn only when the content changed (an unchanged copy keeps its
+# timestamp, so ninja does not re-run gn).
+import("//neva/gow.gn")
+target_os = "linux"
+target_cpu = "arm"
+arm_arch = "armv7-a"
+arm_version = 7
+arm_float_abi = "softfp"
+is_webos = true
+use_ozone = true
+ozone_auto_platforms = false
+ozone_platform = "wayland"
+use_x11 = false
+use_xkbcommon = true
+use_tv_libwayland = true   # GPU, 2026-10-29: link the TV's libwayland .so with Chromium's headers, so the TV EGL driver and Chrome share one copy (patch 0019)
+angle_enable_vulkan = false   # GPU, 2026-10-29: ANGLE's Vulkan backend calls wl_proxy_get_display (libwayland 1.23+), the TV has 1.20; we use native GLES, Vulkan is off anyway
+enable_validating_command_decoder = true   # GPU, 2026-10-29: M151 builds it only for Android; desktop Chrome's passthrough decoder needs ANGLE extensions (GL_ANGLE_robust_client_memory) the TV's PowerVR GLES lacks. LG's WAM uses the validating decoder on native GLES.
+crashpad_http_transport_impl = "socket"   # default libcurl needs curl/curl.h, which the sysroot lacks; socket uses Chromium's BoringSSL
+use_libpci = false   # ANGLE GPU info via libpci needs pci/pci.h, which the sysroot does not have (and libpci is not on the TV)
+use_cbe = true
+is_app_shell_cbe = true
+enable_browser_shell = true
+is_browser_shell_cbe = true
+use_neva_media = false
+use_gst_media = false
+use_gav = false
+use_webos_codec = false
+use_webos_audio = false
+use_webos_camera = false
+use_neva_cdm = false
+use_vaapi = false
+use_pmlog = false
+use_lttng = false
+enable_webos_smack = false
+use_pulseaudio = true
+proprietary_codecs = true
+ffmpeg_branding = "Chrome"
+is_cross_linux_build = true
+use_sysroot = true
+target_sysroot = "/work/sysroot-tv"   # fixed path, made by container/build-sysroot.sh
+pkg_config = "pkg-config"
+system_libdir = "lib/arm-linux-gnueabihf"   # Ubuntu multiarch .pc files (e.g. xkbcommon.pc) are in usr/lib/arm-linux-gnueabihf/pkgconfig
+is_debug = false
+is_component_build = false
+is_official_build = true   # size, 2026-10-30: ThinLTO + identical code folding + no debug checks; not Google branding (that is is_chrome_branded)
+optimize_for_size = true   # 2026-10-31: official ThinLTO alone made chrome BIGGER (208 vs 195 MB, installed 249 vs 226
+                           # MB, build 20261030T161820Z): Linux official tunes for speed (-O2, import-instr-limit 30,
+                           # inlinehint-threshold 360). This gives -Os everywhere and drops those inline boosts.
+thin_lto_enable_optimizations = false   # no cross-module optimisation at link (LTO -O0), smaller like Android size builds
+chrome_pgo_phase = 0   # size: official Linux builds want a PGO profile we do not download
+exclude_unwind_tables = true   # size: no .eh_frame unwind tables (crash stacks need the unstripped binary anyway)
+blink_symbol_level = 0
+v8_symbol_level = 0
+# enable_pdf = false   # not possible: chrome/browser/pdf asserts enable_pdf in this tree (gn_gen 20261030T123239Z)
+enable_widevine = false   # size: no Widevine CDM loader; no DRM on this TV build anyway
+# size, 2026-10-31: features a TV browser does not use
+enable_vr = false                    # WebXR / OpenXR
+enable_openxr = false
+# enable_printing = false   # not possible: //printing asserts enable_printing (gn 2026-10-31). Service discovery/mDNS must stay too
+enable_hangout_services_extension = false
+enable_libaom = false                # AV1 ENCODER (WebRTC/MediaRecorder); AV1 decoding (dav1d + TV hardware) stays
+media_use_openh264 = true            # issue #6 (2026-11-05): in Chromium rtc_use_h264 = media_use_openh264, so with false WebRTC had NO H.264 at all (no decoder either); Meta Quest casting sends H.264
+symbol_level = 0
+treat_warnings_as_errors = false
+fatal_linker_warnings = false
+use_custom_libcxx = true
+clang_use_chrome_plugins = false
+toolchain_supports_rust_thin_lto = false
+use_cups = false
+use_kerberos = false
+use_gnome_keyring = false
+use_bundled_fontconfig = false
+enable_nacl = false
+enable_remoting = false
+enable_print_preview = false
+enable_js_type_check = false
+enable_backup_ref_ptr_support = false
+v8_tls_used_in_library = true
+v8_enable_temporal_support = false
+disable_zlib_arm_aes_cflag = true
+can_use_legacy_luna_role_files = false
+# concurrent_links = 2   # not allowed with ThinLTO (is_official_build); gn picks the link pool itself
+use_pangocairo = false
+rtc_use_pipewire = false
+translate_genders = false
+neva_dcheck_always_on = false
+use_local_storage_tracker = true
+disable_ftp_support = true
+enable_memorymanager_webapi = true
+enable_mojom_closure_compile = false
+v8_enable_external_code_space = false
+use_clang_modules = false
+use_siso = false          # plain ninja (siso is the default only with .sisoenv; we never use remote execution)
+cc_wrapper = "ccache"     # compile cache; settings come from container/lib.sh (CCACHE_* variables)
+
+# compat build for older TVs: webOS 4.4+ (glibc 2.24 sysroot, patch 0031)
+cn_glibc_compat = true

@@ -1,0 +1,579 @@
+tvabi 1
+soname libnspr4.so
+needed libgcc_s.so.1
+needed libc.so.6
+def GetExecutionEnvironment - - FUNC GLOBAL DEFAULT 4 code
+def LL_MaxInt - - FUNC GLOBAL DEFAULT 10 code
+def LL_MaxUint - - FUNC GLOBAL DEFAULT 10 code
+def LL_MinInt - - FUNC GLOBAL DEFAULT 8 code
+def LL_Zero - - FUNC GLOBAL DEFAULT 6 code
+def PRP_DestroyNakedCondVar - - FUNC GLOBAL DEFAULT 60 code
+def PRP_NakedBroadcast - - FUNC GLOBAL DEFAULT 76 code
+def PRP_NakedNotify - - FUNC GLOBAL DEFAULT 76 code
+def PRP_NakedWait - - FUNC GLOBAL DEFAULT 112 code
+def PRP_NewNakedCondVar - - FUNC GLOBAL DEFAULT 108 code
+def PRP_TryLock - - FUNC GLOBAL DEFAULT 60 code
+def PR_Abort - - FUNC GLOBAL DEFAULT 20 code
+def PR_Accept - - FUNC GLOBAL DEFAULT 6 code
+def PR_AcceptRead - - FUNC GLOBAL DEFAULT 14 code
+def PR_Access - - FUNC GLOBAL DEFAULT 96 code
+def PR_AddToCounter - - FUNC GLOBAL DEFAULT 64 code
+def PR_AddWaitFileDesc - - FUNC GLOBAL DEFAULT 212 code
+def PR_AllocFileDesc - - FUNC GLOBAL DEFAULT 66 code
+def PR_Assert - - FUNC GLOBAL DEFAULT 76 code
+def PR_AssertCurrentThreadInMonitor - - FUNC GLOBAL DEFAULT 132 code
+def PR_AssertCurrentThreadOwnsLock - - FUNC GLOBAL DEFAULT 52 code
+def PR_AtomicAdd - - FUNC GLOBAL DEFAULT 26 code
+def PR_AtomicDecrement - - FUNC GLOBAL DEFAULT 26 code
+def PR_AtomicIncrement - - FUNC GLOBAL DEFAULT 26 code
+def PR_AtomicSet - - FUNC GLOBAL DEFAULT 20 code
+def PR_AttachSharedMemory - - FUNC GLOBAL DEFAULT 4 code
+def PR_AttachThread - - FUNC GLOBAL DEFAULT 4 code
+def PR_Available - - FUNC GLOBAL DEFAULT 6 code
+def PR_Available64 - - FUNC GLOBAL DEFAULT 6 code
+def PR_Bind - - FUNC GLOBAL DEFAULT 6 code
+def PR_BlockClockInterrupts - - FUNC GLOBAL DEFAULT 2 code
+def PR_BlockInterrupt - - FUNC GLOBAL DEFAULT 14 code
+def PR_CEnterMonitor - - FUNC GLOBAL DEFAULT 72 code
+def PR_CExitMonitor - - FUNC GLOBAL DEFAULT 88 code
+def PR_CNotify - - FUNC GLOBAL DEFAULT 60 code
+def PR_CNotifyAll - - FUNC GLOBAL DEFAULT 60 code
+def PR_CSetOnMonitorRecycle - - FUNC GLOBAL DEFAULT 12 code
+def PR_CWait - - FUNC GLOBAL DEFAULT 64 code
+def PR_CallOnce - - FUNC GLOBAL DEFAULT 164 code
+def PR_CallOnceWithArg - - FUNC GLOBAL DEFAULT 180 code
+def PR_Calloc - - FUNC GLOBAL DEFAULT 64 code
+def PR_CancelJob - - FUNC GLOBAL DEFAULT 308 code
+def PR_CancelWaitFileDesc - - FUNC GLOBAL DEFAULT 180 code
+def PR_CancelWaitGroup - - FUNC GLOBAL DEFAULT 284 code
+def PR_CeilingLog2 - - FUNC GLOBAL DEFAULT 20 code
+def PR_ChangeFileDescNativeHandle - - FUNC GLOBAL DEFAULT 8 code
+def PR_Cleanup - - FUNC GLOBAL DEFAULT 336 code
+def PR_ClearInterrupt - - FUNC GLOBAL DEFAULT 16 code
+def PR_ClearThreadGCAble - - FUNC GLOBAL DEFAULT 40 code
+def PR_Close - - FUNC GLOBAL DEFAULT 6 code
+def PR_CloseDir - - FUNC GLOBAL DEFAULT 58 code
+def PR_CloseFileMap - - FUNC GLOBAL DEFAULT 4 code
+def PR_CloseSemaphore - - FUNC GLOBAL DEFAULT 10 code
+def PR_CloseSharedMemory - - FUNC GLOBAL DEFAULT 4 code
+def PR_Connect - - FUNC GLOBAL DEFAULT 6 code
+def PR_ConnectContinue - - FUNC GLOBAL DEFAULT 6 code
+def PR_ConvertIPv4AddrToIPv6 - - FUNC GLOBAL DEFAULT 18 code
+def PR_CreateAlarm - - FUNC GLOBAL DEFAULT 120 code
+def PR_CreateCounter - - FUNC GLOBAL DEFAULT 528 code
+def PR_CreateFileMap - - FUNC GLOBAL DEFAULT 104 code
+def PR_CreateIOLayer - - FUNC GLOBAL DEFAULT 76 code
+def PR_CreateIOLayerStub - - FUNC GLOBAL DEFAULT 104 code
+def PR_CreateMWaitEnumerator - - FUNC GLOBAL DEFAULT 50 code
+def PR_CreateOrderedLock - - FUNC GLOBAL DEFAULT 44 code
+def PR_CreatePipe - - FUNC GLOBAL DEFAULT 128 code
+def PR_CreateProcess - - FUNC GLOBAL DEFAULT 4 code
+def PR_CreateProcessDetached - - FUNC GLOBAL DEFAULT 68 code
+def PR_CreateSocketPollFd - - FUNC GLOBAL DEFAULT 88 code
+def PR_CreateStack - - FUNC GLOBAL DEFAULT 116 code
+def PR_CreateThread - - FUNC GLOBAL DEFAULT 28 code
+def PR_CreateThreadGCAble - - FUNC GLOBAL DEFAULT 28 code
+def PR_CreateThreadPool - - FUNC GLOBAL DEFAULT 500 code
+def PR_CreateTrace - - FUNC GLOBAL DEFAULT 576 code
+def PR_CreateWaitGroup - - FUNC GLOBAL DEFAULT 208 code
+def PR_DecrementCounter - - FUNC GLOBAL DEFAULT 60 code
+def PR_Delete - - FUNC GLOBAL DEFAULT 84 code
+def PR_DeleteSemaphore - - FUNC GLOBAL DEFAULT 124 code
+def PR_DeleteSharedMemory - - FUNC GLOBAL DEFAULT 48 code
+def PR_DestroyAlarm - - FUNC GLOBAL DEFAULT 68 code
+def PR_DestroyCondVar - - FUNC GLOBAL DEFAULT 116 code
+def PR_DestroyCounter - - FUNC GLOBAL DEFAULT 188 code
+def PR_DestroyLock - - FUNC GLOBAL DEFAULT 192 code
+def PR_DestroyMWaitEnumerator - - FUNC GLOBAL DEFAULT 112 code
+def PR_DestroyMonitor - - FUNC GLOBAL DEFAULT 188 code
+def PR_DestroyOrderedLock - - FUNC GLOBAL DEFAULT 44 code
+def PR_DestroyPollableEvent - - FUNC GLOBAL DEFAULT 4 code
+def PR_DestroyProcessAttr - - FUNC GLOBAL DEFAULT 38 code
+def PR_DestroyRWLock - - FUNC GLOBAL DEFAULT 68 code
+def PR_DestroySem - - FUNC GLOBAL DEFAULT 64 code
+def PR_DestroySocketPollFd - - FUNC GLOBAL DEFAULT 40 code
+def PR_DestroyStack - - FUNC GLOBAL DEFAULT 52 code
+def PR_DestroyTrace - - FUNC GLOBAL DEFAULT 188 code
+def PR_DestroyWaitGroup - - FUNC GLOBAL DEFAULT 228 code
+def PR_DetachProcess - - FUNC GLOBAL DEFAULT 4 code
+def PR_DetachSharedMemory - - FUNC GLOBAL DEFAULT 4 code
+def PR_DetachThread - - FUNC GLOBAL DEFAULT 64 code
+def PR_DisableClockInterrupts - - FUNC GLOBAL DEFAULT 2 code
+def PR_DuplicateEnvironment - - FUNC GLOBAL DEFAULT 188 code
+def PR_EmulateAcceptRead - - FUNC GLOBAL DEFAULT 110 code
+def PR_EmulateSendFile - - FUNC GLOBAL DEFAULT 752 code
+def PR_EnableClockInterrupts - - FUNC GLOBAL DEFAULT 2 code
+def PR_EnterMonitor - - FUNC GLOBAL DEFAULT 268 code
+def PR_EnumerateAddrInfo - - FUNC GLOBAL DEFAULT 106 code
+def PR_EnumerateHostEnt - - FUNC GLOBAL DEFAULT 124 code
+def PR_EnumerateThreads - - FUNC GLOBAL DEFAULT 264 code
+def PR_EnumerateWaitGroup - - FUNC GLOBAL DEFAULT 280 code
+def PR_ErrorInstallCallback - - FUNC GLOBAL DEFAULT 172 code
+def PR_ErrorInstallTable - - FUNC GLOBAL DEFAULT 68 code
+def PR_ErrorLanguages - - FUNC GLOBAL DEFAULT 12 code
+def PR_ErrorToName - - FUNC GLOBAL DEFAULT 52 code
+def PR_ErrorToString - - FUNC GLOBAL DEFAULT 280 code
+def PR_ExitMonitor - - FUNC GLOBAL DEFAULT 412 code
+def PR_ExplodeTime - - FUNC GLOBAL DEFAULT 50 code
+def PR_ExportFileMapAsString - - FUNC GLOBAL DEFAULT 4 code
+def PR_FD_CLR - - FUNC GLOBAL DEFAULT 96 code
+def PR_FD_ISSET - - FUNC GLOBAL DEFAULT 76 code
+def PR_FD_NCLR - - FUNC GLOBAL DEFAULT 112 code
+def PR_FD_NISSET - - FUNC GLOBAL DEFAULT 80 code
+def PR_FD_NSET - - FUNC GLOBAL DEFAULT 108 code
+def PR_FD_SET - - FUNC GLOBAL DEFAULT 96 code
+def PR_FD_ZERO - - FUNC GLOBAL DEFAULT 56 code
+def PR_FPrintZoneStats - - FUNC GLOBAL DEFAULT 116 code
+def PR_FileDesc2NativeHandle - - FUNC GLOBAL DEFAULT 38 code
+def PR_FindFunctionSymbol - - FUNC GLOBAL DEFAULT 4 code
+def PR_FindFunctionSymbolAndLibrary - - FUNC GLOBAL DEFAULT 4 code
+def PR_FindNextCounterQname - - FUNC GLOBAL DEFAULT 72 code
+def PR_FindNextCounterRname - - FUNC GLOBAL DEFAULT 68 code
+def PR_FindNextTraceQname - - FUNC GLOBAL DEFAULT 72 code
+def PR_FindNextTraceRname - - FUNC GLOBAL DEFAULT 68 code
+def PR_FindSymbol - - FUNC GLOBAL DEFAULT 76 code
+def PR_FindSymbolAndLibrary - - FUNC GLOBAL DEFAULT 140 code
+def PR_FloorLog2 - - FUNC GLOBAL DEFAULT 14 code
+def PR_FormatTime - - FUNC GLOBAL DEFAULT 118 code
+def PR_FormatTimeUSEnglish - - FUNC GLOBAL DEFAULT 976 code
+def PR_Free - - FUNC GLOBAL DEFAULT 20 code
+def PR_FreeAddrInfo - - FUNC GLOBAL DEFAULT 30 code
+def PR_FreeLibraryName - - FUNC GLOBAL DEFAULT 4 code
+def PR_GMTParameters - - FUNC GLOBAL DEFAULT 8 code
+def PR_GetAddrInfoByName - - FUNC GLOBAL DEFAULT 296 code
+def PR_GetCanonNameFromAddrInfo - - FUNC GLOBAL DEFAULT 28 code
+def PR_GetConnectStatus - - FUNC GLOBAL DEFAULT 46 code
+def PR_GetCounter - - FUNC GLOBAL DEFAULT 44 code
+def PR_GetCounterHandleFromName - - FUNC GLOBAL DEFAULT 188 code
+def PR_GetCounterNameFromHandle - - FUNC GLOBAL DEFAULT 76 code
+def PR_GetCurrentThread - - FUNC GLOBAL DEFAULT 88 code
+def PR_GetDefaultIOMethods - - FUNC GLOBAL DEFAULT 12 code
+def PR_GetDescType - - FUNC GLOBAL DEFAULT 6 code
+def PR_GetDirectorySeparator - - FUNC GLOBAL DEFAULT 4 code
+def PR_GetDirectorySepartor - - FUNC GLOBAL DEFAULT 52 code
+def PR_GetEnv - - FUNC GLOBAL DEFAULT 80 code
+def PR_GetEnvSecure - - FUNC GLOBAL DEFAULT 80 code
+def PR_GetError - - FUNC GLOBAL DEFAULT 10 code
+def PR_GetErrorText - - FUNC GLOBAL DEFAULT 30 code
+def PR_GetErrorTextLength - - FUNC GLOBAL DEFAULT 10 code
+def PR_GetFileInfo - - FUNC GLOBAL DEFAULT 16 code
+def PR_GetFileInfo64 - - FUNC GLOBAL DEFAULT 52 code
+def PR_GetFileMethods - - FUNC GLOBAL DEFAULT 12 code
+def PR_GetGCRegisters - - FUNC GLOBAL DEFAULT 4 code
+def PR_GetHostByAddr - - FUNC GLOBAL DEFAULT 496 code
+def PR_GetHostByName - - FUNC GLOBAL DEFAULT 208 code
+def PR_GetIPNodeByName - - FUNC GLOBAL DEFAULT 592 code
+def PR_GetIdentitiesLayer - - FUNC GLOBAL DEFAULT 48 code
+def PR_GetInheritedFD - - FUNC GLOBAL DEFAULT 216 code
+def PR_GetInheritedFileMap - - FUNC GLOBAL DEFAULT 20 code
+def PR_GetLayersIdentity - - FUNC GLOBAL DEFAULT 76 code
+def PR_GetLibraryFilePathname - - FUNC GLOBAL DEFAULT 74 code
+def PR_GetLibraryName - - FUNC GLOBAL DEFAULT 108 code
+def PR_GetLibraryPath - - FUNC GLOBAL DEFAULT 252 code
+def PR_GetMemMapAlignment - - FUNC GLOBAL DEFAULT 4 code
+def PR_GetMonitorEntryCount - - FUNC GLOBAL DEFAULT 104 code
+def PR_GetNameForIdentity - - FUNC GLOBAL DEFAULT 124 code
+def PR_GetNumberOfProcessors - - FUNC GLOBAL DEFAULT 144 code
+def PR_GetOSError - - FUNC GLOBAL DEFAULT 10 code
+def PR_GetOpenFileInfo - - FUNC GLOBAL DEFAULT 6 code
+def PR_GetOpenFileInfo64 - - FUNC GLOBAL DEFAULT 6 code
+def PR_GetPageShift - - FUNC GLOBAL DEFAULT 32 code
+def PR_GetPageSize - - FUNC GLOBAL DEFAULT 24 code
+def PR_GetPathSeparator - - FUNC GLOBAL DEFAULT 4 code
+def PR_GetPeerName - - FUNC GLOBAL DEFAULT 6 code
+def PR_GetPhysicalMemorySize - - FUNC GLOBAL DEFAULT 32 code
+def PR_GetPipeMethods - - FUNC GLOBAL DEFAULT 16 code
+def PR_GetProtoByName - - FUNC GLOBAL DEFAULT 120 code
+def PR_GetProtoByNumber - - FUNC GLOBAL DEFAULT 120 code
+def PR_GetRandomNoise - - FUNC GLOBAL DEFAULT 4 code
+def PR_GetSP - - FUNC GLOBAL DEFAULT 52 code
+def PR_GetSockName - - FUNC GLOBAL DEFAULT 6 code
+def PR_GetSocketOption - - FUNC GLOBAL DEFAULT 6 code
+def PR_GetSpecialFD - - FUNC GLOBAL DEFAULT 136 code
+def PR_GetStackSpaceLeft - - FUNC GLOBAL DEFAULT 80 code
+def PR_GetSysfdTableMax - - FUNC GLOBAL DEFAULT 28 code
+def PR_GetSystemInfo - - FUNC GLOBAL DEFAULT 232 code
+def PR_GetTCPMethods - - FUNC GLOBAL DEFAULT 16 code
+def PR_GetThreadAffinityMask - - FUNC GLOBAL DEFAULT 4 code
+def PR_GetThreadID - - FUNC GLOBAL DEFAULT 4 code
+def PR_GetThreadName - - FUNC GLOBAL DEFAULT 6 code
+def PR_GetThreadPriority - - FUNC GLOBAL DEFAULT 40 code
+def PR_GetThreadPrivate - - FUNC GLOBAL DEFAULT 28 code
+def PR_GetThreadScope - - FUNC GLOBAL DEFAULT 14 code
+def PR_GetThreadState - - FUNC GLOBAL DEFAULT 8 code
+def PR_GetThreadType - - FUNC GLOBAL DEFAULT 8 code
+def PR_GetTraceEntries - - FUNC GLOBAL DEFAULT 584 code
+def PR_GetTraceHandleFromName - - FUNC GLOBAL DEFAULT 188 code
+def PR_GetTraceNameFromHandle - - FUNC GLOBAL DEFAULT 76 code
+def PR_GetTraceOption - - FUNC GLOBAL DEFAULT 96 code
+def PR_GetUDPMethods - - FUNC GLOBAL DEFAULT 16 code
+def PR_GetUniqueIdentity - - FUNC GLOBAL DEFAULT 456 code
+def PR_GetVersion - - FUNC GLOBAL DEFAULT 12 code
+def PR_ImplodeTime - - FUNC GLOBAL DEFAULT 244 code
+def PR_ImportFile - - FUNC GLOBAL DEFAULT 72 code
+def PR_ImportFileMapFromString - - FUNC GLOBAL DEFAULT 4 code
+def PR_ImportPipe - - FUNC GLOBAL DEFAULT 60 code
+def PR_ImportTCPSocket - - FUNC GLOBAL DEFAULT 60 code
+def PR_ImportUDPSocket - - FUNC GLOBAL DEFAULT 60 code
+def PR_IncrementCounter - - FUNC GLOBAL DEFAULT 60 code
+def PR_Init - - FUNC GLOBAL DEFAULT 2 code
+def PR_Initialize - - FUNC GLOBAL DEFAULT 28 code
+def PR_InitializeNetAddr - - FUNC GLOBAL DEFAULT 132 code
+def PR_Initialized - - FUNC GLOBAL DEFAULT 12 code
+def PR_Interrupt - - FUNC GLOBAL DEFAULT 152 code
+def PR_IntervalNow - - FUNC GLOBAL DEFAULT 44 code
+def PR_IntervalToMicroseconds - - FUNC GLOBAL DEFAULT 34 code
+def PR_IntervalToMilliseconds - - FUNC GLOBAL DEFAULT 30 code
+def PR_IntervalToSeconds - - FUNC GLOBAL DEFAULT 18 code
+def PR_IsNetAddrType - - FUNC GLOBAL DEFAULT 188 code
+def PR_JoinJob - - FUNC GLOBAL DEFAULT 72 code
+def PR_JoinThread - - FUNC GLOBAL DEFAULT 232 code
+def PR_JoinThreadPool - - FUNC GLOBAL DEFAULT 568 code
+def PR_KillProcess - - FUNC GLOBAL DEFAULT 4 code
+def PR_Listen - - FUNC GLOBAL DEFAULT 6 code
+def PR_LoadLibrary - - FUNC GLOBAL DEFAULT 20 code
+def PR_LoadLibraryWithFlags - - FUNC GLOBAL DEFAULT 52 code
+def PR_LoadStaticLibrary - - FUNC GLOBAL DEFAULT 204 code
+def PR_LocalTimeParameters - - FUNC GLOBAL DEFAULT 356 code
+def PR_Lock - - FUNC GLOBAL DEFAULT 184 code
+def PR_LockFile - - FUNC GLOBAL DEFAULT 140 code
+def PR_LockOrderedLock - - FUNC GLOBAL DEFAULT 44 code
+def PR_LogFlush - - FUNC GLOBAL DEFAULT 68 code
+def PR_LogPrint - - FUNC GLOBAL DEFAULT 492 code
+def PR_MakeDir - - FUNC GLOBAL DEFAULT 124 code
+def PR_Malloc - - FUNC GLOBAL DEFAULT 60 code
+def PR_MemMap - - FUNC GLOBAL DEFAULT 4 code
+def PR_MemUnmap - - FUNC GLOBAL DEFAULT 4 code
+def PR_MicrosecondsToInterval - - FUNC GLOBAL DEFAULT 40 code
+def PR_MillisecondsToInterval - - FUNC GLOBAL DEFAULT 32 code
+def PR_MkDir - - FUNC GLOBAL DEFAULT 4 code
+def PR_NetAddrToString - - FUNC GLOBAL DEFAULT 64 code
+def PR_NewCondVar - - FUNC GLOBAL DEFAULT 128 code
+def PR_NewLock - - FUNC GLOBAL DEFAULT 96 code
+def PR_NewLogModule - - FUNC GLOBAL DEFAULT 80 code
+def PR_NewMonitor - - FUNC GLOBAL DEFAULT 244 code
+def PR_NewNamedMonitor - - FUNC GLOBAL DEFAULT 14 code
+def PR_NewPollableEvent - - FUNC GLOBAL DEFAULT 196 code
+def PR_NewProcessAttr - - FUNC GLOBAL DEFAULT 36 code
+def PR_NewRWLock - - FUNC GLOBAL DEFAULT 180 code
+def PR_NewSem - - FUNC GLOBAL DEFAULT 120 code
+def PR_NewTCPSocket - - FUNC GLOBAL DEFAULT 10 code
+def PR_NewTCPSocketPair - - FUNC GLOBAL DEFAULT 140 code
+def PR_NewThreadPrivateIndex - - FUNC GLOBAL DEFAULT 168 code
+def PR_NewUDPSocket - - FUNC GLOBAL DEFAULT 10 code
+def PR_NormalizeTime - - FUNC GLOBAL DEFAULT 608 code
+def PR_Notify - - FUNC GLOBAL DEFAULT 12 code
+def PR_NotifyAll - - FUNC GLOBAL DEFAULT 12 code
+def PR_NotifyAllCondVar - - FUNC GLOBAL DEFAULT 56 code
+def PR_NotifyCondVar - - FUNC GLOBAL DEFAULT 56 code
+def PR_Now - - FUNC GLOBAL DEFAULT 36 code
+def PR_Open - - FUNC GLOBAL DEFAULT 4 code
+def PR_OpenAnonFileMap - - FUNC GLOBAL DEFAULT 4 code
+def PR_OpenDir - - FUNC GLOBAL DEFAULT 84 code
+def PR_OpenFile - - FUNC GLOBAL DEFAULT 256 code
+def PR_OpenSemaphore - - FUNC GLOBAL DEFAULT 334 code
+def PR_OpenSharedMemory - - FUNC GLOBAL DEFAULT 72 code
+def PR_OpenTCPSocket - - FUNC GLOBAL DEFAULT 8 code
+def PR_OpenUDPSocket - - FUNC GLOBAL DEFAULT 8 code
+def PR_ParseTimeString - - FUNC GLOBAL DEFAULT 34 code
+def PR_ParseTimeStringToExplodedTime - - FUNC GLOBAL DEFAULT 3660 code
+def PR_Poll - - FUNC GLOBAL DEFAULT 4 code
+def PR_PopIOLayer - - FUNC GLOBAL DEFAULT 284 code
+def PR_PostSem - - FUNC GLOBAL DEFAULT 72 code
+def PR_PostSemaphore - - FUNC GLOBAL DEFAULT 54 code
+def PR_ProcessAttrSetCurrentDirectory - - FUNC GLOBAL DEFAULT 64 code
+def PR_ProcessAttrSetInheritableFD - - FUNC GLOBAL DEFAULT 248 code
+def PR_ProcessAttrSetInheritableFileMap - - FUNC GLOBAL DEFAULT 22 code
+def PR_ProcessAttrSetStdioRedirect - - FUNC GLOBAL DEFAULT 48 code
+def PR_ProcessExit - - FUNC GLOBAL DEFAULT 6 code
+def PR_PushIOLayer - - FUNC GLOBAL DEFAULT 320 code
+def PR_QueueJob - - FUNC GLOBAL DEFAULT 38 code
+def PR_QueueJob_Accept - - FUNC GLOBAL DEFAULT 20 code
+def PR_QueueJob_Connect - - FUNC GLOBAL DEFAULT 92 code
+def PR_QueueJob_Read - - FUNC GLOBAL DEFAULT 20 code
+def PR_QueueJob_Timer - - FUNC GLOBAL DEFAULT 172 code
+def PR_QueueJob_Write - - FUNC GLOBAL DEFAULT 20 code
+def PR_RWLock_Rlock - - FUNC GLOBAL DEFAULT 108 code
+def PR_RWLock_Unlock - - FUNC GLOBAL DEFAULT 192 code
+def PR_RWLock_Wlock - - FUNC GLOBAL DEFAULT 144 code
+def PR_Read - - FUNC GLOBAL DEFAULT 6 code
+def PR_ReadDir - - FUNC GLOBAL DEFAULT 168 code
+def PR_Realloc - - FUNC GLOBAL DEFAULT 64 code
+def PR_RecordTraceEntries - - FUNC GLOBAL DEFAULT 368 code
+def PR_Recv - - FUNC GLOBAL DEFAULT 14 code
+def PR_RecvFrom - - FUNC GLOBAL DEFAULT 14 code
+def PR_Rename - - FUNC GLOBAL DEFAULT 144 code
+def PR_ResetAlarm - - FUNC GLOBAL DEFAULT 40 code
+def PR_ResetProcessAttr - - FUNC GLOBAL DEFAULT 42 code
+def PR_ResumeAll - - FUNC GLOBAL DEFAULT 188 code
+def PR_RmDir - - FUNC GLOBAL DEFAULT 60 code
+def PR_ScanStackPointers - - FUNC GLOBAL DEFAULT 32 code
+def PR_SecondsToInterval - - FUNC GLOBAL DEFAULT 14 code
+def PR_Seek - - FUNC GLOBAL DEFAULT 6 code
+def PR_Seek64 - - FUNC GLOBAL DEFAULT 6 code
+def PR_Select - - FUNC GLOBAL DEFAULT 352 code
+def PR_Send - - FUNC GLOBAL DEFAULT 14 code
+def PR_SendFile - - FUNC GLOBAL DEFAULT 14 code
+def PR_SendTo - - FUNC GLOBAL DEFAULT 14 code
+def PR_SetAlarm - - FUNC GLOBAL DEFAULT 92 code
+def PR_SetConcurrency - - FUNC GLOBAL DEFAULT 2 code
+def PR_SetCounter - - FUNC GLOBAL DEFAULT 40 code
+def PR_SetCurrentThreadName - - FUNC GLOBAL DEFAULT 168 code
+def PR_SetEnv - - FUNC GLOBAL DEFAULT 100 code
+def PR_SetError - - FUNC GLOBAL DEFAULT 20 code
+def PR_SetErrorText - - FUNC GLOBAL DEFAULT 84 code
+def PR_SetFDCacheSize - - FUNC GLOBAL DEFAULT 68 code
+def PR_SetFDInheritable - - FUNC GLOBAL DEFAULT 82 code
+def PR_SetLibraryPath - - FUNC GLOBAL DEFAULT 128 code
+def PR_SetLogBuffering - - FUNC GLOBAL DEFAULT 60 code
+def PR_SetLogFile - - FUNC GLOBAL DEFAULT 96 code
+def PR_SetNetAddr - - FUNC GLOBAL DEFAULT 220 code
+def PR_SetPollableEvent - - FUNC GLOBAL DEFAULT 32 code
+def PR_SetSocketOption - - FUNC GLOBAL DEFAULT 6 code
+def PR_SetStdioRedirect - - FUNC GLOBAL DEFAULT 72 code
+def PR_SetSysfdTableSize - - FUNC GLOBAL DEFAULT 48 code
+def PR_SetThreadAffinityMask - - FUNC GLOBAL DEFAULT 4 code
+def PR_SetThreadDumpProc - - FUNC GLOBAL DEFAULT 6 code
+def PR_SetThreadGCAble - - FUNC GLOBAL DEFAULT 40 code
+def PR_SetThreadPriority - - FUNC GLOBAL DEFAULT 184 code
+def PR_SetThreadPrivate - - FUNC GLOBAL DEFAULT 240 code
+def PR_SetThreadRecycleMode - - FUNC GLOBAL DEFAULT 2 code
+def PR_SetTraceOption - - FUNC GLOBAL DEFAULT 568 code
+def PR_Shutdown - - FUNC GLOBAL DEFAULT 6 code
+def PR_ShutdownThreadPool - - FUNC GLOBAL DEFAULT 30 code
+def PR_Sleep - - FUNC GLOBAL DEFAULT 164 code
+def PR_Socket - - FUNC GLOBAL DEFAULT 252 code
+def PR_StackPop - - FUNC GLOBAL DEFAULT 32 code
+def PR_StackPush - - FUNC GLOBAL DEFAULT 28 code
+def PR_Stat - - FUNC GLOBAL DEFAULT 104 code
+def PR_StringToNetAddr - - FUNC GLOBAL DEFAULT 116 code
+def PR_SubtractFromCounter - - FUNC GLOBAL DEFAULT 64 code
+def PR_SuspendAll - - FUNC GLOBAL DEFAULT 236 code
+def PR_Sync - - FUNC GLOBAL DEFAULT 6 code
+def PR_SyncMemMap - - FUNC GLOBAL DEFAULT 4 code
+def PR_TLockFile - - FUNC GLOBAL DEFAULT 80 code
+def PR_ThreadScanStackPointers - - FUNC GLOBAL DEFAULT 188 code
+def PR_TicksPerSecond - - FUNC GLOBAL DEFAULT 44 code
+def PR_Trace - - FUNC GLOBAL DEFAULT 268 code
+def PR_TransmitFile - - FUNC GLOBAL DEFAULT 14 code
+def PR_USPacificTimeParameters - - FUNC GLOBAL DEFAULT 224 code
+def PR_UnblockClockInterrupts - - FUNC GLOBAL DEFAULT 2 code
+def PR_UnblockInterrupt - - FUNC GLOBAL DEFAULT 14 code
+def PR_UnloadLibrary - - FUNC GLOBAL DEFAULT 396 code
+def PR_Unlock - - FUNC GLOBAL DEFAULT 260 code
+def PR_UnlockFile - - FUNC GLOBAL DEFAULT 84 code
+def PR_UnlockOrderedLock - - FUNC GLOBAL DEFAULT 44 code
+def PR_VersionCheck - - FUNC GLOBAL DEFAULT 204 code
+def PR_Wait - - FUNC GLOBAL DEFAULT 428 code
+def PR_WaitCondVar - - FUNC GLOBAL DEFAULT 376 code
+def PR_WaitForPollableEvent - - FUNC GLOBAL DEFAULT 76 code
+def PR_WaitProcess - - FUNC GLOBAL DEFAULT 4 code
+def PR_WaitRecvReady - - FUNC GLOBAL DEFAULT 512 code
+def PR_WaitSem - - FUNC GLOBAL DEFAULT 96 code
+def PR_WaitSemaphore - - FUNC GLOBAL DEFAULT 56 code
+def PR_Write - - FUNC GLOBAL DEFAULT 6 code
+def PR_Writev - - FUNC GLOBAL DEFAULT 38 code
+def PR_Yield - - FUNC GLOBAL DEFAULT 56 code
+def PR_cnvtf - - FUNC GLOBAL DEFAULT 404 code
+def PR_dtoa - - FUNC GLOBAL DEFAULT 184 code
+def PR_fprintf - - FUNC GLOBAL DEFAULT 28 code
+def PR_htonl - - FUNC GLOBAL DEFAULT 2 code
+def PR_htonll - - FUNC GLOBAL DEFAULT 24 code
+def PR_htons - - FUNC GLOBAL DEFAULT 2 code
+def PR_ntohl - - FUNC GLOBAL DEFAULT 4 code
+def PR_ntohll - - FUNC GLOBAL DEFAULT 24 code
+def PR_ntohs - - FUNC GLOBAL DEFAULT 4 code
+def PR_smprintf - - FUNC GLOBAL DEFAULT 28 code
+def PR_smprintf_free - - FUNC GLOBAL DEFAULT 4 code
+def PR_snprintf - - FUNC GLOBAL DEFAULT 28 code
+def PR_sprintf_append - - FUNC GLOBAL DEFAULT 28 code
+def PR_sscanf - - FUNC GLOBAL DEFAULT 60 code
+def PR_strtod - - FUNC GLOBAL DEFAULT 3024 code
+def PR_sxprintf - - FUNC GLOBAL DEFAULT 28 code
+def PR_vfprintf - - FUNC GLOBAL DEFAULT 50 code
+def PR_vsmprintf - - FUNC GLOBAL DEFAULT 56 code
+def PR_vsnprintf - - FUNC GLOBAL DEFAULT 108 code
+def PR_vsprintf_append - - FUNC GLOBAL DEFAULT 76 code
+def PR_vsxprintf - - FUNC GLOBAL DEFAULT 56 code
+def PT_FPrintStats - - FUNC GLOBAL DEFAULT 256 code
+def SetExecutionEnvironment - - FUNC GLOBAL DEFAULT 4 code
+def _pr_push_ipv6toipv4_layer - - FUNC GLOBAL DEFAULT 100 code
+def _pr_test_ipv6_socket - - FUNC GLOBAL DEFAULT 30 code
+def libVersionPoint - - FUNC GLOBAL DEFAULT 12 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __assert_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_tolower_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __environ GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __h_errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __isoc99_sscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und _environ GLIBC_2.4 libc.so.6 OBJECT WEAK
+und _exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und accept GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und access GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und atoi GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und bind GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und chdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und clock_gettime GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und closedir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und connect GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dladdr GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlclose GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlerror GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlopen GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlsym GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dup2 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und environ GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und execv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und execve GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fcntl GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fgets GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fork GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und freeaddrinfo GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fsync GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ftok GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ftruncate GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getaddrinfo GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gethostbyaddr_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gethostbyname2_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gethostbyname_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gethostname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getnameinfo GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpagesize GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpeername GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpriority GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getprotobyname_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getprotobynumber_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getrlimit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getsockname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getsockopt GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gettid GLIBC_2.30 libc.so.6 FUNC GLOBAL
+und gettimeofday GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und inet_ntop GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ioctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und kill GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und listen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und localtime_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und lseek GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und lseek64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mktime GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mmap64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und msync GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und munmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und opendir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pipe GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und poll GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_attr_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_attr_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_attr_setdetachstate GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_attr_setstacksize GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_cond_broadcast GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_signal GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_timedwait GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_wait GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_condattr_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_create GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_equal GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_getspecific GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_join GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_key_create GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_key_delete GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_kill GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_mutex_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_lock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_trylock GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_mutex_unlock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutexattr_init GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_mutexattr_settype GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_once GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_self GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_setspecific GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und putenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und recv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und recvfrom GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rename GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rmdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sched_yield GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und secure_getenv GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und select GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und semctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und semget GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und semop GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und send GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sendfile GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sendto GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setpriority GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setrlimit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setsockopt GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und shmat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und shmctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und shmdt GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und shmget GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und shutdown GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigaction GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigaddset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigemptyset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigwait GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sleep GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und socket GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und socketpair GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stat GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und stat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stpcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcasecmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strdup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strftime GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strnlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sysconf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und uname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und unlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und waitpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und write GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und writev GLIBC_2.4 libc.so.6 FUNC GLOBAL

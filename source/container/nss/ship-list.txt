@@ -1,0 +1,10 @@
+libnss3.so
+libnssutil3.so
+libsmime3.so
+libssl3.so
+libsoftokn3.so
+libfreebl3.so
+libnssckbi.so
+libnspr4.so
+libplc4.so
+libplds4.so

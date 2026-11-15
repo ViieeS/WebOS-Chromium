@@ -1,0 +1,77 @@
+# why: Chrome's media session calls to com.webos.service.mediacontroller fail without a luna handle, so webOS never
+# knew media was playing and the screen saver came on. The handle-less path counts playing media sessions and
+# writes the count to $CN_PLAYSTATE_FILE; the launcher answers the screen saver from it.
+--- a/src/base/neva/webos/luna_service_client.cc
++++ b/src/base/neva/webos/luna_service_client.cc
+@@ -16,13 +16,18 @@
+ 
+ #include "base/neva/webos/luna_service_client.h"
+ 
++#include <fcntl.h>
+ #include <glib.h>
++#include <stdlib.h>
+ #include <set>
+ #include <string>
+ #include <unistd.h>
+ 
+ #include "base/functional/callback_helpers.h"
+ #include "base/logging.h"
++#include "base/no_destructor.h"
++#include "base/strings/string_number_conversions.h"
++#include "base/synchronization/lock.h"
+ #include "base/unguessable_token.h"
+ 
+ namespace base {
+@@ -30,7 +35,52 @@ namespace base {
+ namespace {
+ // chromium-native (patch 0047): "LSHandle not initialized" came once a second during video on webOS 4,
+ // without saying which call. Name each luna URI once (first 30), with the start of its parameters.
++// chromium-native (patch 0049): LG's screen saver came on during a cast because the media session calls
++// (com.webos.service.mediacontroller) never reach webOS without a luna handle. Track which media sessions are playing
++// and write how many to $CN_PLAYSTATE_FILE (run.sh), which answers webOS's screen saver requests from that.
++std::string CnJsonString(const std::string& json, const char* key) {
++  const std::string k = std::string("\"") + key + "\"";
++  size_t p = json.find(k);
++  if (p == std::string::npos) return std::string();
++  p = json.find('"', json.find(':', p + k.size()) + 1);
++  if (p == std::string::npos) return std::string();
++  const size_t e = json.find('"', p + 1);
++  return e == std::string::npos ? std::string() : json.substr(p + 1, e - p - 1);
++}
++void CnTrackPlayState(const std::string& uri, const std::string& param) {
++  if (uri.find("com.webos.service.mediacontroller/") == std::string::npos) return;
++  const char* path = getenv("CN_PLAYSTATE_FILE");
++  if (!path || !*path) return;
++  static base::NoDestructor<base::Lock> lock;
++  static base::NoDestructor<std::set<std::string>> playing;
++  base::AutoLock hold(*lock);
++  const std::string id = CnJsonString(param, "mediaId");
++  if (id.empty()) return;
++  const size_t before = playing->size();
++  if (uri.find("/setMediaPlayStatus") != std::string::npos) {
++    if (CnJsonString(param, "playStatus") == "PLAYSTATE_PLAYING") {
++      playing->insert(id);
++    } else {
++      playing->erase(id);
++    }
++  } else if (uri.find("/unregisterMediaSession") != std::string::npos ||
++             uri.find("/deactivateMediaSession") != std::string::npos) {
++    playing->erase(id);
++  } else {
++    return;
++  }
++  if (playing->size() == before) return;
++  const std::string n = base::NumberToString(playing->size()) + "\n";
++  const int fd = open(path, O_WRONLY | O_CREAT | O_TRUNC | O_CLOEXEC, 0644);
++  if (fd >= 0) {
++    ssize_t w = write(fd, n.data(), n.size());
++    (void)w;
++    close(fd);
++  }
++}
++
+ void CnLogNoHandle(const char* func, const std::string& uri, const std::string& param) {
++  CnTrackPlayState(uri, param);
+   static std::set<std::string>* seen = new std::set<std::string>();
+   if (seen->size() < 30 && seen->insert(uri).second) {
+     LOG(ERROR) << func << " LSHandle not initialized: " << uri << " " << param.substr(0, 200);

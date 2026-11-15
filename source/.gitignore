@@ -1,0 +1,5 @@
+dl/
+__pycache__/
+*.pyc
+*.ipk
+*.tar.zst

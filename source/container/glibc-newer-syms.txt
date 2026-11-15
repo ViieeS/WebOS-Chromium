@@ -1,0 +1,33 @@
+# Functions added in glibc 2.25 .. 2.28 (armhf). build.sh deletes, once per sysroot id, every object in out/tv/obj
+# whose bytes contain one of these names, so ninja recompiles it against the glibc 2.24 sysroot headers.
+# Substring match (bitcode string tables have no separators): keep names long enough to avoid many false matches.
+# Never-defined functions still show up as link errors; add them here and rebuild.
+# 2.25
+getentropy
+getrandom
+explicit_bzero
+strfromd
+strfromf
+strfroml
+# 2.26
+reallocarray
+preadv2
+pwritev2
+preadv64v2
+pwritev64v2
+# 2.27
+memfd_create
+mlock2
+copy_file_range
+pkey_alloc
+pkey_free
+pkey_mprotect
+pkey_get
+pkey_set
+# 2.28 (fcntl64: _FILE_OFFSET_BITS=64 redirect of fcntl)
+fcntl64
+statx
+renameat2
+# libwayland 1.20 (2026-11-13): wayland-scanner 1.20+ protocol stubs call it; webOS 8 and older lack it. Objects with
+# it came from ccache entries made before the compat sysroot (its headers come from scanner 1.18; -MMD hides them).
+wl_proxy_marshal_flags

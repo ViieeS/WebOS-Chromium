@@ -1,0 +1,155 @@
+# why: The remote's keys reach Chrome, but the window loses aura activation at wl_keyboard.enter and LSM never sends an
+# "activated" state to restore it. A key press from the compositor means the window has keyboard focus, so
+# DesktopWindowTreeHostLinux activates the widget before dispatching the key. In neva's single-window mode,
+# bubbles (profile, extensions, tab search) are child windows inside the browser window: while one is active, keys
+# go to it instead. Show() also resumes drawing on neva's ui::Compositor, which starts paused and is otherwise
+# only resumed by LG's web app manager.
+diff --git a/src/ui/views/widget/desktop_aura/desktop_window_tree_host_linux.cc b/src/ui/views/widget/desktop_aura/desktop_window_tree_host_linux.cc
+index cfd7fec..9bec379 100644
+--- a/src/ui/views/widget/desktop_aura/desktop_window_tree_host_linux.cc
++++ b/src/ui/views/widget/desktop_aura/desktop_window_tree_host_linux.cc
+@@ -375,6 +375,17 @@ Widget::MoveLoopResult DesktopWindowTreeHostLinux::RunMoveLoop(
+ }
+ 
+ void DesktopWindowTreeHostLinux::DispatchEvent(ui::Event* event) {
++  // chromium-native: webOS LSM gives no xdg "activated" state and Chrome's
++  // window lost aura activation at wl_keyboard.enter, so remote keys went
++  // nowhere (patch 0015). A key press from the compositor means we are active,
++  // unless one of our bubbles is active (EnsureActiveForKeyEvent checks).
++  if (event->type() == ui::EventType::kKeyPressed) {
++    auto weak_this = weak_factory_.GetWeakPtr();
++    EnsureActiveForKeyEvent();
++    if (!weak_this) {
++      return;
++    }
++  }
+   // In Windows, the native events sent to chrome are separated into client
+   // and non-client versions of events, which we record on our LocatedEvent
+   // structures. On X11/Wayland, we emulate the concept of non-client. Before we
+@@ -427,7 +438,11 @@ void DesktopWindowTreeHostLinux::DispatchEvent(ui::Event* event) {
+   }
+ 
+   if (!event->handled()) {
++    auto weak_this = weak_factory_.GetWeakPtr();
+     WindowTreeHostPlatform::DispatchEvent(event);
++    if (weak_this && event->IsKeyEvent()) {
++      MoveFocusInActiveBubble(event->AsKeyEvent());  // chromium-native (0015)
++    }
+   }
+ }
+ 
+diff --git a/src/ui/views/widget/desktop_aura/desktop_window_tree_host_platform.cc b/src/ui/views/widget/desktop_aura/desktop_window_tree_host_platform.cc
+index 474b087..6244d1a 100644
+--- a/src/ui/views/widget/desktop_aura/desktop_window_tree_host_platform.cc
++++ b/src/ui/views/widget/desktop_aura/desktop_window_tree_host_platform.cc
+@@ -43,6 +43,9 @@
+ #include "ui/platform_window/platform_window_init_properties.h"
+ #include "ui/platform_window/wm/wm_move_loop_handler.h"
+ #include "ui/views/corewm/tooltip_aura.h"
++#include "ui/events/keycodes/keyboard_codes.h"  // chromium-native (patch 0015)
++#include "ui/views/focus/focus_manager.h"       // chromium-native (patch 0015)
++#include "ui/wm/public/activation_client.h"     // chromium-native (patch 0015)
+ #include "ui/views/corewm/tooltip_controller.h"
+ #include "ui/views/widget/desktop_aura/desktop_drag_drop_client_ozone.h"
+ #include "ui/views/widget/desktop_aura/desktop_native_widget_aura.h"
+@@ -497,6 +500,15 @@ void DesktopWindowTreeHostPlatform::Show(ui::mojom::WindowShowState show_state,
+   OnAcceleratedWidgetMadeVisible(true);
+   if (compositor()) {
+     compositor()->SetVisible(true);
++#if defined(USE_NEVA_APPRUNTIME)
++    // chromium-native (patch 0015): neva's ui::Compositor starts with drawing
++    // disabled (WAM resumes it once a web app is ready). Nothing resumes it in
++    // the Chrome browser, so ScheduleDraw() was a no-op: views that only
++    // repainted (the remote's selection in the 3-dot menu, hover and focus
++    // backgrounds) never reached the screen; only layer changes (focus rings,
++    // new windows) caused a frame.
++    compositor()->ResumeDrawing();
++#endif
+   }
+ 
+   platform_window()->Show(DetermineInactivity(show_state));
+@@ -1122,6 +1134,50 @@ void DesktopWindowTreeHostPlatform::OnClosed() {
+ 
+ ///@name USE_NEVA_APPRUNTIME
+ ///@{
++void DesktopWindowTreeHostPlatform::EnsureActiveForKeyEvent() {
++  if (!GetWidget() || GetWidget()->IsActive() ||
++      !GetWidget()->CanActivate()) {
++    return;
++  }
++  // A bubble inside our window is active (it took aura activation from the
++  // content window): the key is for it. Activating the content window here
++  // closed the bubble on the first arrow key.
++  if (is_active_ && GetActiveBubbleWindow()) {
++    return;
++  }
++  // OnActivationChanged() ignores a repeated "true", so reset the cached state.
++  is_active_ = false;
++  OnActivationChanged(true);
++}
++
++aura::Window* DesktopWindowTreeHostPlatform::GetActiveBubbleWindow() {
++  wm::ActivationClient* client = wm::GetActivationClient(window());
++  aura::Window* active = client ? client->GetActiveWindow() : nullptr;
++  if (!active || active == GetContentWindow() || !window()->Contains(active) ||
++      !active->IsVisible()) {
++    return nullptr;
++  }
++  return active;
++}
++
++void DesktopWindowTreeHostPlatform::MoveFocusInActiveBubble(
++    ui::KeyEvent* event) {
++  if (event->handled() || event->type() != ui::EventType::kKeyPressed) {
++    return;
++  }
++  const ui::KeyboardCode key = event->key_code();
++  if (key != ui::VKEY_UP && key != ui::VKEY_DOWN && key != ui::VKEY_LEFT &&
++      key != ui::VKEY_RIGHT) {
++    return;
++  }
++  aura::Window* bubble = GetActiveBubbleWindow();
++  Widget* widget = bubble ? Widget::GetWidgetForNativeWindow(bubble) : nullptr;
++  if (FocusManager* fm = widget ? widget->GetFocusManager() : nullptr) {
++    fm->AdvanceFocus(/*reverse=*/key == ui::VKEY_UP || key == ui::VKEY_LEFT);
++    event->SetHandled();
++  }
++}
++
+ void DesktopWindowTreeHostPlatform::OnKeyboardEnter() {
+ #if defined(USE_NEVA_APPRUNTIME)
+   NativeEventDelegate* delegate =
+diff --git a/src/ui/views/widget/desktop_aura/desktop_window_tree_host_platform.h b/src/ui/views/widget/desktop_aura/desktop_window_tree_host_platform.h
+index c29b0c5..b92a9c9 100644
+--- a/src/ui/views/widget/desktop_aura/desktop_window_tree_host_platform.h
++++ b/src/ui/views/widget/desktop_aura/desktop_window_tree_host_platform.h
+@@ -27,6 +27,7 @@
+ 
+ namespace ui {
+ class ExternalBeginFrameAdapter;
++class KeyEvent;
+ class PaintContext;
+ }  // namespace ui
+ 
+@@ -67,6 +68,21 @@ class VIEWS_EXPORT DesktopWindowTreeHostPlatform
+   // internal list of open windows.
+   static void CleanUpWindowList(void (*func)(aura::Window* window));
+ 
++  // chromium-native (webOS): a key press means the compositor gave us keyboard
++  // focus, so make sure the widget is active (aura activation and focus) before
++  // the key is dispatched. See patch 0015.
++  void EnsureActiveForKeyEvent();
++
++  // chromium-native (webOS, patch 0015): bubbles (profile, extensions, tab
++  // search) are child windows inside this root window (neva single-window
++  // mode). After a key the bubble did not use, the remote's arrow keys move
++  // the bubble's focus like Tab / Shift+Tab.
++  void MoveFocusInActiveBubble(ui::KeyEvent* event);
++
++  // chromium-native (webOS): the root window's active window, when it is a
++  // visible child window (a bubble) rather than our content window.
++  aura::Window* GetActiveBubbleWindow();
++
+   // Accessor for DesktopNativeWidgetAura::content_window().
+   aura::Window* GetContentWindow();
+   const aura::Window* GetContentWindow() const;

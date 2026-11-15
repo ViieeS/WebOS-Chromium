@@ -1,0 +1,68 @@
+# why: For a 32-bit ARM target, V8's snapshot and generator tools are i386 binaries. Run them under qemu-i386-static,
+# so they also work on build hosts that cannot execute i386 programs (for example gVisor containers).
+diff --git a/src/build/gn_run_binary.py b/src/build/gn_run_binary.py
+index 414f6952f..2dbea6c79 100644
+--- a/src/build/gn_run_binary.py
++++ b/src/build/gn_run_binary.py
+@@ -13,6 +13,19 @@ import os
+ import subprocess
+ import sys
+ 
++def _i386_prefix(path):
++  # chromium-native: the V8 snapshot/generator tools for a 32-bit ARM target
++  # are i386 binaries (clang_x86_v8_arm). The Modal build container (gVisor)
++  # cannot exec i386 natively, so run them under qemu-i386 (user mode).
++  try:
++    with open(path, "rb") as f:
++      h = f.read(20)
++  except OSError:
++    return []
++  if h[:4] == b"\x7fELF" and h[4] == 1 and h[18:20] == b"\x03\x00":
++    return ["qemu-i386-static"]
++  return []
++
+ # This script is designed to run binaries produced by the current build. We
+ # may prefix it with "./" to avoid picking up system versions that might
+ # also be on the path.
+@@ -21,7 +34,7 @@ if not os.path.isabs(path):
+   path = './' + path
+ 
+ # The rest of the arguments are passed directly to the executable.
+-args = [path] + sys.argv[2:]
++args = _i386_prefix(path) + [path] + sys.argv[2:]
+ 
+ ret = subprocess.call(args)
+ if ret != 0:
+diff --git a/src/v8/tools/run.py b/src/v8/tools/run.py
+index 77b6538d4..bf45f801d 100755
+--- a/src/v8/tools/run.py
++++ b/src/v8/tools/run.py
+@@ -11,6 +11,19 @@ import sys
+ 
+ from pathlib import Path
+ 
++def _i386_prefix(path):
++  # chromium-native: the V8 snapshot/generator tools for a 32-bit ARM target
++  # are i386 binaries (clang_x86_v8_arm). The Modal build container (gVisor)
++  # cannot exec i386 natively, so run them under qemu-i386 (user mode).
++  try:
++    with open(path, "rb") as f:
++      h = f.read(20)
++  except OSError:
++    return []
++  if h[:4] == b"\x7fELF" and h[4] == 1 and h[18:20] == b"\x03\x00":
++    return ["qemu-i386-static"]
++  return []
++
+ # The first two arguments can be used to specify a file to redirect the
+ # stdout to.
+ cmd = sys.argv[1:]
+@@ -21,6 +34,8 @@ if cmd and cmd[0] == '--redirect-stdout':
+   kwargs = dict(stdout=subprocess.PIPE)
+   cmd = cmd[2:]
+ 
++if cmd:
++  cmd = _i386_prefix(cmd[0]) + cmd
+ process = subprocess.Popen(cmd, **kwargs)
+ stdout, _ = process.communicate()
+ if stdout_file:

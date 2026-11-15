@@ -1,0 +1,131 @@
+# why: One build for older TVs (glibc 2.24, libwayland 1.10 and newer).
+# - The compat build links against an older glibc sysroot (container/build-sysroot-compat.sh). gn arg
+#   cn_glibc_compat adds --allow-shlib-undefined, because the newer TV libraries in that sysroot reference newer
+#   glibc versions; an older TV loads its own libraries.
+# - wayland-scanner 1.20+ writes request stubs that call wl_proxy_marshal_flags (libwayland 1.20+). With
+#   cn_glibc_compat the stubs use wl_proxy_marshal and wl_proxy_destroy, which every libwayland since 1.10 has.
+diff --git a/src/build/config/cn_compat.gni b/src/build/config/cn_compat.gni
+new file mode 100644
+index 0000000..8c1a425
+--- /dev/null
++++ b/src/build/config/cn_compat.gni
+@@ -0,0 +1,7 @@
++# chromium-native (patch 0031): build of the browser for older LG TVs.
++declare_args() {
++  # The "compat" build for webOS 5-8 (glibc 2.28-2.31, libwayland 1.10-1.19). It is linked against a glibc 2.28
++  # sysroot (container/build-sysroot-compat.sh), and Wayland protocol code is generated for the libwayland API
++  # before 1.20, which every libwayland since 1.10 provides. The result also runs on newer TVs.
++  cn_glibc_compat = false
++}
+diff --git a/src/build/config/compiler/BUILD.gn b/src/build/config/compiler/BUILD.gn
+index 4317238..d950720 100644
+--- a/src/build/config/compiler/BUILD.gn
++++ b/src/build/config/compiler/BUILD.gn
+@@ -10,6 +10,7 @@ import("//build/config/cast.gni")
+ import("//build/config/chrome_build.gni")
+ import("//build/config/chromeos/args.gni")
+ import("//build/config/clang/clang.gni")
++import("//build/config/cn_compat.gni")
+ import("//build/config/compiler/compiler.gni")
+ import("//build/config/compiler_cpu_abi.gn")
+ import("//build/config/coverage/coverage.gni")
+@@ -332,6 +333,14 @@ config("compiler") {
+   defines = []
+   configs = []
+ 
++  # chromium-native (patch 0031): the compat build links against glibc 2.28,
++  # but the other TV libraries in the sysroot (webOS 10) were built against a
++  # newer glibc. Their own undefined references don't matter: on an older TV
++  # its own, older libraries are loaded.
++  if (cn_glibc_compat && current_cpu == "arm") {
++    ldflags += [ "-Wl,--allow-shlib-undefined" ]
++  }
++
+   # System-specific flags. If your compiler flags apply to one of the
+   # categories here, add it to the associated file to keep this shared config
+   # smaller.
+diff --git a/src/third_party/wayland/BUILD.gn b/src/third_party/wayland/BUILD.gn
+index 4c47cfa..8174a4b 100644
+--- a/src/third_party/wayland/BUILD.gn
++++ b/src/third_party/wayland/BUILD.gn
+@@ -1,6 +1,7 @@
+ # Copyright 2015 The Chromium Authors
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
++import("//build/config/cn_compat.gni")
+ import("//build/config/linux/pkg_config.gni")
+ import("//build/config/sysroot.gni")
+ import("//third_party/wayland/features.gni")
+@@ -329,6 +330,13 @@ config("wayland_scanner_config") {
+   ]
+ 
+   include_dirs = [ "include/" ]
++
++  # chromium-native (patch 0031): generate request stubs for the libwayland
++  # API before 1.20 (wl_proxy_marshal*, then wl_proxy_destroy) instead of
++  # wl_proxy_marshal_flags, so the browser runs with older TVs' libwayland.
++  if (cn_glibc_compat) {
++    defines = [ "CN_SCANNER_PRE_1_20" ]
++  }
+ }
+ 
+ executable("wayland_scanner") {
+diff --git a/src/third_party/wayland/src/src/scanner.c b/src/third_party/wayland/src/src/scanner.c
+index 1b71e60..f80f2d6 100644
+--- a/src/third_party/wayland/src/src/scanner.c
++++ b/src/third_party/wayland/src/src/scanner.c
+@@ -1271,6 +1271,54 @@ emit_stubs(struct wl_list *message_list, struct interface *interface)
+ 
+ 		printf(")\n"
+ 		       "{\n");
++#ifdef CN_SCANNER_PRE_1_20
++		/* chromium-native: the request stubs of libwayland 1.19's scanner,
++		 * for clients that must run with libwayland older than 1.20 (no
++		 * wl_proxy_marshal_flags). New objects get the parent's version, as
++		 * with wl_proxy_marshal_flags. */
++		if (ret && ret->interface_name == NULL) {
++			printf("\tstruct wl_proxy *%s;\n\n"
++			       "\t%s = wl_proxy_marshal_constructor_versioned("
++			       "(struct wl_proxy *) %s,\n"
++			       "\t\t\t %s_%s, interface, version",
++			       ret->name, ret->name, interface->name,
++			       interface->uppercase_name, m->uppercase_name);
++		} else if (ret) {
++			printf("\tstruct wl_proxy *%s;\n\n"
++			       "\t%s = wl_proxy_marshal_constructor("
++			       "(struct wl_proxy *) %s,\n"
++			       "\t\t\t %s_%s, &%s_interface",
++			       ret->name, ret->name, interface->name,
++			       interface->uppercase_name, m->uppercase_name,
++			       ret->interface_name);
++		} else {
++			printf("\twl_proxy_marshal((struct wl_proxy *) %s,\n"
++			       "\t\t\t %s_%s",
++			       interface->name, interface->uppercase_name,
++			       m->uppercase_name);
++		}
++		wl_list_for_each(a, &m->arg_list, link) {
++			if (a->type == NEW_ID) {
++				if (a->interface_name == NULL)
++					printf(", interface->name, version");
++				printf(", NULL");
++			} else {
++				printf(", %s", a->name);
++			}
++		}
++		printf(");\n");
++		if (m->destructor)
++			printf("\n\twl_proxy_destroy("
++			       "(struct wl_proxy *) %s);\n",
++			       interface->name);
++		if (ret && ret->interface_name == NULL)
++			printf("\n\treturn (void *) %s;\n", ret->name);
++		else if (ret)
++			printf("\n\treturn (struct %s *) %s;\n",
++			       ret->interface_name, ret->name);
++		printf("}\n\n");
++		continue;
++#endif
+ 		printf("\t");
+ 		if (ret) {
+ 			printf("struct wl_proxy *%s;\n\n"

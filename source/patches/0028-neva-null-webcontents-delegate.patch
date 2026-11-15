@@ -1,0 +1,19 @@
+# why: neva's app-runtime code calls web_contents->GetDelegate()->GetAllowLocalResourceLoad() without a null check,
+# which crashes when a tab commits its first navigation before it has a delegate (for example DevTools opening
+# about:blank). Check for null.
+diff --git a/src/content/browser/renderer_host/render_frame_host_impl.cc b/src/content/browser/renderer_host/render_frame_host_impl.cc
+index 27d3241..f49234c 100644
+--- a/src/content/browser/renderer_host/render_frame_host_impl.cc
++++ b/src/content/browser/renderer_host/render_frame_host_impl.cc
+@@ -12967,7 +12967,10 @@ void RenderFrameHostImpl::CommitNavigation(
+ 
+ #if defined(USE_NEVA_APPRUNTIME)
+   WebContents* web_contents = WebContents::FromRenderFrameHost(this);
+-  if (web_contents->GetDelegate()->GetAllowLocalResourceLoad())
++  // chromium-native (patch 0028): a WebContents may commit its first
++  // navigation (about:blank, a WebUI bubble) before it has a delegate.
++  if (web_contents && web_contents->GetDelegate() &&
++      web_contents->GetDelegate()->GetAllowLocalResourceLoad())
+     commit_params->can_load_local_resources = true;
+ #endif
+ 

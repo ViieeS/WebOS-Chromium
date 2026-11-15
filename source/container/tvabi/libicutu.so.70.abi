@@ -1,0 +1,585 @@
+tvabi 1
+soname libicutu.so.70
+needed libicui18n.so.70
+needed libicuuc.so.70
+needed libicudata.so.70
+needed libpthread.so.0
+needed libstdc++.so.6
+needed libm.so.6
+needed libgcc_s.so.1
+needed libc.so.6
+def T_FileStream_close - - FUNC GLOBAL DEFAULT 8 code
+def T_FileStream_eof - - FUNC GLOBAL DEFAULT 4 code
+def T_FileStream_error - - FUNC GLOBAL DEFAULT 20 code
+def T_FileStream_file_exists - - FUNC GLOBAL DEFAULT 24 code
+def T_FileStream_getc - - FUNC GLOBAL DEFAULT 4 code
+def T_FileStream_open - - FUNC GLOBAL DEFAULT 24 code
+def T_FileStream_peek - - FUNC GLOBAL DEFAULT 18 code
+def T_FileStream_putc - - FUNC GLOBAL DEFAULT 10 code
+def T_FileStream_read - - FUNC GLOBAL DEFAULT 10 code
+def T_FileStream_readLine - - FUNC GLOBAL DEFAULT 14 code
+def T_FileStream_remove - - FUNC GLOBAL DEFAULT 14 code
+def T_FileStream_rewind - - FUNC GLOBAL DEFAULT 4 code
+def T_FileStream_size - - FUNC GLOBAL DEFAULT 42 code
+def T_FileStream_stderr - - FUNC GLOBAL DEFAULT 20 code
+def T_FileStream_stdin - - FUNC GLOBAL DEFAULT 20 code
+def T_FileStream_stdout - - FUNC GLOBAL DEFAULT 20 code
+def T_FileStream_ungetc - - FUNC GLOBAL DEFAULT 4 code
+def T_FileStream_write - - FUNC GLOBAL DEFAULT 10 code
+def T_FileStream_writeLine - - FUNC GLOBAL DEFAULT 10 code
+def _Z15udbg_enumString14UDebugEnumTypei - - FUNC GLOBAL DEFAULT 400 code
+def _Z21uprv_dummyFunction_TUv - - FUNC GLOBAL DEFAULT 4 code
+def _ZN11KnownIssues3addEPKcS1_PKDsPaS4_ - - FUNC GLOBAL DEFAULT 1712 code
+def _ZN11KnownIssues3addEPKcS1_S1_PaS2_ - - FUNC GLOBAL DEFAULT 1630 code
+def _ZN11KnownIssues5printEv - - FUNC GLOBAL DEFAULT 808 code
+def _ZN11KnownIssuesC1Ev - - FUNC GLOBAL DEFAULT 16 code
+def _ZN11KnownIssuesC2Ev - - FUNC GLOBAL DEFAULT 16 code
+def _ZN11KnownIssuesD1Ev - - FUNC GLOBAL DEFAULT 52 code
+def _ZN11KnownIssuesD2Ev - - FUNC GLOBAL DEFAULT 52 code
+def _ZN6icu_7010UXMLParser11scanContentER10UErrorCode - - FUNC GLOBAL DEFAULT 176 code
+def _ZN6icu_7010UXMLParser12createParserER10UErrorCode - - FUNC GLOBAL DEFAULT 48 code
+def _ZN6icu_7010UXMLParser13createElementERNS_12RegexMatcherER10UErrorCode - - FUNC GLOBAL DEFAULT 478 code
+def _ZN6icu_7010UXMLParser15replaceCharRefsERNS_13UnicodeStringER10UErrorCode - - FUNC GLOBAL DEFAULT 728 code
+def _ZN6icu_7010UXMLParser16getStaticClassIDEv - - FUNC GLOBAL DEFAULT 12 code
+def _ZN6icu_7010UXMLParser5errorEPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 132 code
+def _ZN6icu_7010UXMLParser5parseERKNS_13UnicodeStringER10UErrorCode - - FUNC GLOBAL DEFAULT 1008 code
+def _ZN6icu_7010UXMLParser6internERKNS_13UnicodeStringER10UErrorCode - - FUNC GLOBAL DEFAULT 84 code
+def _ZN6icu_7010UXMLParser9parseFileEPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 1176 code
+def _ZN6icu_7010UXMLParser9parseMiscER10UErrorCode - - FUNC GLOBAL DEFAULT 142 code
+def _ZN6icu_7010UXMLParserC1ER10UErrorCode - - FUNC GLOBAL DEFAULT 940 code
+def _ZN6icu_7010UXMLParserC2ER10UErrorCode - - FUNC GLOBAL DEFAULT 940 code
+def _ZN6icu_7010UXMLParserD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN6icu_7010UXMLParserD1Ev - - FUNC GLOBAL DEFAULT 164 code
+def _ZN6icu_7010UXMLParserD2Ev - - FUNC GLOBAL DEFAULT 164 code
+def _ZN6icu_7011UXMLElement16getStaticClassIDEv - - FUNC GLOBAL DEFAULT 12 code
+def _ZN6icu_7011UXMLElementC1EPKNS_10UXMLParserEPKNS_13UnicodeStringER10UErrorCode - - FUNC GLOBAL DEFAULT 132 code
+def _ZN6icu_7011UXMLElementC2EPKNS_10UXMLParserEPKNS_13UnicodeStringER10UErrorCode - - FUNC GLOBAL DEFAULT 132 code
+def _ZN6icu_7011UXMLElementD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN6icu_7011UXMLElementD1Ev - - FUNC GLOBAL DEFAULT 128 code
+def _ZN6icu_7011UXMLElementD2Ev - - FUNC GLOBAL DEFAULT 128 code
+def _ZN6icu_7012PreparsedUCD10firstFieldEv - - FUNC GLOBAL DEFAULT 28 code
+def _ZN6icu_7012PreparsedUCD11parseStringEPKcRNS_13UnicodeStringER10UErrorCode - - FUNC GLOBAL DEFAULT 168 code
+def _ZN6icu_7012PreparsedUCD13parsePropertyERNS_8UniPropsEPKcRNS_10UnicodeSetER10UErrorCode - - FUNC GLOBAL DEFAULT 1108 code
+def _ZN6icu_7012PreparsedUCD14parseCodePointEPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 96 code
+def _ZN6icu_7012PreparsedUCD15kNumLineBuffersE - - OBJECT GLOBAL DEFAULT 4 data
+def _ZN6icu_7012PreparsedUCD19getRangeForAlgNamesERiS1_R10UErrorCode - - FUNC GLOBAL DEFAULT 124 code
+def _ZN6icu_7012PreparsedUCD19parseCodePointRangeEPKcRiS3_R10UErrorCode - - FUNC GLOBAL DEFAULT 100 code
+def _ZN6icu_7012PreparsedUCD21parseScriptExtensionsEPKcRNS_10UnicodeSetER10UErrorCode - - FUNC GLOBAL DEFAULT 316 code
+def _ZN6icu_7012PreparsedUCD8getPropsERNS_10UnicodeSetER10UErrorCode - - FUNC GLOBAL DEFAULT 1388 code
+def _ZN6icu_7012PreparsedUCD8readLineER10UErrorCode - - FUNC GLOBAL DEFAULT 428 code
+def _ZN6icu_7012PreparsedUCD9nextFieldEv - - FUNC GLOBAL DEFAULT 32 code
+def _ZN6icu_7012PreparsedUCDC1EPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 256 code
+def _ZN6icu_7012PreparsedUCDC2EPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 256 code
+def _ZN6icu_7012PreparsedUCDD1Ev - - FUNC GLOBAL DEFAULT 68 code
+def _ZN6icu_7012PreparsedUCDD2Ev - - FUNC GLOBAL DEFAULT 68 code
+def _ZN6icu_7013CollationInfo10printSizesEiPKi - - FUNC GLOBAL DEFAULT 512 code
+def _ZN6icu_7013CollationInfo13getDataLengthEPKii - - FUNC GLOBAL DEFAULT 18 code
+def _ZN6icu_7013CollationInfo18printReorderRangesERKNS_13CollationDataEPKii - - FUNC GLOBAL DEFAULT 232 code
+def _ZN6icu_7013PropertyNamesD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN6icu_7013PropertyNamesD1Ev - - FUNC GLOBAL DEFAULT 2 code
+def _ZN6icu_7013PropertyNamesD2Ev - - FUNC GLOBAL DEFAULT 2 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EE12aliasInsteadEPci - - FUNC WEAK DEFAULT 50 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EE12releaseArrayEv - - FUNC WEAK DEFAULT 14 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EE13orphanOrCloneEiRi - - FUNC WEAK DEFAULT 74 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EE17resetToStackArrayEv - - FUNC WEAK DEFAULT 16 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EE6resizeEii - - FUNC WEAK DEFAULT 86 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EE8copyFromERKS1_R10UErrorCode - - FUNC WEAK DEFAULT 80 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEC1EOS1_ - - FUNC WEAK DEFAULT 54 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEC1Ei10UErrorCode - - FUNC WEAK DEFAULT 96 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEC1Ev - - FUNC WEAK DEFAULT 22 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEC2EOS1_ - - FUNC WEAK DEFAULT 54 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEC2Ei10UErrorCode - - FUNC WEAK DEFAULT 96 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEC2Ev - - FUNC WEAK DEFAULT 22 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EED1Ev - - FUNC WEAK DEFAULT 24 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EED2Ev - - FUNC WEAK DEFAULT 24 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEaSEOS1_ - - FUNC WEAK DEFAULT 72 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEixEi - - FUNC WEAK DEFAULT 6 code
+def _ZN6icu_7015ValueNameGetterD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN6icu_7015ValueNameGetterD1Ev - - FUNC GLOBAL DEFAULT 2 code
+def _ZN6icu_7015ValueNameGetterD2Ev - - FUNC GLOBAL DEFAULT 2 code
+def _ZN6icu_7016IcuToolErrorCodeD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN6icu_7016IcuToolErrorCodeD1Ev - - FUNC GLOBAL DEFAULT 44 code
+def _ZN6icu_7016IcuToolErrorCodeD2Ev - - FUNC GLOBAL DEFAULT 44 code
+def _ZN6icu_707Package10removeItemEi - - FUNC GLOBAL DEFAULT 104 code
+def _ZN6icu_707Package11allocStringEai - - FUNC GLOBAL DEFAULT 120 code
+def _ZN6icu_707Package11extractItemEPKcS2_ic - - FUNC GLOBAL DEFAULT 34 code
+def _ZN6icu_707Package11extractItemEPKcic - - FUNC GLOBAL DEFAULT 28 code
+def _ZN6icu_707Package11readPackageEPKc - - FUNC GLOBAL DEFAULT 1444 code
+def _ZN6icu_707Package11removeItemsEPKc - - FUNC GLOBAL DEFAULT 28 code
+def _ZN6icu_707Package11removeItemsERKS0_ - - FUNC GLOBAL DEFAULT 46 code
+def _ZN6icu_707Package12extractItemsEPKcRKS0_c - - FUNC GLOBAL DEFAULT 58 code
+def _ZN6icu_707Package12extractItemsEPKcS2_c - - FUNC GLOBAL DEFAULT 38 code
+def _ZN6icu_707Package12findNextItemEv - - FUNC GLOBAL DEFAULT 202 code
+def _ZN6icu_707Package12setMatchModeEj - - FUNC GLOBAL DEFAULT 10 code
+def _ZN6icu_707Package12writePackageEPKccS2_ - - FUNC GLOBAL DEFAULT 1472 code
+def _ZN6icu_707Package15checkDependencyEPvPKcS3_ - - FUNC GLOBAL DEFAULT 76 code
+def _ZN6icu_707Package15setItemCapacityEi - - FUNC GLOBAL DEFAULT 124 code
+def _ZN6icu_707Package16enumDependenciesEPNS_4ItemEPvPFvS3_PKcS5_E - - FUNC GLOBAL DEFAULT 692 code
+def _ZN6icu_707Package16enumDependenciesEPvPFvS1_PKcS3_E - - FUNC GLOBAL DEFAULT 48 code
+def _ZN6icu_707Package17checkDependenciesEv - - FUNC GLOBAL DEFAULT 48 code
+def _ZN6icu_707Package18ensureItemCapacityEv - - FUNC GLOBAL DEFAULT 22 code
+def _ZN6icu_707Package7addFileEPKcS2_ - - FUNC GLOBAL DEFAULT 48 code
+def _ZN6icu_707Package7addItemEPKc - - FUNC GLOBAL DEFAULT 24 code
+def _ZN6icu_707Package7addItemEPKcPhiac - - FUNC GLOBAL DEFAULT 200 code
+def _ZN6icu_707Package8addItemsERKS0_ - - FUNC GLOBAL DEFAULT 68 code
+def _ZN6icu_707Package9findItemsEPKc - - FUNC GLOBAL DEFAULT 172 code
+def _ZN6icu_707Package9getInTypeEv - - FUNC GLOBAL DEFAULT 24 code
+def _ZN6icu_707Package9setPrefixEPKc - - FUNC GLOBAL DEFAULT 72 code
+def _ZN6icu_707Package9sortItemsEv - - FUNC GLOBAL DEFAULT 92 code
+def _ZN6icu_707PackageC1Ev - - FUNC GLOBAL DEFAULT 140 code
+def _ZN6icu_707PackageC2Ev - - FUNC GLOBAL DEFAULT 140 code
+def _ZN6icu_707PackageD1Ev - - FUNC GLOBAL DEFAULT 74 code
+def _ZN6icu_707PackageD2Ev - - FUNC GLOBAL DEFAULT 74 code
+def _ZN6icu_708UniPropsC1Ev - - FUNC GLOBAL DEFAULT 164 code
+def _ZN6icu_708UniPropsC2Ev - - FUNC GLOBAL DEFAULT 164 code
+def _ZN6icu_708UniPropsD1Ev - - FUNC GLOBAL DEFAULT 48 code
+def _ZN6icu_708UniPropsD2Ev - - FUNC GLOBAL DEFAULT 48 code
+def _ZNK6icu_7010UXMLParser17getDynamicClassIDEv - - FUNC GLOBAL DEFAULT 4 code
+def _ZNK6icu_7010UXMLParser8findNameERKNS_13UnicodeStringE - - FUNC GLOBAL DEFAULT 16 code
+def _ZNK6icu_7011UXMLElement10appendTextERNS_13UnicodeStringEa - - FUNC GLOBAL DEFAULT 120 code
+def _ZNK6icu_7011UXMLElement10getTagNameEv - - FUNC GLOBAL DEFAULT 4 code
+def _ZNK6icu_7011UXMLElement12getAttributeERKNS_13UnicodeStringE - - FUNC GLOBAL DEFAULT 70 code
+def _ZNK6icu_7011UXMLElement12getAttributeEiRNS_13UnicodeStringES2_ - - FUNC GLOBAL DEFAULT 62 code
+def _ZNK6icu_7011UXMLElement13countChildrenEv - - FUNC GLOBAL DEFAULT 6 code
+def _ZNK6icu_7011UXMLElement15countAttributesEv - - FUNC GLOBAL DEFAULT 4 code
+def _ZNK6icu_7011UXMLElement15getChildElementERKNS_13UnicodeStringE - - FUNC GLOBAL DEFAULT 88 code
+def _ZNK6icu_7011UXMLElement16nextChildElementERi - - FUNC GLOBAL DEFAULT 76 code
+def _ZNK6icu_7011UXMLElement17getDynamicClassIDEv - - FUNC GLOBAL DEFAULT 4 code
+def _ZNK6icu_7011UXMLElement7getTextEa - - FUNC GLOBAL DEFAULT 56 code
+def _ZNK6icu_7011UXMLElement8getChildEiR12UXMLNodeType - - FUNC GLOBAL DEFAULT 80 code
+def _ZNK6icu_7015MaybeStackArrayIcLi40EE11getCapacityEv - - FUNC WEAK DEFAULT 4 code
+def _ZNK6icu_7015MaybeStackArrayIcLi40EE13getArrayLimitEv - - FUNC WEAK DEFAULT 8 code
+def _ZNK6icu_7015MaybeStackArrayIcLi40EE8getAliasEv - - FUNC WEAK DEFAULT 4 code
+def _ZNK6icu_7015MaybeStackArrayIcLi40EEixEi - - FUNC WEAK DEFAULT 6 code
+def _ZNK6icu_7016IcuToolErrorCode13handleFailureEv - - FUNC GLOBAL DEFAULT 52 code
+def _ZNK6icu_707Package12getItemCountEv - - FUNC GLOBAL DEFAULT 6 code
+def _ZNK6icu_707Package7getItemEi - - FUNC GLOBAL DEFAULT 26 code
+def _ZNK6icu_707Package8findItemEPKci - - FUNC GLOBAL DEFAULT 122 code
+def _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_St9_IdentityIS5_ESt4lessIS5_ESaIS5_EE16_M_insert_uniqueIRKS5_EESt4pairISt17_Rb_tree_iteratorIS5_EbEOT_ - - FUNC WEAK DEFAULT 272 code
+def _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_St9_IdentityIS5_ESt4lessIS5_ESaIS5_EE16_M_insert_uniqueIS5_EESt4pairISt17_Rb_tree_iteratorIS5_EbEOT_ - - FUNC WEAK DEFAULT 182 code
+def _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_St9_IdentityIS5_ESt4lessIS5_ESaIS5_EE24_M_get_insert_unique_posERKS5_ - - FUNC WEAK DEFAULT 168 code
+def _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_St3mapIS5_St3setIS5_St4lessIS5_ESaIS5_EESB_SaIS6_IS7_SD_EEEESt10_Select1stISH_ESB_SaISH_EE24_M_get_insert_unique_posERS7_ - - FUNC WEAK DEFAULT 168 code
+def _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_St3mapIS5_St3setIS5_St4lessIS5_ESaIS5_EESB_SaIS6_IS7_SD_EEEESt10_Select1stISH_ESB_SaISH_EE4findERS7_ - - FUNC WEAK DEFAULT 110 code
+def _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_St3setIS5_St4lessIS5_ESaIS5_EEESt10_Select1stISD_ESA_SaISD_EE24_M_get_insert_unique_posERS7_ - - FUNC WEAK DEFAULT 168 code
+def _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_St3setIS5_St4lessIS5_ESaIS5_EEESt10_Select1stISD_ESA_SaISD_EE4findERS7_ - - FUNC WEAK DEFAULT 110 code
+def _ZTIN6icu_7010UXMLParserE - - OBJECT GLOBAL DEFAULT 12 data
+def _ZTIN6icu_7011UXMLElementE - - OBJECT GLOBAL DEFAULT 12 data
+def _ZTIN6icu_7013PropertyNamesE - - OBJECT GLOBAL DEFAULT 8 data
+def _ZTIN6icu_7014StringByteSinkINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEE - - OBJECT WEAK DEFAULT 12 data
+def _ZTIN6icu_7015ValueNameGetterE - - OBJECT GLOBAL DEFAULT 8 data
+def _ZTIN6icu_7016IcuToolErrorCodeE - - OBJECT GLOBAL DEFAULT 12 data
+def _ZTSN6icu_7010UXMLParserE - - OBJECT GLOBAL DEFAULT 22 data
+def _ZTSN6icu_7011UXMLElementE - - OBJECT GLOBAL DEFAULT 23 data
+def _ZTSN6icu_7013PropertyNamesE - - OBJECT GLOBAL DEFAULT 25 data
+def _ZTSN6icu_7014StringByteSinkINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEE - - OBJECT WEAK DEFAULT 80 data
+def _ZTSN6icu_7015ValueNameGetterE - - OBJECT GLOBAL DEFAULT 27 data
+def _ZTSN6icu_7016IcuToolErrorCodeE - - OBJECT GLOBAL DEFAULT 28 data
+def _ZTVN6icu_7010UXMLParserE - - OBJECT GLOBAL DEFAULT 20 data
+def _ZTVN6icu_7011UXMLElementE - - OBJECT GLOBAL DEFAULT 20 data
+def _ZTVN6icu_7013PropertyNamesE - - OBJECT GLOBAL DEFAULT 24 data
+def _ZTVN6icu_7014StringByteSinkINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEE - - OBJECT WEAK DEFAULT 28 data
+def _ZTVN6icu_7015ValueNameGetterE - - OBJECT GLOBAL DEFAULT 20 data
+def _ZTVN6icu_7016IcuToolErrorCodeE - - OBJECT GLOBAL DEFAULT 20 data
+def checkAssemblyHeaderName - - FUNC GLOBAL DEFAULT 104 code
+def createCommonDataFile - - FUNC GLOBAL DEFAULT 2404 code
+def findBasename - - FUNC GLOBAL DEFAULT 20 code
+def findDirname - - FUNC GLOBAL DEFAULT 84 code
+def getCurrentYear - - FUNC GLOBAL DEFAULT 52 code
+def getDataInfo - - FUNC GLOBAL DEFAULT 122 code
+def getLongPathname - - FUNC GLOBAL DEFAULT 2 code
+def isFileModTimeLater - - FUNC GLOBAL DEFAULT 472 code
+def paramCldrVersion - - FUNC GLOBAL DEFAULT 86 code
+def paramConverterDefault - - FUNC GLOBAL DEFAULT 26 code
+def paramEmpty - - FUNC GLOBAL DEFAULT 30 code
+def paramIcudataPath - - FUNC GLOBAL DEFAULT 26 code
+def paramInteger - - FUNC GLOBAL DEFAULT 104 code
+def paramLocaleDefault - - FUNC GLOBAL DEFAULT 26 code
+def paramLocaleDefaultBcp47 - - FUNC GLOBAL DEFAULT 40 code
+def paramPlatform - - FUNC GLOBAL DEFAULT 28 code
+def paramStatic - - FUNC GLOBAL DEFAULT 76 code
+def paramTimezoneDefault - - FUNC GLOBAL DEFAULT 18 code
+def paramTimezoneVersion - - FUNC GLOBAL DEFAULT 28 code
+def parseFlagsFile - - FUNC GLOBAL DEFAULT 636 code
+def printAssemblyHeadersToStdErr - - FUNC GLOBAL DEFAULT 108 code
+def readList - - FUNC GLOBAL DEFAULT 572 code
+def swapFileSepChar - - FUNC GLOBAL DEFAULT 40 code
+def u_parseArgs - - FUNC GLOBAL DEFAULT 466 code
+def u_parseCodePointRange - - FUNC GLOBAL DEFAULT 60 code
+def u_parseCodePointRangeAnyTerminator - - FUNC GLOBAL DEFAULT 176 code
+def u_parseCodePoints - - FUNC GLOBAL DEFAULT 192 code
+def u_parseDelimitedFile - - FUNC GLOBAL DEFAULT 500 code
+def u_parseString - - FUNC GLOBAL DEFAULT 280 code
+def u_parseUTF8 - - FUNC GLOBAL DEFAULT 112 code
+def u_rtrim - - FUNC GLOBAL DEFAULT 60 code
+def u_skipWhitespace - - FUNC GLOBAL DEFAULT 38 code
+def ucbuf_autodetect - - FUNC GLOBAL DEFAULT 132 code
+def ucbuf_autodetect_fs - - FUNC GLOBAL DEFAULT 186 code
+def ucbuf_close - - FUNC GLOBAL DEFAULT 42 code
+def ucbuf_getBuffer - - FUNC GLOBAL DEFAULT 42 code
+def ucbuf_getc - - FUNC GLOBAL DEFAULT 58 code
+def ucbuf_getc32 - - FUNC GLOBAL DEFAULT 92 code
+def ucbuf_getcx32 - - FUNC GLOBAL DEFAULT 236 code
+def ucbuf_open - - FUNC GLOBAL DEFAULT 628 code
+def ucbuf_readline - - FUNC GLOBAL DEFAULT 258 code
+def ucbuf_resolveFileName - - FUNC GLOBAL DEFAULT 246 code
+def ucbuf_rewind - - FUNC GLOBAL DEFAULT 180 code
+def ucbuf_size - - FUNC GLOBAL DEFAULT 50 code
+def ucbuf_ungetc - - FUNC GLOBAL DEFAULT 22 code
+def ucm_addMapping - - FUNC GLOBAL DEFAULT 564 code
+def ucm_addMappingAuto - - FUNC GLOBAL DEFAULT 164 code
+def ucm_addMappingFromLine - - FUNC GLOBAL DEFAULT 116 code
+def ucm_addState - - FUNC GLOBAL DEFAULT 684 code
+def ucm_checkBaseExt - - FUNC GLOBAL DEFAULT 1136 code
+def ucm_checkValidity - - FUNC GLOBAL DEFAULT 120 code
+def ucm_close - - FUNC GLOBAL DEFAULT 30 code
+def ucm_closeTable - - FUNC GLOBAL DEFAULT 42 code
+def ucm_countChars - - FUNC GLOBAL DEFAULT 304 code
+def ucm_findFallback - - FUNC GLOBAL DEFAULT 32 code
+def ucm_mappingType - - FUNC GLOBAL DEFAULT 114 code
+def ucm_mergeTables - - FUNC GLOBAL DEFAULT 568 code
+def ucm_moveMappings - - FUNC GLOBAL DEFAULT 136 code
+def ucm_open - - FUNC GLOBAL DEFAULT 112 code
+def ucm_openTable - - FUNC GLOBAL DEFAULT 64 code
+def ucm_optimizeStates - - FUNC GLOBAL DEFAULT 248 code
+def ucm_parseBytes - - FUNC GLOBAL DEFAULT 152 code
+def ucm_parseHeaderLine - - FUNC GLOBAL DEFAULT 756 code
+def ucm_parseMappingLine - - FUNC GLOBAL DEFAULT 440 code
+def ucm_printMapping - - FUNC GLOBAL DEFAULT 48 code
+def ucm_printTable - - FUNC GLOBAL DEFAULT 86 code
+def ucm_processStates - - FUNC GLOBAL DEFAULT 856 code
+def ucm_readTable - - FUNC GLOBAL DEFAULT 200 code
+def ucm_resetTable - - FUNC GLOBAL DEFAULT 18 code
+def ucm_separateMappings - - FUNC GLOBAL DEFAULT 324 code
+def ucm_sortTable - - FUNC GLOBAL DEFAULT 196 code
+def udata_create - - FUNC GLOBAL DEFAULT 44 code
+def udata_createDummy - - FUNC GLOBAL DEFAULT 108 code
+def udata_finish - - FUNC GLOBAL DEFAULT 78 code
+def udata_swap - - FUNC GLOBAL DEFAULT 460 code
+def udata_write16 - - FUNC GLOBAL DEFAULT 30 code
+def udata_write32 - - FUNC GLOBAL DEFAULT 28 code
+def udata_write8 - - FUNC GLOBAL DEFAULT 30 code
+def udata_writeBlock - - FUNC GLOBAL DEFAULT 18 code
+def udata_writePadding - - FUNC GLOBAL DEFAULT 80 code
+def udata_writeString - - FUNC GLOBAL DEFAULT 42 code
+def udata_writeUString - - FUNC GLOBAL DEFAULT 54 code
+def udbg_enumArrayValue - - FUNC GLOBAL DEFAULT 184 code
+def udbg_enumByName - - FUNC GLOBAL DEFAULT 236 code
+def udbg_enumByString - - FUNC GLOBAL DEFAULT 128 code
+def udbg_enumCount - - FUNC GLOBAL DEFAULT 44 code
+def udbg_enumExpectedCount - - FUNC GLOBAL DEFAULT 44 code
+def udbg_enumName - - FUNC GLOBAL DEFAULT 136 code
+def udbg_escape - - FUNC GLOBAL DEFAULT 224 code
+def udbg_getPlatform - - FUNC GLOBAL DEFAULT 12 code
+def udbg_getSystemParameterNameByIndex - - FUNC GLOBAL DEFAULT 24 code
+def udbg_getSystemParameterValueByIndex - - FUNC GLOBAL DEFAULT 36 code
+def udbg_knownIssue_close - - FUNC GLOBAL DEFAULT 22 code
+def udbg_knownIssue_open - - FUNC GLOBAL DEFAULT 64 code
+def udbg_knownIssue_openU - - FUNC GLOBAL DEFAULT 64 code
+def udbg_knownIssue_print - - FUNC GLOBAL DEFAULT 12 code
+def udbg_stod - - FUNC GLOBAL DEFAULT 64 code
+def udbg_stoi - - FUNC GLOBAL DEFAULT 66 code
+def udbg_writeIcuInfo - - FUNC GLOBAL DEFAULT 156 code
+def uprv_compareGoldenFiles - - FUNC GLOBAL DEFAULT 752 code
+def uprv_fileExists - - FUNC GLOBAL DEFAULT 22 code
+def uprv_makeDenseRanges - - FUNC GLOBAL DEFAULT 564 code
+def uprv_mkdir - - FUNC GLOBAL DEFAULT 30 code
+def usrc_create - - FUNC GLOBAL DEFAULT 48 code
+def usrc_createTextData - - FUNC GLOBAL DEFAULT 48 code
+def usrc_writeArray - - FUNC GLOBAL DEFAULT 304 code
+def usrc_writeArrayOfMostlyInvChars - - FUNC GLOBAL DEFAULT 224 code
+def usrc_writeCopyrightHeader - - FUNC GLOBAL DEFAULT 64 code
+def usrc_writeFileNameGeneratedBy - - FUNC GLOBAL DEFAULT 104 code
+def usrc_writeStringAsASCII - - FUNC GLOBAL DEFAULT 376 code
+def usrc_writeUCPMap - - FUNC GLOBAL DEFAULT 180 code
+def usrc_writeUCPTrie - - FUNC GLOBAL DEFAULT 324 code
+def usrc_writeUCPTrieArrays - - FUNC GLOBAL DEFAULT 116 code
+def usrc_writeUCPTrieStruct - - FUNC GLOBAL DEFAULT 136 code
+def usrc_writeUTrie2Arrays - - FUNC GLOBAL DEFAULT 104 code
+def usrc_writeUTrie2Struct - - FUNC GLOBAL DEFAULT 144 code
+def usrc_writeUnicodeSet - - FUNC GLOBAL DEFAULT 276 code
+def utm_alloc - - FUNC GLOBAL DEFAULT 42 code
+def utm_allocN - - FUNC GLOBAL DEFAULT 48 code
+def utm_close - - FUNC GLOBAL DEFAULT 32 code
+def utm_countItems - - FUNC GLOBAL DEFAULT 4 code
+def utm_getStart - - FUNC GLOBAL DEFAULT 4 code
+def utm_open - - FUNC GLOBAL DEFAULT 104 code
+def writeAssemblyCode - - FUNC GLOBAL DEFAULT 860 code
+def writeCCode - - FUNC GLOBAL DEFAULT 700 code
+def writeObjectCode - - FUNC GLOBAL DEFAULT 928 code
+def writePackageDatFile - - FUNC GLOBAL DEFAULT 166 code
+und T_CString_integerToString_70 - - FUNC GLOBAL
+und UCNV_TO_U_CALLBACK_STOP_70 - - FUNC GLOBAL
+und UCNV_TO_U_CALLBACK_SUBSTITUTE_70 - - FUNC GLOBAL
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und _ZN6icu_7010CharString27ensureEndsWithFileSeparatorER10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_7010CharString6appendEPKciR10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_7010CharString6appendEcR10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_7010CharString8truncateEi - - FUNC GLOBAL
+und _ZN6icu_7010UnicodeSet3addEi - - FUNC GLOBAL
+und _ZN6icu_7010UnicodeSet5clearEv - - FUNC GLOBAL
+und _ZN6icu_7010UnicodeSet6removeEi - - FUNC GLOBAL
+und _ZN6icu_7010UnicodeSetC1Ev - - FUNC GLOBAL
+und _ZN6icu_7010UnicodeSetD1Ev - - FUNC GLOBAL
+und _ZN6icu_7010UnicodeSetaSERKS0_ - - FUNC GLOBAL
+und _ZN6icu_7011ICU_Utility13isUnprintableEi - - FUNC GLOBAL
+und _ZN6icu_7011ICU_Utility17escapeUnprintableERNS_13UnicodeStringEi - - FUNC GLOBAL
+und _ZN6icu_7011StringPieceC1EPKc - - FUNC GLOBAL
+und _ZN6icu_7012RegexMatcher10appendTailERNS_13UnicodeStringE - - FUNC GLOBAL
+und _ZN6icu_7012RegexMatcher10replaceAllERKNS_13UnicodeStringER10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_7012RegexMatcher17appendReplacementERNS_13UnicodeStringERKS1_R10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_7012RegexMatcher4findEv - - FUNC GLOBAL
+und _ZN6icu_7012RegexMatcher5resetERKNS_13UnicodeStringE - - FUNC GLOBAL
+und _ZN6icu_7012RegexMatcher7matchesER10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_7012RegexMatcher9lookingAtExR10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_7012RegexMatcherC1ERKNS_13UnicodeStringEjR10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_7012RegexMatcherD1Ev - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeString13releaseBufferEi - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeString7replaceEiii - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeString7unBogusEv - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeString8copyFromERKS0_a - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeString8doAppendEPKDsii - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeString8doAppendERKS0_ii - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeString9doReplaceEiiPKDsii - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeString9getBufferEi - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringC1EDs - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringC1EPKDs - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringC1EPKc - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringC1EPKciNS0_10EInvariantE - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringC1ERKS0_ - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringC1EaNS_14ConstChar16PtrEi - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringD1Ev - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringaSEOS0_ - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringaSERKS0_ - - FUNC GLOBAL
+und _ZN6icu_7018UnicodeSetIterator9getStringEv - - FUNC GLOBAL
+und _ZN6icu_7018UnicodeSetIterator9nextRangeEv - - FUNC GLOBAL
+und _ZN6icu_7018UnicodeSetIteratorC1ERKNS_10UnicodeSetE - - FUNC GLOBAL
+und _ZN6icu_7018UnicodeSetIteratorD1Ev - - FUNC GLOBAL
+und _ZN6icu_704CStrC1ERKNS_13UnicodeStringE - - FUNC GLOBAL
+und _ZN6icu_704CStrD1Ev - - FUNC GLOBAL
+und _ZN6icu_706UStack3popEv - - FUNC GLOBAL
+und _ZN6icu_706UStackC1ER10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_706UStackD1Ev - - FUNC GLOBAL
+und _ZN6icu_707UMemorydaEPv - - FUNC GLOBAL
+und _ZN6icu_707UMemorydlEPv - - FUNC GLOBAL
+und _ZN6icu_707UMemorynaEj - - FUNC GLOBAL
+und _ZN6icu_707UMemorynwEj - - FUNC GLOBAL
+und _ZN6icu_707UObjectD2Ev - - FUNC GLOBAL
+und _ZN6icu_707UVector10addElementEPvR10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_707UVector12adoptElementEPvR10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_707UVectorC1ER10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_707UVectorD1Ev - - FUNC GLOBAL
+und _ZN6icu_708ByteSink15GetAppendBufferEiiPciPi - - FUNC GLOBAL
+und _ZN6icu_708ByteSink5FlushEv - - FUNC GLOBAL
+und _ZN6icu_708ByteSinkD2Ev - - FUNC GLOBAL
+und _ZN6icu_709ErrorCodeD1Ev - - FUNC GLOBAL
+und _ZN6icu_709ErrorCodeD2Ev - - FUNC GLOBAL
+und _ZN6icu_709UVector32C1ER10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_709UVector32D1Ev - - FUNC GLOBAL
+und _ZNK6icu_7010CharString7extractEPciR10UErrorCode - - FUNC GLOBAL
+und _ZNK6icu_7010UnicodeSet7isEmptyEv - - FUNC GLOBAL
+und _ZNK6icu_7010UnicodeSet8containsEi - - FUNC GLOBAL
+und _ZNK6icu_7012RegexMatcher3endER10UErrorCode - - FUNC GLOBAL
+und _ZNK6icu_7012RegexMatcher3endEiR10UErrorCode - - FUNC GLOBAL
+und _ZNK6icu_7012RegexMatcher5groupEiR10UErrorCode - - FUNC GLOBAL
+und _ZNK6icu_7012RegexMatcher5inputEv - - FUNC GLOBAL
+und _ZNK6icu_7012RegexMatcher5startEiR10UErrorCode - - FUNC GLOBAL
+und _ZNK6icu_7013CollationData17makeReorderRangesEPKiiRNS_9UVector32ER10UErrorCode - - FUNC GLOBAL
+und _ZNK6icu_7013UnicodeString5cloneEv - - FUNC GLOBAL
+und _ZNK6icu_7013UnicodeString6toUTF8ERNS_8ByteSinkE - - FUNC GLOBAL
+und _ZNK6icu_7013UnicodeString7extractEiiPcj - - FUNC GLOBAL
+und _ZNK6icu_7013UnicodeString8doEqualsERKS0_i - - FUNC GLOBAL
+und _ZNK6icu_7013UnicodeString9doIndexOfEDsii - - FUNC GLOBAL
+und _ZNK6icu_704CStrclEv - - FUNC GLOBAL
+und _ZNK6icu_707UVector9elementAtEi - - FUNC GLOBAL
+und _ZNK6icu_709ErrorCode9errorNameEv - - FUNC GLOBAL
+und _ZNKSt5ctypeIcE13_M_widen_initEv GLIBCXX_3.4.11 libstdc++.so.6 FUNC GLOBAL
+und _ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE5rfindEPKcjj GLIBCXX_3.4.21 libstdc++.so.6 FUNC GLOBAL
+und _ZNSi3getEv GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSo3putEc GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSo5flushEv GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSo5writeEPKci GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt12__basic_fileIcED1Ev GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt13basic_filebufIcSt11char_traitsIcEE4openEPKcSt13_Ios_Openmode GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt13basic_filebufIcSt11char_traitsIcEE5closeEv GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt13basic_filebufIcSt11char_traitsIcEEC1Ev GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt13basic_filebufIcSt11char_traitsIcEED1Ev GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt14basic_ifstreamIcSt11char_traitsIcEED1Ev GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt6localeD1Ev GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEjjPKcj GLIBCXX_3.4.21 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7reserveEj GLIBCXX_3.4.21 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_appendEPKcj GLIBCXX_3.4.21 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERjj GLIBCXX_3.4.21 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt8ios_base4InitC1Ev GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt8ios_base4InitD1Ev GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt8ios_baseC2Ev GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt8ios_baseD2Ev GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt9basic_iosIcSt11char_traitsIcEE4initEPSt15basic_streambufIcS1_E GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt9basic_iosIcSt11char_traitsIcEE5clearESt12_Ios_Iostate GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i GLIBCXX_3.4.9 libstdc++.so.6 FUNC GLOBAL
+und _ZSt16__throw_bad_castv GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZSt18_Rb_tree_decrementPSt18_Rb_tree_node_base GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZSt18_Rb_tree_incrementPKSt18_Rb_tree_node_base GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZSt19__throw_logic_errorPKc GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZSt20__throw_length_errorPKc GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_ GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZSt4cout GLIBCXX_3.4 libstdc++.so.6 OBJECT GLOBAL
+und _ZTIN6icu_7013UnicodeStringE - - OBJECT GLOBAL
+und _ZTIN6icu_707UObjectE - - OBJECT GLOBAL
+und _ZTIN6icu_708ByteSinkE - - OBJECT GLOBAL
+und _ZTIN6icu_709ErrorCodeE - - OBJECT GLOBAL
+und _ZTTSt14basic_ifstreamIcSt11char_traitsIcEE GLIBCXX_3.4 libstdc++.so.6 OBJECT GLOBAL
+und _ZTTSt14basic_ofstreamIcSt11char_traitsIcEE GLIBCXX_3.4 libstdc++.so.6 OBJECT GLOBAL
+und _ZTVN10__cxxabiv117__class_type_infoE CXXABI_1.3 libstdc++.so.6 OBJECT GLOBAL
+und _ZTVN10__cxxabiv120__si_class_type_infoE CXXABI_1.3 libstdc++.so.6 OBJECT GLOBAL
+und _ZTVN6icu_7013UnicodeStringE - - OBJECT GLOBAL
+und _ZTVN6icu_709ErrorCodeE - - OBJECT GLOBAL
+und _ZTVSt13basic_filebufIcSt11char_traitsIcEE GLIBCXX_3.4 libstdc++.so.6 OBJECT GLOBAL
+und _ZTVSt14basic_ifstreamIcSt11char_traitsIcEE GLIBCXX_3.4 libstdc++.so.6 OBJECT GLOBAL
+und _ZTVSt14basic_ofstreamIcSt11char_traitsIcEE GLIBCXX_3.4 libstdc++.so.6 OBJECT GLOBAL
+und _ZTVSt15basic_streambufIcSt11char_traitsIcEE GLIBCXX_3.4 libstdc++.so.6 OBJECT GLOBAL
+und _ZTVSt9basic_iosIcSt11char_traitsIcEE GLIBCXX_3.4 libstdc++.so.6 OBJECT GLOBAL
+und _ZdaPv GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZdlPv GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _Znaj GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _Znwj GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und __aeabi_atexit CXXABI_ARM_1.3.3 libstdc++.so.6 FUNC GLOBAL
+und __aeabi_idiv GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_begin_catch CXXABI_1.3 libstdc++.so.6 FUNC GLOBAL
+und __cxa_end_catch CXXABI_1.3 libstdc++.so.6 FUNC GLOBAL
+und __cxa_end_cleanup CXXABI_1.3 libstdc++.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __cxa_pure_virtual CXXABI_1.3 libstdc++.so.6 FUNC WEAK
+und __cxa_rethrow CXXABI_1.3 libstdc++.so.6 FUNC GLOBAL
+und __cxa_throw_bad_array_new_length CXXABI_1.3.8 libstdc++.so.6 FUNC GLOBAL
+und __dynamic_cast CXXABI_1.3 libstdc++.so.6 FUNC GLOBAL
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __gxx_personality_v0 CXXABI_1.3 libstdc++.so.6 FUNC GLOBAL
+und __isoc99_sscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und closedir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und difftime GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und feof GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ferror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fgetc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fgets GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fread GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fseek GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ftell GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gmtime GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und localtime GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und opendir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und perror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und printf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und qsort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und remove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und res_countArrayItems_70 - - FUNC GLOBAL
+und res_getAlias_70 - - FUNC GLOBAL
+und res_getArrayItem_70 - - FUNC GLOBAL
+und res_getPublicType_70 - - FUNC GLOBAL
+und res_getStringNoTrace_70 - - FUNC GLOBAL
+und res_getTableItemByIndex_70 - - FUNC GLOBAL
+und res_read_70 - - FUNC GLOBAL
+und rewind GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stat GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stdin GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stdout GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strcat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strftime GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtod GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und time GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und u_UCharsToChars_70 - - FUNC GLOBAL
+und u_charsToUChars_70 - - FUNC GLOBAL
+und u_digit_70 - - FUNC GLOBAL
+und u_errorName_70 - - FUNC GLOBAL
+und u_getDataDirectory_70 - - FUNC GLOBAL
+und u_strFromUTF32_70 - - FUNC GLOBAL
+und u_strlen_70 - - FUNC GLOBAL
+und u_terminateChars_70 - - FUNC GLOBAL
+und u_unescapeAt_70 - - FUNC GLOBAL
+und u_versionFromString_70 - - FUNC GLOBAL
+und u_versionToString_70 - - FUNC GLOBAL
+und ubrk_swap_70 - - FUNC GLOBAL
+und ucal_getDefaultTimeZone_70 - - FUNC GLOBAL
+und ucal_getTZDataVersion_70 - - FUNC GLOBAL
+und uchar_swapNames_70 - - FUNC GLOBAL
+und ucln_registerCleanup_70 - - FUNC GLOBAL
+und ucnv_close_70 - - FUNC GLOBAL
+und ucnv_compareNames_70 - - FUNC GLOBAL
+und ucnv_detectUnicodeSignature_70 - - FUNC GLOBAL
+und ucnv_getDefaultName_70 - - FUNC GLOBAL
+und ucnv_getInvalidChars_70 - - FUNC GLOBAL
+und ucnv_getMinCharSize_70 - - FUNC GLOBAL
+und ucnv_open_70 - - FUNC GLOBAL
+und ucnv_resetToUnicode_70 - - FUNC GLOBAL
+und ucnv_reset_70 - - FUNC GLOBAL
+und ucnv_setToUCallBack_70 - - FUNC GLOBAL
+und ucnv_swapAliases_70 - - FUNC GLOBAL
+und ucnv_swap_70 - - FUNC GLOBAL
+und ucnv_toUnicode_70 - - FUNC GLOBAL
+und ucol_swapInverseUCA_70 - - FUNC GLOBAL
+und ucol_swap_70 - - FUNC GLOBAL
+und ucpmap_getRange_70 - - FUNC GLOBAL
+und udata_closeSwapper_70 - - FUNC GLOBAL
+und udata_openSwapper_70 - - FUNC GLOBAL
+und udata_printError_70 - - FUNC GLOBAL
+und udata_readInt32_70 - - FUNC GLOBAL
+und udata_swapDataHeader_70 - - FUNC GLOBAL
+und udict_swap_70 - - FUNC GLOBAL
+und uhash_close_70 - - FUNC GLOBAL
+und uhash_compareUnicodeString_70 - - FUNC GLOBAL
+und uhash_find_70 - - FUNC GLOBAL
+und uhash_hashUnicodeString_70 - - FUNC GLOBAL
+und uhash_init_70 - - FUNC GLOBAL
+und uhash_puti_70 - - FUNC GLOBAL
+und uhash_setKeyDeleter_70 - - FUNC GLOBAL
+und uloc_getDefault_70 - - FUNC GLOBAL
+und uloc_toLanguageTag_70 - - FUNC GLOBAL
+und ulocdata_getCLDRVersion_70 - - FUNC GLOBAL
+und ungetc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und unorm2_swap_70 - - FUNC GLOBAL
+und uprv_deleteUObject_70 - - FUNC GLOBAL
+und uprv_free_70 - - FUNC GLOBAL
+und uprv_isInvariantUString_70 - - FUNC GLOBAL
+und uprv_malloc_70 - - FUNC GLOBAL
+und uprv_min_70 - - FUNC GLOBAL
+und uprv_pathIsAbsolute_70 - - FUNC GLOBAL
+und uprv_realloc_70 - - FUNC GLOBAL
+und uprv_sortArray_70 - - FUNC GLOBAL
+und uprv_stricmp_70 - - FUNC GLOBAL
+und ures_swap_70 - - FUNC GLOBAL
+und uspoof_swap_70 - - FUNC GLOBAL
+und usprep_swap_70 - - FUNC GLOBAL
+und utrie_swapAnyVersion_70 - - FUNC GLOBAL
+und utrie_swap_70 - - FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL

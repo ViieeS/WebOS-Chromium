@@ -1,0 +1,82 @@
+tvabi 1
+soname libkeyutils.so.1
+needed libc.so.6
+needed libgcc_s.so.1
+verdef 1 base libkeyutils.so.1
+verdef 2 - KEYUTILS_0.3
+verdef 3 - KEYUTILS_1.0 KEYUTILS_0.3
+verdef 4 - KEYUTILS_1.3 KEYUTILS_1.0
+verdef 5 - KEYUTILS_1.4 KEYUTILS_1.3
+verdef 6 - KEYUTILS_1.5 KEYUTILS_1.4
+verdef 7 - KEYUTILS_1.6 KEYUTILS_1.5
+verdef 8 - KEYUTILS_1.7 KEYUTILS_1.6
+verdef 9 - KEYUTILS_1.8 KEYUTILS_1.7
+verdef 10 - KEYUTILS_1.9 KEYUTILS_1.8
+def add_key KEYUTILS_0.3 @@ FUNC WEAK DEFAULT 32 code
+def find_key_by_type_and_desc KEYUTILS_1.5 @@ FUNC GLOBAL DEFAULT 408 code
+def keyctl KEYUTILS_0.3 @@ FUNC WEAK DEFAULT 44 code
+def keyctl_assume_authority KEYUTILS_1.0 @@ FUNC GLOBAL DEFAULT 8 code
+def keyctl_capabilities KEYUTILS_1.9 @@ FUNC GLOBAL DEFAULT 222 code
+def keyctl_chown KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 14 code
+def keyctl_clear KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 8 code
+def keyctl_describe KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 14 code
+def keyctl_describe_alloc KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 72 code
+def keyctl_dh_compute KEYUTILS_1.6 @@ FUNC GLOBAL DEFAULT 34 code
+def keyctl_dh_compute_alloc KEYUTILS_1.6 @@ FUNC GLOBAL DEFAULT 94 code
+def keyctl_dh_compute_kdf KEYUTILS_1.7 @@ FUNC GLOBAL DEFAULT 58 code
+def keyctl_get_keyring_ID KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 10 code
+def keyctl_get_persistent KEYUTILS_1.5 @@ FUNC GLOBAL DEFAULT 10 code
+def keyctl_get_security KEYUTILS_1.3 @@ FUNC GLOBAL DEFAULT 14 code
+def keyctl_get_security_alloc KEYUTILS_1.3 @@ FUNC GLOBAL DEFAULT 72 code
+def keyctl_instantiate KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 26 code
+def keyctl_instantiate_iov KEYUTILS_1.4 @@ FUNC GLOBAL DEFAULT 174 code
+def keyctl_invalidate KEYUTILS_1.4 @@ FUNC GLOBAL DEFAULT 8 code
+def keyctl_join_session_keyring KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 8 code
+def keyctl_link KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 10 code
+def keyctl_move KEYUTILS_1.9 @@ FUNC GLOBAL DEFAULT 26 code
+def keyctl_negate KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 14 code
+def keyctl_pkey_decrypt KEYUTILS_1.6 @@ FUNC GLOBAL DEFAULT 52 code
+def keyctl_pkey_encrypt KEYUTILS_1.6 @@ FUNC GLOBAL DEFAULT 52 code
+def keyctl_pkey_query KEYUTILS_1.6 @@ FUNC GLOBAL DEFAULT 24 code
+def keyctl_pkey_sign KEYUTILS_1.6 @@ FUNC GLOBAL DEFAULT 52 code
+def keyctl_pkey_verify KEYUTILS_1.6 @@ FUNC GLOBAL DEFAULT 52 code
+def keyctl_read KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 14 code
+def keyctl_read_alloc KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 92 code
+def keyctl_reject KEYUTILS_1.4 @@ FUNC GLOBAL DEFAULT 62 code
+def keyctl_restrict_keyring - - FUNC GLOBAL DEFAULT 14 code
+def keyctl_revoke KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 8 code
+def keyctl_search KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 26 code
+def keyctl_session_to_parent KEYUTILS_1.3 @@ FUNC GLOBAL DEFAULT 6 code
+def keyctl_set_reqkey_keyring KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 8 code
+def keyctl_set_timeout KEYUTILS_1.0 @@ FUNC GLOBAL DEFAULT 10 code
+def keyctl_setperm KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 10 code
+def keyctl_unlink KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 10 code
+def keyctl_update KEYUTILS_0.3 @@ FUNC GLOBAL DEFAULT 14 code
+def keyutils_build_string - - OBJECT GLOBAL DEFAULT 11 data
+def keyutils_version_string - - OBJECT GLOBAL DEFAULT 15 data
+def recursive_key_scan KEYUTILS_1.4 @@ FUNC GLOBAL DEFAULT 24 code
+def recursive_session_key_scan KEYUTILS_1.4 @@ FUNC GLOBAL DEFAULT 36 code
+def request_key KEYUTILS_0.3 @@ FUNC WEAK DEFAULT 28 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __isoc99_sscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fgets GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und syscall GLIBC_2.4 libc.so.6 FUNC GLOBAL

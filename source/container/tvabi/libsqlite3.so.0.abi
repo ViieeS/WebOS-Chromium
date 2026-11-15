@@ -1,0 +1,370 @@
+tvabi 1
+soname libsqlite3.so.0
+needed libm.so.6
+needed libgcc_s.so.1
+needed libc.so.6
+def sqlite3_aggregate_context - - FUNC GLOBAL DEFAULT 14 code
+def sqlite3_aggregate_count - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_auto_extension - - FUNC GLOBAL DEFAULT 124 code
+def sqlite3_autovacuum_pages - - FUNC GLOBAL DEFAULT 46 code
+def sqlite3_backup_finish - - FUNC GLOBAL DEFAULT 214 code
+def sqlite3_backup_init - - FUNC GLOBAL DEFAULT 180 code
+def sqlite3_backup_pagecount - - FUNC GLOBAL DEFAULT 4 code
+def sqlite3_backup_remaining - - FUNC GLOBAL DEFAULT 4 code
+def sqlite3_backup_step - - FUNC GLOBAL DEFAULT 1416 code
+def sqlite3_bind_blob - - FUNC GLOBAL DEFAULT 26 code
+def sqlite3_bind_blob64 - - FUNC GLOBAL DEFAULT 28 code
+def sqlite3_bind_double - - FUNC GLOBAL DEFAULT 102 code
+def sqlite3_bind_int - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_bind_int64 - - FUNC GLOBAL DEFAULT 78 code
+def sqlite3_bind_null - - FUNC GLOBAL DEFAULT 28 code
+def sqlite3_bind_parameter_count - - FUNC GLOBAL DEFAULT 8 code
+def sqlite3_bind_parameter_index - - FUNC GLOBAL DEFAULT 42 code
+def sqlite3_bind_parameter_name - - FUNC GLOBAL DEFAULT 56 code
+def sqlite3_bind_pointer - - FUNC GLOBAL DEFAULT 132 code
+def sqlite3_bind_text - - FUNC GLOBAL DEFAULT 26 code
+def sqlite3_bind_text16 - - FUNC GLOBAL DEFAULT 26 code
+def sqlite3_bind_text64 - - FUNC GLOBAL DEFAULT 14 code
+def sqlite3_bind_value - - FUNC GLOBAL DEFAULT 172 code
+def sqlite3_bind_zeroblob - - FUNC GLOBAL DEFAULT 108 code
+def sqlite3_bind_zeroblob64 - - FUNC GLOBAL DEFAULT 106 code
+def sqlite3_blob_bytes - - FUNC GLOBAL DEFAULT 14 code
+def sqlite3_blob_close - - FUNC GLOBAL DEFAULT 42 code
+def sqlite3_blob_open - - FUNC GLOBAL DEFAULT 1480 code
+def sqlite3_blob_read - - FUNC GLOBAL DEFAULT 24 code
+def sqlite3_blob_reopen - - FUNC GLOBAL DEFAULT 164 code
+def sqlite3_blob_write - - FUNC GLOBAL DEFAULT 24 code
+def sqlite3_busy_handler - - FUNC GLOBAL DEFAULT 38 code
+def sqlite3_busy_timeout - - FUNC GLOBAL DEFAULT 44 code
+def sqlite3_cancel_auto_extension - - FUNC GLOBAL DEFAULT 112 code
+def sqlite3_changes - - FUNC GLOBAL DEFAULT 8 code
+def sqlite3_changes64 - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_clear_bindings - - FUNC GLOBAL DEFAULT 110 code
+def sqlite3_close - - FUNC GLOBAL DEFAULT 4 code
+def sqlite3_close_v2 - - FUNC GLOBAL DEFAULT 4 code
+def sqlite3_collation_needed - - FUNC GLOBAL DEFAULT 34 code
+def sqlite3_collation_needed16 - - FUNC GLOBAL DEFAULT 34 code
+def sqlite3_column_blob - - FUNC GLOBAL DEFAULT 60 code
+def sqlite3_column_bytes - - FUNC GLOBAL DEFAULT 60 code
+def sqlite3_column_bytes16 - - FUNC GLOBAL DEFAULT 60 code
+def sqlite3_column_count - - FUNC GLOBAL DEFAULT 8 code
+def sqlite3_column_database_name - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_column_database_name16 - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_column_decltype - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_column_decltype16 - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_column_double - - FUNC GLOBAL DEFAULT 64 code
+def sqlite3_column_int - - FUNC GLOBAL DEFAULT 60 code
+def sqlite3_column_int64 - - FUNC GLOBAL DEFAULT 64 code
+def sqlite3_column_name - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_column_name16 - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_column_origin_name - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_column_origin_name16 - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_column_table_name - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_column_table_name16 - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_column_text - - FUNC GLOBAL DEFAULT 60 code
+def sqlite3_column_text16 - - FUNC GLOBAL DEFAULT 60 code
+def sqlite3_column_type - - FUNC GLOBAL DEFAULT 60 code
+def sqlite3_column_value - - FUNC GLOBAL DEFAULT 72 code
+def sqlite3_commit_hook - - FUNC GLOBAL DEFAULT 32 code
+def sqlite3_compileoption_get - - FUNC GLOBAL DEFAULT 28 code
+def sqlite3_compileoption_used - - FUNC GLOBAL DEFAULT 128 code
+def sqlite3_complete - - FUNC GLOBAL DEFAULT 644 code
+def sqlite3_complete16 - - FUNC GLOBAL DEFAULT 158 code
+def sqlite3_config - - FUNC GLOBAL DEFAULT 748 code
+def sqlite3_context_db_handle - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_create_collation - - FUNC GLOBAL DEFAULT 20 code
+def sqlite3_create_collation16 - - FUNC GLOBAL DEFAULT 122 code
+def sqlite3_create_collation_v2 - - FUNC GLOBAL DEFAULT 78 code
+def sqlite3_create_filename - - FUNC GLOBAL DEFAULT 252 code
+def sqlite3_create_function - - FUNC GLOBAL DEFAULT 36 code
+def sqlite3_create_function16 - - FUNC GLOBAL DEFAULT 120 code
+def sqlite3_create_function_v2 - - FUNC GLOBAL DEFAULT 38 code
+def sqlite3_create_module - - FUNC GLOBAL DEFAULT 16 code
+def sqlite3_create_module_v2 - - FUNC GLOBAL DEFAULT 2 code
+def sqlite3_create_window_function - - FUNC GLOBAL DEFAULT 40 code
+def sqlite3_data_count - - FUNC GLOBAL DEFAULT 18 code
+def sqlite3_data_directory - - OBJECT GLOBAL DEFAULT 4 data
+def sqlite3_database_file_object - - FUNC GLOBAL DEFAULT 44 code
+def sqlite3_db_cacheflush - - FUNC GLOBAL DEFAULT 252 code
+def sqlite3_db_config - - FUNC GLOBAL DEFAULT 264 code
+def sqlite3_db_filename - - FUNC GLOBAL DEFAULT 64 code
+def sqlite3_db_handle - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_db_mutex - - FUNC GLOBAL DEFAULT 4 code
+def sqlite3_db_readonly - - FUNC GLOBAL DEFAULT 46 code
+def sqlite3_db_release_memory - - FUNC GLOBAL DEFAULT 104 code
+def sqlite3_db_status - - FUNC GLOBAL DEFAULT 804 code
+def sqlite3_declare_vtab - - FUNC GLOBAL DEFAULT 556 code
+def sqlite3_deserialize - - FUNC GLOBAL DEFAULT 276 code
+def sqlite3_drop_modules - - FUNC GLOBAL DEFAULT 86 code
+def sqlite3_enable_load_extension - - FUNC GLOBAL DEFAULT 42 code
+def sqlite3_enable_shared_cache - - FUNC GLOBAL DEFAULT 20 code
+def sqlite3_errcode - - FUNC GLOBAL DEFAULT 120 code
+def sqlite3_errmsg - - FUNC GLOBAL DEFAULT 276 code
+def sqlite3_errmsg16 - - FUNC GLOBAL DEFAULT 288 code
+def sqlite3_error_offset - - FUNC GLOBAL DEFAULT 92 code
+def sqlite3_errstr - - FUNC GLOBAL DEFAULT 92 code
+def sqlite3_exec - - FUNC GLOBAL DEFAULT 960 code
+def sqlite3_expanded_sql - - FUNC GLOBAL DEFAULT 42 code
+def sqlite3_expired - - FUNC GLOBAL DEFAULT 20 code
+def sqlite3_extended_errcode - - FUNC GLOBAL DEFAULT 116 code
+def sqlite3_extended_result_codes - - FUNC GLOBAL DEFAULT 34 code
+def sqlite3_file_control - - FUNC GLOBAL DEFAULT 340 code
+def sqlite3_filename_database - - FUNC GLOBAL DEFAULT 42 code
+def sqlite3_filename_journal - - FUNC GLOBAL DEFAULT 98 code
+def sqlite3_filename_wal - - FUNC GLOBAL DEFAULT 26 code
+def sqlite3_finalize - - FUNC GLOBAL DEFAULT 200 code
+def sqlite3_free - - FUNC GLOBAL DEFAULT 92 code
+def sqlite3_free_filename - - FUNC GLOBAL DEFAULT 46 code
+def sqlite3_free_table - - FUNC GLOBAL DEFAULT 46 code
+def sqlite3_get_autocommit - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_get_auxdata - - FUNC GLOBAL DEFAULT 56 code
+def sqlite3_get_table - - FUNC GLOBAL DEFAULT 332 code
+def sqlite3_global_recover - - FUNC GLOBAL DEFAULT 4 code
+def sqlite3_hard_heap_limit64 - - FUNC GLOBAL DEFAULT 112 code
+def sqlite3_initialize - - FUNC GLOBAL DEFAULT 844 code
+def sqlite3_interrupt - - FUNC GLOBAL DEFAULT 8 code
+def sqlite3_keyword_check - - FUNC GLOBAL DEFAULT 38 code
+def sqlite3_keyword_count - - FUNC GLOBAL DEFAULT 4 code
+def sqlite3_keyword_name - - FUNC GLOBAL DEFAULT 52 code
+def sqlite3_last_insert_rowid - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_libversion - - FUNC GLOBAL DEFAULT 20 code
+def sqlite3_libversion_number - - FUNC GLOBAL DEFAULT 10 code
+def sqlite3_limit - - FUNC GLOBAL DEFAULT 64 code
+def sqlite3_load_extension - - FUNC GLOBAL DEFAULT 860 code
+def sqlite3_log - - FUNC GLOBAL DEFAULT 112 code
+def sqlite3_malloc - - FUNC GLOBAL DEFAULT 38 code
+def sqlite3_malloc64 - - FUNC GLOBAL DEFAULT 28 code
+def sqlite3_memory_alarm - - FUNC GLOBAL DEFAULT 4 code
+def sqlite3_memory_highwater - - FUNC GLOBAL DEFAULT 26 code
+def sqlite3_memory_used - - FUNC GLOBAL DEFAULT 26 code
+def sqlite3_mprintf - - FUNC GLOBAL DEFAULT 44 code
+def sqlite3_msize - - FUNC GLOBAL DEFAULT 24 code
+def sqlite3_mutex_alloc - - FUNC GLOBAL DEFAULT 44 code
+def sqlite3_mutex_enter - - FUNC GLOBAL DEFAULT 16 code
+def sqlite3_mutex_free - - FUNC GLOBAL DEFAULT 16 code
+def sqlite3_mutex_leave - - FUNC GLOBAL DEFAULT 16 code
+def sqlite3_mutex_try - - FUNC GLOBAL DEFAULT 16 code
+def sqlite3_next_stmt - - FUNC GLOBAL DEFAULT 38 code
+def sqlite3_open - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_open16 - - FUNC GLOBAL DEFAULT 224 code
+def sqlite3_open_v2 - - FUNC GLOBAL DEFAULT 2 code
+def sqlite3_os_end - - FUNC GLOBAL DEFAULT 16 code
+def sqlite3_os_init - - FUNC GLOBAL DEFAULT 136 code
+def sqlite3_overload_function - - FUNC GLOBAL DEFAULT 124 code
+def sqlite3_prepare - - FUNC GLOBAL DEFAULT 22 code
+def sqlite3_prepare16 - - FUNC GLOBAL DEFAULT 20 code
+def sqlite3_prepare16_v2 - - FUNC GLOBAL DEFAULT 20 code
+def sqlite3_prepare16_v3 - - FUNC GLOBAL DEFAULT 10 code
+def sqlite3_prepare_v2 - - FUNC GLOBAL DEFAULT 24 code
+def sqlite3_prepare_v3 - - FUNC GLOBAL DEFAULT 32 code
+def sqlite3_profile - - FUNC GLOBAL DEFAULT 50 code
+def sqlite3_progress_handler - - FUNC GLOBAL DEFAULT 44 code
+def sqlite3_randomness - - FUNC GLOBAL DEFAULT 420 code
+def sqlite3_realloc - - FUNC GLOBAL DEFAULT 68 code
+def sqlite3_realloc64 - - FUNC GLOBAL DEFAULT 74 code
+def sqlite3_release_memory - - FUNC GLOBAL DEFAULT 4 code
+def sqlite3_reset - - FUNC GLOBAL DEFAULT 128 code
+def sqlite3_reset_auto_extension - - FUNC GLOBAL DEFAULT 68 code
+def sqlite3_result_blob - - FUNC GLOBAL DEFAULT 52 code
+def sqlite3_result_blob64 - - FUNC GLOBAL DEFAULT 86 code
+def sqlite3_result_double - - FUNC GLOBAL DEFAULT 60 code
+def sqlite3_result_error - - FUNC GLOBAL DEFAULT 28 code
+def sqlite3_result_error16 - - FUNC GLOBAL DEFAULT 30 code
+def sqlite3_result_error_code - - FUNC GLOBAL DEFAULT 156 code
+def sqlite3_result_error_nomem - - FUNC GLOBAL DEFAULT 108 code
+def sqlite3_result_error_toobig - - FUNC GLOBAL DEFAULT 104 code
+def sqlite3_result_int - - FUNC GLOBAL DEFAULT 26 code
+def sqlite3_result_int64 - - FUNC GLOBAL DEFAULT 28 code
+def sqlite3_result_null - - FUNC GLOBAL DEFAULT 18 code
+def sqlite3_result_pointer - - FUNC GLOBAL DEFAULT 96 code
+def sqlite3_result_subtype - - FUNC GLOBAL DEFAULT 18 code
+def sqlite3_result_text - - FUNC GLOBAL DEFAULT 52 code
+def sqlite3_result_text16 - - FUNC GLOBAL DEFAULT 52 code
+def sqlite3_result_text16be - - FUNC GLOBAL DEFAULT 52 code
+def sqlite3_result_text16le - - FUNC GLOBAL DEFAULT 52 code
+def sqlite3_result_text64 - - FUNC GLOBAL DEFAULT 94 code
+def sqlite3_result_value - - FUNC GLOBAL DEFAULT 82 code
+def sqlite3_result_zeroblob - - FUNC GLOBAL DEFAULT 48 code
+def sqlite3_result_zeroblob64 - - FUNC GLOBAL DEFAULT 68 code
+def sqlite3_rollback_hook - - FUNC GLOBAL DEFAULT 32 code
+def sqlite3_rtree_geometry_callback - - FUNC GLOBAL DEFAULT 92 code
+def sqlite3_rtree_query_callback - - FUNC GLOBAL DEFAULT 104 code
+def sqlite3_serialize - - FUNC GLOBAL DEFAULT 372 code
+def sqlite3_set_authorizer - - FUNC GLOBAL DEFAULT 54 code
+def sqlite3_set_auxdata - - FUNC GLOBAL DEFAULT 156 code
+def sqlite3_set_last_insert_rowid - - FUNC GLOBAL DEFAULT 28 code
+def sqlite3_shutdown - - FUNC GLOBAL DEFAULT 196 code
+def sqlite3_sleep - - FUNC GLOBAL DEFAULT 44 code
+def sqlite3_snprintf - - FUNC GLOBAL DEFAULT 28 code
+def sqlite3_soft_heap_limit - - FUNC GLOBAL DEFAULT 10 code
+def sqlite3_soft_heap_limit64 - - FUNC GLOBAL DEFAULT 208 code
+def sqlite3_sourceid - - FUNC GLOBAL DEFAULT 12 code
+def sqlite3_sql - - FUNC GLOBAL DEFAULT 8 code
+def sqlite3_status - - FUNC GLOBAL DEFAULT 42 code
+def sqlite3_status64 - - FUNC GLOBAL DEFAULT 172 code
+def sqlite3_step - - FUNC GLOBAL DEFAULT 3016 code
+def sqlite3_stmt_busy - - FUNC GLOBAL DEFAULT 30 code
+def sqlite3_stmt_isexplain - - FUNC GLOBAL DEFAULT 12 code
+def sqlite3_stmt_readonly - - FUNC GLOBAL DEFAULT 14 code
+def sqlite3_stmt_status - - FUNC GLOBAL DEFAULT 80 code
+def sqlite3_str_append - - FUNC GLOBAL DEFAULT 34 code
+def sqlite3_str_appendall - - FUNC GLOBAL DEFAULT 32 code
+def sqlite3_str_appendchar - - FUNC GLOBAL DEFAULT 80 code
+def sqlite3_str_appendf - - FUNC GLOBAL DEFAULT 28 code
+def sqlite3_str_errcode - - FUNC GLOBAL DEFAULT 10 code
+def sqlite3_str_finish - - FUNC GLOBAL DEFAULT 72 code
+def sqlite3_str_length - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_str_new - - FUNC GLOBAL DEFAULT 60 code
+def sqlite3_str_reset - - FUNC GLOBAL DEFAULT 38 code
+def sqlite3_str_value - - FUNC GLOBAL DEFAULT 20 code
+def sqlite3_str_vappendf - - FUNC GLOBAL DEFAULT 5296 code
+def sqlite3_strglob - - FUNC GLOBAL DEFAULT 16 code
+def sqlite3_stricmp - - FUNC GLOBAL DEFAULT 76 code
+def sqlite3_strlike - - FUNC GLOBAL DEFAULT 20 code
+def sqlite3_strnicmp - - FUNC GLOBAL DEFAULT 120 code
+def sqlite3_system_errno - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_table_column_metadata - - FUNC GLOBAL DEFAULT 748 code
+def sqlite3_temp_directory - - OBJECT GLOBAL DEFAULT 4 data
+def sqlite3_test_control - - FUNC GLOBAL DEFAULT 1868 code
+def sqlite3_thread_cleanup - - FUNC GLOBAL DEFAULT 2 code
+def sqlite3_threadsafe - - FUNC GLOBAL DEFAULT 4 code
+def sqlite3_total_changes - - FUNC GLOBAL DEFAULT 8 code
+def sqlite3_total_changes64 - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_trace - - FUNC GLOBAL DEFAULT 48 code
+def sqlite3_trace_v2 - - FUNC GLOBAL DEFAULT 48 code
+def sqlite3_transfer_bindings - - FUNC GLOBAL DEFAULT 58 code
+def sqlite3_txn_state - - FUNC GLOBAL DEFAULT 104 code
+def sqlite3_update_hook - - FUNC GLOBAL DEFAULT 32 code
+def sqlite3_uri_boolean - - FUNC GLOBAL DEFAULT 34 code
+def sqlite3_uri_int64 - - FUNC GLOBAL DEFAULT 38 code
+def sqlite3_uri_key - - FUNC GLOBAL DEFAULT 132 code
+def sqlite3_uri_parameter - - FUNC GLOBAL DEFAULT 132 code
+def sqlite3_user_data - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_value_blob - - FUNC GLOBAL DEFAULT 58 code
+def sqlite3_value_bytes - - FUNC GLOBAL DEFAULT 48 code
+def sqlite3_value_bytes16 - - FUNC GLOBAL DEFAULT 48 code
+def sqlite3_value_double - - FUNC GLOBAL DEFAULT 54 code
+def sqlite3_value_dup - - FUNC GLOBAL DEFAULT 118 code
+def sqlite3_value_free - - FUNC GLOBAL DEFAULT 104 code
+def sqlite3_value_frombind - - FUNC GLOBAL DEFAULT 8 code
+def sqlite3_value_int - - FUNC GLOBAL DEFAULT 50 code
+def sqlite3_value_int64 - - FUNC GLOBAL DEFAULT 46 code
+def sqlite3_value_nochange - - FUNC GLOBAL DEFAULT 16 code
+def sqlite3_value_numeric_type - - FUNC GLOBAL DEFAULT 32 code
+def sqlite3_value_pointer - - FUNC GLOBAL DEFAULT 64 code
+def sqlite3_value_subtype - - FUNC GLOBAL DEFAULT 14 code
+def sqlite3_value_text - - FUNC GLOBAL DEFAULT 34 code
+def sqlite3_value_text16 - - FUNC GLOBAL DEFAULT 34 code
+def sqlite3_value_text16be - - FUNC GLOBAL DEFAULT 34 code
+def sqlite3_value_text16le - - FUNC GLOBAL DEFAULT 34 code
+def sqlite3_value_type - - FUNC GLOBAL DEFAULT 24 code
+def sqlite3_version - - OBJECT GLOBAL DEFAULT 7 data
+def sqlite3_vfs_find - - FUNC GLOBAL DEFAULT 80 code
+def sqlite3_vfs_register - - FUNC GLOBAL DEFAULT 104 code
+def sqlite3_vfs_unregister - - FUNC GLOBAL DEFAULT 56 code
+def sqlite3_vmprintf - - FUNC GLOBAL DEFAULT 94 code
+def sqlite3_vsnprintf - - FUNC GLOBAL DEFAULT 46 code
+def sqlite3_vtab_collation - - FUNC GLOBAL DEFAULT 88 code
+def sqlite3_vtab_config - - FUNC GLOBAL DEFAULT 176 code
+def sqlite3_vtab_distinct - - FUNC GLOBAL DEFAULT 4 code
+def sqlite3_vtab_in - - FUNC GLOBAL DEFAULT 62 code
+def sqlite3_vtab_in_first - - FUNC GLOBAL DEFAULT 4 code
+def sqlite3_vtab_in_next - - FUNC GLOBAL DEFAULT 4 code
+def sqlite3_vtab_nochange - - FUNC GLOBAL DEFAULT 6 code
+def sqlite3_vtab_on_conflict - - FUNC GLOBAL DEFAULT 20 code
+def sqlite3_vtab_rhs_value - - FUNC GLOBAL DEFAULT 114 code
+def sqlite3_wal_autocheckpoint - - FUNC GLOBAL DEFAULT 36 code
+def sqlite3_wal_checkpoint - - FUNC GLOBAL DEFAULT 20 code
+def sqlite3_wal_checkpoint_v2 - - FUNC GLOBAL DEFAULT 212 code
+def sqlite3_wal_hook - - FUNC GLOBAL DEFAULT 32 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und access GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und acos GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und acosh GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und asin GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und asinh GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und atan GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und atan2 GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und atanh GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und ceil GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und cos GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und cosh GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und dlclose GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlerror GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlopen GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlsym GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und exp GLIBC_2.29 libm.so.6 FUNC GLOBAL
+und fchmod GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fchown GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fcntl64 GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und fdatasync GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und floor GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und fmod GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und ftruncate64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getcwd GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und geteuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gettimeofday GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und localtime_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und log GLIBC_2.29 libm.so.6 FUNC GLOBAL
+und lstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mmap64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mremap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und munmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und posix_fallocate64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pow GLIBC_2.29 libm.so.6 FUNC GLOBAL
+und pread64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_create GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_join GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_mutex_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_lock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_trylock GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_mutex_unlock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutexattr_destroy GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_mutexattr_init GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_mutexattr_settype GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pwrite64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und qsort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rmdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sin GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und sinh GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und sleep GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sqrt GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und stat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcspn GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sysconf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und tan GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und tanh GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und time GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und trunc GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und unlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und usleep GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und utimes GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und write GLIBC_2.4 libc.so.6 FUNC GLOBAL

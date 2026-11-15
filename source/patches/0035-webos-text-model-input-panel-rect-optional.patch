@@ -1,0 +1,49 @@
+# why: Older TVs have a text_model with fewer than 15 requests, without the input panel rect requests. Read
+# method_count of text_model_interface once and skip set/reset_input_panel_rect when the TV does not have them.
+--- a/src/ui/ozone/platform/wayland/extensions/webos/host/webos_text_model_wrapper.cc
++++ b/src/ui/ozone/platform/wayland/extensions/webos/host/webos_text_model_wrapper.cc
+@@ -31,12 +31,29 @@
+ #include "ui/ozone/platform/wayland/host/wayland_seat.h"
+ #include "ui/ozone/platform/wayland/host/wayland_window_manager.h"
+ 
++// chromium-native (patch 0035): weak, so a TV without the text_model interface still loads.
++#pragma weak text_model_interface
++
+ namespace ui {
+ 
+ namespace {
+ 
+ constexpr std::uint32_t kSerial = 0;
+ 
++// chromium-native (patch 0035): webOS 4.4 TVs have a text_model with fewer requests. The input panel rect requests
++// are sent only when the interface has at least this many requests. The check runs once and logs one line.
++constexpr int kInputPanelRectMinRequests = 15;
++
++bool HasInputPanelRectRequests() {
++  static const bool has_requests = [] {
++    const int count = &text_model_interface ? text_model_interface.method_count : 0;
++    LOG(INFO) << "text_model has " << count << " requests; input panel rect requests "
++              << (count >= kInputPanelRectMinRequests ? "on" : "off");
++    return count >= kInputPanelRectMinRequests;
++  }();
++  return has_requests;
++}
++
+ // The enter key appearance on the (virtual keyboard) input panel.
+ enum class EnterKeyType : std::uint32_t {
+   kDefault = 0,   // the default Enter key
+@@ -262,10 +279,14 @@
+                                               std::int32_t y,
+                                               std::uint32_t width,
+                                               std::uint32_t height) {
++  if (!HasInputPanelRectRequests())
++    return;
+   text_model_set_input_panel_rect(text_model_.get(), x, y, width, height);
+ }
+ 
+ void WebosTextModelWrapper::ResetInputPanelRect() {
++  if (!HasInputPanelRectRequests())
++    return;
+   text_model_reset_input_panel_rect(text_model_.get());
+ }
+ 

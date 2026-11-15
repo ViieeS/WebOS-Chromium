@@ -1,0 +1,373 @@
+tvabi 1
+soname libfontconfig.so.1
+needed libfreetype.so.6
+needed libexpat.so.1
+needed libuuid.so.1
+needed libgcc_s.so.1
+needed libc.so.6
+def FcAtomicCreate - - FUNC GLOBAL DEFAULT 132 code
+def FcAtomicDeleteNew - - FUNC GLOBAL DEFAULT 6 code
+def FcAtomicDestroy - - FUNC GLOBAL DEFAULT 4 code
+def FcAtomicLock - - FUNC GLOBAL DEFAULT 292 code
+def FcAtomicNewFile - - FUNC GLOBAL DEFAULT 4 code
+def FcAtomicOrigFile - - FUNC GLOBAL DEFAULT 4 code
+def FcAtomicReplaceOrig - - FUNC GLOBAL DEFAULT 16 code
+def FcAtomicUnlock - - FUNC GLOBAL DEFAULT 26 code
+def FcBlanksAdd - - FUNC GLOBAL DEFAULT 4 code
+def FcBlanksCreate - - FUNC GLOBAL DEFAULT 4 code
+def FcBlanksDestroy - - FUNC GLOBAL DEFAULT 2 code
+def FcBlanksIsMember - - FUNC GLOBAL DEFAULT 4 code
+def FcCacheCopySet - - FUNC GLOBAL DEFAULT 96 code
+def FcCacheCreateTagFile - - FUNC GLOBAL DEFAULT 110 code
+def FcCacheDir - - FUNC GLOBAL DEFAULT 6 code
+def FcCacheNumFont - - FUNC GLOBAL DEFAULT 6 code
+def FcCacheNumSubdir - - FUNC GLOBAL DEFAULT 4 code
+def FcCacheSubdir - - FUNC GLOBAL DEFAULT 12 code
+def FcCharSetAddChar - - FUNC GLOBAL DEFAULT 52 code
+def FcCharSetCopy - - FUNC GLOBAL DEFAULT 46 code
+def FcCharSetCount - - FUNC GLOBAL DEFAULT 76 code
+def FcCharSetCoverage - - FUNC GLOBAL DEFAULT 92 code
+def FcCharSetCreate - - FUNC GLOBAL DEFAULT 24 code
+def FcCharSetDelChar - - FUNC GLOBAL DEFAULT 76 code
+def FcCharSetDestroy - - FUNC GLOBAL DEFAULT 110 code
+def FcCharSetEqual - - FUNC GLOBAL DEFAULT 140 code
+def FcCharSetFirstPage - - FUNC GLOBAL DEFAULT 108 code
+def FcCharSetHasChar - - FUNC GLOBAL DEFAULT 64 code
+def FcCharSetIntersect - - FUNC GLOBAL DEFAULT 28 code
+def FcCharSetIntersectCount - - FUNC GLOBAL DEFAULT 166 code
+def FcCharSetIsSubset - - FUNC GLOBAL DEFAULT 172 code
+def FcCharSetMerge - - FUNC GLOBAL DEFAULT 230 code
+def FcCharSetNew - - FUNC GLOBAL DEFAULT 24 code
+def FcCharSetNextPage - - FUNC GLOBAL DEFAULT 106 code
+def FcCharSetSubtract - - FUNC GLOBAL DEFAULT 28 code
+def FcCharSetSubtractCount - - FUNC GLOBAL DEFAULT 192 code
+def FcCharSetUnion - - FUNC GLOBAL DEFAULT 28 code
+def FcConfigAddRule - - FUNC GLOBAL DEFAULT 4 code
+def FcConfigAppFontAddDir - - FUNC GLOBAL DEFAULT 144 code
+def FcConfigAppFontAddFile - - FUNC GLOBAL DEFAULT 180 code
+def FcConfigAppFontClear - - FUNC GLOBAL DEFAULT 84 code
+def FcConfigBuildFonts - - FUNC GLOBAL DEFAULT 132 code
+def FcConfigCreate - - FUNC GLOBAL DEFAULT 340 code
+def FcConfigDestroy - - FUNC GLOBAL DEFAULT 36 code
+def FcConfigEnableHome - - FUNC GLOBAL DEFAULT 16 code
+def FcConfigFileInfoIterGet - - FUNC GLOBAL DEFAULT 228 code
+def FcConfigFileInfoIterInit - - FUNC GLOBAL DEFAULT 84 code
+def FcConfigFileInfoIterNext - - FUNC GLOBAL DEFAULT 88 code
+def FcConfigFilename - - FUNC GLOBAL DEFAULT 468 code
+def FcConfigGetBlanks - - FUNC GLOBAL DEFAULT 4 code
+def FcConfigGetCache - - FUNC GLOBAL DEFAULT 4 code
+def FcConfigGetCacheDirs - - FUNC GLOBAL DEFAULT 80 code
+def FcConfigGetConfigDirs - - FUNC GLOBAL DEFAULT 80 code
+def FcConfigGetConfigFiles - - FUNC GLOBAL DEFAULT 80 code
+def FcConfigGetCurrent - - FUNC GLOBAL DEFAULT 60 code
+def FcConfigGetFontDirs - - FUNC GLOBAL DEFAULT 80 code
+def FcConfigGetFonts - - FUNC GLOBAL DEFAULT 84 code
+def FcConfigGetRescanInterval - - FUNC GLOBAL DEFAULT 72 code
+def FcConfigGetRescanInverval - - FUNC GLOBAL DEFAULT 72 code
+def FcConfigGetSysRoot - - FUNC GLOBAL DEFAULT 92 code
+def FcConfigHome - - FUNC GLOBAL DEFAULT 28 code
+def FcConfigParseAndLoad - - FUNC GLOBAL DEFAULT 6 code
+def FcConfigParseAndLoadFromMemory - - FUNC GLOBAL DEFAULT 32 code
+def FcConfigReference - - FUNC GLOBAL DEFAULT 100 code
+def FcConfigSetCurrent - - FUNC GLOBAL DEFAULT 212 code
+def FcConfigSetRescanInterval - - FUNC GLOBAL DEFAULT 80 code
+def FcConfigSetRescanInverval - - FUNC GLOBAL DEFAULT 80 code
+def FcConfigSetSysRoot - - FUNC GLOBAL DEFAULT 120 code
+def FcConfigSubstitute - - FUNC GLOBAL DEFAULT 6 code
+def FcConfigSubstituteWithPat - - FUNC GLOBAL DEFAULT 1988 code
+def FcConfigUptoDate - - FUNC GLOBAL DEFAULT 260 code
+def FcDefaultSubstitute - - FUNC GLOBAL DEFAULT 884 code
+def FcDirCacheClean - - FUNC GLOBAL DEFAULT 576 code
+def FcDirCacheCreateUUID - - FUNC GLOBAL DEFAULT 448 code
+def FcDirCacheDeleteUUID - - FUNC GLOBAL DEFAULT 84 code
+def FcDirCacheLoad - - FUNC GLOBAL DEFAULT 288 code
+def FcDirCacheLoadFile - - FUNC GLOBAL DEFAULT 72 code
+def FcDirCacheRead - - FUNC GLOBAL DEFAULT 78 code
+def FcDirCacheRescan - - FUNC GLOBAL DEFAULT 192 code
+def FcDirCacheUnlink - - FUNC GLOBAL DEFAULT 146 code
+def FcDirCacheUnload - - FUNC GLOBAL DEFAULT 2 code
+def FcDirCacheValid - - FUNC GLOBAL DEFAULT 36 code
+def FcDirSave - - FUNC GLOBAL DEFAULT 4 code
+def FcDirScan - - FUNC GLOBAL DEFAULT 58 code
+def FcFileIsDir - - FUNC GLOBAL DEFAULT 42 code
+def FcFileScan - - FUNC GLOBAL DEFAULT 26 code
+def FcFini - - FUNC GLOBAL DEFAULT 26 code
+def FcFontList - - FUNC GLOBAL DEFAULT 76 code
+def FcFontMatch - - FUNC GLOBAL DEFAULT 160 code
+def FcFontRenderPrepare - - FUNC GLOBAL DEFAULT 1540 code
+def FcFontSetAdd - - FUNC GLOBAL DEFAULT 68 code
+def FcFontSetCreate - - FUNC GLOBAL DEFAULT 20 code
+def FcFontSetDestroy - - FUNC GLOBAL DEFAULT 48 code
+def FcFontSetList - - FUNC GLOBAL DEFAULT 1900 code
+def FcFontSetMatch - - FUNC GLOBAL DEFAULT 180 code
+def FcFontSetPrint - - FUNC GLOBAL DEFAULT 64 code
+def FcFontSetSort - - FUNC GLOBAL DEFAULT 1308 code
+def FcFontSetSortDestroy - - FUNC GLOBAL DEFAULT 4 code
+def FcFontSort - - FUNC GLOBAL DEFAULT 148 code
+def FcFreeTypeCharIndex - - FUNC GLOBAL DEFAULT 180 code
+def FcFreeTypeCharSet - - FUNC GLOBAL DEFAULT 324 code
+def FcFreeTypeCharSetAndSpacing - - FUNC GLOBAL DEFAULT 28 code
+def FcFreeTypeQuery - - FUNC GLOBAL DEFAULT 78 code
+def FcFreeTypeQueryAll - - FUNC GLOBAL DEFAULT 522 code
+def FcFreeTypeQueryFace - - FUNC GLOBAL DEFAULT 20 code
+def FcGetDefaultLangs - - FUNC GLOBAL DEFAULT 216 code
+def FcGetLangs - - FUNC GLOBAL DEFAULT 40 code
+def FcGetVersion - - FUNC GLOBAL DEFAULT 6 code
+def FcInit - - FUNC GLOBAL DEFAULT 4 code
+def FcInitBringUptoDate - - FUNC GLOBAL DEFAULT 50 code
+def FcInitLoadConfig - - FUNC GLOBAL DEFAULT 4 code
+def FcInitLoadConfigAndFonts - - FUNC GLOBAL DEFAULT 34 code
+def FcInitReinitialize - - FUNC GLOBAL DEFAULT 40 code
+def FcLangGetCharSet - - FUNC GLOBAL DEFAULT 92 code
+def FcLangNormalize - - FUNC GLOBAL DEFAULT 756 code
+def FcLangSetAdd - - FUNC GLOBAL DEFAULT 100 code
+def FcLangSetCompare - - FUNC GLOBAL DEFAULT 276 code
+def FcLangSetContains - - FUNC GLOBAL DEFAULT 372 code
+def FcLangSetCopy - - FUNC GLOBAL DEFAULT 144 code
+def FcLangSetCreate - - FUNC GLOBAL DEFAULT 34 code
+def FcLangSetDel - - FUNC GLOBAL DEFAULT 80 code
+def FcLangSetDestroy - - FUNC GLOBAL DEFAULT 26 code
+def FcLangSetEqual - - FUNC GLOBAL DEFAULT 86 code
+def FcLangSetGetLangs - - FUNC GLOBAL DEFAULT 140 code
+def FcLangSetHasLang - - FUNC GLOBAL DEFAULT 316 code
+def FcLangSetHash - - FUNC GLOBAL DEFAULT 48 code
+def FcLangSetSubtract - - FUNC GLOBAL DEFAULT 60 code
+def FcLangSetUnion - - FUNC GLOBAL DEFAULT 60 code
+def FcMatrixCopy - - FUNC GLOBAL DEFAULT 40 code
+def FcMatrixEqual - - FUNC GLOBAL DEFAULT 98 code
+def FcMatrixMultiply - - FUNC GLOBAL DEFAULT 82 code
+def FcMatrixRotate - - FUNC GLOBAL DEFAULT 74 code
+def FcMatrixScale - - FUNC GLOBAL DEFAULT 78 code
+def FcMatrixShear - - FUNC GLOBAL DEFAULT 66 code
+def FcNameConstant - - FUNC GLOBAL DEFAULT 84 code
+def FcNameGetConstant - - FUNC GLOBAL DEFAULT 76 code
+def FcNameGetObjectType - - FUNC GLOBAL DEFAULT 36 code
+def FcNameParse - - FUNC GLOBAL DEFAULT 1404 code
+def FcNameRegisterConstants - - FUNC GLOBAL DEFAULT 4 code
+def FcNameRegisterObjectTypes - - FUNC GLOBAL DEFAULT 4 code
+def FcNameUnparse - - FUNC GLOBAL DEFAULT 4 code
+def FcNameUnregisterConstants - - FUNC GLOBAL DEFAULT 4 code
+def FcNameUnregisterObjectTypes - - FUNC GLOBAL DEFAULT 4 code
+def FcObjectSetAdd - - FUNC GLOBAL DEFAULT 186 code
+def FcObjectSetBuild - - FUNC GLOBAL DEFAULT 114 code
+def FcObjectSetCreate - - FUNC GLOBAL DEFAULT 20 code
+def FcObjectSetDestroy - - FUNC GLOBAL DEFAULT 48 code
+def FcObjectSetVaBuild - - FUNC GLOBAL DEFAULT 98 code
+def FcPatternAdd - - FUNC GLOBAL DEFAULT 62 code
+def FcPatternAddBool - - FUNC GLOBAL DEFAULT 54 code
+def FcPatternAddCharSet - - FUNC GLOBAL DEFAULT 52 code
+def FcPatternAddDouble - - FUNC GLOBAL DEFAULT 58 code
+def FcPatternAddFTFace - - FUNC GLOBAL DEFAULT 52 code
+def FcPatternAddInteger - - FUNC GLOBAL DEFAULT 52 code
+def FcPatternAddLangSet - - FUNC GLOBAL DEFAULT 52 code
+def FcPatternAddMatrix - - FUNC GLOBAL DEFAULT 52 code
+def FcPatternAddRange - - FUNC GLOBAL DEFAULT 54 code
+def FcPatternAddString - - FUNC GLOBAL DEFAULT 90 code
+def FcPatternAddWeak - - FUNC GLOBAL DEFAULT 62 code
+def FcPatternBuild - - FUNC GLOBAL DEFAULT 204 code
+def FcPatternCreate - - FUNC GLOBAL DEFAULT 22 code
+def FcPatternDel - - FUNC GLOBAL DEFAULT 20 code
+def FcPatternDestroy - - FUNC GLOBAL DEFAULT 128 code
+def FcPatternDuplicate - - FUNC GLOBAL DEFAULT 224 code
+def FcPatternEqual - - FUNC GLOBAL DEFAULT 258 code
+def FcPatternEqualSubset - - FUNC GLOBAL DEFAULT 180 code
+def FcPatternFilter - - FUNC GLOBAL DEFAULT 214 code
+def FcPatternFindIter - - FUNC GLOBAL DEFAULT 60 code
+def FcPatternFormat - - FUNC GLOBAL DEFAULT 118 code
+def FcPatternGet - - FUNC GLOBAL DEFAULT 44 code
+def FcPatternGetBool - - FUNC GLOBAL DEFAULT 60 code
+def FcPatternGetCharSet - - FUNC GLOBAL DEFAULT 60 code
+def FcPatternGetDouble - - FUNC GLOBAL DEFAULT 84 code
+def FcPatternGetFTFace - - FUNC GLOBAL DEFAULT 60 code
+def FcPatternGetInteger - - FUNC GLOBAL DEFAULT 80 code
+def FcPatternGetLangSet - - FUNC GLOBAL DEFAULT 60 code
+def FcPatternGetMatrix - - FUNC GLOBAL DEFAULT 60 code
+def FcPatternGetRange - - FUNC GLOBAL DEFAULT 60 code
+def FcPatternGetString - - FUNC GLOBAL DEFAULT 60 code
+def FcPatternGetWithBinding - - FUNC GLOBAL DEFAULT 44 code
+def FcPatternHash - - FUNC GLOBAL DEFAULT 532 code
+def FcPatternIterEqual - - FUNC GLOBAL DEFAULT 80 code
+def FcPatternIterGetObject - - FUNC GLOBAL DEFAULT 14 code
+def FcPatternIterGetValue - - FUNC GLOBAL DEFAULT 102 code
+def FcPatternIterIsValid - - FUNC GLOBAL DEFAULT 16 code
+def FcPatternIterNext - - FUNC GLOBAL DEFAULT 48 code
+def FcPatternIterStart - - FUNC GLOBAL DEFAULT 22 code
+def FcPatternIterValueCount - - FUNC GLOBAL DEFAULT 54 code
+def FcPatternObjectCount - - FUNC GLOBAL DEFAULT 6 code
+def FcPatternPrint - - FUNC GLOBAL DEFAULT 116 code
+def FcPatternReference - - FUNC GLOBAL DEFAULT 52 code
+def FcPatternRemove - - FUNC GLOBAL DEFAULT 102 code
+def FcPatternVaBuild - - FUNC GLOBAL DEFAULT 188 code
+def FcRangeCopy - - FUNC GLOBAL DEFAULT 28 code
+def FcRangeCreateDouble - - FUNC GLOBAL DEFAULT 28 code
+def FcRangeCreateInteger - - FUNC GLOBAL DEFAULT 46 code
+def FcRangeDestroy - - FUNC GLOBAL DEFAULT 4 code
+def FcRangeGetDouble - - FUNC GLOBAL DEFAULT 30 code
+def FcRuleDestroy - - FUNC GLOBAL DEFAULT 70 code
+def FcScandir - - FUNC GLOBAL DEFAULT 264 code
+def FcStrBasename - - FUNC GLOBAL DEFAULT 32 code
+def FcStrCmp - - FUNC GLOBAL DEFAULT 42 code
+def FcStrCmpIgnoreCase - - FUNC GLOBAL DEFAULT 102 code
+def FcStrCopy - - FUNC GLOBAL DEFAULT 4 code
+def FcStrCopyFilename - - FUNC GLOBAL DEFAULT 86 code
+def FcStrDirname - - FUNC GLOBAL DEFAULT 56 code
+def FcStrDowncase - - FUNC GLOBAL DEFAULT 142 code
+def FcStrFree - - FUNC GLOBAL DEFAULT 4 code
+def FcStrListCreate - - FUNC GLOBAL DEFAULT 48 code
+def FcStrListDone - - FUNC GLOBAL DEFAULT 88 code
+def FcStrListFirst - - FUNC GLOBAL DEFAULT 6 code
+def FcStrListNext - - FUNC GLOBAL DEFAULT 26 code
+def FcStrPlus - - FUNC GLOBAL DEFAULT 58 code
+def FcStrSetAdd - - FUNC GLOBAL DEFAULT 46 code
+def FcStrSetAddFilename - - FUNC GLOBAL DEFAULT 48 code
+def FcStrSetCreate - - FUNC GLOBAL DEFAULT 26 code
+def FcStrSetDel - - FUNC GLOBAL DEFAULT 120 code
+def FcStrSetDestroy - - FUNC GLOBAL DEFAULT 82 code
+def FcStrSetEqual - - FUNC GLOBAL DEFAULT 54 code
+def FcStrSetMember - - FUNC GLOBAL DEFAULT 70 code
+def FcStrStr - - FUNC GLOBAL DEFAULT 94 code
+def FcStrStrIgnoreCase - - FUNC GLOBAL DEFAULT 196 code
+def FcUcs4ToUtf8 - - FUNC GLOBAL DEFAULT 146 code
+def FcUtf16Len - - FUNC GLOBAL DEFAULT 226 code
+def FcUtf16ToUcs4 - - FUNC GLOBAL DEFAULT 118 code
+def FcUtf8Len - - FUNC GLOBAL DEFAULT 122 code
+def FcUtf8ToUcs4 - - FUNC GLOBAL DEFAULT 8 code
+def FcValueDestroy - - FUNC GLOBAL DEFAULT 66 code
+def FcValueEqual - - FUNC GLOBAL DEFAULT 262 code
+def FcValuePrint - - FUNC GLOBAL DEFAULT 60 code
+def FcValueSave - - FUNC GLOBAL DEFAULT 128 code
+def FcWeightFromOpenType - - FUNC GLOBAL DEFAULT 40 code
+def FcWeightFromOpenTypeDouble - - FUNC GLOBAL DEFAULT 192 code
+def FcWeightToOpenType - - FUNC GLOBAL DEFAULT 40 code
+def FcWeightToOpenTypeDouble - - FUNC GLOBAL DEFAULT 184 code
+def default_langs - - OBJECT GLOBAL DEFAULT 4 data
+def other_types - - OBJECT GLOBAL DEFAULT 4 data
+und FT_Done_Face - - FUNC GLOBAL
+und FT_Done_FreeType - - FUNC GLOBAL
+und FT_Done_MM_Var - - FUNC GLOBAL
+und FT_Get_Advance - - FUNC GLOBAL
+und FT_Get_BDF_Property - - FUNC GLOBAL
+und FT_Get_Char_Index - - FUNC GLOBAL
+und FT_Get_First_Char - - FUNC GLOBAL
+und FT_Get_MM_Var - - FUNC GLOBAL
+und FT_Get_Next_Char - - FUNC GLOBAL
+und FT_Get_PS_Font_Info - - FUNC GLOBAL
+und FT_Get_Postscript_Name - - FUNC GLOBAL
+und FT_Get_Sfnt_Name - - FUNC GLOBAL
+und FT_Get_Sfnt_Name_Count - - FUNC GLOBAL
+und FT_Get_Sfnt_Table - - FUNC GLOBAL
+und FT_Get_X11_Font_Format - - FUNC GLOBAL
+und FT_Init_FreeType - - FUNC GLOBAL
+und FT_Load_Glyph - - FUNC GLOBAL
+und FT_Load_Sfnt_Table - - FUNC GLOBAL
+und FT_New_Face - - FUNC GLOBAL
+und FT_Select_Charmap - - FUNC GLOBAL
+und FT_Select_Size - - FUNC GLOBAL
+und FT_Set_Var_Design_Coordinates - - FUNC GLOBAL
+und XML_ErrorString - - FUNC GLOBAL
+und XML_GetBuffer - - FUNC GLOBAL
+und XML_GetCurrentLineNumber - - FUNC GLOBAL
+und XML_GetErrorCode - - FUNC GLOBAL
+und XML_ParseBuffer - - FUNC GLOBAL
+und XML_ParserCreate - - FUNC GLOBAL
+und XML_ParserFree - - FUNC GLOBAL
+und XML_SetCharacterDataHandler - - FUNC GLOBAL
+und XML_SetDoctypeDeclHandler - - FUNC GLOBAL
+und XML_SetElementHandler - - FUNC GLOBAL
+und XML_SetUserData - - FUNC GLOBAL
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __assert_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __isoc99_sscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und __xpg_strerror_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und access GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und chmod GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und closedir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dcgettext GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fcntl64 GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und fdopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fstatfs64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getcwd GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und initstate_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und link GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und localeconv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und lstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkostemp64 GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und mmap64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und munmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und opendir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und perror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und posix_fadvise64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und printf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_lock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_unlock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und putchar GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und puts GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und qsort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und random_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readdir64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rename GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rmdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stdout GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stpcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strdup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strpbrk GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtod GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoull GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und symlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und time GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und unlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und utimes GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und uuid_copy UUID_1.0 libuuid.so.1 FUNC GLOBAL
+und uuid_generate_random UUID_1.0 libuuid.so.1 FUNC GLOBAL
+und uuid_parse UUID_1.0 libuuid.so.1 FUNC GLOBAL
+und uuid_unparse UUID_1.0 libuuid.so.1 FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und write GLIBC_2.4 libc.so.6 FUNC GLOBAL

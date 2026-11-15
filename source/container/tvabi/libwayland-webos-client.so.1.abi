@@ -1,0 +1,31 @@
+tvabi 1
+soname libwayland-webos-client.so.1
+needed libwayland-client.so.0
+def input_method_context_interface - - OBJECT GLOBAL DEFAULT 24 data
+def input_method_interface - - OBJECT GLOBAL DEFAULT 24 data
+def input_panel_interface - - OBJECT GLOBAL DEFAULT 24 data
+def input_panel_surface_interface - - OBJECT GLOBAL DEFAULT 24 data
+def text_model_factory_interface - - OBJECT GLOBAL DEFAULT 24 data
+def text_model_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_accelerometer_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_exported_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_foreign_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_gyroscope_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_imported_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_input_manager_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_seat_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_shell_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_shell_surface_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_surface_group_compositor_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_surface_group_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_surface_group_layer_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_xinput_extension_interface - - OBJECT GLOBAL DEFAULT 24 data
+def wl_webos_xinput_interface - - OBJECT GLOBAL DEFAULT 24 data
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __cxa_finalize - - NOTYPE WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und wl_keyboard_interface - - OBJECT GLOBAL
+und wl_region_interface - - OBJECT GLOBAL
+und wl_seat_interface - - OBJECT GLOBAL
+und wl_surface_interface - - OBJECT GLOBAL

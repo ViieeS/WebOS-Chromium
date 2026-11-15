@@ -1,0 +1,44 @@
+tvabi 1
+soname libplds4.so
+needed libnspr4.so
+needed libgcc_s.so.1
+needed libc.so.6
+def PL_ArenaAllocate - - FUNC GLOBAL DEFAULT 180 code
+def PL_ArenaFinish - - FUNC GLOBAL DEFAULT 2 code
+def PL_ArenaGrow - - FUNC GLOBAL DEFAULT 80 code
+def PL_ArenaRelease - - FUNC GLOBAL DEFAULT 50 code
+def PL_ClearArenaPool - - FUNC GLOBAL DEFAULT 116 code
+def PL_CompactArenaPool - - FUNC GLOBAL DEFAULT 2 code
+def PL_CompareStrings - - FUNC GLOBAL DEFAULT 14 code
+def PL_CompareValues - - FUNC GLOBAL DEFAULT 10 code
+def PL_FinishArenaPool - - FUNC GLOBAL DEFAULT 2 code
+def PL_FreeArenaPool - - FUNC GLOBAL DEFAULT 4 code
+def PL_HashString - - FUNC GLOBAL DEFAULT 26 code
+def PL_HashTableAdd - - FUNC GLOBAL DEFAULT 94 code
+def PL_HashTableDestroy - - FUNC GLOBAL DEFAULT 108 code
+def PL_HashTableDump - - FUNC GLOBAL DEFAULT 4 code
+def PL_HashTableEnumerateEntries - - FUNC GLOBAL DEFAULT 134 code
+def PL_HashTableLookup - - FUNC GLOBAL DEFAULT 30 code
+def PL_HashTableLookupConst - - FUNC GLOBAL DEFAULT 30 code
+def PL_HashTableRawAdd - - FUNC GLOBAL DEFAULT 268 code
+def PL_HashTableRawLookup - - FUNC GLOBAL DEFAULT 100 code
+def PL_HashTableRawLookupConst - - FUNC GLOBAL DEFAULT 70 code
+def PL_HashTableRawRemove - - FUNC GLOBAL DEFAULT 228 code
+def PL_HashTableRemove - - FUNC GLOBAL DEFAULT 42 code
+def PL_InitArenaPool - - FUNC GLOBAL DEFAULT 96 code
+def PL_NewHashTable - - FUNC GLOBAL DEFAULT 140 code
+def PL_SizeOfArenaPoolExcludingPool - - FUNC GLOBAL DEFAULT 32 code
+def libVersionPoint - - FUNC GLOBAL DEFAULT 12 code
+und PR_Assert - - FUNC GLOBAL
+und PR_CeilingLog2 - - FUNC GLOBAL
+und PR_Free - - FUNC GLOBAL
+und PR_Malloc - - FUNC GLOBAL
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL

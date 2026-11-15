@@ -1,0 +1,128 @@
+# why: Enter had to be pressed twice in text fields, because the first OK on a focused field opens LG's keyboard (patch
+# 0017). Enter now goes through while the keyboard we opened is shown, and right after Up/Down in that field
+# (picking a suggestion). A newly focused field starts without the keyboard.
+--- a/src/chrome/browser/ui/views/frame/browser_view.cc
++++ b/src/chrome/browser/ui/views/frame/browser_view.cc
+@@ -1267,6 +1267,16 @@ bool BrowserView::HandleTvRemoteKey(ui::KeyEvent* event) {
+     return false;
+   }
+   const ui::KeyboardCode key = event->key_code();
++  // chromium-native (patch 0043): remember Up/Down in a focused text field (suggestion lists).
++  if ((key == ui::VKEY_UP || key == ui::VKEY_DOWN) && GetWidget()) {
++    ui::InputMethod* aim = GetWidget()->GetInputMethod();
++    ui::TextInputClient* ac = aim ? aim->GetTextInputClient() : nullptr;
++    tv_arrow_client_ = ac && ac->GetTextInputType() != ui::TEXT_INPUT_TYPE_NONE
++                           ? reinterpret_cast<uintptr_t>(ac)
++                           : 0;
++  } else if (key != ui::VKEY_RETURN) {
++    tv_arrow_client_ = 0;
++  }
+   // chromium-native (patch 0021): OK on a focused text field (page or omnibox)
+   // opens LG's keyboard instead of submitting. While that keyboard is open its
+   // Enter key reaches us too: then let it through (submit) and re-arm.
+@@ -1275,7 +1285,13 @@ bool BrowserView::HandleTvRemoteKey(ui::KeyEvent* event) {
+     ui::TextInputClient* client = im ? im->GetTextInputClient() : nullptr;
+     if (client && client->GetTextInputType() != ui::TEXT_INPUT_TYPE_NONE) {
+       const uintptr_t id = reinterpret_cast<uintptr_t>(client);
+-      if (tv_keyboard_client_ != id) {
++      // chromium-native (patch 0043): Enter goes through (submits) while LG's keyboard is open, however it was
++      // opened (OK or a pointer click), and right after Up/Down in the field (picking a page's suggestion, e.g.
++      // google.com). Before, the first Enter only opened the keyboard: Enter had to be pressed twice.
++      const bool after_arrow = tv_arrow_client_ == id;
++      tv_arrow_client_ = 0;
++      if (tv_keyboard_client_ != id && !after_arrow &&
++          !ui::InputMethodNevaObserver::KeyboardShown()) {
+         tv_keyboard_client_ = id;
+         ui::InputMethodNevaObserver::AllowShowOnce();
+         im->SetVirtualKeyboardVisibilityIfEnabled(true);
+--- a/src/chrome/browser/ui/views/frame/browser_view.h
++++ b/src/chrome/browser/ui/views/frame/browser_view.h
+@@ -1114,6 +1114,8 @@ class BrowserView : public BrowserWindow,
+   std::unique_ptr<ui::EventHandler> tv_remote_key_handler_;
+   // chromium-native (patch 0021): text client the keyboard was opened for (compared only, never used).
+   uintptr_t tv_keyboard_client_ = 0;
++  // chromium-native (patch 0043): text client that got the last Up/Down key (compared only, never used).
++  uintptr_t tv_arrow_client_ = 0;
+ 
+   base::CallbackListSubscription chip_visibility_subscription_;
+ 
+--- a/src/ui/base/ime/neva/input_method_neva_observer.cc
++++ b/src/ui/base/ime/neva/input_method_neva_observer.cc
+@@ -136,6 +136,17 @@ void InputMethodNevaObserver::AllowShowOnce() {
+   g_allow_show_until = base::TimeTicks::Now() + base::Milliseconds(1500);
+ }
+ 
++namespace {
++// chromium-native (patch 0043): true from our keyboard request until the next hide request.
++bool g_keyboard_shown = false;
++const void* g_keyboard_client = nullptr;  // compared only: another focused field starts without the keyboard
++}  // namespace
++
++// static
++bool InputMethodNevaObserver::KeyboardShown() {
++  return g_keyboard_shown;
++}
++
+ void InputMethodNevaObserver::SetImeEnabled(bool enable) {
+   is_enabled_ = enable;
+ }
+@@ -145,6 +156,10 @@ void InputMethodNevaObserver::OnTextInputStateChanged(
+   if (!is_enabled_)
+     return;
+ 
++  if (client != g_keyboard_client) {  // patch 0043
++    g_keyboard_client = client;
++    g_keyboard_shown = false;
++  }
+   if (client) {
+     if (client->GetTextInputType() != TEXT_INPUT_TYPE_NONE) {
+       TextInputInfo input_info;
+@@ -160,6 +175,7 @@ void InputMethodNevaObserver::OnTextInputStateChanged(
+       // the user presses OK on the field (BrowserView::HandleTvRemoteKey asks
+       // via SetVirtualKeyboardVisibilityIfEnabled), not on focus.
+     } else {
++      g_keyboard_shown = false;  // patch 0043
+       OnHideIme(ImeHiddenType::kDeactivate);
+     }
+   } else {
+@@ -167,6 +183,7 @@ void InputMethodNevaObserver::OnTextInputStateChanged(
+     // when a button or tab is focused. Without this the webOS text model stayed
+     // active after leaving the omnibox, LG's IME kept the remote's keys, and OK
+     // on any button opened the virtual keyboard.
++    g_keyboard_shown = false;  // patch 0043
+     OnHideIme(ImeHiddenType::kDeactivate);
+   }
+ }
+@@ -175,6 +192,7 @@ void InputMethodNevaObserver::OnInputMethodDestroyed(const InputMethod* input_me
+   if (!is_enabled_)
+     return;
+ 
++  g_keyboard_shown = false;  // patch 0043
+   OnHideIme(ImeHiddenType::kDeactivate);
+ }
+ 
+@@ -189,9 +207,12 @@ void InputMethodNevaObserver::OnVirtualKeyboardVisibilityChangedIfEnabled(
+       return;
+     }
+     g_allow_show_until = base::TimeTicks();
++    g_keyboard_shown = true;  // patch 0043
+     OnShowIme();
+-  } else
++  } else {
++    g_keyboard_shown = false;  // patch 0043
+     OnHideIme(ImeHiddenType::kDeactivate);
++  }
+ }
+ 
+ }  // namespace ui
+--- a/src/ui/base/ime/neva/input_method_neva_observer.h
++++ b/src/ui/base/ime/neva/input_method_neva_observer.h
+@@ -53,6 +53,8 @@ class COMPONENT_EXPORT(UI_BASE_IME) InputMethodNevaObserver
+   // before asking for the keyboard; any other request (Blink's show-on-focus,
+   // views::Textfield::OnFocus, the omnibox) is ignored.
+   static void AllowShowOnce();
++  // chromium-native (patch 0043): LG's keyboard was opened by us and not hidden since.
++  static bool KeyboardShown();
+ private:
+   bool is_enabled_ = false;
+ };

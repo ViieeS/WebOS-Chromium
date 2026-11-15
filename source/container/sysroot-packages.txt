@@ -1,0 +1,31 @@
+# Ubuntu 22.04 (jammy) armhf packages for the target sysroot: headers, crt files, .pc files and link stubs.
+# Why jammy: its glibc is 2.35, the same version as the TV, so headers, crt*.o, libc_nonshared.a and libc.so agree.
+# Every shared library that also exists on the TV is then REPLACED by the TV's own file (build-sysroot.sh step 4),
+# so Chromium links against exactly what the TV has. One package per line; '#' starts a comment.
+# If gn gen or the build says "Package X was not found" or "fatal error: foo.h not found", add the -dev package here,
+# and rebuild the sysroot (build_sysroot).
+libc6
+libc6-dev
+linux-libc-dev
+libgcc-s1
+libgcc-12-dev
+libglib2.0-dev
+libnss3-dev
+libnspr4-dev
+libdbus-1-dev
+libdrm-dev
+libgbm-dev
+libfontconfig-dev
+libfreetype-dev
+libharfbuzz-dev
+libpulse-dev
+libasound2-dev
+libxkbcommon-dev
+libwayland-dev
+libegl-dev
+mesa-common-dev
+libgles-dev
+libexpat1-dev
+zlib1g-dev
+libffi-dev
+libudev-dev

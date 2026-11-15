@@ -1,0 +1,490 @@
+tvabi 1
+soname libgomp.so.1
+needed libgcc_s.so.1
+needed libc.so.6
+verdef 1 base libgomp.so.1
+verdef 2 - OMP_1.0
+verdef 3 - OMP_2.0 OMP_1.0
+verdef 4 - OMP_3.0 OMP_2.0
+verdef 5 - OMP_3.1 OMP_3.0
+verdef 6 - OMP_4.0 OMP_3.1
+verdef 7 - OMP_4.5 OMP_4.0
+verdef 8 - OMP_5.0 OMP_4.5
+verdef 9 - OMP_5.0.1 OMP_5.0
+verdef 10 - GOMP_1.0
+verdef 11 - GOMP_2.0 GOMP_1.0
+verdef 12 - GOMP_3.0 GOMP_2.0
+verdef 13 - GOMP_4.0 GOMP_3.0
+verdef 14 - GOMP_4.0.1 GOMP_4.0
+verdef 15 - GOMP_4.5 GOMP_4.0.1
+verdef 16 - GOMP_5.0 GOMP_4.5
+verdef 17 - GOMP_5.0.1 GOMP_5.0
+verdef 18 - OACC_2.0
+verdef 19 - OACC_2.0.1 OACC_2.0
+verdef 20 - OACC_2.5 OACC_2.0.1
+verdef 21 - OACC_2.5.1 OACC_2.5
+verdef 22 - OACC_2.6 OACC_2.5.1
+verdef 23 - GOACC_2.0
+verdef 24 - GOACC_2.0.1 GOACC_2.0
+verdef 25 - GOMP_PLUGIN_1.0
+verdef 26 - GOMP_PLUGIN_1.1 GOMP_PLUGIN_1.0
+verdef 27 - GOMP_PLUGIN_1.2 GOMP_PLUGIN_1.1
+verdef 28 - GOMP_PLUGIN_1.3 GOMP_PLUGIN_1.2
+def GOACC_data_end GOACC_2.0 @@ FUNC GLOBAL DEFAULT 276 code
+def GOACC_data_start GOACC_2.0 @@ FUNC GLOBAL DEFAULT 484 code
+def GOACC_declare GOACC_2.0.1 @@ FUNC GLOBAL DEFAULT 224 code
+def GOACC_enter_exit_data GOACC_2.0 @@ FUNC GLOBAL DEFAULT 2108 code
+def GOACC_get_num_threads GOACC_2.0 @@ FUNC GLOBAL DEFAULT 4 code
+def GOACC_get_thread_num GOACC_2.0 @@ FUNC GLOBAL DEFAULT 4 code
+def GOACC_parallel GOACC_2.0 @@ FUNC GLOBAL DEFAULT 22 code
+def GOACC_parallel_keyed GOACC_2.0.1 @@ FUNC GLOBAL DEFAULT 1240 code
+def GOACC_update GOACC_2.0 @@ FUNC GLOBAL DEFAULT 496 code
+def GOACC_wait GOACC_2.0 @@ FUNC GLOBAL DEFAULT 204 code
+def GOMP_PLUGIN_acc_default_dim GOMP_PLUGIN_1.2 @@ FUNC GLOBAL DEFAULT 36 code
+def GOMP_PLUGIN_acc_thread GOMP_PLUGIN_1.0 @@ FUNC GLOBAL DEFAULT 24 code
+def GOMP_PLUGIN_async_unmap_vars GOMP_PLUGIN_1.0 @@ FUNC GLOBAL DEFAULT 16 code
+def GOMP_PLUGIN_debug GOMP_PLUGIN_1.0 @@ FUNC GLOBAL DEFAULT 52 code
+def GOMP_PLUGIN_error GOMP_PLUGIN_1.0 @@ FUNC GLOBAL DEFAULT 28 code
+def GOMP_PLUGIN_fatal GOMP_PLUGIN_1.0 @@ FUNC GLOBAL DEFAULT 18 code
+def GOMP_PLUGIN_goacc_profiling_dispatch GOMP_PLUGIN_1.3 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_PLUGIN_goacc_thread GOMP_PLUGIN_1.3 @@ FUNC GLOBAL DEFAULT 20 code
+def GOMP_PLUGIN_malloc GOMP_PLUGIN_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_PLUGIN_malloc_cleared GOMP_PLUGIN_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_PLUGIN_realloc GOMP_PLUGIN_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_PLUGIN_target_task_completion GOMP_PLUGIN_1.1 @@ FUNC GLOBAL DEFAULT 122 code
+def GOMP_alloc GOMP_5.0.1 @@ FUNC GLOBAL DEFAULT 32 code
+def GOMP_atomic_end GOMP_1.0 @@ FUNC GLOBAL DEFAULT 36 code
+def GOMP_atomic_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 40 code
+def GOMP_barrier GOMP_1.0 @@ FUNC GLOBAL DEFAULT 28 code
+def GOMP_barrier_cancel GOMP_4.0 @@ FUNC GLOBAL DEFAULT 24 code
+def GOMP_cancel GOMP_4.0 @@ FUNC GLOBAL DEFAULT 212 code
+def GOMP_cancellation_point GOMP_4.0 @@ FUNC GLOBAL DEFAULT 20 code
+def GOMP_critical_end GOMP_1.0 @@ FUNC GLOBAL DEFAULT 36 code
+def GOMP_critical_name_end GOMP_1.0 @@ FUNC GLOBAL DEFAULT 28 code
+def GOMP_critical_name_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 30 code
+def GOMP_critical_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 44 code
+def GOMP_doacross_post GOMP_4.5 @@ FUNC GLOBAL DEFAULT 200 code
+def GOMP_doacross_ull_post GOMP_4.5 @@ FUNC GLOBAL DEFAULT 320 code
+def GOMP_doacross_ull_wait GOMP_4.5 @@ FUNC GLOBAL DEFAULT 428 code
+def GOMP_doacross_wait GOMP_4.5 @@ FUNC GLOBAL DEFAULT 296 code
+def GOMP_free GOMP_5.0.1 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_loop_doacross_dynamic_start GOMP_4.5 @@ FUNC GLOBAL DEFAULT 216 code
+def GOMP_loop_doacross_guided_start GOMP_4.5 @@ FUNC GLOBAL DEFAULT 164 code
+def GOMP_loop_doacross_runtime_start GOMP_4.5 @@ FUNC GLOBAL DEFAULT 128 code
+def GOMP_loop_doacross_start GOMP_5.0 @@ FUNC GLOBAL DEFAULT 376 code
+def GOMP_loop_doacross_static_start GOMP_4.5 @@ FUNC GLOBAL DEFAULT 168 code
+def GOMP_loop_dynamic_next GOMP_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_loop_dynamic_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 268 code
+def GOMP_loop_end GOMP_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_loop_end_cancel GOMP_4.0 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_loop_end_nowait GOMP_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_loop_guided_next GOMP_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_loop_guided_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 144 code
+def GOMP_loop_maybe_nonmonotonic_runtime_next GOMP_5.0 @@ FUNC GLOBAL DEFAULT 68 code
+def GOMP_loop_maybe_nonmonotonic_runtime_start GOMP_5.0 @@ FUNC GLOBAL DEFAULT 388 code
+def GOMP_loop_nonmonotonic_dynamic_next GOMP_4.5 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_loop_nonmonotonic_dynamic_start GOMP_4.5 @@ FUNC GLOBAL DEFAULT 268 code
+def GOMP_loop_nonmonotonic_guided_next GOMP_4.5 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_loop_nonmonotonic_guided_start GOMP_4.5 @@ FUNC GLOBAL DEFAULT 144 code
+def GOMP_loop_nonmonotonic_runtime_next GOMP_5.0 @@ FUNC GLOBAL DEFAULT 68 code
+def GOMP_loop_nonmonotonic_runtime_start GOMP_5.0 @@ FUNC GLOBAL DEFAULT 388 code
+def GOMP_loop_ordered_dynamic_next GOMP_1.0 @@ FUNC GLOBAL DEFAULT 136 code
+def GOMP_loop_ordered_dynamic_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 436 code
+def GOMP_loop_ordered_guided_next GOMP_1.0 @@ FUNC GLOBAL DEFAULT 136 code
+def GOMP_loop_ordered_guided_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 300 code
+def GOMP_loop_ordered_runtime_next GOMP_1.0 @@ FUNC GLOBAL DEFAULT 60 code
+def GOMP_loop_ordered_runtime_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 140 code
+def GOMP_loop_ordered_start GOMP_5.0 @@ FUNC GLOBAL DEFAULT 700 code
+def GOMP_loop_ordered_static_next GOMP_1.0 @@ FUNC GLOBAL DEFAULT 136 code
+def GOMP_loop_ordered_static_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 180 code
+def GOMP_loop_runtime_next GOMP_1.0 @@ FUNC GLOBAL DEFAULT 68 code
+def GOMP_loop_runtime_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 388 code
+def GOMP_loop_start GOMP_5.0 @@ FUNC GLOBAL DEFAULT 492 code
+def GOMP_loop_static_next GOMP_1.0 @@ FUNC GLOBAL DEFAULT 14 code
+def GOMP_loop_static_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 160 code
+def GOMP_loop_ull_doacross_dynamic_start GOMP_4.5 @@ FUNC GLOBAL DEFAULT 280 code
+def GOMP_loop_ull_doacross_guided_start GOMP_4.5 @@ FUNC GLOBAL DEFAULT 280 code
+def GOMP_loop_ull_doacross_runtime_start GOMP_4.5 @@ FUNC GLOBAL DEFAULT 140 code
+def GOMP_loop_ull_doacross_start GOMP_5.0 @@ FUNC GLOBAL DEFAULT 568 code
+def GOMP_loop_ull_doacross_static_start GOMP_4.5 @@ FUNC GLOBAL DEFAULT 192 code
+def GOMP_loop_ull_dynamic_next GOMP_2.0 @@ FUNC GLOBAL DEFAULT 120 code
+def GOMP_loop_ull_dynamic_start GOMP_2.0 @@ FUNC GLOBAL DEFAULT 404 code
+def GOMP_loop_ull_guided_next GOMP_2.0 @@ FUNC GLOBAL DEFAULT 120 code
+def GOMP_loop_ull_guided_start GOMP_2.0 @@ FUNC GLOBAL DEFAULT 352 code
+def GOMP_loop_ull_maybe_nonmonotonic_runtime_next GOMP_5.0 @@ FUNC GLOBAL DEFAULT 228 code
+def GOMP_loop_ull_maybe_nonmonotonic_runtime_start GOMP_5.0 @@ FUNC GLOBAL DEFAULT 200 code
+def GOMP_loop_ull_nonmonotonic_dynamic_next GOMP_4.5 @@ FUNC GLOBAL DEFAULT 120 code
+def GOMP_loop_ull_nonmonotonic_dynamic_start GOMP_4.5 @@ FUNC GLOBAL DEFAULT 404 code
+def GOMP_loop_ull_nonmonotonic_guided_next GOMP_4.5 @@ FUNC GLOBAL DEFAULT 120 code
+def GOMP_loop_ull_nonmonotonic_guided_start GOMP_4.5 @@ FUNC GLOBAL DEFAULT 352 code
+def GOMP_loop_ull_nonmonotonic_runtime_next GOMP_5.0 @@ FUNC GLOBAL DEFAULT 228 code
+def GOMP_loop_ull_nonmonotonic_runtime_start GOMP_5.0 @@ FUNC GLOBAL DEFAULT 200 code
+def GOMP_loop_ull_ordered_dynamic_next GOMP_2.0 @@ FUNC GLOBAL DEFAULT 136 code
+def GOMP_loop_ull_ordered_dynamic_start GOMP_2.0 @@ FUNC GLOBAL DEFAULT 444 code
+def GOMP_loop_ull_ordered_guided_next GOMP_2.0 @@ FUNC GLOBAL DEFAULT 136 code
+def GOMP_loop_ull_ordered_guided_start GOMP_2.0 @@ FUNC GLOBAL DEFAULT 388 code
+def GOMP_loop_ull_ordered_runtime_next GOMP_2.0 @@ FUNC GLOBAL DEFAULT 60 code
+def GOMP_loop_ull_ordered_runtime_start GOMP_2.0 @@ FUNC GLOBAL DEFAULT 200 code
+def GOMP_loop_ull_ordered_start GOMP_5.0 @@ FUNC GLOBAL DEFAULT 720 code
+def GOMP_loop_ull_ordered_static_next GOMP_2.0 @@ FUNC GLOBAL DEFAULT 136 code
+def GOMP_loop_ull_ordered_static_start GOMP_2.0 @@ FUNC GLOBAL DEFAULT 252 code
+def GOMP_loop_ull_runtime_next GOMP_2.0 @@ FUNC GLOBAL DEFAULT 228 code
+def GOMP_loop_ull_runtime_start GOMP_2.0 @@ FUNC GLOBAL DEFAULT 200 code
+def GOMP_loop_ull_start GOMP_5.0 @@ FUNC GLOBAL DEFAULT 480 code
+def GOMP_loop_ull_static_next GOMP_2.0 @@ FUNC GLOBAL DEFAULT 14 code
+def GOMP_loop_ull_static_start GOMP_2.0 @@ FUNC GLOBAL DEFAULT 236 code
+def GOMP_offload_register GOMP_4.0.1 @@ FUNC GLOBAL DEFAULT 14 code
+def GOMP_offload_register_ver GOMP_4.5 @@ FUNC GLOBAL DEFAULT 348 code
+def GOMP_offload_unregister GOMP_4.0.1 @@ FUNC GLOBAL DEFAULT 14 code
+def GOMP_offload_unregister_ver GOMP_4.5 @@ FUNC GLOBAL DEFAULT 300 code
+def GOMP_ordered_end GOMP_1.0 @@ FUNC GLOBAL DEFAULT 2 code
+def GOMP_ordered_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 136 code
+def GOMP_parallel GOMP_4.0 @@ FUNC GLOBAL DEFAULT 108 code
+def GOMP_parallel_end GOMP_1.0 @@ FUNC GLOBAL DEFAULT 48 code
+def GOMP_parallel_loop_dynamic GOMP_4.0 @@ FUNC GLOBAL DEFAULT 276 code
+def GOMP_parallel_loop_dynamic_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 264 code
+def GOMP_parallel_loop_guided GOMP_4.0 @@ FUNC GLOBAL DEFAULT 118 code
+def GOMP_parallel_loop_guided_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 106 code
+def GOMP_parallel_loop_maybe_nonmonotonic_runtime GOMP_5.0 @@ FUNC GLOBAL DEFAULT 284 code
+def GOMP_parallel_loop_nonmonotonic_dynamic GOMP_4.5 @@ FUNC GLOBAL DEFAULT 276 code
+def GOMP_parallel_loop_nonmonotonic_guided GOMP_4.5 @@ FUNC GLOBAL DEFAULT 118 code
+def GOMP_parallel_loop_nonmonotonic_runtime GOMP_5.0 @@ FUNC GLOBAL DEFAULT 284 code
+def GOMP_parallel_loop_runtime GOMP_4.0 @@ FUNC GLOBAL DEFAULT 284 code
+def GOMP_parallel_loop_runtime_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 268 code
+def GOMP_parallel_loop_static GOMP_4.0 @@ FUNC GLOBAL DEFAULT 118 code
+def GOMP_parallel_loop_static_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 106 code
+def GOMP_parallel_reductions GOMP_5.0 @@ FUNC GLOBAL DEFAULT 136 code
+def GOMP_parallel_sections GOMP_4.0 @@ FUNC GLOBAL DEFAULT 124 code
+def GOMP_parallel_sections_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 116 code
+def GOMP_parallel_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 44 code
+def GOMP_sections2_start GOMP_5.0 @@ FUNC GLOBAL DEFAULT 328 code
+def GOMP_sections_end GOMP_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_sections_end_cancel GOMP_4.0 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_sections_end_nowait GOMP_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def GOMP_sections_next GOMP_1.0 @@ FUNC GLOBAL DEFAULT 22 code
+def GOMP_sections_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 144 code
+def GOMP_single_copy_end GOMP_1.0 @@ FUNC GLOBAL DEFAULT 56 code
+def GOMP_single_copy_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 132 code
+def GOMP_single_start GOMP_1.0 @@ FUNC GLOBAL DEFAULT 92 code
+def GOMP_target GOMP_4.0 @@ FUNC GLOBAL DEFAULT 118 code
+def GOMP_target_data GOMP_4.0 @@ FUNC GLOBAL DEFAULT 108 code
+def GOMP_target_data_ext GOMP_4.5 @@ FUNC GLOBAL DEFAULT 112 code
+def GOMP_target_end_data GOMP_4.0 @@ FUNC GLOBAL DEFAULT 48 code
+def GOMP_target_enter_exit_data GOMP_4.5 @@ FUNC GLOBAL DEFAULT 540 code
+def GOMP_target_ext GOMP_4.5 @@ FUNC GLOBAL DEFAULT 1644 code
+def GOMP_target_update GOMP_4.0 @@ FUNC GLOBAL DEFAULT 54 code
+def GOMP_target_update_ext GOMP_4.5 @@ FUNC GLOBAL DEFAULT 324 code
+def GOMP_task GOMP_2.0 @@ FUNC GLOBAL DEFAULT 1748 code
+def GOMP_task_reduction_remap GOMP_5.0 @@ FUNC GLOBAL DEFAULT 264 code
+def GOMP_taskgroup_end GOMP_4.0 @@ FUNC GLOBAL DEFAULT 1488 code
+def GOMP_taskgroup_reduction_register GOMP_5.0 @@ FUNC GLOBAL DEFAULT 292 code
+def GOMP_taskgroup_reduction_unregister GOMP_5.0 @@ FUNC GLOBAL DEFAULT 30 code
+def GOMP_taskgroup_start GOMP_4.0 @@ FUNC GLOBAL DEFAULT 76 code
+def GOMP_taskloop GOMP_4.5 @@ FUNC GLOBAL DEFAULT 2608 code
+def GOMP_taskloop_ull GOMP_4.5 @@ FUNC GLOBAL DEFAULT 2840 code
+def GOMP_taskwait GOMP_2.0 @@ FUNC GLOBAL DEFAULT 1224 code
+def GOMP_taskwait_depend GOMP_5.0 @@ FUNC GLOBAL DEFAULT 128 code
+def GOMP_taskyield GOMP_3.0 @@ FUNC GLOBAL DEFAULT 2 code
+def GOMP_teams GOMP_4.0 @@ FUNC GLOBAL DEFAULT 52 code
+def GOMP_teams_reg GOMP_5.0 @@ FUNC GLOBAL DEFAULT 156 code
+def GOMP_workshare_task_reduction_unregister GOMP_5.0 @@ FUNC GLOBAL DEFAULT 108 code
+def acc_async_test OACC_2.0 @@ FUNC GLOBAL DEFAULT 136 code
+def acc_async_test_all OACC_2.0 @@ FUNC GLOBAL DEFAULT 204 code
+def acc_async_wait OACC_2.0.1 @@ FUNC GLOBAL DEFAULT 152 code
+def acc_async_wait_all OACC_2.0.1 @@ FUNC GLOBAL DEFAULT 180 code
+def acc_attach OACC_2.6 @@ FUNC GLOBAL DEFAULT 8 code
+def acc_attach_async OACC_2.6 @@ FUNC GLOBAL DEFAULT 172 code
+def acc_copyin OACC_2.0 @@ FUNC GLOBAL DEFAULT 36 code
+def acc_copyin_async OACC_2.5 @@ FUNC GLOBAL DEFAULT 34 code
+def acc_copyout OACC_2.0 @@ FUNC GLOBAL DEFAULT 10 code
+def acc_copyout_async OACC_2.5 @@ FUNC GLOBAL DEFAULT 8 code
+def acc_copyout_finalize OACC_2.5 @@ FUNC GLOBAL DEFAULT 10 code
+def acc_copyout_finalize_async OACC_2.5 @@ FUNC GLOBAL DEFAULT 8 code
+def acc_create OACC_2.0 @@ FUNC GLOBAL DEFAULT 36 code
+def acc_create_async OACC_2.5 @@ FUNC GLOBAL DEFAULT 34 code
+def acc_delete OACC_2.0 @@ FUNC GLOBAL DEFAULT 10 code
+def acc_delete_async OACC_2.5 @@ FUNC GLOBAL DEFAULT 8 code
+def acc_delete_finalize OACC_2.5 @@ FUNC GLOBAL DEFAULT 10 code
+def acc_delete_finalize_async OACC_2.5 @@ FUNC GLOBAL DEFAULT 8 code
+def acc_detach OACC_2.6 @@ FUNC GLOBAL DEFAULT 10 code
+def acc_detach_async OACC_2.6 @@ FUNC GLOBAL DEFAULT 6 code
+def acc_detach_finalize OACC_2.6 @@ FUNC GLOBAL DEFAULT 10 code
+def acc_detach_finalize_async OACC_2.6 @@ FUNC GLOBAL DEFAULT 6 code
+def acc_deviceptr OACC_2.0 @@ FUNC GLOBAL DEFAULT 164 code
+def acc_free OACC_2.0 @@ FUNC GLOBAL DEFAULT 312 code
+def acc_get_cuda_stream OACC_2.0 @@ FUNC GLOBAL DEFAULT 164 code
+def acc_get_current_cuda_context OACC_2.0 @@ FUNC GLOBAL DEFAULT 120 code
+def acc_get_current_cuda_device OACC_2.0 @@ FUNC GLOBAL DEFAULT 120 code
+def acc_get_device_num OACC_2.0 @@ FUNC GLOBAL DEFAULT 224 code
+def acc_get_device_type OACC_2.0 @@ FUNC GLOBAL DEFAULT 376 code
+def acc_get_num_devices OACC_2.0 @@ FUNC GLOBAL DEFAULT 128 code
+def acc_get_property OACC_2.6 @@ FUNC GLOBAL DEFAULT 30 code
+def acc_get_property_string OACC_2.6 @@ FUNC GLOBAL DEFAULT 28 code
+def acc_hostptr OACC_2.0 @@ FUNC GLOBAL DEFAULT 152 code
+def acc_init OACC_2.0 @@ FUNC GLOBAL DEFAULT 124 code
+def acc_is_present OACC_2.0 @@ FUNC GLOBAL DEFAULT 176 code
+def acc_malloc OACC_2.0 @@ FUNC GLOBAL DEFAULT 156 code
+def acc_map_data OACC_2.0 @@ FUNC GLOBAL DEFAULT 564 code
+def acc_memcpy_from_device OACC_2.0 @@ FUNC GLOBAL DEFAULT 24 code
+def acc_memcpy_from_device_async OACC_2.5 @@ FUNC GLOBAL DEFAULT 24 code
+def acc_memcpy_to_device OACC_2.0 @@ FUNC GLOBAL DEFAULT 26 code
+def acc_memcpy_to_device_async OACC_2.5 @@ FUNC GLOBAL DEFAULT 26 code
+def acc_on_device OACC_2.0 @@ FUNC GLOBAL DEFAULT 12 code
+def acc_pcopyin OACC_2.0.1 @@ FUNC GLOBAL DEFAULT 36 code
+def acc_pcreate OACC_2.0.1 @@ FUNC GLOBAL DEFAULT 36 code
+def acc_present_or_copyin OACC_2.0 @@ FUNC GLOBAL DEFAULT 36 code
+def acc_present_or_create OACC_2.0 @@ FUNC GLOBAL DEFAULT 36 code
+def acc_prof_lookup OACC_2.5.1 @@ FUNC GLOBAL DEFAULT 60 code
+def acc_prof_register OACC_2.5.1 @@ FUNC GLOBAL DEFAULT 776 code
+def acc_prof_unregister OACC_2.5.1 @@ FUNC GLOBAL DEFAULT 664 code
+def acc_register_library OACC_2.5.1 @@ FUNC GLOBAL DEFAULT 16 code
+def acc_set_cuda_stream OACC_2.0 @@ FUNC GLOBAL DEFAULT 312 code
+def acc_set_device_num OACC_2.0 @@ FUNC GLOBAL DEFAULT 264 code
+def acc_set_device_type OACC_2.0 @@ FUNC GLOBAL DEFAULT 336 code
+def acc_shutdown OACC_2.0 @@ FUNC GLOBAL DEFAULT 692 code
+def acc_unmap_data OACC_2.0 @@ FUNC GLOBAL DEFAULT 396 code
+def acc_update_device OACC_2.0 @@ FUNC GLOBAL DEFAULT 14 code
+def acc_update_device_async OACC_2.5 @@ FUNC GLOBAL DEFAULT 14 code
+def acc_update_self OACC_2.0 @@ FUNC GLOBAL DEFAULT 14 code
+def acc_update_self_async OACC_2.5 @@ FUNC GLOBAL DEFAULT 14 code
+def acc_wait OACC_2.0 @@ FUNC GLOBAL DEFAULT 152 code
+def acc_wait_all OACC_2.0 @@ FUNC GLOBAL DEFAULT 180 code
+def acc_wait_all_async OACC_2.0 @@ FUNC GLOBAL DEFAULT 272 code
+def acc_wait_async OACC_2.0 @@ FUNC GLOBAL DEFAULT 224 code
+def omp_alloc OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 12 code
+def omp_capture_affinity OMP_5.0 @@ FUNC GLOBAL DEFAULT 108 code
+def omp_capture_affinity_ OMP_5.0 @@ FUNC GLOBAL DEFAULT 252 code
+def omp_destroy_allocator OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 8 code
+def omp_destroy_allocator_ OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_destroy_lock OMP_1.0 @ FUNC GLOBAL DEFAULT 2 code
+def omp_destroy_lock OMP_3.0 @@ FUNC GLOBAL DEFAULT 2 code
+def omp_destroy_lock_ OMP_1.0 @ FUNC GLOBAL DEFAULT 4 code
+def omp_destroy_lock_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_destroy_nest_lock OMP_1.0 @ FUNC GLOBAL DEFAULT 2 code
+def omp_destroy_nest_lock OMP_3.0 @@ FUNC GLOBAL DEFAULT 2 code
+def omp_destroy_nest_lock_ OMP_1.0 @ FUNC GLOBAL DEFAULT 4 code
+def omp_destroy_nest_lock_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 22 code
+def omp_display_affinity OMP_5.0 @@ FUNC GLOBAL DEFAULT 120 code
+def omp_display_affinity_ OMP_5.0 @@ FUNC GLOBAL DEFAULT 364 code
+def omp_free OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 48 code
+def omp_fulfill_event OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 1064 code
+def omp_fulfill_event_ OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_active_level OMP_3.0 @@ FUNC GLOBAL DEFAULT 20 code
+def omp_get_active_level_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_affinity_format OMP_5.0 @@ FUNC GLOBAL DEFAULT 64 code
+def omp_get_affinity_format_ OMP_5.0 @@ FUNC GLOBAL DEFAULT 68 code
+def omp_get_ancestor_thread_num OMP_3.0 @@ FUNC GLOBAL DEFAULT 84 code
+def omp_get_ancestor_thread_num_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_get_ancestor_thread_num_8_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 38 code
+def omp_get_cancellation OMP_4.0 @@ FUNC GLOBAL DEFAULT 12 code
+def omp_get_cancellation_ OMP_4.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_default_allocator OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 32 code
+def omp_get_default_allocator_ OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_default_device OMP_4.0 @@ FUNC GLOBAL DEFAULT 40 code
+def omp_get_default_device_ OMP_4.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_dynamic OMP_1.0 @@ FUNC GLOBAL DEFAULT 40 code
+def omp_get_dynamic_ OMP_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_initial_device OMP_4.5 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_initial_device_ OMP_4.5 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_level OMP_3.0 @@ FUNC GLOBAL DEFAULT 20 code
+def omp_get_level_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_max_active_levels OMP_3.0 @@ FUNC GLOBAL DEFAULT 40 code
+def omp_get_max_active_levels_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_max_task_priority OMP_4.5 @@ FUNC GLOBAL DEFAULT 12 code
+def omp_get_max_task_priority_ OMP_4.5 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_max_threads OMP_1.0 @@ FUNC GLOBAL DEFAULT 40 code
+def omp_get_max_threads_ OMP_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_nested OMP_1.0 @@ FUNC GLOBAL DEFAULT 60 code
+def omp_get_nested_ OMP_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_num_devices OMP_4.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_num_devices_ OMP_4.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_num_places OMP_4.5 @@ FUNC GLOBAL DEFAULT 12 code
+def omp_get_num_places_ OMP_4.5 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_num_procs OMP_1.0 @@ FUNC GLOBAL DEFAULT 80 code
+def omp_get_num_procs_ OMP_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_num_teams OMP_4.0 @@ FUNC GLOBAL DEFAULT 12 code
+def omp_get_num_teams_ OMP_4.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_num_threads OMP_1.0 @@ FUNC GLOBAL DEFAULT 28 code
+def omp_get_num_threads_ OMP_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_partition_num_places OMP_4.5 @@ FUNC GLOBAL DEFAULT 60 code
+def omp_get_partition_num_places_ OMP_4.5 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_partition_place_nums OMP_4.5 @@ FUNC GLOBAL DEFAULT 108 code
+def omp_get_partition_place_nums_ OMP_4.5 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_partition_place_nums_8_ OMP_4.5 @@ FUNC GLOBAL DEFAULT 120 code
+def omp_get_place_num OMP_4.5 @@ FUNC GLOBAL DEFAULT 68 code
+def omp_get_place_num_ OMP_4.5 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_place_num_procs OMP_4.5 @@ FUNC GLOBAL DEFAULT 52 code
+def omp_get_place_num_procs_ OMP_4.5 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_get_place_num_procs_8_ OMP_4.5 @@ FUNC GLOBAL DEFAULT 38 code
+def omp_get_place_proc_ids OMP_4.5 @@ FUNC GLOBAL DEFAULT 96 code
+def omp_get_place_proc_ids_ OMP_4.5 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_get_place_proc_ids_8_ OMP_4.5 @@ FUNC GLOBAL DEFAULT 38 code
+def omp_get_proc_bind OMP_4.0 @@ FUNC GLOBAL DEFAULT 40 code
+def omp_get_proc_bind_ OMP_4.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_schedule OMP_3.0 @@ FUNC GLOBAL DEFAULT 44 code
+def omp_get_schedule_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 32 code
+def omp_get_schedule_8_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 36 code
+def omp_get_supported_active_levels OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_supported_active_levels_ OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_team_num OMP_4.0 @@ FUNC GLOBAL DEFAULT 12 code
+def omp_get_team_num_ OMP_4.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_team_size OMP_3.0 @@ FUNC GLOBAL DEFAULT 92 code
+def omp_get_team_size_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_get_team_size_8_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 38 code
+def omp_get_thread_limit OMP_3.0 @@ FUNC GLOBAL DEFAULT 56 code
+def omp_get_thread_limit_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_thread_num OMP_1.0 @@ FUNC GLOBAL DEFAULT 20 code
+def omp_get_thread_num_ OMP_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_wtick OMP_2.0 @@ FUNC GLOBAL DEFAULT 72 code
+def omp_get_wtick_ OMP_2.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_get_wtime OMP_2.0 @@ FUNC GLOBAL DEFAULT 72 code
+def omp_get_wtime_ OMP_2.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_in_final OMP_3.1 @@ FUNC GLOBAL DEFAULT 28 code
+def omp_in_final_ OMP_3.1 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_in_parallel OMP_1.0 @@ FUNC GLOBAL DEFAULT 28 code
+def omp_in_parallel_ OMP_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_init_allocator OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 370 code
+def omp_init_allocator_ OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 8 code
+def omp_init_allocator_8_ OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 8 code
+def omp_init_lock OMP_1.0 @ FUNC GLOBAL DEFAULT 6 code
+def omp_init_lock OMP_3.0 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_init_lock_ OMP_1.0 @ FUNC GLOBAL DEFAULT 4 code
+def omp_init_lock_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_init_nest_lock OMP_1.0 @ FUNC GLOBAL DEFAULT 8 code
+def omp_init_nest_lock OMP_3.0 @@ FUNC GLOBAL DEFAULT 10 code
+def omp_init_nest_lock_ OMP_1.0 @ FUNC GLOBAL DEFAULT 4 code
+def omp_init_nest_lock_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 20 code
+def omp_is_initial_device OMP_4.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_is_initial_device_ OMP_4.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_pause_resource OMP_5.0 @@ FUNC GLOBAL DEFAULT 56 code
+def omp_pause_resource_ OMP_5.0 @@ FUNC GLOBAL DEFAULT 8 code
+def omp_pause_resource_all OMP_5.0 @@ FUNC GLOBAL DEFAULT 16 code
+def omp_pause_resource_all_ OMP_5.0 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_set_affinity_format OMP_5.0 @@ FUNC GLOBAL DEFAULT 18 code
+def omp_set_affinity_format_ OMP_5.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_set_default_allocator OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 28 code
+def omp_set_default_allocator_ OMP_5.0.1 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_set_default_device OMP_4.0 @@ FUNC GLOBAL DEFAULT 48 code
+def omp_set_default_device_ OMP_4.0 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_set_default_device_8_ OMP_4.0 @@ FUNC GLOBAL DEFAULT 38 code
+def omp_set_dynamic OMP_1.0 @@ FUNC GLOBAL DEFAULT 52 code
+def omp_set_dynamic_ OMP_1.0 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_set_dynamic_8_ OMP_1.0 @@ FUNC GLOBAL DEFAULT 16 code
+def omp_set_lock OMP_1.0 @ FUNC GLOBAL DEFAULT 30 code
+def omp_set_lock OMP_3.0 @@ FUNC GLOBAL DEFAULT 30 code
+def omp_set_lock_ OMP_1.0 @ FUNC GLOBAL DEFAULT 4 code
+def omp_set_lock_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_set_max_active_levels OMP_3.0 @@ FUNC GLOBAL DEFAULT 48 code
+def omp_set_max_active_levels_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_set_max_active_levels_8_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 38 code
+def omp_set_nest_lock OMP_1.0 @ FUNC GLOBAL DEFAULT 296 code
+def omp_set_nest_lock OMP_3.0 @@ FUNC GLOBAL DEFAULT 84 code
+def omp_set_nest_lock_ OMP_1.0 @ FUNC GLOBAL DEFAULT 4 code
+def omp_set_nest_lock_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_set_nested OMP_1.0 @@ FUNC GLOBAL DEFAULT 56 code
+def omp_set_nested_ OMP_1.0 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_set_nested_8_ OMP_1.0 @@ FUNC GLOBAL DEFAULT 16 code
+def omp_set_num_threads OMP_1.0 @@ FUNC GLOBAL DEFAULT 52 code
+def omp_set_num_threads_ OMP_1.0 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_set_num_threads_8_ OMP_1.0 @@ FUNC GLOBAL DEFAULT 38 code
+def omp_set_schedule OMP_3.0 @@ FUNC GLOBAL DEFAULT 88 code
+def omp_set_schedule_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 8 code
+def omp_set_schedule_8_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 40 code
+def omp_target_alloc OMP_4.5 @@ FUNC GLOBAL DEFAULT 160 code
+def omp_target_associate_ptr OMP_4.5 @@ FUNC GLOBAL DEFAULT 360 code
+def omp_target_disassociate_ptr OMP_4.5 @@ FUNC GLOBAL DEFAULT 276 code
+def omp_target_free OMP_4.5 @@ FUNC GLOBAL DEFAULT 176 code
+def omp_target_is_present OMP_4.5 @@ FUNC GLOBAL DEFAULT 176 code
+def omp_target_memcpy OMP_4.5 @@ FUNC GLOBAL DEFAULT 416 code
+def omp_target_memcpy_rect OMP_4.5 @@ FUNC GLOBAL DEFAULT 452 code
+def omp_test_lock OMP_1.0 @ FUNC GLOBAL DEFAULT 30 code
+def omp_test_lock OMP_3.0 @@ FUNC GLOBAL DEFAULT 30 code
+def omp_test_lock_ OMP_1.0 @ FUNC GLOBAL DEFAULT 4 code
+def omp_test_lock_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_test_nest_lock OMP_1.0 @ FUNC GLOBAL DEFAULT 68 code
+def omp_test_nest_lock OMP_3.0 @@ FUNC GLOBAL DEFAULT 96 code
+def omp_test_nest_lock_ OMP_1.0 @ FUNC GLOBAL DEFAULT 4 code
+def omp_test_nest_lock_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 6 code
+def omp_unset_lock OMP_1.0 @ FUNC GLOBAL DEFAULT 28 code
+def omp_unset_lock OMP_3.0 @@ FUNC GLOBAL DEFAULT 28 code
+def omp_unset_lock_ OMP_1.0 @ FUNC GLOBAL DEFAULT 4 code
+def omp_unset_lock_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def omp_unset_nest_lock OMP_1.0 @ FUNC GLOBAL DEFAULT 100 code
+def omp_unset_nest_lock OMP_3.0 @@ FUNC GLOBAL DEFAULT 40 code
+def omp_unset_nest_lock_ OMP_1.0 @ FUNC GLOBAL DEFAULT 4 code
+def omp_unset_nest_lock_ OMP_3.0 @@ FUNC GLOBAL DEFAULT 6 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __assert_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_tolower_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_atexit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __getdelim GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __sched_cpucount GLIBC_2.6 libc.so.6 FUNC GLOBAL
+und __sysconf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und aligned_alloc GLIBC_2.16 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und clock_getres GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und clock_gettime GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und dlclose GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlerror GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlopen GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlsym GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gethostname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getloadavg GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_attr_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_attr_getstacksize GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_attr_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_attr_setaffinity_np GLIBC_2.32 libc.so.6 FUNC GLOBAL
+und pthread_attr_setstacksize GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_create GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_detach GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_getaffinity_np GLIBC_2.32 libc.so.6 FUNC GLOBAL
+und pthread_join GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_key_create GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_key_delete GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_once GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_self GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_setaffinity_np GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_setspecific GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und secure_getenv GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und sprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strcasecmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strdup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncasecmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoull GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und syscall GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sysconf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL

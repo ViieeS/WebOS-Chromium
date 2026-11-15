@@ -1,0 +1,169 @@
+tvabi 1
+soname libicuio.so.70
+needed libicuuc.so.70
+needed libicudata.so.70
+needed libicui18n.so.70
+needed libpthread.so.0
+needed libstdc++.so.6
+needed libm.so.6
+needed libgcc_s.so.1
+needed libc.so.6
+def _Z10ufmt_64touPDsPiyhai - - FUNC GLOBAL DEFAULT 198 code
+def _Z10ufmt_uto64PKDsPia - - FUNC GLOBAL DEFAULT 98 code
+def _Z12ufmt_isdigitDsi - - FUNC GLOBAL DEFAULT 26 code
+def _Z14ufile_flush_ioP5UFILE - - FUNC GLOBAL DEFAULT 32 code
+def _Z15ufmt_digitvalueDs - - FUNC GLOBAL DEFAULT 44 code
+def _Z20ufile_close_translitP5UFILE - - FUNC GLOBAL DEFAULT 50 code
+def _Z20ufile_flush_translitP5UFILE - - FUNC GLOBAL DEFAULT 32 code
+def _Z23ufile_fill_uchar_bufferP5UFILE - - FUNC GLOBAL DEFAULT 282 code
+def _Z23ufmt_defaultCPToUnicodePKciPDsi - - FUNC GLOBAL DEFAULT 136 code
+def _Z9ufmt_ptouPDsPiPva - - FUNC GLOBAL DEFAULT 104 code
+def _Z9ufmt_utopPKDsPi - - FUNC GLOBAL DEFAULT 188 code
+def _ZN6icu_70lsERSoRKNS_13UnicodeStringE - - FUNC GLOBAL DEFAULT 194 code
+def _ZN6icu_70rsERSiRNS_13UnicodeStringE - - FUNC GLOBAL DEFAULT 482 code
+def u_fadopt_70 - - FUNC GLOBAL DEFAULT 4 code
+def u_fclose_70 - - FUNC GLOBAL DEFAULT 56 code
+def u_feof_70 - - FUNC GLOBAL DEFAULT 50 code
+def u_fflush_70 - - FUNC GLOBAL DEFAULT 42 code
+def u_fgetConverter_70 - - FUNC GLOBAL DEFAULT 4 code
+def u_fgetNumberFormat_70 - - FUNC GLOBAL DEFAULT 8 code
+def u_fgetc_70 - - FUNC GLOBAL DEFAULT 22 code
+def u_fgetcodepage_70 - - FUNC GLOBAL DEFAULT 38 code
+def u_fgetcx_70 - - FUNC GLOBAL DEFAULT 18 code
+def u_fgetfile_70 - - FUNC GLOBAL DEFAULT 4 code
+def u_fgetlocale_70 - - FUNC GLOBAL DEFAULT 4 code
+def u_fgets_70 - - FUNC GLOBAL DEFAULT 294 code
+def u_file_read_70 - - FUNC GLOBAL DEFAULT 92 code
+def u_file_write_70 - - FUNC GLOBAL DEFAULT 18 code
+def u_file_write_flush_70 - - FUNC GLOBAL DEFAULT 574 code
+def u_finit_70 - - FUNC GLOBAL DEFAULT 4 code
+def u_fopen_70 - - FUNC GLOBAL DEFAULT 46 code
+def u_fopen_u_70 - - FUNC GLOBAL DEFAULT 166 code
+def u_fprintf_70 - - FUNC GLOBAL DEFAULT 28 code
+def u_fprintf_u_70 - - FUNC GLOBAL DEFAULT 28 code
+def u_fputc_70 - - FUNC GLOBAL DEFAULT 76 code
+def u_fputs_70 - - FUNC GLOBAL DEFAULT 44 code
+def u_frewind_70 - - FUNC GLOBAL DEFAULT 38 code
+def u_fscanf_70 - - FUNC GLOBAL DEFAULT 28 code
+def u_fscanf_u_70 - - FUNC GLOBAL DEFAULT 28 code
+def u_fsetcodepage_70 - - FUNC GLOBAL DEFAULT 66 code
+def u_fsetlocale_70 - - FUNC GLOBAL DEFAULT 32 code
+def u_fsettransliterator_70 - - FUNC GLOBAL DEFAULT 132 code
+def u_fstropen_70 - - FUNC GLOBAL DEFAULT 76 code
+def u_fungetc_70 - - FUNC GLOBAL DEFAULT 84 code
+def u_get_stdout_70 - - FUNC GLOBAL DEFAULT 92 code
+def u_locbund_close_70 - - FUNC GLOBAL DEFAULT 48 code
+def u_locbund_getNumberFormat_70 - - FUNC GLOBAL DEFAULT 256 code
+def u_locbund_init_70 - - FUNC GLOBAL DEFAULT 92 code
+def u_printf_70 - - FUNC GLOBAL DEFAULT 36 code
+def u_printf_parse_70 - - FUNC GLOBAL DEFAULT 2060 code
+def u_printf_u_70 - - FUNC GLOBAL DEFAULT 36 code
+def u_scanf_parse_70 - - FUNC GLOBAL DEFAULT 596 code
+def u_snprintf_70 - - FUNC GLOBAL DEFAULT 28 code
+def u_snprintf_u_70 - - FUNC GLOBAL DEFAULT 28 code
+def u_sprintf_70 - - FUNC GLOBAL DEFAULT 32 code
+def u_sprintf_u_70 - - FUNC GLOBAL DEFAULT 32 code
+def u_sscanf_70 - - FUNC GLOBAL DEFAULT 28 code
+def u_sscanf_u_70 - - FUNC GLOBAL DEFAULT 28 code
+def u_vfprintf_70 - - FUNC GLOBAL DEFAULT 106 code
+def u_vfprintf_u_70 - - FUNC GLOBAL DEFAULT 40 code
+def u_vfscanf_70 - - FUNC GLOBAL DEFAULT 106 code
+def u_vfscanf_u_70 - - FUNC GLOBAL DEFAULT 4 code
+def u_vsnprintf_70 - - FUNC GLOBAL DEFAULT 112 code
+def u_vsnprintf_u_70 - - FUNC GLOBAL DEFAULT 120 code
+def u_vsprintf_70 - - FUNC GLOBAL DEFAULT 12 code
+def u_vsprintf_u_70 - - FUNC GLOBAL DEFAULT 12 code
+def u_vsscanf_70 - - FUNC GLOBAL DEFAULT 106 code
+def u_vsscanf_u_70 - - FUNC GLOBAL DEFAULT 96 code
+def ucln_io_registerCleanup_70 - - FUNC GLOBAL DEFAULT 60 code
+def ufile_getch32_70 - - FUNC GLOBAL DEFAULT 104 code
+def ufile_getch_70 - - FUNC GLOBAL DEFAULT 50 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und _ZN6icu_7013UnicodeString7unBogusEv - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeString8doAppendEPKDsii - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringC1EaNS_14ConstChar16PtrEi - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringD1Ev - - FUNC GLOBAL
+und _ZN6icu_7020umtx_initImplPreInitERNS_9UInitOnceE - - FUNC GLOBAL
+und _ZN6icu_7021umtx_initImplPostInitERNS_9UInitOnceE - - FUNC GLOBAL
+und _ZNK6icu_7013UnicodeString7extractEiiPcj - - FUNC GLOBAL
+und _ZNSi3getEv GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSi7putbackEc GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt8ios_base4InitC1Ev GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt8ios_base4InitD1Ev GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZNSt9basic_iosIcSt11char_traitsIcEE5clearESt12_Ios_Iostate GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i GLIBCXX_3.4.9 libstdc++.so.6 FUNC GLOBAL
+und __aeabi_atexit CXXABI_ARM_1.3.3 libstdc++.so.6 FUNC GLOBAL
+und __aeabi_idiv GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_uldivmod GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_end_cleanup CXXABI_1.3 libstdc++.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und __gxx_personality_v0 CXXABI_1.3 libstdc++.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und feof GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fgets GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fileno GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fread GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rewind GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stdout GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und u_UCharsToChars_70 - - FUNC GLOBAL
+und u_charsToUChars_70 - - FUNC GLOBAL
+und u_getDefaultConverter_70 - - FUNC GLOBAL
+und u_isWhitespace_70 - - FUNC GLOBAL
+und u_isspace_70 - - FUNC GLOBAL
+und u_memmove_70 - - FUNC GLOBAL
+und u_memset_70 - - FUNC GLOBAL
+und u_releaseDefaultConverter_70 - - FUNC GLOBAL
+und u_strToLower_70 - - FUNC GLOBAL
+und u_strToUpper_70 - - FUNC GLOBAL
+und u_strlen_70 - - FUNC GLOBAL
+und u_strncpy_70 - - FUNC GLOBAL
+und ucln_registerCleanup_70 - - FUNC GLOBAL
+und ucnv_close_70 - - FUNC GLOBAL
+und ucnv_fromUnicode_70 - - FUNC GLOBAL
+und ucnv_getMaxCharSize_70 - - FUNC GLOBAL
+und ucnv_getMinCharSize_70 - - FUNC GLOBAL
+und ucnv_getName_70 - - FUNC GLOBAL
+und ucnv_open_70 - - FUNC GLOBAL
+und ucnv_reset_70 - - FUNC GLOBAL
+und ucnv_toUnicode_70 - - FUNC GLOBAL
+und uloc_getDefault_70 - - FUNC GLOBAL
+und umtx_lock_70 - - FUNC GLOBAL
+und umtx_unlock_70 - - FUNC GLOBAL
+und unum_clone_70 - - FUNC GLOBAL
+und unum_close_70 - - FUNC GLOBAL
+und unum_formatDouble_70 - - FUNC GLOBAL
+und unum_formatInt64_70 - - FUNC GLOBAL
+und unum_getAttribute_70 - - FUNC GLOBAL
+und unum_getSymbol_70 - - FUNC GLOBAL
+und unum_getTextAttribute_70 - - FUNC GLOBAL
+und unum_open_70 - - FUNC GLOBAL
+und unum_parseDouble_70 - - FUNC GLOBAL
+und unum_parseInt64_70 - - FUNC GLOBAL
+und unum_setAttribute_70 - - FUNC GLOBAL
+und unum_setSymbol_70 - - FUNC GLOBAL
+und unum_setTextAttribute_70 - - FUNC GLOBAL
+und uprv_free_70 - - FUNC GLOBAL
+und uprv_malloc_70 - - FUNC GLOBAL
+und uprv_pow10_70 - - FUNC GLOBAL
+und uprv_realloc_70 - - FUNC GLOBAL
+und uprv_trunc_70 - - FUNC GLOBAL
+und uset_applyPattern_70 - - FUNC GLOBAL
+und uset_close_70 - - FUNC GLOBAL
+und uset_contains_70 - - FUNC GLOBAL
+und uset_open_70 - - FUNC GLOBAL
+und utrans_close_70 - - FUNC GLOBAL
+und utrans_transIncrementalUChars_70 - - FUNC GLOBAL
+und utrans_transUChars_70 - - FUNC GLOBAL

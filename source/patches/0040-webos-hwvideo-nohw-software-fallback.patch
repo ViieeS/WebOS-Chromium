@@ -1,0 +1,68 @@
+# why: Hardware video on webOS 4. When an old-API call fails, the launcher sends NOHW. The renderer that is playing
+# reports a decode error so the page's player can reload, and later renderers use Chromium's software renderer.
+--- a/src/content/renderer/media/cn_ndl_renderer.cc
++++ b/src/content/renderer/media/cn_ndl_renderer.cc
+@@ -14,6 +14,7 @@
+ #include <sys/un.h>
+ #include <unistd.h>
+ 
++#include <atomic>
+ #include <cerrno>
+ #include <algorithm>
+ #include <cmath>
+@@ -74,6 +75,10 @@
+   const char* s = getenv("CN_NDL_API");
+   return s && !strcmp(s, "old");
+ }
++// Set when the launcher sends NOHW (type 9, zero length) after a failed NDL API 1 call (patch 0040). Renderers created
++// after that use Chromium's software renderer.
++constexpr uint32_t kNohw = 9;
++std::atomic<bool> g_cn_hw_failed{false};
+ 
+ class CnNdlRenderer : public media::Renderer {
+  public:
+@@ -497,11 +502,28 @@
+       ticking_ = false;
+       return;
+     }
++    PollNohw();
+     Pump();
+     task_runner_->PostDelayedTask(FROM_HERE, base::BindOnce(&CnNdlRenderer::Tick, weak_.GetWeakPtr()),
+                                   base::Milliseconds(10));
+   }
+ 
++  // NDL API 1 only (patch 0040). The launcher writes NOHW when an old-API call fails. Nothing else is read on this path.
++  // This stream gets one decode error, so the page's player can reload it. Later renderers use software.
++  void PollNohw() {
++    if (fd_ < 0 || !OldNdlApi()) return;
++    uint32_t hdr[2];
++    while (recv(fd_, hdr, sizeof(hdr), MSG_DONTWAIT) == static_cast<ssize_t>(sizeof(hdr))) {
++      if (hdr[0] != kNohw || hdr[1] != 0) continue;
++      g_cn_hw_failed = true;
++      if (fallback_mode_ || nohw_reported_) continue;
++      nohw_reported_ = true;
++      started_ = false;
++      LOG(WARNING) << "cn-ndl: launcher reported an NDL API 1 failure, this stream fails with a decode error";
++      client_->OnError(media::PIPELINE_ERROR_DECODE);
++    }
++  }
++
+   void Pump() {
+     if (!started_ || fallback_mode_) return;
+     const base::TimeDelta now = MediaTime();
+@@ -546,6 +568,7 @@
+   bool video_eos_ = false, audio_eos_ = false, sent_first_video_ = false, accept_audio_ = false;
+   bool video_read_pending_ = false, audio_read_pending_ = false, audio_decode_pending_ = false;
+   bool ticking_ = false;
++  bool nohw_reported_ = false;
+   float volume_ = 1.f;
+   base::TimeDelta base_media_, last_media_, last_video_ts_, last_audio_end_;
+   base::TimeTicks base_wall_, open_wall_;
+@@ -578,6 +601,7 @@
+   auto fallback = fallback_->CreateRenderer(media_task_runner, worker_task_runner, audio_renderer_sink,
+                                             video_renderer_sink, std::move(request_overlay_info_cb),
+                                             target_color_space);
++  if (g_cn_hw_failed.load()) return fallback;
+   return std::make_unique<CnNdlRenderer>(std::move(fallback), media_task_runner, video_renderer_sink, media_log_);
+ }
+ 

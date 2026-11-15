@@ -1,0 +1,145 @@
+tvabi 1
+soname libxkbcommon.so.0
+needed libgcc_s.so.1
+needed libc.so.6
+verdef 1 base libxkbcommon.so.0
+verdef 2 - V_0.5.0
+verdef 3 - V_0.6.0 V_0.5.0
+verdef 4 - V_0.7.0 V_0.6.0
+verdef 5 - V_0.8.0 V_0.7.0
+verdef 6 - V_1.0.0 V_0.8.0
+def xkb_compose_state_feed V_0.5.0 @@ FUNC GLOBAL DEFAULT 94 code
+def xkb_compose_state_get_compose_table V_0.5.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xkb_compose_state_get_one_sym V_0.5.0 @@ FUNC GLOBAL DEFAULT 20 code
+def xkb_compose_state_get_status V_0.5.0 @@ FUNC GLOBAL DEFAULT 38 code
+def xkb_compose_state_get_utf8 V_0.5.0 @@ FUNC GLOBAL DEFAULT 116 code
+def xkb_compose_state_new V_0.5.0 @@ FUNC GLOBAL DEFAULT 40 code
+def xkb_compose_state_ref V_0.5.0 @@ FUNC GLOBAL DEFAULT 8 code
+def xkb_compose_state_reset V_0.5.0 @@ FUNC GLOBAL DEFAULT 6 code
+def xkb_compose_state_unref V_0.5.0 @@ FUNC GLOBAL DEFAULT 36 code
+def xkb_compose_table_new_from_buffer V_0.5.0 @@ FUNC GLOBAL DEFAULT 140 code
+def xkb_compose_table_new_from_file V_0.5.0 @@ FUNC GLOBAL DEFAULT 128 code
+def xkb_compose_table_new_from_locale V_0.5.0 @@ FUNC GLOBAL DEFAULT 312 code
+def xkb_compose_table_ref V_0.5.0 @@ FUNC GLOBAL DEFAULT 8 code
+def xkb_compose_table_unref V_0.5.0 @@ FUNC GLOBAL DEFAULT 68 code
+def xkb_context_get_log_level V_0.5.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xkb_context_get_log_verbosity V_0.5.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xkb_context_get_user_data V_0.5.0 @@ FUNC GLOBAL DEFAULT 6 code
+def xkb_context_include_path_append V_0.5.0 @@ FUNC GLOBAL DEFAULT 280 code
+def xkb_context_include_path_append_default V_0.5.0 @@ FUNC GLOBAL DEFAULT 232 code
+def xkb_context_include_path_clear V_0.5.0 @@ FUNC GLOBAL DEFAULT 102 code
+def xkb_context_include_path_get V_0.5.0 @@ FUNC GLOBAL DEFAULT 24 code
+def xkb_context_include_path_reset_defaults V_0.5.0 @@ FUNC GLOBAL DEFAULT 18 code
+def xkb_context_new V_0.5.0 @@ FUNC GLOBAL DEFAULT 408 code
+def xkb_context_num_include_paths V_0.5.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xkb_context_ref V_0.5.0 @@ FUNC GLOBAL DEFAULT 8 code
+def xkb_context_set_log_fn V_0.5.0 @@ FUNC GLOBAL DEFAULT 20 code
+def xkb_context_set_log_level V_0.5.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xkb_context_set_log_verbosity V_0.5.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xkb_context_set_user_data V_0.5.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xkb_context_unref V_0.5.0 @@ FUNC GLOBAL DEFAULT 48 code
+def xkb_keymap_get_as_string V_0.5.0 @@ FUNC GLOBAL DEFAULT 80 code
+def xkb_keymap_key_by_name V_0.6.0 @@ FUNC GLOBAL DEFAULT 78 code
+def xkb_keymap_key_for_each V_0.5.0 @@ FUNC GLOBAL DEFAULT 62 code
+def xkb_keymap_key_get_mods_for_level V_1.0.0 @@ FUNC GLOBAL DEFAULT 194 code
+def xkb_keymap_key_get_name V_0.6.0 @@ FUNC GLOBAL DEFAULT 36 code
+def xkb_keymap_key_get_syms_by_level V_0.5.0 @@ FUNC GLOBAL DEFAULT 100 code
+def xkb_keymap_key_repeats V_0.5.0 @@ FUNC GLOBAL DEFAULT 32 code
+def xkb_keymap_layout_get_index V_0.5.0 @@ FUNC GLOBAL DEFAULT 52 code
+def xkb_keymap_layout_get_name V_0.5.0 @@ FUNC GLOBAL DEFAULT 26 code
+def xkb_keymap_led_get_index V_0.5.0 @@ FUNC GLOBAL DEFAULT 52 code
+def xkb_keymap_led_get_name V_0.5.0 @@ FUNC GLOBAL DEFAULT 32 code
+def xkb_keymap_max_keycode V_0.5.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xkb_keymap_min_keycode V_0.5.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xkb_keymap_mod_get_index V_0.5.0 @@ FUNC GLOBAL DEFAULT 34 code
+def xkb_keymap_mod_get_name V_0.5.0 @@ FUNC GLOBAL DEFAULT 30 code
+def xkb_keymap_new_from_buffer V_0.5.0 @@ FUNC GLOBAL DEFAULT 180 code
+def xkb_keymap_new_from_file V_0.5.0 @@ FUNC GLOBAL DEFAULT 172 code
+def xkb_keymap_new_from_names V_0.5.0 @@ FUNC GLOBAL DEFAULT 204 code
+def xkb_keymap_new_from_string V_0.5.0 @@ FUNC GLOBAL DEFAULT 36 code
+def xkb_keymap_num_layouts V_0.5.0 @@ FUNC GLOBAL DEFAULT 6 code
+def xkb_keymap_num_layouts_for_key V_0.5.0 @@ FUNC GLOBAL DEFAULT 32 code
+def xkb_keymap_num_leds V_0.5.0 @@ FUNC GLOBAL DEFAULT 6 code
+def xkb_keymap_num_levels_for_key V_0.5.0 @@ FUNC GLOBAL DEFAULT 64 code
+def xkb_keymap_num_mods V_0.5.0 @@ FUNC GLOBAL DEFAULT 6 code
+def xkb_keymap_ref V_0.5.0 @@ FUNC GLOBAL DEFAULT 8 code
+def xkb_keymap_unref V_0.5.0 @@ FUNC GLOBAL DEFAULT 324 code
+def xkb_keysym_from_name V_0.5.0 @@ FUNC GLOBAL DEFAULT 856 code
+def xkb_keysym_get_name V_0.5.0 @@ FUNC GLOBAL DEFAULT 200 code
+def xkb_keysym_to_lower V_0.8.0 @@ FUNC GLOBAL DEFAULT 20 code
+def xkb_keysym_to_upper V_0.8.0 @@ FUNC GLOBAL DEFAULT 20 code
+def xkb_keysym_to_utf32 V_0.5.0 @@ FUNC GLOBAL DEFAULT 192 code
+def xkb_keysym_to_utf8 V_0.5.0 @@ FUNC GLOBAL DEFAULT 32 code
+def xkb_state_get_keymap V_0.5.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xkb_state_key_get_consumed_mods V_0.5.0 @@ FUNC GLOBAL DEFAULT 6 code
+def xkb_state_key_get_consumed_mods2 V_0.7.0 @@ FUNC GLOBAL DEFAULT 84 code
+def xkb_state_key_get_layout V_0.5.0 @@ FUNC GLOBAL DEFAULT 116 code
+def xkb_state_key_get_level V_0.5.0 @@ FUNC GLOBAL DEFAULT 108 code
+def xkb_state_key_get_one_sym V_0.5.0 @@ FUNC GLOBAL DEFAULT 58 code
+def xkb_state_key_get_syms V_0.5.0 @@ FUNC GLOBAL DEFAULT 62 code
+def xkb_state_key_get_utf32 V_0.5.0 @@ FUNC GLOBAL DEFAULT 48 code
+def xkb_state_key_get_utf8 V_0.5.0 @@ FUNC GLOBAL DEFAULT 234 code
+def xkb_state_layout_index_is_active V_0.5.0 @@ FUNC GLOBAL DEFAULT 86 code
+def xkb_state_layout_name_is_active V_0.5.0 @@ FUNC GLOBAL DEFAULT 32 code
+def xkb_state_led_index_is_active V_0.5.0 @@ FUNC GLOBAL DEFAULT 46 code
+def xkb_state_led_name_is_active V_0.5.0 @@ FUNC GLOBAL DEFAULT 28 code
+def xkb_state_mod_index_is_active V_0.5.0 @@ FUNC GLOBAL DEFAULT 48 code
+def xkb_state_mod_index_is_consumed V_0.5.0 @@ FUNC GLOBAL DEFAULT 6 code
+def xkb_state_mod_index_is_consumed2 V_0.7.0 @@ FUNC GLOBAL DEFAULT 66 code
+def xkb_state_mod_indices_are_active V_0.5.0 @@ FUNC GLOBAL DEFAULT 130 code
+def xkb_state_mod_mask_remove_consumed V_0.5.0 @@ FUNC GLOBAL DEFAULT 50 code
+def xkb_state_mod_name_is_active V_0.5.0 @@ FUNC GLOBAL DEFAULT 32 code
+def xkb_state_mod_names_are_active V_0.5.0 @@ FUNC GLOBAL DEFAULT 126 code
+def xkb_state_new V_0.5.0 @@ FUNC GLOBAL DEFAULT 32 code
+def xkb_state_ref V_0.5.0 @@ FUNC GLOBAL DEFAULT 8 code
+def xkb_state_serialize_layout V_0.5.0 @@ FUNC GLOBAL DEFAULT 36 code
+def xkb_state_serialize_mods V_0.5.0 @@ FUNC GLOBAL DEFAULT 36 code
+def xkb_state_unref V_0.5.0 @@ FUNC GLOBAL DEFAULT 42 code
+def xkb_state_update_key V_0.5.0 @@ FUNC GLOBAL DEFAULT 520 code
+def xkb_state_update_mask V_0.5.0 @@ FUNC GLOBAL DEFAULT 250 code
+def xkb_utf32_to_keysym V_1.0.0 @@ FUNC GLOBAL DEFAULT 156 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __assert_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und eaccess GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fileno GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mmap64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und munmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und secure_getenv GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strdup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strndup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strpbrk GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtod GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vasprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vsnprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
