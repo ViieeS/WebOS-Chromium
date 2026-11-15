@@ -1,0 +1,41 @@
+# why: neva builds with USE_SINGLE_WINDOW_MODE, so menus are child windows inside the browser window, but
+# MenuController skips screen fitting on Wayland and uses the display bounds. Submenus opened outside the window
+# and never appeared. Menus now fit into the browser window.
+diff --git a/src/ui/views/controls/menu/menu_controller.cc b/src/ui/views/controls/menu/menu_controller.cc
+index 00f21ac..cabc3ef 100644
+--- a/src/ui/views/controls/menu/menu_controller.cc
++++ b/src/ui/views/controls/menu/menu_controller.cc
+@@ -143,6 +143,12 @@ bool AcceleratorShouldCancelMenu(const ui::Accelerator& accelerator) {
+ #endif
+ 
+ bool ShouldIgnoreScreenBoundsForMenus() {
++#if defined(USE_SINGLE_WINDOW_MODE)
++  // chromium-native (patch 0030): in neva's single-window mode menus are child
++  // windows of the browser's root window, not Wayland popups, so no compositor
++  // moves them back on screen. Views must fit them itself.
++  return false;
++#endif
+ #if BUILDFLAG(IS_OZONE)
+   // Some platforms, such as Wayland, disallow client applications to manipulate
+   // global screen coordinates, requiring menus to be positioned relative to
+@@ -2151,6 +2157,20 @@ void MenuController::UpdateInitialLocation(const gfx::Rect& anchor_bounds,
+       pending_state_.monitor_bounds = display.bounds();
+     }
+   }
++#if defined(USE_SINGLE_WINDOW_MODE) && defined(USE_AURA)
++  // chromium-native (patch 0030): menus can only be drawn inside the browser's
++  // window (1280x720 on the TV) while the display reports the 1920x1080 panel.
++  // Submenus (History, Extensions...) opened to the right of the 3-dot menu,
++  // outside the window, so they were invisible and the selection "vanished".
++  if (owner_ && owner_->GetNativeView() &&
++      owner_->GetNativeView()->GetRootWindow()) {
++    const gfx::Rect window =
++        owner_->GetNativeView()->GetRootWindow()->GetBoundsInScreen();
++    if (!window.IsEmpty()) {
++      pending_state_.monitor_bounds = window;
++    }
++  }
++#endif
+ }
+ 
+ // static

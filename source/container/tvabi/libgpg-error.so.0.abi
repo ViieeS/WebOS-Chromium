@@ -1,0 +1,272 @@
+tvabi 1
+soname libgpg-error.so.0
+needed libgcc_s.so.1
+needed libc.so.6
+verdef 1 base libgpg-error.so.0
+verdef 2 - GPG_ERROR_1.0
+def _gpgrt_get_std_stream GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def _gpgrt_getc_underflow GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def _gpgrt_log_assert GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 6 code
+def _gpgrt_pending GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def _gpgrt_pending_unlocked GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def _gpgrt_putc_overflow GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def _gpgrt_set_std_fd GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpg_err_code_from_errno GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpg_err_code_from_syserror GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpg_err_code_to_errno GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpg_err_deinit GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpg_err_init GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpg_err_set_errno GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpg_error_check_version GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpg_strerror GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpg_strerror_r GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpg_strsource GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_abort GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 6 code
+def gpgrt_absfnameconcat GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 30 code
+def gpgrt_access GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_add_emergency_cleanup GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_argparse GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_argparser GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_asprintf GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 28 code
+def gpgrt_b64dec_finish GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_b64dec_proc GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_b64dec_start GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_b64enc_finish GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_b64enc_start GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_b64enc_write GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_bsprintf GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 38 code
+def gpgrt_calloc GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_chdir GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_check_version GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_clearerr GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_clearerr_unlocked GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_cmp_version GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fcancel GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fclose GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fclose_snatch GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fdopen GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fdopen_nc GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_feof GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_feof_unlocked GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_ferror GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_ferror_unlocked GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fflush GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fgetc GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fgets GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fileno GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fileno_unlocked GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_flockfile GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fname_get GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fname_set GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fnameconcat GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 30 code
+def gpgrt_fopen GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fopencookie GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 50 code
+def gpgrt_fopenmem GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fopenmem_init GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fpopen GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fpopen_nc GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fprintf GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 34 code
+def gpgrt_fprintf_sf GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 30 code
+def gpgrt_fprintf_sf_unlocked GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 30 code
+def gpgrt_fprintf_unlocked GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 34 code
+def gpgrt_fputc GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fputs GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fputs_unlocked GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fread GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_free GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 8 code
+def gpgrt_freopen GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fseek GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fseeko GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_ftell GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_ftello GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_ftruncate GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_ftrylockfile GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_funlockfile GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_fwrite GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_get_errorcount GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_get_nonblock GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_get_syscall_clamp GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_getcwd GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_getenv GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_getline GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_inc_errorcount GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_lock_destroy GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_lock_init GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_lock_lock GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_lock_trylock GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_lock_unlock GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_log GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 28 code
+def gpgrt_log_bug GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 24 code
+def gpgrt_log_clock GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 28 code
+def gpgrt_log_debug GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 30 code
+def gpgrt_log_debug_string GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 40 code
+def gpgrt_log_error GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 30 code
+def gpgrt_log_fatal GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 24 code
+def gpgrt_log_flush GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_log_get_fd GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_log_get_prefix GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_log_get_stream GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_log_info GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 30 code
+def gpgrt_log_printf GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 34 code
+def gpgrt_log_printhex GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 28 code
+def gpgrt_log_set_pid_suffix_cb GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_log_set_prefix GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_log_set_sink GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_log_set_socket_dir_cb GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_log_string GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_log_test_fd GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_logv GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_logv_prefix GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_malloc GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_mkdir GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_mopen GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_onclose GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_opaque_get GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_opaque_set GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_poll GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_printf GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 44 code
+def gpgrt_printf_unlocked GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 44 code
+def gpgrt_read GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_read_line GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_realloc GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_reallocarray GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_rewind GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_set_alloc_func GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_set_binary GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_set_confdir GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_set_fixed_string_mapper GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_set_nonblock GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_set_strusage GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_set_syscall_clamp GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_set_usage_outfnc GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_setbuf GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 16 code
+def gpgrt_setenv GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_setvbuf GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_snprintf GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 28 code
+def gpgrt_strconcat GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 52 code
+def gpgrt_strdup GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_strusage GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_syshd GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_syshd_unlocked GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_sysopen GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_sysopen_nc GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_tmpfile GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_ungetc GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_usage GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_vasprintf GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_vbsprintf GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 28 code
+def gpgrt_vfprintf GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 22 code
+def gpgrt_vfprintf_unlocked GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 22 code
+def gpgrt_vsnprintf GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_write GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_write_hexstring GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_write_sanitized GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+def gpgrt_yield GPG_ERROR_1.0 @@ FUNC GLOBAL DEFAULT 4 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_atexit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __libc_single_threaded GLIBC_2.32 libc.so.6 OBJECT GLOBAL
+und _exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und access GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und bindtextdomain GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und chdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und closedir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und connect GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dcgettext GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dup2 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und execv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fcntl64 GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und ferror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fileno GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und flockfile GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fork GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fread GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fseek GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ftell GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und funlockfile GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getcwd GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und geteuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpwnam GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpwuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getrlimit64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und inet_pton GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und isatty GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und kill GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und localtime GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und lseek64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und nl_langinfo GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und opendir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pipe GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und poll GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_lock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_trylock GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_mutex_unlock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und putenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und qsort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readdir64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sched_yield GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setsid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und socket GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stdin GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stdout GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stpcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcasecmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcspn GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strpbrk GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strspn GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sysconf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und time GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und tmpfile64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und unsetenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und waitpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und write GLIBC_2.4 libc.so.6 FUNC GLOBAL

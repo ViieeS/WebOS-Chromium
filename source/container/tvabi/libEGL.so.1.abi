@@ -1,0 +1,248 @@
+tvabi 1
+soname libEGL.so.1
+needed libgbm.so.1
+needed libglapi.so.0
+needed libexpat.so.1
+needed libdrm.so.2
+needed libwayland-client.so.0
+needed libwayland-server.so.0
+needed libm.so.6
+needed libgcc_s.so.1
+needed libc.so.6
+needed ld-linux.so.3
+def MesaGLInteropEGLExportObject - - FUNC GLOBAL DEFAULT 324 code
+def MesaGLInteropEGLFlushObjects - - FUNC GLOBAL DEFAULT 348 code
+def MesaGLInteropEGLQueryDeviceInfo - - FUNC GLOBAL DEFAULT 316 code
+def eglBindAPI - - FUNC GLOBAL DEFAULT 108 code
+def eglBindTexImage - - FUNC GLOBAL DEFAULT 624 code
+def eglChooseConfig - - FUNC GLOBAL DEFAULT 404 code
+def eglClientWaitSync - - FUNC GLOBAL DEFAULT 188 code
+def eglCopyBuffers - - FUNC GLOBAL DEFAULT 728 code
+def eglCreateContext - - FUNC GLOBAL DEFAULT 808 code
+def eglCreateImage - - FUNC GLOBAL DEFAULT 344 code
+def eglCreatePbufferFromClientBuffer - - FUNC GLOBAL DEFAULT 288 code
+def eglCreatePbufferSurface - - FUNC GLOBAL DEFAULT 664 code
+def eglCreatePixmapSurface - - FUNC GLOBAL DEFAULT 88 code
+def eglCreatePlatformPixmapSurface - - FUNC GLOBAL DEFAULT 324 code
+def eglCreatePlatformWindowSurface - - FUNC GLOBAL DEFAULT 324 code
+def eglCreateSync - - FUNC GLOBAL DEFAULT 104 code
+def eglCreateWindowSurface - - FUNC GLOBAL DEFAULT 88 code
+def eglDestroyContext - - FUNC GLOBAL DEFAULT 444 code
+def eglDestroyImage - - FUNC GLOBAL DEFAULT 188 code
+def eglDestroySurface - - FUNC GLOBAL DEFAULT 612 code
+def eglDestroySync - - FUNC GLOBAL DEFAULT 188 code
+def eglGetConfigAttrib - - FUNC GLOBAL DEFAULT 332 code
+def eglGetConfigs - - FUNC GLOBAL DEFAULT 376 code
+def eglGetCurrentContext - - FUNC GLOBAL DEFAULT 56 code
+def eglGetCurrentDisplay - - FUNC GLOBAL DEFAULT 44 code
+def eglGetCurrentSurface - - FUNC GLOBAL DEFAULT 172 code
+def eglGetDisplay - - FUNC GLOBAL DEFAULT 64 code
+def eglGetError - - FUNC GLOBAL DEFAULT 28 code
+def eglGetPlatformDisplay - - FUNC GLOBAL DEFAULT 204 code
+def eglGetProcAddress - - FUNC GLOBAL DEFAULT 248 code
+def eglGetSyncAttrib - - FUNC GLOBAL DEFAULT 284 code
+def eglInitialize - - FUNC GLOBAL DEFAULT 4392 code
+def eglMakeCurrent - - FUNC GLOBAL DEFAULT 1716 code
+def eglQueryAPI - - FUNC GLOBAL DEFAULT 44 code
+def eglQueryContext - - FUNC GLOBAL DEFAULT 436 code
+def eglQueryString - - FUNC GLOBAL DEFAULT 712 code
+def eglQuerySurface - - FUNC GLOBAL DEFAULT 492 code
+def eglReleaseTexImage - - FUNC GLOBAL DEFAULT 608 code
+def eglReleaseThread - - FUNC GLOBAL DEFAULT 132 code
+def eglSurfaceAttrib - - FUNC GLOBAL DEFAULT 440 code
+def eglSwapBuffers - - FUNC GLOBAL DEFAULT 892 code
+def eglSwapInterval - - FUNC GLOBAL DEFAULT 828 code
+def eglTerminate - - FUNC GLOBAL DEFAULT 656 code
+def eglWaitClient - - FUNC GLOBAL DEFAULT 60 code
+def eglWaitGL - - FUNC GLOBAL DEFAULT 60 code
+def eglWaitNative - - FUNC GLOBAL DEFAULT 520 code
+def eglWaitSync - - FUNC GLOBAL DEFAULT 172 code
+und XML_ErrorString - - FUNC GLOBAL
+und XML_GetBuffer - - FUNC GLOBAL
+und XML_GetErrorCode - - FUNC GLOBAL
+und XML_ParseBuffer - - FUNC GLOBAL
+und XML_ParserCreate - - FUNC GLOBAL
+und XML_ParserFree - - FUNC GLOBAL
+und XML_SetElementHandler - - FUNC GLOBAL
+und XML_SetUserData - - FUNC GLOBAL
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_d2f GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_fadd GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_fcmpeq GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_fcmpge GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_fcmple GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_fmul GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_i2d GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_i2f GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_uidiv GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_uldivmod GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_atexit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __isoc99_sscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und __progname_full GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und __tls_get_addr GLIBC_2.4 ld-linux.so.3 FUNC GLOBAL
+und _glapi_get_proc_address - - FUNC GLOBAL
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und access GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und alphasort64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und asprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und clock_gettime GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dlclose GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlerror GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlopen GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlsym GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und drmAuthMagic - - FUNC GLOBAL
+und drmDevicesEqual - - FUNC GLOBAL
+und drmFreeDevice - - FUNC GLOBAL
+und drmFreeDevices - - FUNC GLOBAL
+und drmFreeVersion - - FUNC GLOBAL
+und drmGetCap - - FUNC GLOBAL
+und drmGetDevice2 - - FUNC GLOBAL
+und drmGetDeviceFromDevId - - FUNC GLOBAL
+und drmGetDeviceNameFromFd2 - - FUNC GLOBAL
+und drmGetDevices2 - - FUNC GLOBAL
+und drmGetMagic - - FUNC GLOBAL
+und drmGetNodeTypeFromFd - - FUNC GLOBAL
+und drmGetPrimaryDeviceNameFromFd - - FUNC GLOBAL
+und drmGetRenderDeviceNameFromFd - - FUNC GLOBAL
+und drmGetVersion - - FUNC GLOBAL
+und drmIoctl - - FUNC GLOBAL
+und exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fcntl64 GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und ferror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und ftruncate64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gbm_bo_create - - FUNC GLOBAL
+und gbm_bo_create_with_modifiers - - FUNC GLOBAL
+und gbm_bo_destroy - - FUNC GLOBAL
+und gbm_bo_get_bpp - - FUNC GLOBAL
+und gbm_create_device - - FUNC GLOBAL
+und gbm_device_destroy - - FUNC GLOBAL
+und gbm_device_get_backend_name - - FUNC GLOBAL
+und gbm_device_get_fd - - FUNC GLOBAL
+und gbm_format_get_name - - FUNC GLOBAL
+und gbm_surface_create - - FUNC GLOBAL
+und gbm_surface_destroy - - FUNC GLOBAL
+und getc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und geteuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ioctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memfd_create GLIBC_2.27 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mincore GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mmap64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und munmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und poll GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pow GLIBC_2.29 libm.so.6 FUNC GLOBAL
+und printf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und program_invocation_name GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und pthread_cancel GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_cond_broadcast GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_signal GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_timedwait GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_wait GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_condattr_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_condattr_setclock GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_create GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_join GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_mutex_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_lock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_unlock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutexattr_destroy GLIBC_2.34 libc.so.6 FUNC WEAK
+und pthread_mutexattr_init GLIBC_2.34 libc.so.6 FUNC WEAK
+und pthread_mutexattr_settype GLIBC_2.34 libc.so.6 FUNC WEAK
+und pthread_once GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_rwlock_init GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_rwlock_rdlock GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_rwlock_unlock GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_rwlock_wrlock GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realpath GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und regcomp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und regexec GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und regfree GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und scandir64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strcasecmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strdup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strndup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strspn GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoll GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und syscall GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sysconf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und system GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vasprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vsnprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und wl_buffer_interface - - OBJECT GLOBAL
+und wl_callback_interface - - OBJECT GLOBAL
+und wl_client_post_no_memory - - FUNC GLOBAL
+und wl_display_cancel_read - - FUNC GLOBAL
+und wl_display_connect - - FUNC GLOBAL
+und wl_display_create_queue - - FUNC GLOBAL
+und wl_display_disconnect - - FUNC GLOBAL
+und wl_display_dispatch_pending - - FUNC GLOBAL
+und wl_display_dispatch_queue - - FUNC GLOBAL
+und wl_display_dispatch_queue_pending - - FUNC GLOBAL
+und wl_display_flush - - FUNC GLOBAL
+und wl_display_get_error - - FUNC GLOBAL
+und wl_display_get_fd - - FUNC GLOBAL
+und wl_display_interface - - OBJECT GLOBAL
+und wl_display_prepare_read_queue - - FUNC GLOBAL
+und wl_display_read_events - - FUNC GLOBAL
+und wl_display_roundtrip_queue - - FUNC GLOBAL
+und wl_event_queue_destroy - - FUNC GLOBAL
+und wl_global_create - - FUNC GLOBAL
+und wl_global_destroy - - FUNC GLOBAL
+und wl_proxy_add_listener - - FUNC GLOBAL
+und wl_proxy_create_wrapper - - FUNC GLOBAL
+und wl_proxy_destroy - - FUNC GLOBAL
+und wl_proxy_get_version - - FUNC GLOBAL
+und wl_proxy_marshal_flags - - FUNC GLOBAL
+und wl_proxy_set_queue - - FUNC GLOBAL
+und wl_proxy_wrapper_destroy - - FUNC GLOBAL
+und wl_registry_interface - - OBJECT GLOBAL
+und wl_resource_create - - FUNC GLOBAL
+und wl_resource_destroy - - FUNC GLOBAL
+und wl_resource_get_user_data - - FUNC GLOBAL
+und wl_resource_instance_of - - FUNC GLOBAL
+und wl_resource_post_error - - FUNC GLOBAL
+und wl_resource_post_event - - FUNC GLOBAL
+und wl_resource_post_no_memory - - FUNC GLOBAL
+und wl_resource_set_implementation - - FUNC GLOBAL
+und wl_shm_interface - - OBJECT GLOBAL
+und wl_shm_pool_interface - - OBJECT GLOBAL
+und wl_surface_interface - - OBJECT GLOBAL

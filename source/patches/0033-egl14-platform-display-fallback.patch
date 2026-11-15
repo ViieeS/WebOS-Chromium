@@ -1,0 +1,63 @@
+# why: Chrome calls eglGetPlatformDisplay (EGL 1.5) without checking that the driver has it, and crashed at GPU start
+# on TVs with EGL 1.4. Fall back to eglGetPlatformDisplayEXT when the driver lists a Wayland platform extension,
+# then to eglGetDisplay, as older Chromium did. EGL 1.5 drivers take the same path as before.
+diff --git a/src/ui/gl/gl_display.cc b/src/ui/gl/gl_display.cc
+--- a/src/ui/gl/gl_display.cc
++++ b/src/ui/gl/gl_display.cc
+@@ -175,8 +175,54 @@
+     case DEFAULT:
+     case SWIFT_SHADER: {
+       if (native_display.GetPlatform() != 0) {
+-        return eglGetPlatformDisplay(native_display.GetPlatform(),
+-                                     reinterpret_cast<void*>(display), nullptr);
++        // chromium-native (patch 0033): eglGetPlatformDisplay is EGL 1.5. The Mali drivers of older LG TVs are
++        // EGL 1.4, so this pointer is null there and Chrome jumped to address 0.
++        if (g_driver_egl.fn.eglGetPlatformDisplayFn) {
++          return eglGetPlatformDisplay(native_display.GetPlatform(),
++                                       reinterpret_cast<void*>(display), nullptr);
++        }
++        // EGL 1.4: eglGetPlatformDisplayEXT only for a platform the driver lists. The LG CX (webOS 5.5, Mali-G51
++        // r9p0) lists EGL_EXT_platform_base but no EGL_EXT/KHR_platform_wayland, and the EXT call returns
++        // EGL_NO_DISPLAY (EGL_BAD_PARAMETER); eglGetDisplay(wl_display) works there.
++        // These lines are LOG(ERROR) only so they reach browser.log (warnings are not written there).
++        const EGLenum platform = native_display.GetPlatform();
++        const char* client_ext_string =
++            eglQueryString(EGL_NO_DISPLAY, EGL_EXTENSIONS);
++        gfx::ExtensionSet client_ext =
++            gfx::MakeExtensionSet(client_ext_string ? client_ext_string : "");
++        bool platform_listed =
++            platform != EGL_PLATFORM_WAYLAND_KHR ||
++            gfx::HasExtension(client_ext, "EGL_EXT_platform_wayland") ||
++            gfx::HasExtension(client_ext, "EGL_KHR_platform_wayland");
++        using CnGetPlatformDisplayEXTProc =
++            EGLDisplay(GL_BINDING_CALL*)(EGLenum, void*, const EGLint*);
++        CnGetPlatformDisplayEXTProc get_platform_display_ext = nullptr;
++        if (platform_listed && g_driver_egl.client_ext.b_EGL_EXT_platform_base &&
++            g_driver_egl.fn.eglGetProcAddressFn) {
++          get_platform_display_ext = reinterpret_cast<CnGetPlatformDisplayEXTProc>(
++              g_driver_egl.fn.eglGetProcAddressFn("eglGetPlatformDisplayEXT"));
++        }
++        if (get_platform_display_ext) {
++          EGLDisplay ext_display = get_platform_display_ext(
++              platform, reinterpret_cast<void*>(display), nullptr);
++          if (ext_display != EGL_NO_DISPLAY) {
++            LOG(ERROR) << "cn: EGL 1.4 driver, display from "
++                          "eglGetPlatformDisplayEXT";
++            return ext_display;
++          }
++          LOG(ERROR) << "cn: eglGetPlatformDisplayEXT gave no display ("
++                     << GetLastEGLErrorString() << "), trying eglGetDisplay";
++        } else {
++          LOG(ERROR) << "cn: EGL 1.4 driver without "
++                     << (platform_listed ? "eglGetPlatformDisplayEXT"
++                                         : "a Wayland platform extension")
++                     << ", using eglGetDisplay";
++        }
++        // EGL_PLATFORM=wayland (run.sh) tells the driver what the native display is.
++        EGLDisplay legacy_display = eglGetDisplay(display);
++        LOG(ERROR) << "cn: eglGetDisplay "
++                   << (legacy_display != EGL_NO_DISPLAY ? "OK" : "gave no display");
++        return legacy_display;
+       }
+       return eglGetDisplay(display);
+     }

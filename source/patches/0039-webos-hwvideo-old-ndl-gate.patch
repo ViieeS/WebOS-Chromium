@@ -1,0 +1,50 @@
+# why: Hardware video on webOS 4 (NDL API 1, CN_NDL_API=old). The old decoder takes only H.264, so the renderer keeps
+# other codecs in software, and no video window is exported, since the old API does not use one.
+--- a/src/content/renderer/media/cn_ndl_renderer.cc
++++ b/src/content/renderer/media/cn_ndl_renderer.cc
+@@ -69,6 +69,11 @@
+   const char* v = getenv(name);
+   return v && *v ? atoi(v) : def;
+ }
++// webOS 4 (NDL API 1, launcher sets CN_NDL_API=old): H.264 only, so other codecs stay in software (patch 0039).
++bool OldNdlApi() {
++  const char* s = getenv("CN_NDL_API");
++  return s && !strcmp(s, "old");
++}
+ 
+ class CnNdlRenderer : public media::Renderer {
+  public:
+@@ -219,6 +224,7 @@
+     if (!video_) return false;  // audio only: software is cheap
+     const auto vc = video_->video_decoder_config();
+     if (!NdlCodec(vc.codec()) || vc.is_encrypted()) return false;
++    if (OldNdlApi() && vc.codec() != media::VideoCodec::kH264) return false;  // chromium-native (patch 0039)
+     if (audio_) {
+       const auto ac = audio_->audio_decoder_config();
+       if (ac.is_encrypted() || !NdlRate(ac.samples_per_second())) return false;
+--- a/src/ui/ozone/platform/wayland/extensions/webos/host/wayland_extensions_webos_impl.cc
++++ b/src/ui/ozone/platform/wayland/extensions/webos/host/wayland_extensions_webos_impl.cc
+@@ -82,6 +82,12 @@
+   return ok;
+ }
+ 
++// NDL API 1 (webOS 4, launcher CN_NDL_API=old) has no wl_webos_foreign: no exported window is made (patch 0039).
++bool CnOldNdlApi() {
++  const char* s = getenv("CN_NDL_API");
++  return s && !strcmp(s, "old");
++}
++
+ void CnAssigned(void* data, wl_webos_exported* exported, const char* window_id, uint32_t exported_type) {
+   g_cn->window_id = window_id ? window_id : "";
+   LOG(WARNING) << "cn-ndl: video window id " << g_cn->window_id;
+@@ -320,8 +326,8 @@
+     input_manager_ = std::make_unique<WebosInputManagerWrapper>(
+         input_manager.release(), connection_);
+   }
+-  // chromium-native (patch 0023): hardware video export (see CnVideoExport above).
+-  if (!g_cn && CnHwVideo() && &wl_webos_foreign_interface != nullptr &&
++  // chromium-native (patch 0023): hardware video export (see CnVideoExport above). Not on NDL API 1 (patch 0039).
++  if (!g_cn && CnHwVideo() && !CnOldNdlApi() && &wl_webos_foreign_interface != nullptr &&
+       strcmp(interface, "wl_webos_foreign") == 0) {
+     g_cn = new CnVideoExport();
+     g_cn->connection = connection_;

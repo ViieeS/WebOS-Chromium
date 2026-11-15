@@ -1,0 +1,21 @@
+# why: WaylandFrameManager waits for OnSurfaceConfigureEvent() before the first frame, but the webOS wl_shell path
+# never calls it, and LSM only shows a window after its first buffer, so nothing was ever drawn. Call it once the
+# wl_shell surface is set up.
+diff --git a/src/ui/ozone/platform/wayland/extensions/webos/host/wayland_shell_surface_wrapper.cc b/src/ui/ozone/platform/wayland/extensions/webos/host/wayland_shell_surface_wrapper.cc
+index 62c93d52b..b33411c79 100644
+--- a/src/ui/ozone/platform/wayland/extensions/webos/host/wayland_shell_surface_wrapper.cc
++++ b/src/ui/ozone/platform/wayland/extensions/webos/host/wayland_shell_surface_wrapper.cc
+@@ -55,6 +55,13 @@ bool WaylandShellSurfaceWrapper::Initialize() {
+                                 this);
+   wl_shell_surface_set_toplevel(shell_surface_.get());
+ 
++  // chromium-native: since ~M130 WaylandFrameManager submits no frame until the
++  // window got OnSurfaceConfigureEvent() (xdg_surface.configure upstream).
++  // wl_shell / wl_webos_shell have no such event and the TV compositor (LSM)
++  // maps a window only after its first buffer, so nothing was ever drawn. The
++  // surface is usable at once (IsConfigured() already returns true here).
++  wayland_window_->OnSurfaceConfigureEvent();
++
+   return true;
+ }
+ void WaylandShellSurfaceWrapper::SetMaximized() {

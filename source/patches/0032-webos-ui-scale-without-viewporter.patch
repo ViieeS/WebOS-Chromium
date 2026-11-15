@@ -1,0 +1,30 @@
+# why: Sharp UI at 1080p. LSM has no wp_viewporter, so per-surface scaling is off, and --force-device-scale-factor only
+# magnified the content of a 1280x720 surface. ui_scale does not need a viewport when the buffer scale is 1, so
+# enable it whenever a scale is forced. run.sh uses a 1920x1080 window with --force-device-scale-factor=1.5
+# (1280x720 DIP).
+diff --git a/src/ui/ozone/platform/wayland/host/wayland_connection.cc b/src/ui/ozone/platform/wayland/host/wayland_connection.cc
+index b2c754a..95e1e3e 100644
+--- a/src/ui/ozone/platform/wayland/host/wayland_connection.cc
++++ b/src/ui/ozone/platform/wayland/host/wayland_connection.cc
+@@ -26,6 +26,7 @@
+ #include "base/trace_event/trace_event.h"
+ #include "third_party/skia/include/core/SkBitmap.h"
+ #include "ui/base/ui_base_features.h"
++#include "ui/display/display.h"  // chromium-native (patch 0032)
+ #include "ui/events/devices/device_data_manager.h"
+ #include "ui/events/devices/input_device.h"
+ #include "ui/events/devices/keyboard_device.h"
+@@ -635,7 +636,12 @@ bool WaylandConnection::UsePerSurfaceScaling() const {
+ }
+ 
+ bool WaylandConnection::IsUiScaleEnabled() const {
+-  return UsePerSurfaceScaling();
++  // chromium-native (patch 0032): LG's compositor has no wp_viewporter, so per-surface scaling is off. With
++  // --force-device-scale-factor (run.sh) the forced scale still becomes the window's ui_scale: the window is
++  // 1920x1080 on the compositor (buffer scale 1, no viewport needed) and Chrome lays out 1280x720 DIP in it, so the
++  // UI keeps its size and is drawn at the panel's resolution. Without this the forced scale only magnified the
++  // content inside a 1280x720 surface (cropped).
++  return UsePerSurfaceScaling() || display::Display::HasForceDeviceScaleFactor();
+ }
+ 
+ bool WaylandConnection::SupportsSessionManagement() const {

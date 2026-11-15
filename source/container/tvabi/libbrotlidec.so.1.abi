@@ -1,0 +1,35 @@
+tvabi 1
+soname libbrotlidec.so.1
+needed libbrotlicommon.so.1
+needed libgcc_s.so.1
+needed libc.so.6
+def BrotliDecoderCreateInstance - - FUNC GLOBAL DEFAULT 112 code
+def BrotliDecoderDecompress - - FUNC GLOBAL DEFAULT 114 code
+def BrotliDecoderDecompressStream - - FUNC GLOBAL DEFAULT 2948 code
+def BrotliDecoderDestroyInstance - - FUNC GLOBAL DEFAULT 28 code
+def BrotliDecoderErrorString - - FUNC GLOBAL DEFAULT 348 code
+def BrotliDecoderGetErrorCode - - FUNC GLOBAL DEFAULT 4 code
+def BrotliDecoderHasMoreOutput - - FUNC GLOBAL DEFAULT 44 code
+def BrotliDecoderIsFinished - - FUNC GLOBAL DEFAULT 26 code
+def BrotliDecoderIsUsed - - FUNC GLOBAL DEFAULT 18 code
+def BrotliDecoderSetParameter - - FUNC GLOBAL DEFAULT 62 code
+def BrotliDecoderTakeOutput - - FUNC GLOBAL DEFAULT 98 code
+def BrotliDecoderVersion - - FUNC GLOBAL DEFAULT 8 code
+und BrotliDefaultAllocFunc - - FUNC GLOBAL
+und BrotliDefaultFreeFunc - - FUNC GLOBAL
+und BrotliGetDictionary - - FUNC GLOBAL
+und BrotliGetTransforms - - FUNC GLOBAL
+und BrotliTransformDictionaryWord - - FUNC GLOBAL
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und _kBrotliContextLookupTable - - OBJECT GLOBAL
+und _kBrotliPrefixCodeRanges - - OBJECT GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL

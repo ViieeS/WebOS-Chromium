@@ -1,0 +1,72 @@
+tvabi 1
+soname libplc4.so
+needed libnspr4.so
+needed libgcc_s.so.1
+needed libc.so.6
+def PL_Base64Decode - - FUNC GLOBAL DEFAULT 146 code
+def PL_Base64Encode - - FUNC GLOBAL DEFAULT 100 code
+def PL_CreateLongOptState - - FUNC GLOBAL DEFAULT 148 code
+def PL_CreateOptState - - FUNC GLOBAL DEFAULT 6 code
+def PL_DestroyOptState - - FUNC GLOBAL DEFAULT 24 code
+def PL_FPrintError - - FUNC GLOBAL DEFAULT 104 code
+def PL_GetNextOpt - - FUNC GLOBAL DEFAULT 496 code
+def PL_PrintError - - FUNC GLOBAL DEFAULT 52 code
+def PL_strcasecmp - - FUNC GLOBAL DEFAULT 100 code
+def PL_strcaserstr - - FUNC GLOBAL DEFAULT 70 code
+def PL_strcasestr - - FUNC GLOBAL DEFAULT 64 code
+def PL_strcat - - FUNC GLOBAL DEFAULT 14 code
+def PL_strcatn - - FUNC GLOBAL DEFAULT 72 code
+def PL_strchr - - FUNC GLOBAL DEFAULT 8 code
+def PL_strcmp - - FUNC GLOBAL DEFAULT 22 code
+def PL_strcpy - - FUNC GLOBAL DEFAULT 16 code
+def PL_strdup - - FUNC GLOBAL DEFAULT 48 code
+def PL_strfree - - FUNC GLOBAL DEFAULT 4 code
+def PL_strlen - - FUNC GLOBAL DEFAULT 8 code
+def PL_strncasecmp - - FUNC GLOBAL DEFAULT 92 code
+def PL_strncaserstr - - FUNC GLOBAL DEFAULT 102 code
+def PL_strncasestr - - FUNC GLOBAL DEFAULT 84 code
+def PL_strncat - - FUNC GLOBAL DEFAULT 50 code
+def PL_strnchr - - FUNC GLOBAL DEFAULT 54 code
+def PL_strncmp - - FUNC GLOBAL DEFAULT 22 code
+def PL_strncpy - - FUNC GLOBAL DEFAULT 44 code
+def PL_strncpyz - - FUNC GLOBAL DEFAULT 76 code
+def PL_strndup - - FUNC GLOBAL DEFAULT 52 code
+def PL_strnlen - - FUNC GLOBAL DEFAULT 38 code
+def PL_strnpbrk - - FUNC GLOBAL DEFAULT 62 code
+def PL_strnprbrk - - FUNC GLOBAL DEFAULT 86 code
+def PL_strnrchr - - FUNC GLOBAL DEFAULT 98 code
+def PL_strnrstr - - FUNC GLOBAL DEFAULT 106 code
+def PL_strnstr - - FUNC GLOBAL DEFAULT 112 code
+def PL_strpbrk - - FUNC GLOBAL DEFAULT 16 code
+def PL_strprbrk - - FUNC GLOBAL DEFAULT 76 code
+def PL_strrchr - - FUNC GLOBAL DEFAULT 8 code
+def PL_strrstr - - FUNC GLOBAL DEFAULT 116 code
+def PL_strstr - - FUNC GLOBAL DEFAULT 24 code
+def PL_strtok_r - - FUNC GLOBAL DEFAULT 106 code
+def libVersionPoint - - FUNC GLOBAL DEFAULT 12 code
+und PR_Calloc - - FUNC GLOBAL
+und PR_ErrorToName - - FUNC GLOBAL
+und PR_Free - - FUNC GLOBAL
+und PR_GetError - - FUNC GLOBAL
+und PR_GetOSError - - FUNC GLOBAL
+und PR_GetSpecialFD - - FUNC GLOBAL
+und PR_Malloc - - FUNC GLOBAL
+und PR_SetError - - FUNC GLOBAL
+und PR_fprintf - - FUNC GLOBAL
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strpbrk GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL

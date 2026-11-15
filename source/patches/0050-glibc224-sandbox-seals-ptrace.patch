@@ -1,0 +1,72 @@
+# why: glibc 2.24 (webOS 4) has no F_ADD_SEALS/F_GET_SEALS/F_SEAL_* constants and, on ARM, no
+# PTRACE_GET_THREAD_AREA/PTRACE_GETVFPREGS. Define the kernel's values in the Linux sandbox files that use them;
+# newer glibc defines the same values.
+--- a/src/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
++++ b/src/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc
+@@ -39,6 +39,36 @@
+ #include "sandbox/linux/system_headers/linux_syscalls.h"
+ #include "sandbox/linux/system_headers/linux_time.h"
+ 
++// chromium-native (patch 0050): glibc < 2.27 (webOS 4 compat sysroot) lacks the memfd seal fcntl constants.
++// Kernel ABI values (include/uapi/linux/fcntl.h); newer glibc defines the same values.
++#ifndef F_ADD_SEALS
++#define F_ADD_SEALS (1024 + 9)
++#endif
++#ifndef F_GET_SEALS
++#define F_GET_SEALS (1024 + 10)
++#endif
++#ifndef F_SEAL_SEAL
++#define F_SEAL_SEAL 0x0001
++#endif
++#ifndef F_SEAL_SHRINK
++#define F_SEAL_SHRINK 0x0002
++#endif
++#ifndef F_SEAL_GROW
++#define F_SEAL_GROW 0x0004
++#endif
++#ifndef F_SEAL_WRITE
++#define F_SEAL_WRITE 0x0008
++#endif
++// glibc < 2.27 on ARM lacks these ptrace requests (kernel ABI, arch/arm/include/uapi/asm/ptrace.h).
++#if defined(__arm__)
++#ifndef PTRACE_GET_THREAD_AREA
++#define PTRACE_GET_THREAD_AREA 22
++#endif
++#ifndef PTRACE_GETVFPREGS
++#define PTRACE_GETVFPREGS 27
++#endif
++#endif
++
+ #if !defined(MAP_DROPPABLE)
+ #define MAP_DROPPABLE 0x08  // Zero memory under memory pressure.
+ #endif
+--- a/src/sandbox/policy/linux/bpf_gpu_policy_linux.cc
++++ b/src/sandbox/policy/linux/bpf_gpu_policy_linux.cc
+@@ -21,6 +21,27 @@
+ #include "sandbox/policy/linux/sandbox_linux.h"
+ #include "sandbox/policy/linux/sandbox_seccomp_bpf_linux.h"
+ 
++// chromium-native (patch 0050): glibc < 2.27 (webOS 4 compat sysroot) lacks the memfd seal fcntl constants.
++// Kernel ABI values (include/uapi/linux/fcntl.h); newer glibc defines the same values.
++#ifndef F_ADD_SEALS
++#define F_ADD_SEALS (1024 + 9)
++#endif
++#ifndef F_GET_SEALS
++#define F_GET_SEALS (1024 + 10)
++#endif
++#ifndef F_SEAL_SEAL
++#define F_SEAL_SEAL 0x0001
++#endif
++#ifndef F_SEAL_SHRINK
++#define F_SEAL_SHRINK 0x0002
++#endif
++#ifndef F_SEAL_GROW
++#define F_SEAL_GROW 0x0004
++#endif
++#ifndef F_SEAL_WRITE
++#define F_SEAL_WRITE 0x0008
++#endif
++
+ using sandbox::bpf_dsl::AllOf;
+ using sandbox::bpf_dsl::Allow;
+ using sandbox::bpf_dsl::Arg;

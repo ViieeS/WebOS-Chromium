@@ -1,0 +1,248 @@
+# why: Hardware video, part 3. LSM shows the video plane only for a video window exported from the app window's own
+# surface. The webOS ozone extension binds wl_webos_foreign, exports a video window from the browser window, sends
+# its id to the launcher and moves it to the hole's rectangle. It unmutes the window only when the launcher found
+# that the compositor accepts that request ($CN_EXPORTED_SET_PROPERTY). No opaque region is set while hardware
+# video is on.
+diff --git a/src/ui/ozone/platform/wayland/extensions/webos/host/wayland_extensions_webos_impl.cc b/src/ui/ozone/platform/wayland/extensions/webos/host/wayland_extensions_webos_impl.cc
+index a0837dba4..aabc05139 100644
+--- a/src/ui/ozone/platform/wayland/extensions/webos/host/wayland_extensions_webos_impl.cc
++++ b/src/ui/ozone/platform/wayland/extensions/webos/host/wayland_extensions_webos_impl.cc
+@@ -19,12 +19,194 @@
+ #include <algorithm>
+ #include <cstring>
+ #include <wayland-webos-extension-client-protocol.h>
++#include <wayland-webos-foreign-client-protocol.h>  // chromium-native (patch 0023)
++
++#include <sys/socket.h>
++#include <sys/un.h>
++#include <unistd.h>
++
++#include <atomic>
++#include <cstdlib>
+ 
+ #include "base/logging.h"
++#include "base/functional/bind.h"
++#include "base/memory/scoped_refptr.h"
++#include "base/task/single_thread_task_runner.h"
++#include "base/time/time.h"
++#include "ui/gfx/geometry/rect.h"
++#include "ui/ozone/platform/wayland/host/wayland_connection.h"
++#include "ui/ozone/platform/wayland/host/wayland_surface.h"
++#include "ui/ozone/platform/wayland/host/wayland_window.h"
++#include "ui/ozone/platform/wayland/host/wayland_window_manager.h"
++#include "ui/platform_window/platform_window_init_properties.h"
+ #include "ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.h"
+ 
+ namespace ui {
+ 
++// chromium-native (patch 0023) ----------------------------------------------------------------------------------
++// Hardware video through the app's launcher (bin/run = cnrun, $CN_MEDIA_SOCK). LSM shows the TV's video plane only
++// for a video window exported from the app's own window surface (one exported by the launcher's separate Wayland
++// connection stayed black), so the browser exports it here, sends the window id to the launcher (WINID) for NDL,
++// and places the plane at viz's video hole rect (cn_video_hole_geometry, called from viz's DirectRenderer).
++namespace {
++constexpr uint32_t kCnWinId = 7, kCnVideoSize = 8;
++struct CnVideoExport {
++  WaylandConnection* connection = nullptr;
++  wl_webos_foreign* foreign = nullptr;
++  wl_webos_exported* exported = nullptr;
++  scoped_refptr<base::SingleThreadTaskRunner> task_runner;
++  std::string window_id;
++  int fd = -1, tries = 0;
++  gfx::Rect last_dst;
++  gfx::Size last_src, video_size;
++  bool unmuted = false;
++};
++CnVideoExport* g_cn = nullptr;
++std::atomic<bool> g_cn_ready{false};
++
++bool CnHwVideo() {
++  const char* s = getenv("CN_MEDIA_SOCK");
++  return s && *s;
++}
++
++// wl_webos_exported.set_property is "since 2" on a version-1 object (LG's protocol). The launcher tests whether this
++// TV's compositor accepts it ($CN_EXPORTED_SET_PROPERTY, cnrun.c probe_set_property); a compositor that checks
++// versions ends our Wayland connection on it. Unset (an older launcher): send it, as before.
++bool CnSetPropertyOk() {
++  static const bool ok = !getenv("CN_EXPORTED_SET_PROPERTY") || *getenv("CN_EXPORTED_SET_PROPERTY") != '0';
++  return ok;
++}
++
++void CnAssigned(void* data, wl_webos_exported* exported, const char* window_id, uint32_t exported_type) {
++  g_cn->window_id = window_id ? window_id : "";
++  LOG(WARNING) << "cn-ndl: video window id " << g_cn->window_id;
++  int fd = socket(AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC, 0);
++  sockaddr_un a{};
++  a.sun_family = AF_UNIX;
++  strncpy(a.sun_path, getenv("CN_MEDIA_SOCK"), sizeof(a.sun_path) - 1);
++  if (fd < 0 || connect(fd, reinterpret_cast<sockaddr*>(&a), sizeof(a)) != 0) {
++    PLOG(ERROR) << "cn-ndl: launcher socket";
++    if (fd >= 0) {
++      close(fd);
++    }
++    return;
++  }
++  uint32_t hdr[2] = {kCnWinId, static_cast<uint32_t>(g_cn->window_id.size())};
++  if (send(fd, hdr, sizeof(hdr), MSG_NOSIGNAL) != sizeof(hdr) ||
++      send(fd, g_cn->window_id.data(), g_cn->window_id.size(), MSG_NOSIGNAL) !=
++          static_cast<ssize_t>(g_cn->window_id.size())) {
++    close(fd);
++    return;
++  }
++  g_cn->fd = fd;
++  // Place and unmute the video window right away, before the launcher's NDL loads a stream: the standalone test
++  // that showed a picture (tools/tv/ndltest2.c "mainsurf") did exactly this; doing it only once a video hole
++  // appeared (after the load) stayed black. Later holes move it (CnSetGeometry).
++  wl_region* source_region = wl_compositor_create_region(g_cn->connection->compositor());
++  wl_region_add(source_region, 0, 0, 1920, 1080);
++  wl_region* dest_region = wl_compositor_create_region(g_cn->connection->compositor());
++  wl_region_add(dest_region, 0, 0, 1920, 1080);
++  wl_webos_exported_set_exported_window(g_cn->exported, source_region, dest_region);
++  wl_region_destroy(dest_region);
++  wl_region_destroy(source_region);
++  if (CnSetPropertyOk()) {
++    wl_webos_exported_set_property(g_cn->exported, "mute", "off");
++  }
++  g_cn->unmuted = true;
++  g_cn->connection->Flush();
++  g_cn_ready.store(true, std::memory_order_release);
++}
++
++void CnMaybeExport() {
++  if (!g_cn || g_cn->exported) {
++    return;
++  }
++  WaylandWindow* owner = nullptr;
++  for (WaylandWindow* w : g_cn->connection->window_manager()->GetAllWindows()) {
++    if (w->type() == PlatformWindowType::kWindow && w->root_surface() && w->root_surface()->surface()) {
++      owner = w;
++      break;
++    }
++  }
++  if (!owner) {
++    if (++g_cn->tries < 240) {
++      g_cn->task_runner->PostDelayedTask(FROM_HERE, base::BindOnce(&CnMaybeExport), base::Milliseconds(500));
++    }
++    return;
++  }
++  // exported type: 0 video_object (default), 2 transparent_object, 3 opaque_object ("always needs to punch through
++  // other windows"). $CN_EXPORT_TYPE is set by the launcher from /tmp/<appid>/media.opts (export=N) for TV tests.
++  const char* et = getenv("CN_EXPORT_TYPE");
++  const uint32_t export_type = (et && *et >= '0' && *et <= '3') ? static_cast<uint32_t>(*et - '0') : 0;
++  g_cn->exported = wl_webos_foreign_export_element(g_cn->foreign, owner->root_surface()->surface(), export_type);
++  LOG(WARNING) << "cn-ndl: export type " << export_type;
++  static const wl_webos_exported_listener kListener = {&CnAssigned};
++  wl_webos_exported_add_listener(g_cn->exported, &kListener, nullptr);
++  g_cn->connection->Flush();
++  LOG(WARNING) << "cn-ndl: exporting video window from the browser window surface";
++}
++
++void CnSetGeometry(const gfx::Rect& dst_window_px) {
++  if (!g_cn || !g_cn->exported || g_cn->fd < 0) {
++    return;
++  }
++  for (;;) {  // VSIZE messages from the launcher (one per new stream); never block
++    uint32_t m[4];
++    if (recv(g_cn->fd, m, sizeof(m), MSG_DONTWAIT | MSG_PEEK) < static_cast<ssize_t>(sizeof(m))) {
++      break;
++    }
++    recv(g_cn->fd, m, sizeof(m), MSG_DONTWAIT);
++    if (m[0] == kCnVideoSize && m[1] == 8) {
++      g_cn->video_size = gfx::Size(static_cast<int>(m[2]), static_cast<int>(m[3]));
++    }
++  }
++  static const double scale = getenv("CN_SCREEN_SCALE") ? strtod(getenv("CN_SCREEN_SCALE"), nullptr) : 1.0;
++  const gfx::Rect dst(static_cast<int>(dst_window_px.x() * scale), static_cast<int>(dst_window_px.y() * scale),
++                      static_cast<int>(dst_window_px.width() * scale),
++                      static_cast<int>(dst_window_px.height() * scale));
++  const gfx::Size src = g_cn->video_size.IsEmpty() ? dst.size() : g_cn->video_size;
++  if (dst == g_cn->last_dst && src == g_cn->last_src) {
++    return;
++  }
++  g_cn->last_dst = dst;
++  g_cn->last_src = src;
++  wl_region* source_region = wl_compositor_create_region(g_cn->connection->compositor());
++  wl_region_add(source_region, 0, 0, src.width(), src.height());
++  wl_region* dest_region = wl_compositor_create_region(g_cn->connection->compositor());
++  wl_region_add(dest_region, dst.x(), dst.y(), dst.width(), dst.height());
++  wl_webos_exported_set_exported_window(g_cn->exported, source_region, dest_region);
++  wl_region_destroy(dest_region);
++  wl_region_destroy(source_region);
++  if (!g_cn->unmuted && CnSetPropertyOk()) {
++    wl_webos_exported_set_property(g_cn->exported, "mute", "off");
++    g_cn->unmuted = true;
++  }
++  g_cn->connection->Flush();
++  // the launcher also tells LG's pipeline (NDL_DirectVideoSetArea) where the picture goes; window pixels like viz
++  struct {
++    uint32_t type, len;
++    uint64_t token[2];
++    int32_t x, y, w, h;
++  } m = {5, 32, {0, 0}, dst_window_px.x(), dst_window_px.y(), dst_window_px.width(), dst_window_px.height()};
++  if (send(g_cn->fd, &m, sizeof(m), MSG_DONTWAIT | MSG_NOSIGNAL) != static_cast<ssize_t>(sizeof(m))) {
++    LOG(WARNING) << "cn-ndl: geometry to launcher failed";
++  }
++  LOG(WARNING) << "cn-ndl: video plane src " << src.ToString() << " -> " << dst.ToString();
++}
++}  // namespace
++
++}  // namespace ui
++
++// chromium-native (patch 0023): called by viz (DirectRenderer, GPU thread) for each frame with a video hole.
++extern "C" void cn_video_hole_geometry(int x, int y, int w, int h) {
++  if (!ui::g_cn_ready.load(std::memory_order_acquire)) {
++    return;
++  }
++  ui::g_cn->task_runner->PostTask(FROM_HERE, base::BindOnce(&ui::CnSetGeometry, gfx::Rect(x, y, w, h)));
++}
++
++namespace ui {
++
+ namespace {
+ 
+ constexpr uint32_t kMaxWlShellVersion = 1;
+@@ -133,6 +315,16 @@ bool WaylandExtensionsWebosImpl::Bind(wl_registry* registry,
+     input_manager_ = std::make_unique<WebosInputManagerWrapper>(
+         input_manager.release(), connection_);
+   }
++  // chromium-native (patch 0023): hardware video export (see CnVideoExport above).
++  if (!g_cn && CnHwVideo() && strcmp(interface, "wl_webos_foreign") == 0) {
++    g_cn = new CnVideoExport();
++    g_cn->connection = connection_;
++    g_cn->foreign = static_cast<wl_webos_foreign*>(
++        wl_registry_bind(registry, name, &wl_webos_foreign_interface, 1));
++    g_cn->task_runner = base::SingleThreadTaskRunner::GetCurrentDefault();
++    g_cn->task_runner->PostDelayedTask(FROM_HERE, base::BindOnce(&CnMaybeExport), base::Milliseconds(500));
++    LOG(WARNING) << "cn-ndl: bound wl_webos_foreign";
++  }
+ #if defined(USE_NEVA_MEDIA) && defined(USE_GAV)
+   if (strcmp(interface, "wl_webos_foreign") == 0) {
+     wl::Object<struct wl_webos_foreign> webos_foreign =
+diff --git a/src/ui/ozone/platform/wayland/host/wayland_surface.cc b/src/ui/ozone/platform/wayland/host/wayland_surface.cc
+index 0efd9ed75..8567e613c 100644
+--- a/src/ui/ozone/platform/wayland/host/wayland_surface.cc
++++ b/src/ui/ozone/platform/wayland/host/wayland_surface.cc
+@@ -4,6 +4,8 @@
+ 
+ #include "ui/ozone/platform/wayland/host/wayland_surface.h"
+ 
++#include <cstdlib>  // chromium-native (patch 0023): getenv
++
+ #include <alpha-compositing-unstable-v1-client-protocol.h>
+ #include <content-type-v1-client-protocol.h>
+ #include <fractional-scale-v1-client-protocol.h>
+@@ -315,6 +317,13 @@ void WaylandSurface::set_surface_buffer_scale(float scale) {
+ 
+ void WaylandSurface::set_opaque_region(
+     std::optional<std::vector<gfx::Rect>> region_px) {
++  // chromium-native (patch 0023): with hardware video the TV shows its video plane through the transparent hole in
++  // our window. An opaque region (Chrome marks the whole browser window opaque) makes LSM hide that plane: audio
++  // played, picture stayed black. The region is only an optimisation hint, so send none at all.
++  static const bool cn_hw_video = getenv("CN_MEDIA_SOCK") && *getenv("CN_MEDIA_SOCK");
++  if (cn_hw_video) {
++    region_px = std::nullopt;
++  }
+   pending_state_.opaque_region_px.clear();
+   if (!root_window_)
+     return;

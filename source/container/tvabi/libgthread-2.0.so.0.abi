@@ -1,0 +1,13 @@
+tvabi 1
+soname libgthread-2.0.so.0
+needed libglib-2.0.so.0
+needed libgcc_s.so.1
+def g_thread_init - - FUNC GLOBAL DEFAULT 28 code
+def g_thread_init_with_errorcheck_mutexes - - FUNC GLOBAL DEFAULT 68 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize - - NOTYPE WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und g_assertion_message_expr - - FUNC GLOBAL
+und g_log - - FUNC GLOBAL

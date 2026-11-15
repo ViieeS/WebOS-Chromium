@@ -1,0 +1,308 @@
+tvabi 1
+soname libicutest.so.70
+needed libicutu.so.70
+needed libicui18n.so.70
+needed libicuuc.so.70
+needed libicudata.so.70
+needed libpthread.so.0
+needed libstdc++.so.6
+needed libm.so.6
+needed libgcc_s.so.1
+needed libc.so.6
+def ERR_MSG - - OBJECT GLOBAL DEFAULT 4 data
+def ICU_TRACE - - OBJECT GLOBAL DEFAULT 4 data
+def MAXIMUM_MEMORY_SIZE_FAILURE - - OBJECT GLOBAL DEFAULT 4 data
+def MINIMUM_MEMORY_SIZE_FAILURE - - OBJECT GLOBAL DEFAULT 4 data
+def QUICK - - OBJECT GLOBAL DEFAULT 4 data
+def REPEAT_TESTS - - OBJECT GLOBAL DEFAULT 4 data
+def REPEAT_TESTS_INIT - - OBJECT GLOBAL DEFAULT 4 data
+def VERBOSITY - - OBJECT GLOBAL DEFAULT 4 data
+def WARN_ON_MISSING_DATA - - OBJECT GLOBAL DEFAULT 4 data
+def WRITE_GOLDEN_DATA - - OBJECT GLOBAL DEFAULT 4 data
+def XML_FILE - - OBJECT GLOBAL DEFAULT 4 data
+def _ZN10RBTestData12nextSettingsERPK7DataMapR10UErrorCode - - FUNC GLOBAL DEFAULT 114 code
+def _ZN10RBTestData8nextCaseERPK7DataMapR10UErrorCode - - FUNC GLOBAL DEFAULT 116 code
+def _ZN10RBTestDataC1EP15UResourceBundleS1_R10UErrorCode - - FUNC GLOBAL DEFAULT 244 code
+def _ZN10RBTestDataC1EPKc - - FUNC GLOBAL DEFAULT 44 code
+def _ZN10RBTestDataC2EP15UResourceBundleS1_R10UErrorCode - - FUNC GLOBAL DEFAULT 244 code
+def _ZN10RBTestDataC2EPKc - - FUNC GLOBAL DEFAULT 44 code
+def _ZN10RBTestDataD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN10RBTestDataD1Ev - - FUNC GLOBAL DEFAULT 60 code
+def _ZN10RBTestDataD2Ev - - FUNC GLOBAL DEFAULT 60 code
+def _ZN13UPerfFunctionD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN13UPerfFunctionD1Ev - - FUNC GLOBAL DEFAULT 2 code
+def _ZN13UPerfFunctionD2Ev - - FUNC GLOBAL DEFAULT 2 code
+def _ZN14TestDataModule17getTestDataModuleEPKcR7TestLogR10UErrorCode - - FUNC GLOBAL DEFAULT 70 code
+def _ZN14TestDataModuleC1EPKcR7TestLogR10UErrorCode - - FUNC GLOBAL DEFAULT 40 code
+def _ZN14TestDataModuleC2EPKcR7TestLogR10UErrorCode - - FUNC GLOBAL DEFAULT 40 code
+def _ZN14TestDataModuleD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN14TestDataModuleD1Ev - - FUNC GLOBAL DEFAULT 40 code
+def _ZN14TestDataModuleD2Ev - - FUNC GLOBAL DEFAULT 40 code
+def _ZN16IcuTestErrorCode19expectErrorAndResetE10UErrorCode - - FUNC GLOBAL DEFAULT 136 code
+def _ZN16IcuTestErrorCode19expectErrorAndResetE10UErrorCodePKcz - - FUNC GLOBAL DEFAULT 176 code
+def _ZN16IcuTestErrorCode20errIfFailureAndResetEPKcz - - FUNC GLOBAL DEFAULT 116 code
+def _ZN16IcuTestErrorCode20errIfFailureAndResetEv - - FUNC GLOBAL DEFAULT 80 code
+def _ZN16IcuTestErrorCode24errDataIfFailureAndResetEPKcz - - FUNC GLOBAL DEFAULT 116 code
+def _ZN16IcuTestErrorCode24errDataIfFailureAndResetEv - - FUNC GLOBAL DEFAULT 80 code
+def _ZN16IcuTestErrorCode8setScopeEPKc - - FUNC GLOBAL DEFAULT 80 code
+def _ZN16IcuTestErrorCode8setScopeERKN6icu_7013UnicodeStringE - - FUNC GLOBAL DEFAULT 6 code
+def _ZN16IcuTestErrorCodeD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN16IcuTestErrorCodeD1Ev - - FUNC GLOBAL DEFAULT 88 code
+def _ZN16IcuTestErrorCodeD2Ev - - FUNC GLOBAL DEFAULT 88 code
+def _ZN16RBTestDataModule13getTestBundleEPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 192 code
+def _ZN16RBTestDataModuleC1EPKcR7TestLogR10UErrorCode - - FUNC GLOBAL DEFAULT 228 code
+def _ZN16RBTestDataModuleC2EPKcR7TestLogR10UErrorCode - - FUNC GLOBAL DEFAULT 228 code
+def _ZN16RBTestDataModuleD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN16RBTestDataModuleD1Ev - - FUNC GLOBAL DEFAULT 60 code
+def _ZN16RBTestDataModuleD2Ev - - FUNC GLOBAL DEFAULT 60 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EE12aliasInsteadEPci - - FUNC WEAK DEFAULT 50 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EE12releaseArrayEv - - FUNC WEAK DEFAULT 14 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EE13orphanOrCloneEiRi - - FUNC WEAK DEFAULT 74 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EE17resetToStackArrayEv - - FUNC WEAK DEFAULT 16 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EE6resizeEii - - FUNC WEAK DEFAULT 86 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EE8copyFromERKS1_R10UErrorCode - - FUNC WEAK DEFAULT 80 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEC1EOS1_ - - FUNC WEAK DEFAULT 54 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEC1Ei10UErrorCode - - FUNC WEAK DEFAULT 96 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEC1Ev - - FUNC WEAK DEFAULT 22 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEC2EOS1_ - - FUNC WEAK DEFAULT 54 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEC2Ei10UErrorCode - - FUNC WEAK DEFAULT 96 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEC2Ev - - FUNC WEAK DEFAULT 22 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EED1Ev - - FUNC WEAK DEFAULT 24 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EED2Ev - - FUNC WEAK DEFAULT 24 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEaSEOS1_ - - FUNC WEAK DEFAULT 72 code
+def _ZN6icu_7015MaybeStackArrayIcLi40EEixEi - - FUNC WEAK DEFAULT 6 code
+def _ZN7DataMapC1Ev - - FUNC GLOBAL DEFAULT 24 code
+def _ZN7DataMapC2Ev - - FUNC GLOBAL DEFAULT 24 code
+def _ZN7DataMapD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN7DataMapD1Ev - - FUNC GLOBAL DEFAULT 2 code
+def _ZN7DataMapD2Ev - - FUNC GLOBAL DEFAULT 2 code
+def _ZN7TestLogD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN7TestLogD1Ev - - FUNC GLOBAL DEFAULT 2 code
+def _ZN7TestLogD2Ev - - FUNC GLOBAL DEFAULT 2 code
+def _ZN8TestDataC1EPKc - - FUNC GLOBAL DEFAULT 56 code
+def _ZN8TestDataC2EPKc - - FUNC GLOBAL DEFAULT 56 code
+def _ZN8TestDataD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN8TestDataD1Ev - - FUNC GLOBAL DEFAULT 60 code
+def _ZN8TestDataD2Ev - - FUNC GLOBAL DEFAULT 60 code
+def _ZN9RBDataMap4initEP15UResourceBundleR10UErrorCode - - FUNC GLOBAL DEFAULT 172 code
+def _ZN9RBDataMap4initEP15UResourceBundleS1_R10UErrorCode - - FUNC GLOBAL DEFAULT 226 code
+def _ZN9RBDataMapC1EP15UResourceBundleR10UErrorCode - - FUNC GLOBAL DEFAULT 172 code
+def _ZN9RBDataMapC1EP15UResourceBundleS1_R10UErrorCode - - FUNC GLOBAL DEFAULT 176 code
+def _ZN9RBDataMapC1Ev - - FUNC GLOBAL DEFAULT 164 code
+def _ZN9RBDataMapC2EP15UResourceBundleR10UErrorCode - - FUNC GLOBAL DEFAULT 172 code
+def _ZN9RBDataMapC2EP15UResourceBundleS1_R10UErrorCode - - FUNC GLOBAL DEFAULT 176 code
+def _ZN9RBDataMapC2Ev - - FUNC GLOBAL DEFAULT 164 code
+def _ZN9RBDataMapD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN9RBDataMapD1Ev - - FUNC GLOBAL DEFAULT 52 code
+def _ZN9RBDataMapD2Ev - - FUNC GLOBAL DEFAULT 52 code
+def _ZN9UPerfTest11runTestLoopEPcS0_ - - FUNC GLOBAL DEFAULT 1600 code
+def _ZN9UPerfTest12gUsageStringE - - OBJECT GLOBAL DEFAULT 1099 data
+def _ZN9UPerfTest14runIndexedTestEiaRPKcPc - - FUNC GLOBAL DEFAULT 44 code
+def _ZN9UPerfTest3runEv - - FUNC GLOBAL DEFAULT 156 code
+def _ZN9UPerfTest4initEP7UOptioniR10UErrorCode - - FUNC GLOBAL DEFAULT 520 code
+def _ZN9UPerfTest5gTestE - - OBJECT GLOBAL DEFAULT 4 data
+def _ZN9UPerfTest5usageEv - - FUNC GLOBAL DEFAULT 224 code
+def _ZN9UPerfTest7runTestEPcS0_ - - FUNC GLOBAL DEFAULT 120 code
+def _ZN9UPerfTest7setPathEPc - - FUNC GLOBAL DEFAULT 4 code
+def _ZN9UPerfTest8callTestERS_Pc - - FUNC GLOBAL DEFAULT 52 code
+def _ZN9UPerfTest8getLinesER10UErrorCode - - FUNC GLOBAL DEFAULT 222 code
+def _ZN9UPerfTest9getBufferERiR10UErrorCode - - FUNC GLOBAL DEFAULT 76 code
+def _ZN9UPerfTest9setCallerEPS_ - - FUNC GLOBAL DEFAULT 14 code
+def _ZN9UPerfTestC1EiPPKcP7UOptioniS1_R10UErrorCode - - FUNC GLOBAL DEFAULT 108 code
+def _ZN9UPerfTestC1EiPPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 104 code
+def _ZN9UPerfTestC2EiPPKcP7UOptioniS1_R10UErrorCode - - FUNC GLOBAL DEFAULT 108 code
+def _ZN9UPerfTestC2EiPPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 104 code
+def _ZN9UPerfTestD0Ev - - FUNC GLOBAL DEFAULT 18 code
+def _ZN9UPerfTestD1Ev - - FUNC GLOBAL DEFAULT 60 code
+def _ZN9UPerfTestD2Ev - - FUNC GLOBAL DEFAULT 60 code
+def _ZNK10RBTestData7getInfoERPK7DataMapR10UErrorCode - - FUNC GLOBAL DEFAULT 12 code
+def _ZNK14TestDataModule7getNameEv - - FUNC GLOBAL DEFAULT 4 code
+def _ZNK16IcuTestErrorCode13handleFailureEv - - FUNC GLOBAL DEFAULT 56 code
+def _ZNK16IcuTestErrorCode6errlogEaRKN6icu_7013UnicodeStringEPKc - - FUNC GLOBAL DEFAULT 424 code
+def _ZNK16RBTestDataModule14createTestDataEPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 132 code
+def _ZNK16RBTestDataModule14createTestDataEiR10UErrorCode - - FUNC GLOBAL DEFAULT 132 code
+def _ZNK16RBTestDataModule7getInfoERPK7DataMapR10UErrorCode - - FUNC GLOBAL DEFAULT 12 code
+def _ZNK6icu_7015MaybeStackArrayIcLi40EE11getCapacityEv - - FUNC WEAK DEFAULT 4 code
+def _ZNK6icu_7015MaybeStackArrayIcLi40EE13getArrayLimitEv - - FUNC WEAK DEFAULT 8 code
+def _ZNK6icu_7015MaybeStackArrayIcLi40EE8getAliasEv - - FUNC WEAK DEFAULT 4 code
+def _ZNK6icu_7015MaybeStackArrayIcLi40EEixEi - - FUNC WEAK DEFAULT 6 code
+def _ZNK7DataMap4utoiERKN6icu_7013UnicodeStringE - - FUNC GLOBAL DEFAULT 64 code
+def _ZNK8TestData7getNameEv - - FUNC GLOBAL DEFAULT 4 code
+def _ZNK9RBDataMap11getIntArrayERiPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 196 code
+def _ZNK9RBDataMap12getIntVectorERiPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 38 code
+def _ZNK9RBDataMap14getStringArrayERiPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 188 code
+def _ZNK9RBDataMap6getIntEPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 78 code
+def _ZNK9RBDataMap7getItemEPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 78 code
+def _ZNK9RBDataMap8getInt28EPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 30 code
+def _ZNK9RBDataMap9getBinaryERiPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 38 code
+def _ZNK9RBDataMap9getStringEPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 72 code
+def _ZNK9RBDataMap9getUInt28EPKcR10UErrorCode - - FUNC GLOBAL DEFAULT 30 code
+def _ZTI10RBTestData - - OBJECT GLOBAL DEFAULT 12 data
+def _ZTI13UPerfFunction - - OBJECT GLOBAL DEFAULT 8 data
+def _ZTI14TestDataModule - - OBJECT GLOBAL DEFAULT 8 data
+def _ZTI16IcuTestErrorCode - - OBJECT GLOBAL DEFAULT 12 data
+def _ZTI16RBTestDataModule - - OBJECT GLOBAL DEFAULT 12 data
+def _ZTI7DataMap - - OBJECT GLOBAL DEFAULT 8 data
+def _ZTI7TestLog - - OBJECT GLOBAL DEFAULT 8 data
+def _ZTI8TestData - - OBJECT GLOBAL DEFAULT 8 data
+def _ZTI9RBDataMap - - OBJECT GLOBAL DEFAULT 12 data
+def _ZTI9UPerfTest - - OBJECT GLOBAL DEFAULT 8 data
+def _ZTS10RBTestData - - OBJECT GLOBAL DEFAULT 13 data
+def _ZTS13UPerfFunction - - OBJECT GLOBAL DEFAULT 16 data
+def _ZTS14TestDataModule - - OBJECT GLOBAL DEFAULT 17 data
+def _ZTS16IcuTestErrorCode - - OBJECT GLOBAL DEFAULT 19 data
+def _ZTS16RBTestDataModule - - OBJECT GLOBAL DEFAULT 19 data
+def _ZTS7DataMap - - OBJECT GLOBAL DEFAULT 9 data
+def _ZTS7TestLog - - OBJECT GLOBAL DEFAULT 9 data
+def _ZTS8TestData - - OBJECT GLOBAL DEFAULT 10 data
+def _ZTS9RBDataMap - - OBJECT GLOBAL DEFAULT 11 data
+def _ZTS9UPerfTest - - OBJECT GLOBAL DEFAULT 11 data
+def _ZTV10RBTestData - - OBJECT GLOBAL DEFAULT 28 data
+def _ZTV13UPerfFunction - - OBJECT GLOBAL DEFAULT 32 data
+def _ZTV14TestDataModule - - OBJECT GLOBAL DEFAULT 28 data
+def _ZTV16IcuTestErrorCode - - OBJECT GLOBAL DEFAULT 20 data
+def _ZTV16RBTestDataModule - - OBJECT GLOBAL DEFAULT 28 data
+def _ZTV7DataMap - - OBJECT GLOBAL DEFAULT 48 data
+def _ZTV7TestLog - - OBJECT GLOBAL DEFAULT 32 data
+def _ZTV8TestData - - OBJECT GLOBAL DEFAULT 28 data
+def _ZTV9RBDataMap - - OBJECT GLOBAL DEFAULT 52 data
+def _ZTV9UPerfTest - - OBJECT GLOBAL DEFAULT 32 data
+def addTest - - FUNC GLOBAL DEFAULT 324 code
+def cleanUpTestTree - - FUNC GLOBAL DEFAULT 286 code
+def ctest_xml_fini - - FUNC GLOBAL DEFAULT 76 code
+def ctest_xml_init - - FUNC GLOBAL DEFAULT 236 code
+def ctest_xml_setFileName - - FUNC GLOBAL DEFAULT 20 code
+def ctest_xml_testcase - - FUNC GLOBAL DEFAULT 112 code
+def deleteResBund - - FUNC GLOBAL DEFAULT 10 code
+def getTest - - FUNC GLOBAL DEFAULT 120 code
+def getTestName - - FUNC GLOBAL DEFAULT 16 code
+def getTestOption - - FUNC GLOBAL DEFAULT 116 code
+def initArgs - - FUNC GLOBAL DEFAULT 1068 code
+def log_data_err - - FUNC GLOBAL DEFAULT 140 code
+def log_err - - FUNC GLOBAL DEFAULT 128 code
+def log_err_status - - FUNC GLOBAL DEFAULT 280 code
+def log_info - - FUNC GLOBAL DEFAULT 30 code
+def log_knownIssue - - FUNC GLOBAL DEFAULT 28 code
+def log_verbose - - FUNC GLOBAL DEFAULT 28 code
+def runTestRequest - - FUNC GLOBAL DEFAULT 420 code
+def runTests - - FUNC GLOBAL DEFAULT 440 code
+def setTestOption - - FUNC GLOBAL DEFAULT 116 code
+def showTests - - FUNC GLOBAL DEFAULT 44 code
+def str_timeDelta - - FUNC GLOBAL DEFAULT 272 code
+def uprv_dummyFunction_CT - - FUNC GLOBAL DEFAULT 4 code
+def vlog_info - - FUNC GLOBAL DEFAULT 188 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und _ZN6icu_7013UnicodeString8doAppendEPKDsii - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeString8doAppendERKS0_ii - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringC1EPKDs - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringC1EPKDsi - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringC1EPKc - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringC1EPKciNS0_10EInvariantE - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringC1ERKS0_ - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringC1EaNS_14ConstChar16PtrEi - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringD1Ev - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringaSEOS0_ - - FUNC GLOBAL
+und _ZN6icu_7013UnicodeStringaSERKS0_ - - FUNC GLOBAL
+und _ZN6icu_7014ResourceBundleC1EP15UResourceBundleR10UErrorCode - - FUNC GLOBAL
+und _ZN6icu_707UMemorydlEPv - - FUNC GLOBAL
+und _ZN6icu_707UMemorynaEj - - FUNC GLOBAL
+und _ZN6icu_707UMemorynwEj - - FUNC GLOBAL
+und _ZN6icu_709ErrorCode5resetEv - - FUNC GLOBAL
+und _ZN6icu_709ErrorCodeD2Ev - - FUNC GLOBAL
+und _ZN6icu_70plERKNS_13UnicodeStringES2_ - - FUNC GLOBAL
+und _ZNK6icu_7014ResourceBundle11getStringExEiR10UErrorCode - - FUNC GLOBAL
+und _ZNK6icu_7014ResourceBundle12getIntVectorERiR10UErrorCode - - FUNC GLOBAL
+und _ZNK6icu_7014ResourceBundle6getIntER10UErrorCode - - FUNC GLOBAL
+und _ZNK6icu_7014ResourceBundle7getSizeEv - - FUNC GLOBAL
+und _ZNK6icu_7014ResourceBundle7getUIntER10UErrorCode - - FUNC GLOBAL
+und _ZNK6icu_7014ResourceBundle9getBinaryERiR10UErrorCode - - FUNC GLOBAL
+und _ZNK6icu_7014ResourceBundle9getStringER10UErrorCode - - FUNC GLOBAL
+und _ZNK6icu_709ErrorCode9errorNameEv - - FUNC GLOBAL
+und _ZTIN6icu_709ErrorCodeE - - OBJECT GLOBAL
+und _ZTVN10__cxxabiv117__class_type_infoE CXXABI_1.3 libstdc++.so.6 OBJECT GLOBAL
+und _ZTVN10__cxxabiv120__si_class_type_infoE CXXABI_1.3 libstdc++.so.6 OBJECT GLOBAL
+und _ZTVN6icu_7013UnicodeStringE - - OBJECT GLOBAL
+und _ZdaPv GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _ZdlPv GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _Znaj GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und _Znwj GLIBCXX_3.4 libstdc++.so.6 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_end_cleanup CXXABI_1.3 libstdc++.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __cxa_pure_virtual CXXABI_1.3 libstdc++.so.6 FUNC WEAK
+und __cxa_throw_bad_array_new_length CXXABI_1.3.8 libstdc++.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __gxx_personality_v0 CXXABI_1.3 libstdc++.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gettimeofday GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und perror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und printf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und putc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und puts GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stdout GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strcat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und u_UCharsToChars_70 - - FUNC GLOBAL
+und u_errorName_70 - - FUNC GLOBAL
+und u_parseArgs - - FUNC GLOBAL
+und u_setMemoryFunctions_70 - - FUNC GLOBAL
+und u_strncpy_70 - - FUNC GLOBAL
+und ucbuf_close - - FUNC GLOBAL
+und ucbuf_getBuffer - - FUNC GLOBAL
+und ucbuf_open - - FUNC GLOBAL
+und ucbuf_readline - - FUNC GLOBAL
+und ucbuf_resolveFileName - - FUNC GLOBAL
+und ucbuf_size - - FUNC GLOBAL
+und udbg_knownIssue_close - - FUNC GLOBAL
+und udbg_knownIssue_open - - FUNC GLOBAL
+und udbg_knownIssue_print - - FUNC GLOBAL
+und uhash_close_70 - - FUNC GLOBAL
+und uhash_compareCaselessUnicodeString_70 - - FUNC GLOBAL
+und uhash_get_70 - - FUNC GLOBAL
+und uhash_hashCaselessUnicodeString_70 - - FUNC GLOBAL
+und uhash_init_70 - - FUNC GLOBAL
+und uhash_put_70 - - FUNC GLOBAL
+und uhash_removeAll_70 - - FUNC GLOBAL
+und uhash_setKeyDeleter_70 - - FUNC GLOBAL
+und uhash_setValueDeleter_70 - - FUNC GLOBAL
+und uprv_deleteUObject_70 - - FUNC GLOBAL
+und uprv_floor_70 - - FUNC GLOBAL
+und uprv_free_70 - - FUNC GLOBAL
+und uprv_getRawUTCtime_70 - - FUNC GLOBAL
+und uprv_malloc_70 - - FUNC GLOBAL
+und ures_close_70 - - FUNC GLOBAL
+und ures_getByIndex_70 - - FUNC GLOBAL
+und ures_getByKey_70 - - FUNC GLOBAL
+und ures_getKey_70 - - FUNC GLOBAL
+und ures_getSize_70 - - FUNC GLOBAL
+und ures_getStringByIndex_70 - - FUNC GLOBAL
+und ures_openDirect_70 - - FUNC GLOBAL
+und utrace_format_70 - - FUNC GLOBAL
+und utrace_functionName_70 - - FUNC GLOBAL
+und utrace_setFunctions_70 - - FUNC GLOBAL
+und utrace_setLevel_70 - - FUNC GLOBAL
+und utrace_vformat_70 - - FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vsprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL

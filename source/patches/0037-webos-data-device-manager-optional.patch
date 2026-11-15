@@ -1,0 +1,129 @@
+# why: webOS 4 TVs have no wl_data_device_manager, so the data and window drag controllers are never created, and
+# several callers dereferenced them without a check. Each caller now checks and returns the no-drag result.
+--- a/src/ui/ozone/platform/wayland/host/wayland_window.cc
++++ b/src/ui/ozone/platform/wayland/host/wayland_window.cc
+@@ -409,7 +409,9 @@
+     base::OnceClosure drag_started_callback,
+     WmDragHandler::DragFinishedCallback drag_finished_callback,
+     WmDragHandler::LocationDelegate* location_delegate) {
+-  if (!connection_->data_drag_controller()->StartSession(data, operations,
++  // chromium-native (patch 0037): no drag controller without wl_data_device_manager.
++  if (!connection_->data_drag_controller() ||
++      !connection_->data_drag_controller()->StartSession(data, operations,
+                                                          source)) {
+     return false;
+   }
+@@ -432,7 +434,9 @@
+ 
+ void WaylandWindow::UpdateDragImage(const gfx::ImageSkia& image,
+                                     const gfx::Vector2d& offset) {
+-  if (connection_->data_drag_controller()->IsDragInProgress()) {
++  // chromium-native (patch 0037): no drag controller without wl_data_device_manager.
++  if (connection_->data_drag_controller() &&
++      connection_->data_drag_controller()->IsDragInProgress()) {
+     connection_->data_drag_controller()->UpdateDragImage(image, offset);
+   }
+ }
+@@ -443,7 +447,10 @@
+   // this is an incoming drag session, there is no drag loop to quit (because
+   // that's only set up in `StartDrag()`, i.e. for outgoing sessions), so we
+   // don't need to do anything else here.
+-  connection_->data_drag_controller()->CancelSession();
++  // chromium-native (patch 0037): no drag controller without wl_data_device_manager.
++  if (connection_->data_drag_controller()) {
++    connection_->data_drag_controller()->CancelSession();
++  }
+ }
+ 
+ void WaylandWindow::Show(bool inactive) {
+@@ -1097,8 +1104,10 @@
+   // the data drag controller.
+   // TODO: crbug.com/40238145 - Refactor this per discussion at
+   // crrev.com/c/5570335/comment/0b8811fc_818028c9/.
+-  if (alive &&
+-      !connection()->data_drag_controller()->IsWindowDragSessionRunning()) {
++  // chromium-native (patch 0037): with no drag controller, no window drag session can be running.
++  auto* data_drag_controller = connection()->data_drag_controller();
++  if (alive && !(data_drag_controller &&
++                 data_drag_controller->IsWindowDragSessionRunning())) {
+     connection()->event_source()->ReleasePressedPointerButtons(
+         this, EventTimeForNow());
+   }
+--- a/src/ui/ozone/platform/wayland/host/wayland_toplevel_window.cc
++++ b/src/ui/ozone/platform/wayland/host/wayland_toplevel_window.cc
+@@ -832,31 +832,46 @@
+ 
+ bool WaylandToplevelWindow::IsClientControlledWindowMovementSupported() const {
+   auto* window_drag_controller = connection()->window_drag_controller();
+-  DCHECK(window_drag_controller);
++  // chromium-native (patch 0037): no drag controller without wl_data_device_manager.
++  if (!window_drag_controller) {
++    return false;
++  }
+   return window_drag_controller->IsWindowDragProtocolAvailable();
+ }
+ 
+ bool WaylandToplevelWindow::ShouldReleaseCaptureForDrag(
+     ui::OSExchangeData* data) const {
+   auto* data_drag_controller = connection()->data_drag_controller();
+-  DCHECK(data_drag_controller);
++  // chromium-native (patch 0037): no drag controller without wl_data_device_manager.
++  if (!data_drag_controller) {
++    return false;
++  }
+   return data_drag_controller->ShouldReleaseCaptureForDrag(data);
+ }
+ 
+ bool WaylandToplevelWindow::RunMoveLoop(const gfx::Vector2d& drag_offset) {
+-  DCHECK(connection()->window_drag_controller());
++  // chromium-native (patch 0037): no drag controller without wl_data_device_manager.
++  if (!connection()->window_drag_controller()) {
++    return false;
++  }
+   return connection()->window_drag_controller()->Drag(this, drag_offset);
+ }
+ 
+ void WaylandToplevelWindow::EndMoveLoop() {
+-  DCHECK(connection()->window_drag_controller());
++  // chromium-native (patch 0037): no drag controller without wl_data_device_manager.
++  if (!connection()->window_drag_controller()) {
++    return;
++  }
+   connection()->window_drag_controller()->StopDragging();
+ }
+ 
+ void WaylandToplevelWindow::StartWindowDraggingSessionIfNeeded(
+     ui::mojom::DragEventSource event_source,
+     bool allow_system_drag) {
+-  DCHECK(connection()->window_drag_controller());
++  // chromium-native (patch 0037): no drag controller without wl_data_device_manager.
++  if (!connection()->window_drag_controller()) {
++    return;
++  }
+   // If extended-drag and xdg-toplevel-drag are not available and
+   // |allow_system_drag| is set, this is no-op and WaylandDataDragController is
+   // assumed to be used instead. i.e: Fallback to a simpler window drag UX based
+--- a/src/ui/ozone/platform/wayland/host/wayland_event_source.cc
++++ b/src/ui/ozone/platform/wayland/host/wayland_event_source.cc
+@@ -960,7 +960,9 @@
+ void WaylandEventSource::OnTouchFocusChanged(WaylandWindow* window) {
+   // If a window dragging session is active (and touch-based), transfer the
+   // touch points to it.
+-  auto drag_source = connection_->window_drag_controller()->drag_source();
++  // chromium-native (patch 0037): no drag controller without wl_data_device_manager.
++  auto* window_drag_controller = connection_->window_drag_controller();
++  auto drag_source = window_drag_controller ? window_drag_controller->drag_source() : std::nullopt;
+   if (drag_source && window) {
+     DCHECK_EQ(*drag_source, mojom::DragEventSource::kTouch);
+     for (auto& touch_point : touch_points_) {
+@@ -1121,7 +1123,9 @@
+   // If a window dragging session is active and is touch-based, verify if there
+   // is a valid target window to transfer the touch points to.
+   if (auto* target_window = window_manager_->GetCurrentTouchFocusedWindow()) {
+-    auto drag_source = connection_->window_drag_controller()->drag_source();
++    // chromium-native (patch 0037): no drag controller without wl_data_device_manager.
++    auto* window_drag_controller = connection_->window_drag_controller();
++    auto drag_source = window_drag_controller ? window_drag_controller->drag_source() : std::nullopt;
+     if (drag_source && *drag_source == mojom::DragEventSource::kTouch) {
+       for (auto& touch_point : touch_points_) {
+         touch_point.second->window = target_window;

@@ -1,0 +1,55 @@
+tvabi 1
+soname libgmodule-2.0.so.0
+needed libglib-2.0.so.0
+needed libgcc_s.so.1
+needed libc.so.6
+def g_module_build_path - - FUNC GLOBAL DEFAULT 164 code
+def g_module_close - - FUNC GLOBAL DEFAULT 288 code
+def g_module_error - - FUNC GLOBAL DEFAULT 12 code
+def g_module_error_quark - - FUNC GLOBAL DEFAULT 32 code
+def g_module_make_resident - - FUNC GLOBAL DEFAULT 40 code
+def g_module_name - - FUNC GLOBAL DEFAULT 72 code
+def g_module_open - - FUNC GLOBAL DEFAULT 6 code
+def g_module_open_full - - FUNC GLOBAL DEFAULT 1760 code
+def g_module_supported - - FUNC GLOBAL DEFAULT 36 code
+def g_module_symbol - - FUNC GLOBAL DEFAULT 336 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dlclose GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlerror GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlopen GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und dlsym GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und g_assertion_message_expr - - FUNC GLOBAL
+und g_file_test - - FUNC GLOBAL
+und g_filename_display_name - - FUNC GLOBAL
+und g_free - - FUNC GLOBAL
+und g_getenv - - FUNC GLOBAL
+und g_malloc - - FUNC GLOBAL
+und g_parse_debug_string - - FUNC GLOBAL
+und g_path_get_dirname - - FUNC GLOBAL
+und g_private_get - - FUNC GLOBAL
+und g_private_replace - - FUNC GLOBAL
+und g_quark_from_static_string - - FUNC GLOBAL
+und g_rec_mutex_lock - - FUNC GLOBAL
+und g_rec_mutex_unlock - - FUNC GLOBAL
+und g_return_if_fail_warning - - FUNC GLOBAL
+und g_scanner_destroy - - FUNC GLOBAL
+und g_scanner_eof - - FUNC GLOBAL
+und g_scanner_get_next_token - - FUNC GLOBAL
+und g_scanner_input_file - - FUNC GLOBAL
+und g_scanner_new - - FUNC GLOBAL
+und g_scanner_scope_add_symbol - - FUNC GLOBAL
+und g_set_error_literal - - FUNC GLOBAL
+und g_str_has_suffix - - FUNC GLOBAL
+und g_strconcat - - FUNC GLOBAL
+und g_strdup - - FUNC GLOBAL
+und g_strdup_printf - - FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL

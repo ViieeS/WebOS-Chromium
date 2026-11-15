@@ -1,0 +1,867 @@
+tvabi 1
+soname libsystemd.so.0
+needed libzstd.so.1
+needed libcap.so.2
+needed libgcc_s.so.1
+needed libc.so.6
+needed ld-linux.so.3
+verdef 1 base libsystemd.so.0
+verdef 2 - LIBSYSTEMD_209
+verdef 3 - LIBSYSTEMD_211 LIBSYSTEMD_209
+verdef 4 - LIBSYSTEMD_213 LIBSYSTEMD_211
+verdef 5 - LIBSYSTEMD_214 LIBSYSTEMD_213
+verdef 6 - LIBSYSTEMD_216 LIBSYSTEMD_214
+verdef 7 - LIBSYSTEMD_217 LIBSYSTEMD_216
+verdef 8 - LIBSYSTEMD_219 LIBSYSTEMD_217
+verdef 9 - LIBSYSTEMD_220 LIBSYSTEMD_219
+verdef 10 - LIBSYSTEMD_221 LIBSYSTEMD_220
+verdef 11 - LIBSYSTEMD_222 LIBSYSTEMD_221
+verdef 12 - LIBSYSTEMD_226 LIBSYSTEMD_222
+verdef 13 - LIBSYSTEMD_227 LIBSYSTEMD_226
+verdef 14 - LIBSYSTEMD_229 LIBSYSTEMD_227
+verdef 15 - LIBSYSTEMD_230 LIBSYSTEMD_229
+verdef 16 - LIBSYSTEMD_231 LIBSYSTEMD_230
+verdef 17 - LIBSYSTEMD_232 LIBSYSTEMD_231
+verdef 18 - LIBSYSTEMD_233 LIBSYSTEMD_232
+verdef 19 - LIBSYSTEMD_234 LIBSYSTEMD_233
+verdef 20 - LIBSYSTEMD_236 LIBSYSTEMD_234
+verdef 21 - LIBSYSTEMD_237 LIBSYSTEMD_236
+verdef 22 - LIBSYSTEMD_238 LIBSYSTEMD_237
+verdef 23 - LIBSYSTEMD_239 LIBSYSTEMD_238
+verdef 24 - LIBSYSTEMD_240 LIBSYSTEMD_239
+verdef 25 - LIBSYSTEMD_241 LIBSYSTEMD_240
+verdef 26 - LIBSYSTEMD_243 LIBSYSTEMD_241
+verdef 27 - LIBSYSTEMD_245 LIBSYSTEMD_243
+verdef 28 - LIBSYSTEMD_246 LIBSYSTEMD_245
+verdef 29 - LIBSYSTEMD_247 LIBSYSTEMD_246
+verdef 30 - LIBSYSTEMD_248 LIBSYSTEMD_247
+verdef 31 - LIBSYSTEMD_249 LIBSYSTEMD_248
+verdef 32 - LIBSYSTEMD_250 LIBSYSTEMD_249
+def sd_booted LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 92 code
+def sd_bus_add_fallback LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 24 code
+def sd_bus_add_fallback_vtable LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 28 code
+def sd_bus_add_filter LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 276 code
+def sd_bus_add_match LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 26 code
+def sd_bus_add_match_async LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 30 code
+def sd_bus_add_node_enumerator LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 360 code
+def sd_bus_add_object LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 24 code
+def sd_bus_add_object_manager LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 312 code
+def sd_bus_add_object_vtable LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 26 code
+def sd_bus_attach_event LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 480 code
+def sd_bus_call LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 1280 code
+def sd_bus_call_async LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 752 code
+def sd_bus_call_method LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 92 code
+def sd_bus_call_method_async LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 96 code
+def sd_bus_call_method_asyncv LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 324 code
+def sd_bus_call_methodv LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 348 code
+def sd_bus_can_send LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 232 code
+def sd_bus_close LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 76 code
+def sd_bus_close_unref LIBSYSTEMD_241 @@ FUNC GLOBAL DEFAULT 22 code
+def sd_bus_creds_get_audit_login_uid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 128 code
+def sd_bus_creds_get_audit_session_id LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 120 code
+def sd_bus_creds_get_augmented_mask LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_creds_get_cgroup LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 144 code
+def sd_bus_creds_get_cmdline LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 100 code
+def sd_bus_creds_get_comm LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 144 code
+def sd_bus_creds_get_description LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 184 code
+def sd_bus_creds_get_egid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 104 code
+def sd_bus_creds_get_euid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 104 code
+def sd_bus_creds_get_exe LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 116 code
+def sd_bus_creds_get_fsgid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 104 code
+def sd_bus_creds_get_fsuid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 104 code
+def sd_bus_creds_get_gid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 104 code
+def sd_bus_creds_get_mask LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_creds_get_owner_uid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 220 code
+def sd_bus_creds_get_pid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 148 code
+def sd_bus_creds_get_ppid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 116 code
+def sd_bus_creds_get_selinux_context LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 104 code
+def sd_bus_creds_get_session LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 244 code
+def sd_bus_creds_get_sgid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 104 code
+def sd_bus_creds_get_slice LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 244 code
+def sd_bus_creds_get_suid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 104 code
+def sd_bus_creds_get_supplementary_gids LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 108 code
+def sd_bus_creds_get_tid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 148 code
+def sd_bus_creds_get_tid_comm LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 144 code
+def sd_bus_creds_get_tty LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 116 code
+def sd_bus_creds_get_uid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 104 code
+def sd_bus_creds_get_unique_name LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 108 code
+def sd_bus_creds_get_unit LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 244 code
+def sd_bus_creds_get_user_slice LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 244 code
+def sd_bus_creds_get_user_unit LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 244 code
+def sd_bus_creds_get_well_known_names LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 152 code
+def sd_bus_creds_has_bounding_cap LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_bus_creds_has_effective_cap LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_bus_creds_has_inheritable_cap LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_bus_creds_has_permitted_cap LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_bus_creds_new_from_pid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 240 code
+def sd_bus_creds_ref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 64 code
+def sd_bus_creds_unref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 176 code
+def sd_bus_default LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 208 code
+def sd_bus_default_flush_close LIBSYSTEMD_227 @@ FUNC GLOBAL DEFAULT 100 code
+def sd_bus_default_system LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 156 code
+def sd_bus_default_user LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 156 code
+def sd_bus_detach_event LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 176 code
+def sd_bus_emit_interfaces_added LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 480 code
+def sd_bus_emit_interfaces_added_strv LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 1008 code
+def sd_bus_emit_interfaces_removed LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 480 code
+def sd_bus_emit_interfaces_removed_strv LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 388 code
+def sd_bus_emit_object_added LIBSYSTEMD_222 @@ FUNC GLOBAL DEFAULT 1000 code
+def sd_bus_emit_object_removed LIBSYSTEMD_222 @@ FUNC GLOBAL DEFAULT 992 code
+def sd_bus_emit_properties_changed LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 520 code
+def sd_bus_emit_properties_changed_strv LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 652 code
+def sd_bus_emit_signal LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 80 code
+def sd_bus_emit_signalv LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 300 code
+def sd_bus_enqueue_for_read LIBSYSTEMD_245 @@ FUNC GLOBAL DEFAULT 292 code
+def sd_bus_error_add_map LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 224 code
+def sd_bus_error_copy LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 136 code
+def sd_bus_error_free LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 46 code
+def sd_bus_error_get_errno LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 14 code
+def sd_bus_error_has_name LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 50 code
+def sd_bus_error_has_names_sentinel LIBSYSTEMD_247 @@ FUNC GLOBAL DEFAULT 108 code
+def sd_bus_error_is_set LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 12 code
+def sd_bus_error_move LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 66 code
+def sd_bus_error_set LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 152 code
+def sd_bus_error_set_const LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 80 code
+def sd_bus_error_set_errno LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 228 code
+def sd_bus_error_set_errnof LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 168 code
+def sd_bus_error_set_errnofv LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 332 code
+def sd_bus_error_setf LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 188 code
+def sd_bus_flush LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 308 code
+def sd_bus_flush_close_unref LIBSYSTEMD_222 @@ FUNC GLOBAL DEFAULT 42 code
+def sd_bus_get_address LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 200 code
+def sd_bus_get_allow_interactive_authorization LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 148 code
+def sd_bus_get_bus_id LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 220 code
+def sd_bus_get_close_on_exit LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 100 code
+def sd_bus_get_connected_signal LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 144 code
+def sd_bus_get_creds_mask LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 192 code
+def sd_bus_get_current_handler LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 56 code
+def sd_bus_get_current_message LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 56 code
+def sd_bus_get_current_slot LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 56 code
+def sd_bus_get_current_userdata LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 56 code
+def sd_bus_get_description LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 288 code
+def sd_bus_get_event LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 56 code
+def sd_bus_get_events LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 240 code
+def sd_bus_get_exit_on_disconnect LIBSYSTEMD_232 @@ FUNC GLOBAL DEFAULT 96 code
+def sd_bus_get_fd LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 220 code
+def sd_bus_get_method_call_timeout LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 292 code
+def sd_bus_get_n_queued_read LIBSYSTEMD_238 @@ FUNC GLOBAL DEFAULT 192 code
+def sd_bus_get_n_queued_write LIBSYSTEMD_238 @@ FUNC GLOBAL DEFAULT 192 code
+def sd_bus_get_name_creds LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 1928 code
+def sd_bus_get_name_machine_id LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 540 code
+def sd_bus_get_owner_creds LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 624 code
+def sd_bus_get_property LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 536 code
+def sd_bus_get_property_string LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 540 code
+def sd_bus_get_property_strv LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 500 code
+def sd_bus_get_property_trivial LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 564 code
+def sd_bus_get_scope LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 228 code
+def sd_bus_get_sender LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 152 code
+def sd_bus_get_tid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 168 code
+def sd_bus_get_timeout LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 296 code
+def sd_bus_get_unique_name LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 208 code
+def sd_bus_get_watch_bind LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 148 code
+def sd_bus_interface_name_is_valid LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_is_anonymous LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 148 code
+def sd_bus_is_bus_client LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 148 code
+def sd_bus_is_monitor LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 148 code
+def sd_bus_is_open LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 116 code
+def sd_bus_is_ready LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 116 code
+def sd_bus_is_server LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 148 code
+def sd_bus_is_trusted LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 148 code
+def sd_bus_list_names LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 532 code
+def sd_bus_match_signal LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 820 code
+def sd_bus_match_signal_async LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 828 code
+def sd_bus_member_name_is_valid LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_message_append LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 80 code
+def sd_bus_message_append_array LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 392 code
+def sd_bus_message_append_array_iovec LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 428 code
+def sd_bus_message_append_array_memfd LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 792 code
+def sd_bus_message_append_array_space LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 520 code
+def sd_bus_message_append_basic LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 6 code
+def sd_bus_message_append_string_iovec LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 348 code
+def sd_bus_message_append_string_memfd LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 728 code
+def sd_bus_message_append_string_space LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 392 code
+def sd_bus_message_append_strv LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 196 code
+def sd_bus_message_appendv LIBSYSTEMD_234 @@ FUNC GLOBAL DEFAULT 1084 code
+def sd_bus_message_at_end LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 128 code
+def sd_bus_message_close_container LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 564 code
+def sd_bus_message_copy LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 484 code
+def sd_bus_message_dump LIBSYSTEMD_245 @@ FUNC GLOBAL DEFAULT 3936 code
+def sd_bus_message_enter_container LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 1944 code
+def sd_bus_message_exit_container LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 296 code
+def sd_bus_message_get_allow_interactive_authorization LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 64 code
+def sd_bus_message_get_auto_start LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 60 code
+def sd_bus_message_get_bus LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_message_get_cookie LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 148 code
+def sd_bus_message_get_creds LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 60 code
+def sd_bus_message_get_destination LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_message_get_errno LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 68 code
+def sd_bus_message_get_error LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 64 code
+def sd_bus_message_get_expect_reply LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 68 code
+def sd_bus_message_get_interface LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_message_get_member LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_message_get_monotonic_usec LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_bus_message_get_path LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_message_get_priority LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 184 code
+def sd_bus_message_get_realtime_usec LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_bus_message_get_reply_cookie LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_bus_message_get_sender LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_message_get_seqnum LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_bus_message_get_signature LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 72 code
+def sd_bus_message_get_type LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 100 code
+def sd_bus_message_has_signature LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 88 code
+def sd_bus_message_is_empty LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 64 code
+def sd_bus_message_is_method_call LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 104 code
+def sd_bus_message_is_method_error LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 84 code
+def sd_bus_message_is_signal LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 104 code
+def sd_bus_message_new LIBSYSTEMD_236 @@ FUNC GLOBAL DEFAULT 392 code
+def sd_bus_message_new_method_call LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 680 code
+def sd_bus_message_new_method_errno LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 136 code
+def sd_bus_message_new_method_errnof LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 124 code
+def sd_bus_message_new_method_error LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 260 code
+def sd_bus_message_new_method_errorf LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 208 code
+def sd_bus_message_new_method_return LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 8 code
+def sd_bus_message_new_signal LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 592 code
+def sd_bus_message_open_container LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 1476 code
+def sd_bus_message_peek_type LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 764 code
+def sd_bus_message_read LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 80 code
+def sd_bus_message_read_array LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 708 code
+def sd_bus_message_read_basic LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 1468 code
+def sd_bus_message_read_strv LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 228 code
+def sd_bus_message_readv LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 936 code
+def sd_bus_message_ref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 64 code
+def sd_bus_message_rewind LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 236 code
+def sd_bus_message_seal LIBSYSTEMD_236 @@ FUNC GLOBAL DEFAULT 912 code
+def sd_bus_message_send LIBSYSTEMD_248 @@ FUNC GLOBAL DEFAULT 144 code
+def sd_bus_message_sensitive LIBSYSTEMD_245 @@ FUNC GLOBAL DEFAULT 64 code
+def sd_bus_message_set_allow_interactive_authorization LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 116 code
+def sd_bus_message_set_auto_start LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 116 code
+def sd_bus_message_set_destination LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 264 code
+def sd_bus_message_set_expect_reply LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 164 code
+def sd_bus_message_set_priority LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 184 code
+def sd_bus_message_set_sender LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 264 code
+def sd_bus_message_skip LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 768 code
+def sd_bus_message_unref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 84 code
+def sd_bus_message_verify_type LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 464 code
+def sd_bus_negotiate_creds LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 284 code
+def sd_bus_negotiate_fds LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 200 code
+def sd_bus_negotiate_timestamp LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 204 code
+def sd_bus_new LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 212 code
+def sd_bus_object_path_is_valid LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_object_vtable_format LIBSYSTEMD_243 @@ OBJECT GLOBAL DEFAULT 4 data
+def sd_bus_open LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 6 code
+def sd_bus_open_system LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 6 code
+def sd_bus_open_system_machine LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 292 code
+def sd_bus_open_system_remote LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 224 code
+def sd_bus_open_system_with_description LIBSYSTEMD_239 @@ FUNC GLOBAL DEFAULT 208 code
+def sd_bus_open_user LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 6 code
+def sd_bus_open_user_machine LIBSYSTEMD_248 @@ FUNC GLOBAL DEFAULT 292 code
+def sd_bus_open_user_with_description LIBSYSTEMD_239 @@ FUNC GLOBAL DEFAULT 184 code
+def sd_bus_open_with_description LIBSYSTEMD_239 @@ FUNC GLOBAL DEFAULT 328 code
+def sd_bus_path_decode LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 188 code
+def sd_bus_path_decode_many LIBSYSTEMD_227 @@ FUNC GLOBAL DEFAULT 376 code
+def sd_bus_path_encode LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 204 code
+def sd_bus_path_encode_many LIBSYSTEMD_227 @@ FUNC GLOBAL DEFAULT 412 code
+def sd_bus_process LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 4 code
+def sd_bus_process_priority LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 6 code
+def sd_bus_query_sender_creds LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 372 code
+def sd_bus_query_sender_privilege LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 520 code
+def sd_bus_ref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_bus_release_name LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 376 code
+def sd_bus_release_name_async LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 280 code
+def sd_bus_reply_method_errno LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 408 code
+def sd_bus_reply_method_errnof LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 84 code
+def sd_bus_reply_method_errnofv LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 396 code
+def sd_bus_reply_method_error LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 408 code
+def sd_bus_reply_method_errorf LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 84 code
+def sd_bus_reply_method_errorfv LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 396 code
+def sd_bus_reply_method_return LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 80 code
+def sd_bus_reply_method_returnv LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 380 code
+def sd_bus_request_name LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 396 code
+def sd_bus_request_name_async LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 348 code
+def sd_bus_send LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 676 code
+def sd_bus_send_to LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 280 code
+def sd_bus_service_name_is_valid LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_set_address LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 244 code
+def sd_bus_set_allow_interactive_authorization LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 156 code
+def sd_bus_set_anonymous LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 200 code
+def sd_bus_set_bus_client LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 252 code
+def sd_bus_set_close_on_exit LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_bus_set_connected_signal LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 200 code
+def sd_bus_set_description LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 200 code
+def sd_bus_set_exec LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 356 code
+def sd_bus_set_exit_on_disconnect LIBSYSTEMD_232 @@ FUNC GLOBAL DEFAULT 116 code
+def sd_bus_set_fd LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 284 code
+def sd_bus_set_method_call_timeout LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 108 code
+def sd_bus_set_monitor LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 200 code
+def sd_bus_set_property LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 88 code
+def sd_bus_set_propertyv LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 552 code
+def sd_bus_set_sender LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 208 code
+def sd_bus_set_server LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 388 code
+def sd_bus_set_trusted LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 200 code
+def sd_bus_set_watch_bind LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 200 code
+def sd_bus_slot_get_bus LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_slot_get_current_handler LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 108 code
+def sd_bus_slot_get_current_message LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 108 code
+def sd_bus_slot_get_current_userdata LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 108 code
+def sd_bus_slot_get_description LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 116 code
+def sd_bus_slot_get_destroy_callback LIBSYSTEMD_239 @@ FUNC GLOBAL DEFAULT 60 code
+def sd_bus_slot_get_floating LIBSYSTEMD_239 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_slot_get_userdata LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_slot_ref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_slot_set_description LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_bus_slot_set_destroy_callback LIBSYSTEMD_239 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_bus_slot_set_floating LIBSYSTEMD_239 @@ FUNC GLOBAL DEFAULT 108 code
+def sd_bus_slot_set_userdata LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_slot_unref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 80 code
+def sd_bus_start LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 736 code
+def sd_bus_track_add_name LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 536 code
+def sd_bus_track_add_sender LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 120 code
+def sd_bus_track_contains LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 64 code
+def sd_bus_track_count LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 10 code
+def sd_bus_track_count_name LIBSYSTEMD_232 @@ FUNC GLOBAL DEFAULT 76 code
+def sd_bus_track_count_sender LIBSYSTEMD_232 @@ FUNC GLOBAL DEFAULT 88 code
+def sd_bus_track_first LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 104 code
+def sd_bus_track_get_bus LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_track_get_destroy_callback LIBSYSTEMD_239 @@ FUNC GLOBAL DEFAULT 60 code
+def sd_bus_track_get_recursive LIBSYSTEMD_232 @@ FUNC GLOBAL DEFAULT 56 code
+def sd_bus_track_get_userdata LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_track_new LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 232 code
+def sd_bus_track_next LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 100 code
+def sd_bus_track_ref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_bus_track_remove_name LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 100 code
+def sd_bus_track_remove_sender LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 88 code
+def sd_bus_track_set_destroy_callback LIBSYSTEMD_239 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_bus_track_set_recursive LIBSYSTEMD_232 @@ FUNC GLOBAL DEFAULT 92 code
+def sd_bus_track_set_userdata LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_bus_track_unref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 180 code
+def sd_bus_try_close LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 144 code
+def sd_bus_unref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 64 code
+def sd_bus_wait LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 180 code
+def sd_device_enumerator_add_match_parent LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 104 code
+def sd_device_enumerator_add_match_property LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 128 code
+def sd_device_enumerator_add_match_subsystem LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 132 code
+def sd_device_enumerator_add_match_sysattr LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 136 code
+def sd_device_enumerator_add_match_sysname LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 124 code
+def sd_device_enumerator_add_match_tag LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 124 code
+def sd_device_enumerator_allow_uninitialized LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 60 code
+def sd_device_enumerator_get_device_first LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 72 code
+def sd_device_enumerator_get_device_next LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 76 code
+def sd_device_enumerator_get_subsystem_first LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 72 code
+def sd_device_enumerator_get_subsystem_next LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 80 code
+def sd_device_enumerator_new LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 80 code
+def sd_device_enumerator_ref LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_device_enumerator_unref LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 176 code
+def sd_device_get_action LIBSYSTEMD_248 @@ FUNC GLOBAL DEFAULT 72 code
+def sd_device_get_current_tag_first LIBSYSTEMD_247 @@ FUNC GLOBAL DEFAULT 192 code
+def sd_device_get_current_tag_next LIBSYSTEMD_247 @@ FUNC GLOBAL DEFAULT 196 code
+def sd_device_get_devlink_first LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 144 code
+def sd_device_get_devlink_next LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 144 code
+def sd_device_get_devname LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 132 code
+def sd_device_get_devnum LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 96 code
+def sd_device_get_devpath LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 136 code
+def sd_device_get_devtype LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 76 code
+def sd_device_get_diskseq LIBSYSTEMD_250 @@ FUNC GLOBAL DEFAULT 72 code
+def sd_device_get_driver LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 536 code
+def sd_device_get_ifindex LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 80 code
+def sd_device_get_is_initialized LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 68 code
+def sd_device_get_parent LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 224 code
+def sd_device_get_parent_with_subsystem_devtype LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 300 code
+def sd_device_get_property_first LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 152 code
+def sd_device_get_property_next LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 148 code
+def sd_device_get_property_value LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 128 code
+def sd_device_get_seqnum LIBSYSTEMD_248 @@ FUNC GLOBAL DEFAULT 72 code
+def sd_device_get_subsystem LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 668 code
+def sd_device_get_sysattr_first LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 180 code
+def sd_device_get_sysattr_next LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 128 code
+def sd_device_get_sysattr_value LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 960 code
+def sd_device_get_sysname LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 80 code
+def sd_device_get_sysnum LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 88 code
+def sd_device_get_syspath LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_device_get_tag_first LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 140 code
+def sd_device_get_tag_next LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 144 code
+def sd_device_get_trigger_uuid LIBSYSTEMD_249 @@ FUNC GLOBAL DEFAULT 168 code
+def sd_device_get_usec_initialized LIBSYSTEMD_249 @@ FUNC GLOBAL DEFAULT 100 code
+def sd_device_get_usec_since_initialized LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 132 code
+def sd_device_has_current_tag LIBSYSTEMD_247 @@ FUNC GLOBAL DEFAULT 132 code
+def sd_device_has_tag LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 108 code
+def sd_device_monitor_attach_event LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 124 code
+def sd_device_monitor_detach_event LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 68 code
+def sd_device_monitor_filter_add_match_parent LIBSYSTEMD_249 @@ FUNC GLOBAL DEFAULT 196 code
+def sd_device_monitor_filter_add_match_subsystem_devtype LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 132 code
+def sd_device_monitor_filter_add_match_sysattr LIBSYSTEMD_249 @@ FUNC GLOBAL DEFAULT 128 code
+def sd_device_monitor_filter_add_match_tag LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 132 code
+def sd_device_monitor_filter_remove LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 212 code
+def sd_device_monitor_filter_update LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 808 code
+def sd_device_monitor_get_event LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_device_monitor_get_event_source LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_device_monitor_new LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 10 code
+def sd_device_monitor_ref LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_device_monitor_set_receive_buffer_size LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_device_monitor_start LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 140 code
+def sd_device_monitor_stop LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 68 code
+def sd_device_monitor_unref LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 144 code
+def sd_device_new_from_device_id LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 348 code
+def sd_device_new_from_devnum LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 384 code
+def sd_device_new_from_ifindex LIBSYSTEMD_249 @@ FUNC GLOBAL DEFAULT 180 code
+def sd_device_new_from_ifname LIBSYSTEMD_249 @@ FUNC GLOBAL DEFAULT 228 code
+def sd_device_new_from_stat_rdev LIBSYSTEMD_248 @@ FUNC GLOBAL DEFAULT 140 code
+def sd_device_new_from_subsystem_sysname LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 816 code
+def sd_device_new_from_syspath LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 188 code
+def sd_device_ref LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_device_set_sysattr_value LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 660 code
+def sd_device_set_sysattr_valuef LIBSYSTEMD_247 @@ FUNC GLOBAL DEFAULT 216 code
+def sd_device_trigger LIBSYSTEMD_248 @@ FUNC GLOBAL DEFAULT 76 code
+def sd_device_trigger_with_uuid LIBSYSTEMD_249 @@ FUNC GLOBAL DEFAULT 352 code
+def sd_device_unref LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 224 code
+def sd_event_add_child LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 736 code
+def sd_event_add_child_pidfd LIBSYSTEMD_245 @@ FUNC GLOBAL DEFAULT 724 code
+def sd_event_add_defer LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 316 code
+def sd_event_add_exit LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 384 code
+def sd_event_add_inotify LIBSYSTEMD_239 @@ FUNC GLOBAL DEFAULT 192 code
+def sd_event_add_inotify_fd LIBSYSTEMD_250 @@ FUNC GLOBAL DEFAULT 24 code
+def sd_event_add_io LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 440 code
+def sd_event_add_post LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 364 code
+def sd_event_add_signal LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 540 code
+def sd_event_add_time LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 536 code
+def sd_event_add_time_relative LIBSYSTEMD_247 @@ FUNC GLOBAL DEFAULT 152 code
+def sd_event_default LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 156 code
+def sd_event_dispatch LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 480 code
+def sd_event_exit LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 236 code
+def sd_event_get_exit_code LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 236 code
+def sd_event_get_fd LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 172 code
+def sd_event_get_iteration LIBSYSTEMD_231 @@ FUNC GLOBAL DEFAULT 180 code
+def sd_event_get_state LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 176 code
+def sd_event_get_tid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 228 code
+def sd_event_get_watchdog LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 176 code
+def sd_event_loop LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 272 code
+def sd_event_new LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 308 code
+def sd_event_now LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 352 code
+def sd_event_prepare LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 1036 code
+def sd_event_ref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_event_run LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 516 code
+def sd_event_set_watchdog LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 424 code
+def sd_event_source_disable_unref LIBSYSTEMD_243 @@ FUNC GLOBAL DEFAULT 22 code
+def sd_event_source_get_child_pid LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 236 code
+def sd_event_source_get_child_pidfd LIBSYSTEMD_245 @@ FUNC GLOBAL DEFAULT 196 code
+def sd_event_source_get_child_pidfd_own LIBSYSTEMD_245 @@ FUNC GLOBAL DEFAULT 116 code
+def sd_event_source_get_child_process_own LIBSYSTEMD_245 @@ FUNC GLOBAL DEFAULT 100 code
+def sd_event_source_get_description LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 200 code
+def sd_event_source_get_destroy_callback LIBSYSTEMD_239 @@ FUNC GLOBAL DEFAULT 60 code
+def sd_event_source_get_enabled LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 164 code
+def sd_event_source_get_event LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_event_source_get_exit_on_failure LIBSYSTEMD_247 @@ FUNC GLOBAL DEFAULT 100 code
+def sd_event_source_get_floating LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_event_source_get_inotify_mask LIBSYSTEMD_239 @@ FUNC GLOBAL DEFAULT 236 code
+def sd_event_source_get_io_events LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 240 code
+def sd_event_source_get_io_fd LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 188 code
+def sd_event_source_get_io_fd_own LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 100 code
+def sd_event_source_get_io_revents LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 284 code
+def sd_event_source_get_pending LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 204 code
+def sd_event_source_get_priority LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 152 code
+def sd_event_source_get_ratelimit LIBSYSTEMD_248 @@ FUNC GLOBAL DEFAULT 108 code
+def sd_event_source_get_signal LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 192 code
+def sd_event_source_get_time LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 240 code
+def sd_event_source_get_time_accuracy LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 240 code
+def sd_event_source_get_time_clock LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 264 code
+def sd_event_source_get_userdata LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_event_source_is_ratelimited LIBSYSTEMD_248 @@ FUNC GLOBAL DEFAULT 84 code
+def sd_event_source_ref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_event_source_send_child_signal LIBSYSTEMD_245 @@ FUNC GLOBAL DEFAULT 492 code
+def sd_event_source_set_child_pidfd_own LIBSYSTEMD_245 @@ FUNC GLOBAL DEFAULT 128 code
+def sd_event_source_set_child_process_own LIBSYSTEMD_245 @@ FUNC GLOBAL DEFAULT 116 code
+def sd_event_source_set_description LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 152 code
+def sd_event_source_set_destroy_callback LIBSYSTEMD_239 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_event_source_set_enabled LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 280 code
+def sd_event_source_set_exit_on_failure LIBSYSTEMD_247 @@ FUNC GLOBAL DEFAULT 124 code
+def sd_event_source_set_floating LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 116 code
+def sd_event_source_set_io_events LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 316 code
+def sd_event_source_set_io_fd LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 376 code
+def sd_event_source_set_io_fd_own LIBSYSTEMD_237 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_event_source_set_prepare LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 276 code
+def sd_event_source_set_priority LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 908 code
+def sd_event_source_set_ratelimit LIBSYSTEMD_248 @@ FUNC GLOBAL DEFAULT 144 code
+def sd_event_source_set_ratelimit_expire_callback LIBSYSTEMD_250 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_event_source_set_time LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 228 code
+def sd_event_source_set_time_accuracy LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 296 code
+def sd_event_source_set_time_relative LIBSYSTEMD_247 @@ FUNC GLOBAL DEFAULT 232 code
+def sd_event_source_set_userdata LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_event_source_unref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 88 code
+def sd_event_unref LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 64 code
+def sd_event_wait LIBSYSTEMD_221 @@ FUNC GLOBAL DEFAULT 2440 code
+def sd_get_machine_names LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 236 code
+def sd_get_seats LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 40 code
+def sd_get_sessions LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 40 code
+def sd_get_uids LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 316 code
+def sd_hwdb_enumerate LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 244 code
+def sd_hwdb_get LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 220 code
+def sd_hwdb_new LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 1204 code
+def sd_hwdb_ref LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 52 code
+def sd_hwdb_seek LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 160 code
+def sd_hwdb_unref LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 92 code
+def sd_id128_from_string LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 264 code
+def sd_id128_get_boot LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 124 code
+def sd_id128_get_boot_app_specific LIBSYSTEMD_240 @@ FUNC GLOBAL DEFAULT 140 code
+def sd_id128_get_invocation LIBSYSTEMD_232 @@ FUNC GLOBAL DEFAULT 644 code
+def sd_id128_get_machine LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 148 code
+def sd_id128_get_machine_app_specific LIBSYSTEMD_233 @@ FUNC GLOBAL DEFAULT 140 code
+def sd_id128_randomize LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 152 code
+def sd_id128_to_string LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_is_fifo LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 216 code
+def sd_is_mq LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 332 code
+def sd_is_socket LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 228 code
+def sd_is_socket_inet LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 300 code
+def sd_is_socket_sockaddr LIBSYSTEMD_233 @@ FUNC GLOBAL DEFAULT 448 code
+def sd_is_socket_unix LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 268 code
+def sd_is_special LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 284 code
+def sd_journal_add_conjunction LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 120 code
+def sd_journal_add_disjunction LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 128 code
+def sd_journal_add_match LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 980 code
+def sd_journal_close LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 228 code
+def sd_journal_enumerate_available_data LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 56 code
+def sd_journal_enumerate_available_unique LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 40 code
+def sd_journal_enumerate_data LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 660 code
+def sd_journal_enumerate_fields LIBSYSTEMD_229 @@ FUNC GLOBAL DEFAULT 832 code
+def sd_journal_enumerate_unique LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 896 code
+def sd_journal_flush_matches LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 34 code
+def sd_journal_get_catalog LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 360 code
+def sd_journal_get_catalog_for_message_id LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 92 code
+def sd_journal_get_cursor LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 368 code
+def sd_journal_get_cutoff_monotonic_usec LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 400 code
+def sd_journal_get_cutoff_realtime_usec LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 416 code
+def sd_journal_get_data LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 972 code
+def sd_journal_get_data_threshold LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 152 code
+def sd_journal_get_events LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_journal_get_fd LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 244 code
+def sd_journal_get_monotonic_usec LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 300 code
+def sd_journal_get_realtime_usec LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 252 code
+def sd_journal_get_timeout LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 200 code
+def sd_journal_get_usage LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 328 code
+def sd_journal_has_persistent_files LIBSYSTEMD_229 @@ FUNC GLOBAL DEFAULT 56 code
+def sd_journal_has_runtime_files LIBSYSTEMD_229 @@ FUNC GLOBAL DEFAULT 56 code
+def sd_journal_next LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 6 code
+def sd_journal_next_skip LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 6 code
+def sd_journal_open LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 8 code
+def sd_journal_open_container LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 560 code
+def sd_journal_open_directory LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 220 code
+def sd_journal_open_directory_fd LIBSYSTEMD_230 @@ FUNC GLOBAL DEFAULT 316 code
+def sd_journal_open_files LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 168 code
+def sd_journal_open_files_fd LIBSYSTEMD_230 @@ FUNC GLOBAL DEFAULT 376 code
+def sd_journal_open_namespace LIBSYSTEMD_245 @@ FUNC GLOBAL DEFAULT 148 code
+def sd_journal_perror LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 76 code
+def sd_journal_perror_with_location LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 224 code
+def sd_journal_previous LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 6 code
+def sd_journal_previous_skip LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 6 code
+def sd_journal_print LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 80 code
+def sd_journal_print_with_location LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 80 code
+def sd_journal_printv LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 444 code
+def sd_journal_printv_with_location LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 592 code
+def sd_journal_process LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 964 code
+def sd_journal_query_unique LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 240 code
+def sd_journal_reliable_fd LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_journal_restart_data LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 12 code
+def sd_journal_restart_fields LIBSYSTEMD_229 @@ FUNC GLOBAL DEFAULT 34 code
+def sd_journal_restart_unique LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 30 code
+def sd_journal_seek_cursor LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 776 code
+def sd_journal_seek_head LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 120 code
+def sd_journal_seek_monotonic_usec LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 172 code
+def sd_journal_seek_realtime_usec LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 140 code
+def sd_journal_seek_tail LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 124 code
+def sd_journal_send LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 136 code
+def sd_journal_send_with_location LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 292 code
+def sd_journal_sendv LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 1124 code
+def sd_journal_sendv_with_location LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 472 code
+def sd_journal_set_data_threshold LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 108 code
+def sd_journal_stream_fd LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 560 code
+def sd_journal_test_cursor LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 764 code
+def sd_journal_wait LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 452 code
+def sd_listen_fds LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 188 code
+def sd_listen_fds_with_names LIBSYSTEMD_227 @@ FUNC GLOBAL DEFAULT 200 code
+def sd_login_monitor_flush LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 56 code
+def sd_login_monitor_get_events LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_login_monitor_get_fd LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 48 code
+def sd_login_monitor_get_timeout LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 100 code
+def sd_login_monitor_new LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 380 code
+def sd_login_monitor_unref LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 18 code
+def sd_machine_get_class LIBSYSTEMD_211 @@ FUNC GLOBAL DEFAULT 344 code
+def sd_machine_get_ifindices LIBSYSTEMD_216 @@ FUNC GLOBAL DEFAULT 528 code
+def sd_notify LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 24 code
+def sd_notify_barrier LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 184 code
+def sd_notifyf LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 128 code
+def sd_path_lookup LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 192 code
+def sd_path_lookup_strv LIBSYSTEMD_246 @@ FUNC GLOBAL DEFAULT 1052 code
+def sd_peer_get_cgroup LIBSYSTEMD_226 @@ FUNC GLOBAL DEFAULT 164 code
+def sd_peer_get_machine_name LIBSYSTEMD_211 @@ FUNC GLOBAL DEFAULT 164 code
+def sd_peer_get_owner_uid LIBSYSTEMD_211 @@ FUNC GLOBAL DEFAULT 164 code
+def sd_peer_get_session LIBSYSTEMD_211 @@ FUNC GLOBAL DEFAULT 184 code
+def sd_peer_get_slice LIBSYSTEMD_211 @@ FUNC GLOBAL DEFAULT 164 code
+def sd_peer_get_unit LIBSYSTEMD_211 @@ FUNC GLOBAL DEFAULT 164 code
+def sd_peer_get_user_slice LIBSYSTEMD_220 @@ FUNC GLOBAL DEFAULT 164 code
+def sd_peer_get_user_unit LIBSYSTEMD_211 @@ FUNC GLOBAL DEFAULT 164 code
+def sd_pid_get_cgroup LIBSYSTEMD_226 @@ FUNC GLOBAL DEFAULT 204 code
+def sd_pid_get_machine_name LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_pid_get_owner_uid LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_pid_get_session LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_pid_get_slice LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_pid_get_unit LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_pid_get_user_slice LIBSYSTEMD_220 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_pid_get_user_unit LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 112 code
+def sd_pid_notify LIBSYSTEMD_214 @@ FUNC GLOBAL DEFAULT 18 code
+def sd_pid_notify_with_fds LIBSYSTEMD_219 @@ FUNC GLOBAL DEFAULT 732 code
+def sd_pid_notifyf LIBSYSTEMD_214 @@ FUNC GLOBAL DEFAULT 128 code
+def sd_seat_can_graphical LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 12 code
+def sd_seat_can_multi_session LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 4 code
+def sd_seat_can_tty LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 12 code
+def sd_seat_get_active LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 276 code
+def sd_seat_get_sessions LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 496 code
+def sd_session_get_class LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 16 code
+def sd_session_get_desktop LIBSYSTEMD_217 @@ FUNC GLOBAL DEFAULT 164 code
+def sd_session_get_display LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 16 code
+def sd_session_get_remote_host LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 16 code
+def sd_session_get_remote_user LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 16 code
+def sd_session_get_seat LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 16 code
+def sd_session_get_service LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 16 code
+def sd_session_get_state LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 200 code
+def sd_session_get_tty LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 16 code
+def sd_session_get_type LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 16 code
+def sd_session_get_uid LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 200 code
+def sd_session_get_vt LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 160 code
+def sd_session_is_active LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 156 code
+def sd_session_is_remote LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 156 code
+def sd_uid_get_display LIBSYSTEMD_213 @@ FUNC GLOBAL DEFAULT 192 code
+def sd_uid_get_seats LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 44 code
+def sd_uid_get_sessions LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 44 code
+def sd_uid_get_state LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 216 code
+def sd_uid_is_on_seat LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 252 code
+def sd_watchdog_enabled LIBSYSTEMD_209 @@ FUNC GLOBAL DEFAULT 304 code
+und ZSTD_DStreamOutSize - - FUNC GLOBAL
+und ZSTD_createDCtx - - FUNC GLOBAL
+und ZSTD_decompressStream - - FUNC GLOBAL
+und ZSTD_freeDCtx - - FUNC GLOBAL
+und ZSTD_getErrorCode - - FUNC GLOBAL
+und ZSTD_getErrorName - - FUNC GLOBAL
+und ZSTD_getFrameContentSize - - FUNC GLOBAL
+und ZSTD_isError - - FUNC GLOBAL
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __assert_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __fsetlocking GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __isoc99_sscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und __libc_current_sigrtmax GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __libc_current_sigrtmin GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __progname GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und __progname_full GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und __register_atfork GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __stack_chk_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __stack_chk_guard GLIBC_2.4 ld-linux.so.3 OBJECT GLOBAL
+und __tls_get_addr GLIBC_2.4 ld-linux.so.3 FUNC GLOBAL
+und _exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und access GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und asprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und basename GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und bind GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und chmod GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und chroot GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und clock_gettime GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und close_range GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und closedir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und connect GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dirfd GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dirname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dup2 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und epoll_create1 GLIBC_2.9 libc.so.6 FUNC GLOBAL
+und epoll_ctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und epoll_wait GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und execvp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und explicit_bzero GLIBC_2.25 libc.so.6 FUNC GLOBAL
+und faccessat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fchdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fchmod GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fchownat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fcntl64 GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und fdopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fdopendir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und feof GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ferror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fgetc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fileno GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und flockfile GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fnmatch GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fork GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fread GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und freeaddrinfo GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fseek GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fsetxattr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fstatat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fstatfs64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstatvfs64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fsync GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ftruncate64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und funlockfile GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und futimens GLIBC_2.6 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und get_current_dir_name GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getaddrinfo GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getauxval GLIBC_2.16 libc.so.6 FUNC GLOBAL
+und getegid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und geteuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getgid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getppid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpwuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpwuid_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getrandom GLIBC_2.25 libc.so.6 FUNC GLOBAL
+und getrlimit64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getsockname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getsockopt GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gettid GLIBC_2.30 libc.so.6 FUNC GLOBAL
+und getuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gmtime_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und if_indextoname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und inet_ntop GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und inotify_add_watch GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und inotify_init1 GLIBC_2.9 libc.so.6 FUNC GLOBAL
+und inotify_rm_watch GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ioctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und isatty GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und kill GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und localtime_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und lseek64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und lstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc_usable_size GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memfd_create GLIBC_2.27 libc.so.6 FUNC GLOBAL
+und memmem GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkdirat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkdtemp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkostemp64 GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und mmap64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mount GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mq_getattr GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und munmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und name_to_handle_at GLIBC_2.14 libc.so.6 FUNC GLOBAL
+und nl_langinfo GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open_memstream GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und openat64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und opendir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und parse_printf_format GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pipe2 GLIBC_2.9 libc.so.6 FUNC GLOBAL
+und posix_fallocate64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ppoll GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und prctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pread64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und program_invocation_name GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und program_invocation_short_name GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und pthread_join GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_mutex_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_once GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_sigmask GLIBC_2.32 libc.so.6 FUNC GLOBAL
+und pwrite64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und qsort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rand GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readdir64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readlinkat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und reallocarray GLIBC_2.26 libc.so.6 FUNC GLOBAL
+und recvmsg GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rename GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rewinddir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rmdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und secure_getenv GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und sendmsg GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sendto GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setgroups GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setlocale GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setns GLIBC_2.14 libc.so.6 FUNC GLOBAL
+und setresgid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setresuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setrlimit64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setsockopt GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setvbuf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und shutdown GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigaction GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigaddset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigdelset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigemptyset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigfillset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigisemptyset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigismember GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und signalfd GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und sigprocmask GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und socket GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und socketpair GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und srand GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und statfs64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und statx GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stdout GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stpcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcasecmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchrnul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcspn GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strdup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strftime GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strndup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strnlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strpbrk GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strspn GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoll GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoull GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und syscall GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sysconf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und timerfd_create GLIBC_2.8 libc.so.6 FUNC GLOBAL
+und timerfd_settime GLIBC_2.8 libc.so.6 FUNC GLOBAL
+und umask GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ungetc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und unlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und unsetenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und usleep GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vasprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vsnprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und waitid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und write GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und writev GLIBC_2.4 libc.so.6 FUNC GLOBAL

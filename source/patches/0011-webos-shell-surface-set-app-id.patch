@@ -1,0 +1,71 @@
+# why: LG's compositor (LSM) only shows windows that carry the webOS appId and _WEBOS_WINDOW_TYPE properties. Chrome
+# passes its app id (--class) through ShellToplevelWrapper::SetAppId, which is not implemented on webOS. Implement
+# it in WebosShellSurfaceWrapper: set appId, window type CARD and the Back key policy, like LG's own apps.
+diff --git a/src/ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.cc b/src/ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.cc
+index af9b874da..f5dc04a7d 100644
+--- a/src/ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.cc
++++ b/src/ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.cc
+@@ -143,6 +143,12 @@ bool WebosShellSurfaceWrapper::Initialize() {
+   wl_webos_shell_surface_add_listener(webos_shell_surface_.get(),
+                                       &webos_shell_surface_listener, this);
+ 
++  // chromium-native: an app id set before the webOS surface existed.
++  if (!pending_app_id_.empty()) {
++    SendAppProperties(pending_app_id_);
++    pending_app_id_.clear();
++  }
++
+   return true;
+ }
+ 
+@@ -225,6 +231,25 @@ void WebosShellSurfaceWrapper::SetWindowProperty(const std::string& name,
+   wl_webos_shell_surface_set_property(webos_shell_surface_.get(), name.c_str(),
+                                       value.c_str());
+ }
++void WebosShellSurfaceWrapper::SendAppProperties(const std::string& app_id) {
++  SetWindowProperty("appId", app_id);
++  // Without a window type LSM never maps the surface and closes it, and
++  // Chrome then exits (its last window closed). Same values the TV's own
++  // native apps (and the old xdgshim) use.
++  SetWindowProperty("_WEBOS_WINDOW_TYPE", "_WEBOS_WINDOW_TYPE_CARD");
++  SetWindowProperty("_WEBOS_ACCESS_POLICY_KEYS_BACK", "true");
++}
++
++void WebosShellSurfaceWrapper::SetAppId(const std::string& app_id) {
++  if (app_id.empty())
++    return;
++  if (!webos_shell_surface_) {
++    pending_app_id_ = app_id;
++    return;
++  }
++  SendAppProperties(app_id);
++}
++
+ void WebosShellSurfaceWrapper::SetSystemModal(bool modal) {
+   // TODO(neva): Implement SystemModal for webOS
+   NOTIMPLEMENTED_LOG_ONCE();
+diff --git a/src/ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.h b/src/ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.h
+index 916b2346a..411ef1169 100644
+--- a/src/ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.h
++++ b/src/ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.h
+@@ -52,6 +52,10 @@ class WebosShellSurfaceWrapper : public WaylandShellSurfaceWrapper {
+   void Lock(WaylandOrientationLockType lock_type) override;
+   void Unlock() override;
+   void SetSystemModal(bool modal) override;
++  // chromium-native: the TV compositor (LSM) needs the webOS "appId" and
++  // "_WEBOS_WINDOW_TYPE" window properties; Chrome passes its app id
++  // (--class) through SetAppId().
++  void SetAppId(const std::string& app_id) override;
+ 
+   void SetInputRegion(const std::vector<gfx::Rect>& region);
+   void SetGroupKeyMask(KeyMask key_mask);
+@@ -93,6 +97,9 @@ class WebosShellSurfaceWrapper : public WaylandShellSurfaceWrapper {
+   std::uint32_t applied_key_masks_;
+   wl::Object<wl_webos_shell_surface> webos_shell_surface_;
+   gfx::LocationHint location_hint_ = gfx::LocationHint::kUnknown;
++ private:
++  void SendAppProperties(const std::string& app_id);
++  std::string pending_app_id_;  // chromium-native: SetAppId before Initialize
+ };
+ 
+ }  // namespace ui

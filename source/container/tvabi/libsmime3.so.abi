@@ -1,0 +1,416 @@
+tvabi 1
+soname libsmime3.so
+needed libnss3.so
+needed libnssutil3.so
+needed libplc4.so
+needed libplds4.so
+needed libnspr4.so
+needed libc.so.6
+needed libgcc_s.so.1
+verdef 1 base libsmime3.so
+verdef 2 - NSS_3.2
+verdef 3 - NSS_3.2.1
+verdef 4 - NSS_3.3
+verdef 5 - NSS_3.4
+verdef 6 - NSS_3.4.1
+verdef 7 - NSS_3.6
+verdef 8 - NSS_3.7
+verdef 9 - NSS_3.7.2
+verdef 10 - NSS_3.8
+verdef 11 - NSS_3.9
+verdef 12 - NSS_3.9.3
+verdef 13 - NSS_3.10
+verdef 14 - NSS_3.12.2
+verdef 15 - NSS_3.12.10
+verdef 16 - NSS_3.13
+verdef 17 - NSS_3.15
+verdef 18 - NSS_3.16
+verdef 19 - NSS_3.18
+def CERT_ConvertAndDecodeCertificate NSS_3.9.3 @@ FUNC GLOBAL DEFAULT 52 code
+def CERT_DecodeCertFromPackage NSS_3.4 @@ FUNC GLOBAL DEFAULT 80 code
+def CERT_DecodeCertPackage NSS_3.2 @@ FUNC GLOBAL DEFAULT 956 code
+def NSSCMSGenericWrapperDataTemplate NSS_3.12.10 @@ OBJECT GLOBAL DEFAULT 16 data
+def NSSSMIME_GetVersion NSS_3.13 @@ FUNC GLOBAL DEFAULT 12 code
+def NSSSMIME_VersionCheck NSS_3.2.1 @@ FUNC GLOBAL DEFAULT 32 code
+def NSS_CMSContentInfo_GetBulkKey NSS_3.2 @@ FUNC GLOBAL DEFAULT 14 code
+def NSS_CMSContentInfo_GetBulkKeySize NSS_3.2 @@ FUNC GLOBAL DEFAULT 6 code
+def NSS_CMSContentInfo_GetContent NSS_3.2 @@ FUNC GLOBAL DEFAULT 64 code
+def NSS_CMSContentInfo_GetContentEncAlgTag NSS_3.2 @@ FUNC GLOBAL DEFAULT 24 code
+def NSS_CMSContentInfo_GetContentTypeTag NSS_3.2 @@ FUNC GLOBAL DEFAULT 34 code
+def NSS_CMSContentInfo_SetBulkKey NSS_3.2 @@ FUNC GLOBAL DEFAULT 36 code
+def NSS_CMSContentInfo_SetContent NSS_3.2 @@ FUNC GLOBAL DEFAULT 108 code
+def NSS_CMSContentInfo_SetContentEncAlg NSS_3.2 @@ FUNC GLOBAL DEFAULT 32 code
+def NSS_CMSContentInfo_SetContent_Data NSS_3.2 @@ FUNC GLOBAL DEFAULT 28 code
+def NSS_CMSContentInfo_SetContent_DigestedData NSS_3.2 @@ FUNC GLOBAL DEFAULT 8 code
+def NSS_CMSContentInfo_SetContent_EncryptedData NSS_3.2 @@ FUNC GLOBAL DEFAULT 8 code
+def NSS_CMSContentInfo_SetContent_EnvelopedData NSS_3.2 @@ FUNC GLOBAL DEFAULT 8 code
+def NSS_CMSContentInfo_SetContent_SignedData NSS_3.2 @@ FUNC GLOBAL DEFAULT 8 code
+def NSS_CMSContentInfo_SetDontStream NSS_3.12.10 @@ FUNC GLOBAL DEFAULT 36 code
+def NSS_CMSDEREncode NSS_3.2 @@ FUNC GLOBAL DEFAULT 164 code
+def NSS_CMSDecoder_Cancel NSS_3.2 @@ FUNC GLOBAL DEFAULT 28 code
+def NSS_CMSDecoder_Finish NSS_3.2 @@ FUNC GLOBAL DEFAULT 42 code
+def NSS_CMSDecoder_Start NSS_3.2 @@ FUNC GLOBAL DEFAULT 152 code
+def NSS_CMSDecoder_Update NSS_3.2 @@ FUNC GLOBAL DEFAULT 152 code
+def NSS_CMSDigestContext_Cancel NSS_3.2 @@ FUNC GLOBAL DEFAULT 52 code
+def NSS_CMSDigestContext_FinishMultiple NSS_3.2 @@ FUNC GLOBAL DEFAULT 240 code
+def NSS_CMSDigestContext_FinishSingle NSS_3.2 @@ FUNC GLOBAL DEFAULT 72 code
+def NSS_CMSDigestContext_StartMultiple NSS_3.2 @@ FUNC GLOBAL DEFAULT 138 code
+def NSS_CMSDigestContext_StartSingle NSS_3.2 @@ FUNC GLOBAL DEFAULT 24 code
+def NSS_CMSDigestContext_Update NSS_3.2 @@ FUNC GLOBAL DEFAULT 60 code
+def NSS_CMSDigestedData_Create NSS_3.2 @@ FUNC GLOBAL DEFAULT 76 code
+def NSS_CMSDigestedData_Destroy NSS_3.2 @@ FUNC GLOBAL DEFAULT 10 code
+def NSS_CMSDigestedData_GetContentInfo NSS_3.2 @@ FUNC GLOBAL DEFAULT 4 code
+def NSS_CMSEncoder_Cancel NSS_3.2 @@ FUNC GLOBAL DEFAULT 84 code
+def NSS_CMSEncoder_Finish NSS_3.2 @@ FUNC GLOBAL DEFAULT 154 code
+def NSS_CMSEncoder_Start NSS_3.2 @@ FUNC GLOBAL DEFAULT 288 code
+def NSS_CMSEncoder_Update NSS_3.2 @@ FUNC GLOBAL DEFAULT 134 code
+def NSS_CMSEncryptedData_Create NSS_3.2 @@ FUNC GLOBAL DEFAULT 142 code
+def NSS_CMSEncryptedData_Destroy NSS_3.2 @@ FUNC GLOBAL DEFAULT 10 code
+def NSS_CMSEncryptedData_GetContentInfo NSS_3.2 @@ FUNC GLOBAL DEFAULT 4 code
+def NSS_CMSEnvelopedData_AddRecipient NSS_3.2 @@ FUNC GLOBAL DEFAULT 64 code
+def NSS_CMSEnvelopedData_Create NSS_3.2 @@ FUNC GLOBAL DEFAULT 90 code
+def NSS_CMSEnvelopedData_Destroy NSS_3.2 @@ FUNC GLOBAL DEFAULT 40 code
+def NSS_CMSEnvelopedData_GetContentInfo NSS_3.2 @@ FUNC GLOBAL DEFAULT 4 code
+def NSS_CMSMessage_ContentLevel NSS_3.2 @@ FUNC GLOBAL DEFAULT 30 code
+def NSS_CMSMessage_ContentLevelCount NSS_3.2 @@ FUNC GLOBAL DEFAULT 22 code
+def NSS_CMSMessage_Copy NSS_3.2 @@ FUNC GLOBAL DEFAULT 10 code
+def NSS_CMSMessage_Create NSS_3.2 @@ FUNC GLOBAL DEFAULT 126 code
+def NSS_CMSMessage_CreateFromDER NSS_3.2 @@ FUNC GLOBAL DEFAULT 52 code
+def NSS_CMSMessage_Destroy NSS_3.2 @@ FUNC GLOBAL DEFAULT 44 code
+def NSS_CMSMessage_GetContent NSS_3.2 @@ FUNC GLOBAL DEFAULT 18 code
+def NSS_CMSMessage_GetContentInfo NSS_3.2 @@ FUNC GLOBAL DEFAULT 2 code
+def NSS_CMSMessage_IsEncrypted NSS_3.4.1 @@ FUNC GLOBAL DEFAULT 46 code
+def NSS_CMSMessage_IsSigned NSS_3.4 @@ FUNC GLOBAL DEFAULT 52 code
+def NSS_CMSRecipientInfo_Create NSS_3.2 @@ FUNC GLOBAL DEFAULT 26 code
+def NSS_CMSRecipientInfo_CreateFromDER NSS_3.8 @@ FUNC GLOBAL DEFAULT 28 code
+def NSS_CMSRecipientInfo_CreateNew NSS_3.8 @@ FUNC GLOBAL DEFAULT 28 code
+def NSS_CMSRecipientInfo_CreateWithSubjKeyID NSS_3.7 @@ FUNC GLOBAL DEFAULT 28 code
+def NSS_CMSRecipientInfo_CreateWithSubjKeyIDFromCert NSS_3.7 @@ FUNC GLOBAL DEFAULT 100 code
+def NSS_CMSRecipientInfo_Destroy NSS_3.2 @@ FUNC GLOBAL DEFAULT 60 code
+def NSS_CMSRecipientInfo_Encode NSS_3.8 @@ FUNC GLOBAL DEFAULT 72 code
+def NSS_CMSRecipientInfo_GetCertAndKey NSS_3.8 @@ FUNC GLOBAL DEFAULT 246 code
+def NSS_CMSRecipientInfo_UnwrapBulkKey NSS_3.7.2 @@ FUNC GLOBAL DEFAULT 94 code
+def NSS_CMSRecipientInfo_WrapBulkKey NSS_3.7.2 @@ FUNC GLOBAL DEFAULT 344 code
+def NSS_CMSSignedData_AddCertChain NSS_3.2 @@ FUNC GLOBAL DEFAULT 60 code
+def NSS_CMSSignedData_AddCertList NSS_3.2 @@ FUNC GLOBAL DEFAULT 46 code
+def NSS_CMSSignedData_AddCertificate NSS_3.2 @@ FUNC GLOBAL DEFAULT 54 code
+def NSS_CMSSignedData_AddDigest NSS_3.2 @@ FUNC GLOBAL DEFAULT 138 code
+def NSS_CMSSignedData_AddSignerInfo NSS_3.2 @@ FUNC GLOBAL DEFAULT 110 code
+def NSS_CMSSignedData_Create NSS_3.2 @@ FUNC GLOBAL DEFAULT 64 code
+def NSS_CMSSignedData_CreateCertsOnly NSS_3.2 @@ FUNC GLOBAL DEFAULT 132 code
+def NSS_CMSSignedData_Destroy NSS_3.2 @@ FUNC GLOBAL DEFAULT 100 code
+def NSS_CMSSignedData_GetContentInfo NSS_3.2 @@ FUNC GLOBAL DEFAULT 26 code
+def NSS_CMSSignedData_GetDigestAlgs NSS_3.2 @@ FUNC GLOBAL DEFAULT 26 code
+def NSS_CMSSignedData_GetSignerInfo NSS_3.2 @@ FUNC GLOBAL DEFAULT 30 code
+def NSS_CMSSignedData_HasDigests NSS_3.2 @@ FUNC GLOBAL DEFAULT 32 code
+def NSS_CMSSignedData_ImportCerts NSS_3.2 @@ FUNC GLOBAL DEFAULT 436 code
+def NSS_CMSSignedData_SetDigestValue NSS_3.4 @@ FUNC GLOBAL DEFAULT 188 code
+def NSS_CMSSignedData_SetDigests NSS_3.2 @@ FUNC GLOBAL DEFAULT 230 code
+def NSS_CMSSignedData_SignerInfoCount NSS_3.2 @@ FUNC GLOBAL DEFAULT 32 code
+def NSS_CMSSignedData_VerifyCertsOnly NSS_3.2 @@ FUNC GLOBAL DEFAULT 186 code
+def NSS_CMSSignedData_VerifySignerInfo NSS_3.2 @@ FUNC GLOBAL DEFAULT 90 code
+def NSS_CMSSignerInfo_AddMSSMIMEEncKeyPrefs NSS_3.6 @@ FUNC GLOBAL DEFAULT 150 code
+def NSS_CMSSignerInfo_AddSMIMECaps NSS_3.2 @@ FUNC GLOBAL DEFAULT 92 code
+def NSS_CMSSignerInfo_AddSMIMEEncKeyPrefs NSS_3.2 @@ FUNC GLOBAL DEFAULT 150 code
+def NSS_CMSSignerInfo_AddSigningTime NSS_3.2 @@ FUNC GLOBAL DEFAULT 120 code
+def NSS_CMSSignerInfo_Create NSS_3.2 @@ FUNC GLOBAL DEFAULT 26 code
+def NSS_CMSSignerInfo_CreateWithSubjKeyID NSS_3.6 @@ FUNC GLOBAL DEFAULT 28 code
+def NSS_CMSSignerInfo_Destroy NSS_3.2 @@ FUNC GLOBAL DEFAULT 26 code
+def NSS_CMSSignerInfo_GetCertList NSS_3.2 @@ FUNC GLOBAL DEFAULT 4 code
+def NSS_CMSSignerInfo_GetSignerCommonName NSS_3.2 @@ FUNC GLOBAL DEFAULT 22 code
+def NSS_CMSSignerInfo_GetSignerEmailAddress NSS_3.2 @@ FUNC GLOBAL DEFAULT 32 code
+def NSS_CMSSignerInfo_GetSigningCertificate NSS_3.2 @@ FUNC GLOBAL DEFAULT 46 code
+def NSS_CMSSignerInfo_GetSigningTime NSS_3.2 @@ FUNC GLOBAL DEFAULT 76 code
+def NSS_CMSSignerInfo_GetVerificationStatus NSS_3.2 @@ FUNC GLOBAL DEFAULT 4 code
+def NSS_CMSSignerInfo_GetVersion NSS_3.2 @@ FUNC GLOBAL DEFAULT 28 code
+def NSS_CMSSignerInfo_IncludeCerts NSS_3.2 @@ FUNC GLOBAL DEFAULT 100 code
+def NSS_CMSSignerInfo_Verify NSS_3.16 @@ FUNC GLOBAL DEFAULT 622 code
+def NSS_CMSType_RegisterContentType NSS_3.12.10 @@ FUNC GLOBAL DEFAULT 288 code
+def NSS_CMSUtil_VerificationStatusToString NSS_3.2 @@ FUNC GLOBAL DEFAULT 128 code
+def NSS_Get_NSSCMSGenericWrapperDataTemplate NSS_3.12.10 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_NSS_PointerToCMSGenericWrapperDataTemplate NSS_3.12.10 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_PointerToCMSGenericWrapperDataTemplate NSS_3.12.10 @@ OBJECT GLOBAL DEFAULT 16 data
+def NSS_SMIMESignerInfo_SaveSMIMEProfile NSS_3.4 @@ FUNC GLOBAL DEFAULT 266 code
+def NSS_SMIMEUtil_CreateMSSMIMEEncKeyPrefs NSS_3.12.10 @@ FUNC GLOBAL DEFAULT 96 code
+def NSS_SMIMEUtil_FindBulkAlgForRecipients NSS_3.2 @@ FUNC GLOBAL DEFAULT 1016 code
+def SECMIME_DecryptionAllowed NSS_3.4 @@ FUNC GLOBAL DEFAULT 88 code
+def SEC_PKCS12AddCertAndKey NSS_3.2 @@ FUNC GLOBAL DEFAULT 40 code
+def SEC_PKCS12AddCertOrChainAndKey NSS_3.12.2 @@ FUNC GLOBAL DEFAULT 180 code
+def SEC_PKCS12AddPasswordIntegrity NSS_3.2 @@ FUNC GLOBAL DEFAULT 78 code
+def SEC_PKCS12CreateExportContext NSS_3.2 @@ FUNC GLOBAL DEFAULT 106 code
+def SEC_PKCS12CreatePasswordPrivSafe NSS_3.2 @@ FUNC GLOBAL DEFAULT 344 code
+def SEC_PKCS12CreateUnencryptedSafe NSS_3.2 @@ FUNC GLOBAL DEFAULT 118 code
+def SEC_PKCS12DecoderFinish NSS_3.2 @@ FUNC GLOBAL DEFAULT 306 code
+def SEC_PKCS12DecoderGetCerts NSS_3.4 @@ FUNC GLOBAL DEFAULT 126 code
+def SEC_PKCS12DecoderImportBags NSS_3.2 @@ FUNC GLOBAL DEFAULT 976 code
+def SEC_PKCS12DecoderIterateInit NSS_3.10 @@ FUNC GLOBAL DEFAULT 34 code
+def SEC_PKCS12DecoderIterateNext NSS_3.10 @@ FUNC GLOBAL DEFAULT 306 code
+def SEC_PKCS12DecoderRenameCertNicknames NSS_3.18 @@ FUNC GLOBAL DEFAULT 210 code
+def SEC_PKCS12DecoderSetTargetTokenCAs NSS_3.8 @@ FUNC GLOBAL DEFAULT 20 code
+def SEC_PKCS12DecoderStart NSS_3.2 @@ FUNC GLOBAL DEFAULT 320 code
+def SEC_PKCS12DecoderUpdate NSS_3.2 @@ FUNC GLOBAL DEFAULT 58 code
+def SEC_PKCS12DecoderValidateBags NSS_3.2 @@ FUNC GLOBAL DEFAULT 654 code
+def SEC_PKCS12DecoderVerify NSS_3.2 @@ FUNC GLOBAL DEFAULT 584 code
+def SEC_PKCS12DecryptionAllowed NSS_3.10 @@ FUNC GLOBAL DEFAULT 44 code
+def SEC_PKCS12DestroyExportContext NSS_3.2 @@ FUNC GLOBAL DEFAULT 66 code
+def SEC_PKCS12EnableCipher NSS_3.2 @@ FUNC GLOBAL DEFAULT 80 code
+def SEC_PKCS12Encode NSS_3.2 @@ FUNC GLOBAL DEFAULT 1524 code
+def SEC_PKCS12IsEncryptionAllowed NSS_3.2 @@ FUNC GLOBAL DEFAULT 48 code
+def SEC_PKCS12SetPreferredCipher NSS_3.2 @@ FUNC GLOBAL DEFAULT 4 code
+def SEC_PKCS7AddCertificate NSS_3.3 @@ FUNC GLOBAL DEFAULT 38 code
+def SEC_PKCS7AddRecipient NSS_3.2 @@ FUNC GLOBAL DEFAULT 4 code
+def SEC_PKCS7AddSigningTime NSS_3.2 @@ FUNC GLOBAL DEFAULT 146 code
+def SEC_PKCS7ContainsCertsOrCrls NSS_3.4 @@ FUNC GLOBAL DEFAULT 62 code
+def SEC_PKCS7ContentIsEncrypted NSS_3.4 @@ FUNC GLOBAL DEFAULT 32 code
+def SEC_PKCS7ContentIsSigned NSS_3.4 @@ FUNC GLOBAL DEFAULT 42 code
+def SEC_PKCS7ContentType NSS_3.2 @@ FUNC GLOBAL DEFAULT 28 code
+def SEC_PKCS7CopyContentInfo NSS_3.4 @@ FUNC GLOBAL DEFAULT 10 code
+def SEC_PKCS7CreateCertsOnly NSS_3.3 @@ FUNC GLOBAL DEFAULT 56 code
+def SEC_PKCS7CreateData NSS_3.2 @@ FUNC GLOBAL DEFAULT 10 code
+def SEC_PKCS7CreateEncryptedData NSS_3.2 @@ FUNC GLOBAL DEFAULT 160 code
+def SEC_PKCS7CreateEnvelopedData NSS_3.2 @@ FUNC GLOBAL DEFAULT 92 code
+def SEC_PKCS7CreateSignedData NSS_3.2 @@ FUNC GLOBAL DEFAULT 420 code
+def SEC_PKCS7DecodeItem NSS_3.2 @@ FUNC GLOBAL DEFAULT 60 code
+def SEC_PKCS7DecoderAbort NSS_3.9 @@ FUNC GLOBAL DEFAULT 6 code
+def SEC_PKCS7DecoderFinish NSS_3.2 @@ FUNC GLOBAL DEFAULT 52 code
+def SEC_PKCS7DecoderStart NSS_3.2 @@ FUNC GLOBAL DEFAULT 224 code
+def SEC_PKCS7DecoderUpdate NSS_3.2 @@ FUNC GLOBAL DEFAULT 116 code
+def SEC_PKCS7DecryptContents NSS_3.2 @@ FUNC GLOBAL DEFAULT 312 code
+def SEC_PKCS7DestroyContentInfo NSS_3.2 @@ FUNC GLOBAL DEFAULT 248 code
+def SEC_PKCS7Encode NSS_3.3 @@ FUNC GLOBAL DEFAULT 72 code
+def SEC_PKCS7EncodeItem NSS_3.9.3 @@ FUNC GLOBAL DEFAULT 60 code
+def SEC_PKCS7EncoderAbort NSS_3.9 @@ FUNC GLOBAL DEFAULT 6 code
+def SEC_PKCS7EncoderFinish NSS_3.2 @@ FUNC GLOBAL DEFAULT 84 code
+def SEC_PKCS7EncoderStart NSS_3.2 @@ FUNC GLOBAL DEFAULT 108 code
+def SEC_PKCS7EncoderUpdate NSS_3.2 @@ FUNC GLOBAL DEFAULT 22 code
+def SEC_PKCS7GetCertificateList NSS_3.2 @@ FUNC GLOBAL DEFAULT 20 code
+def SEC_PKCS7GetContent NSS_3.2 @@ FUNC GLOBAL DEFAULT 88 code
+def SEC_PKCS7GetEncryptionAlgorithm NSS_3.2 @@ FUNC GLOBAL DEFAULT 44 code
+def SEC_PKCS7GetSignerCommonName NSS_3.4 @@ FUNC GLOBAL DEFAULT 6 code
+def SEC_PKCS7GetSignerEmailAddress NSS_3.4 @@ FUNC GLOBAL DEFAULT 6 code
+def SEC_PKCS7GetSigningTime NSS_3.4 @@ FUNC GLOBAL DEFAULT 48 code
+def SEC_PKCS7IncludeCertChain NSS_3.2 @@ FUNC GLOBAL DEFAULT 98 code
+def SEC_PKCS7IsContentEmpty NSS_3.2 @@ FUNC GLOBAL DEFAULT 54 code
+def SEC_PKCS7SetContent NSS_3.4 @@ FUNC GLOBAL DEFAULT 194 code
+def SEC_PKCS7VerifyDetachedSignature NSS_3.4 @@ FUNC GLOBAL DEFAULT 20 code
+def SEC_PKCS7VerifyDetachedSignatureAtTime NSS_3.15 @@ FUNC GLOBAL DEFAULT 22 code
+def SEC_PKCS7VerifySignature NSS_3.2 @@ FUNC GLOBAL DEFAULT 22 code
+und ATOB_AsciiToData_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und ATOB_ConvertAsciiToItem_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und CERT_AddCertToListTail NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_CertChainFromCert NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_CertListFromCert NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_DestroyCertArray NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_DestroyCertList NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_DestroyCertificate NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_DestroyCertificateList NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_DupCertificate NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_ExtractPublicKey NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_FilterCertListByUsage NSS_3.4 libnss3.so FUNC GLOBAL
+und CERT_FindCertByDERCert NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_FindCertByIssuerAndSN NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_FindCertBySubjectKeyID NSS_3.7 libnss3.so FUNC GLOBAL
+und CERT_FindSMimeProfile NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_FindSubjectKeyIDExtension NSS_3.7 libnss3.so FUNC GLOBAL
+und CERT_GetCertIssuerAndSN NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_GetCommonName NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_GetDefaultCertDB NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_ImportCerts NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_IsCADERCert NSS_3.3 libnss3.so FUNC GLOBAL
+und CERT_IsRootDERCert NSS_3.8 libnss3.so FUNC GLOBAL
+und CERT_IssuerAndSNTemplate NSS_3.2 libnss3.so OBJECT GLOBAL
+und CERT_NewCertList NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_NewTempCertificate NSS_3.12 libnss3.so FUNC GLOBAL
+und CERT_SaveSMimeProfile NSS_3.2 libnss3.so FUNC GLOBAL
+und CERT_SetOfSignedCrlTemplate NSS_3.2 libnss3.so OBJECT GLOBAL
+und CERT_TimeChoiceTemplate NSS_3.9 libnss3.so OBJECT GLOBAL
+und CERT_VerifyCert NSS_3.2 libnss3.so FUNC GLOBAL
+und DER_DecodeTimeChoice_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und DER_EncodeTimeChoice_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und DER_GetInteger_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und HASH_GetHMACOidTagByHashOidTag NSS_3.65 libnss3.so FUNC GLOBAL
+und HASH_GetHashObjectByOidTag NSS_3.8 libnss3.so FUNC GLOBAL
+und HASH_GetHashTypeByOidTag NSS_3.8 libnss3.so FUNC GLOBAL
+und HASH_ResultLen NSS_3.4 libnss3.so FUNC GLOBAL
+und NSS_GetAlgorithmPolicy NSSUTIL_3.12.3 libnssutil3.so FUNC GLOBAL
+und NSS_OptionGet NSS_3.21 libnss3.so FUNC GLOBAL
+und NSS_RegisterShutdown NSS_3.11.1 libnss3.so FUNC GLOBAL
+und NSS_SetAlgorithmPolicy NSSUTIL_3.12.3 libnssutil3.so FUNC GLOBAL
+und NSS_VersionCheck NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_AlgtagToMechanism NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_CipherOp NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_CreateContextBySymKey NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_CreatePBEAlgorithmID NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_CreatePBEParams NSS_3.3.1 libnss3.so FUNC GLOBAL
+und PK11_CreatePBEV2AlgorithmID NSS_3.12 libnss3.so FUNC GLOBAL
+und PK11_DestroyContext NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_DestroyPBEParams NSS_3.3.1 libnss3.so FUNC GLOBAL
+und PK11_DigestBegin NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_DigestFinal NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_DigestOp NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_ExportEncryptedPrivateKeyInfoV2 NSS_3.65 libnss3.so FUNC GLOBAL
+und PK11_ExportPrivateKeyInfo NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_FindCertAndKeyByRecipientList NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_FindCertAndKeyByRecipientListNew NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_FindKeyByAnyCert NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_FindKeyByDERCert NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_FindPrivateKeyFromCert NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_FreeSlot NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_FreeSymKey NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_GenerateNewParam NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_GenerateRandom NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_GetBestSlot NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_GetBlockSize NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_GetInternalKeySlot NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_GetInternalSlot NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_GetKeyStrength NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_GetPBECryptoMechanism NSS_3.12 libnss3.so FUNC GLOBAL
+und PK11_GetSlotFromKey NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_GetSymKeyUserData NSS_3.11 libnss3.so FUNC GLOBAL
+und PK11_GetTokenName NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_HashBuf NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_ImportCertForKeyToSlot NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_ImportDERCert NSS_3.6 libnss3.so FUNC GLOBAL
+und PK11_ImportEncryptedPrivateKeyInfo NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_ImportPrivateKeyInfo NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_ImportPublicKey NSS_3.4 libnss3.so FUNC GLOBAL
+und PK11_IsHW NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_IsInternal NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_KeyGen NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_PBEKeyGen NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_ParamFromAlgid NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_ParamToAlgid NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_PubUnwrapSymKey NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_PubWrapSymKey NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_ReferenceSlot NSS_3.3 libnss3.so FUNC GLOBAL
+und PK11_ReferenceSymKey NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_SetPasswordFunc NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_SetSymKeyUserData NSS_3.11 libnss3.so FUNC GLOBAL
+und PK11_TraverseCertsForNicknameInSlot NSS_3.2 libnss3.so FUNC GLOBAL
+und PK11_TraverseCertsForSubjectInSlot NSS_3.2 libnss3.so FUNC GLOBAL
+und PL_CompareValues - - FUNC GLOBAL
+und PL_HashTableAdd - - FUNC GLOBAL
+und PL_HashTableDestroy - - FUNC GLOBAL
+und PL_HashTableLookupConst - - FUNC GLOBAL
+und PL_NewHashTable - - FUNC GLOBAL
+und PL_strncasecmp - - FUNC GLOBAL
+und PORT_Alloc_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_ArenaAlloc_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_ArenaGrow_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_ArenaMark_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_ArenaRelease_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_ArenaStrdup_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_ArenaUnmark_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_ArenaZAlloc_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_FreeArena_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_Free_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_GetError_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_NewArena_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_Realloc_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_SetError_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_Strdup_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_UCS2_ASCIIConversion_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_UCS2_UTF8Conversion_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_ZAlloc_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PORT_ZFree_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und PR_CallOnce - - FUNC GLOBAL
+und PR_DestroyLock - - FUNC GLOBAL
+und PR_Lock - - FUNC GLOBAL
+und PR_NewLock - - FUNC GLOBAL
+und PR_Now - - FUNC GLOBAL
+und PR_Unlock - - FUNC GLOBAL
+und SECITEM_AllocItem_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECITEM_ArenaDupItem_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECITEM_CompareItem_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECITEM_CopyItem_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECITEM_DupItem_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECITEM_FreeItem_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECITEM_ItemsAreEqual_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECITEM_ZfreeItem_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECKEY_CopyEncryptedPrivateKeyInfo NSS_3.2 libnss3.so FUNC GLOBAL
+und SECKEY_CopyPrivateKey NSS_3.2 libnss3.so FUNC GLOBAL
+und SECKEY_CopyPrivateKeyInfo NSS_3.2 libnss3.so FUNC GLOBAL
+und SECKEY_CopyPublicKey NSS_3.6 libnss3.so FUNC GLOBAL
+und SECKEY_CreateSubjectPublicKeyInfo NSS_3.2 libnss3.so FUNC GLOBAL
+und SECKEY_DestroyEncryptedPrivateKeyInfo NSS_3.2 libnss3.so FUNC GLOBAL
+und SECKEY_DestroyPrivateKey NSS_3.2 libnss3.so FUNC GLOBAL
+und SECKEY_DestroyPrivateKeyInfo NSS_3.2 libnss3.so FUNC GLOBAL
+und SECKEY_DestroyPublicKey NSS_3.2 libnss3.so FUNC GLOBAL
+und SECKEY_DestroySubjectPublicKeyInfo NSS_3.2 libnss3.so FUNC GLOBAL
+und SECKEY_GetPrivateKeyType NSS_3.3 libnss3.so FUNC GLOBAL
+und SECKEY_GetPublicKeyType NSS_3.3 libnss3.so FUNC GLOBAL
+und SECKEY_PointerToEncryptedPrivateKeyInfoTemplate NSS_3.2 libnss3.so OBJECT GLOBAL
+und SECKEY_PointerToPrivateKeyInfoTemplate NSS_3.2 libnss3.so OBJECT GLOBAL
+und SECKEY_PublicKeyStrength NSS_3.2 libnss3.so FUNC GLOBAL
+und SECKEY_PublicKeyStrengthInBits NSS_3.8 libnss3.so FUNC GLOBAL
+und SECOID_AlgorithmIDTemplate_Util NSSUTIL_3.12 libnssutil3.so OBJECT GLOBAL
+und SECOID_CompareAlgorithmID_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECOID_CopyAlgorithmID_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECOID_DestroyAlgorithmID_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECOID_FindOIDByTag_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECOID_FindOIDTag_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECOID_FindOID_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECOID_GetAlgorithmTag_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SECOID_SetAlgorithmID_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1DecodeInteger_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1DecodeItem_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1DecoderAbort_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1DecoderClearFilterProc_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1DecoderClearNotifyProc_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1DecoderFinish_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1DecoderSetFilterProc_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1DecoderSetNotifyProc_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1DecoderStart_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1DecoderUpdate_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1EncodeInteger_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1EncodeItem_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1Encode_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1EncoderAbort_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1EncoderClearNotifyProc_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1EncoderClearStreaming_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1EncoderClearTakeFromBuf_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1EncoderFinish_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1EncoderSetNotifyProc_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1EncoderSetStreaming_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1EncoderSetTakeFromBuf_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1EncoderStart_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_ASN1EncoderUpdate_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_AnyTemplate_Util NSSUTIL_3.12 libnssutil3.so OBJECT GLOBAL
+und SEC_BMPStringTemplate_Util NSSUTIL_3.12 libnssutil3.so OBJECT GLOBAL
+und SEC_BitStringTemplate_Util NSSUTIL_3.12 libnssutil3.so OBJECT GLOBAL
+und SEC_GetSignatureAlgorithmOidTag NSS_3.10 libnss3.so FUNC GLOBAL
+und SEC_IA5StringTemplate_Util NSSUTIL_3.12 libnssutil3.so OBJECT GLOBAL
+und SEC_ObjectIDTemplate_Util NSSUTIL_3.12 libnssutil3.so OBJECT GLOBAL
+und SEC_OctetStringTemplate_Util NSSUTIL_3.12 libnssutil3.so OBJECT GLOBAL
+und SEC_PKCS5GetCryptoAlgorithm NSS_3.2 libnss3.so FUNC GLOBAL
+und SEC_PKCS5IsAlgorithmPBEAlg NSS_3.2 libnss3.so FUNC GLOBAL
+und SEC_PKCS5IsAlgorithmPBEAlgTag NSS_3.12 libnss3.so FUNC GLOBAL
+und SEC_PointerToAnyTemplate_Util NSSUTIL_3.12 libnssutil3.so OBJECT GLOBAL
+und SEC_PointerToOctetStringTemplate_Util NSSUTIL_3.12 libnssutil3.so OBJECT GLOBAL
+und SEC_QuickDERDecodeItem_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SEC_SetOfAnyTemplate_Util NSSUTIL_3.12 libnssutil3.so OBJECT GLOBAL
+und SEC_SignData NSS_3.2 libnss3.so FUNC GLOBAL
+und SGN_CopyDigestInfo_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SGN_CreateDigestInfo_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SGN_DestroyDigestInfo_Util NSSUTIL_3.12 libnssutil3.so FUNC GLOBAL
+und SGN_Digest NSS_3.2 libnss3.so FUNC GLOBAL
+und VFY_VerifyDataDirect NSS_3.12 libnss3.so FUNC GLOBAL
+und VFY_VerifyDataWithAlgorithmID NSS_3.12 libnss3.so FUNC GLOBAL
+und VFY_VerifyDigestDirect NSS_3.12 libnss3.so FUNC GLOBAL
+und VFY_VerifyDigestWithAlgorithmID NSS_3.12 libnss3.so FUNC GLOBAL
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __CERT_DecodeDERCertificate NSS_3.2 libnss3.so FUNC GLOBAL
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sgn_DigestInfoTemplate_Util NSSUTIL_3.12 libnssutil3.so OBJECT GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL

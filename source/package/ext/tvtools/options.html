@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TV Tools settings</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="page">
+  <main>
+    <div class="top">
+      <img src="icons/128.png" alt="">
+      <div>
+        <h1>TV Tools</h1>
+        <div class="status" id="status"></div>
+      </div>
+    </div>
+    <div id="groups"></div>
+    <section class="card">
+      <h2>Sites with the desktop version</h2>
+      <ul class="list" id="dsites"></ul>
+      <div class="help">Set this from the TV Tools button in the toolbar while you're on a site ("Use desktop").</div>
+    </section>
+    <section class="card">
+      <h2>Sites without video limits</h2>
+      <ul class="list" id="sites"></ul>
+      <div class="help">Turn the limits off for a site from the TV Tools button in the toolbar while you're on it.</div>
+    </section>
+    <div class="links"><button id="reset">Reset to defaults</button></div>
+  </main>
+  <script src="settings.js"></script>
+  <script src="ui.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

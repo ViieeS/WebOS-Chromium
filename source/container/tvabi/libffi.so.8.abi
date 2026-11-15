@@ -1,0 +1,83 @@
+tvabi 1
+soname libffi.so.8
+needed libgcc_s.so.1
+needed libc.so.6
+verdef 1 base libffi.so.8
+verdef 2 - LIBFFI_BASE_8.0
+verdef 3 - LIBFFI_COMPLEX_8.0 LIBFFI_BASE_8.0
+verdef 4 - LIBFFI_CLOSURE_8.0 LIBFFI_BASE_8.0
+verdef 5 - LIBFFI_GO_CLOSURE_8.0 LIBFFI_CLOSURE_8.0
+def ffi_call LIBFFI_BASE_8.0 @@ FUNC GLOBAL DEFAULT 16 code
+def ffi_call_go LIBFFI_GO_CLOSURE_8.0 @@ FUNC GLOBAL DEFAULT 2 code
+def ffi_closure_alloc LIBFFI_CLOSURE_8.0 @@ FUNC GLOBAL DEFAULT 4320 code
+def ffi_closure_free LIBFFI_CLOSURE_8.0 @@ FUNC GLOBAL DEFAULT 36 code
+def ffi_get_struct_offsets LIBFFI_BASE_8.0 @@ FUNC GLOBAL DEFAULT 26 code
+def ffi_java_ptrarray_to_raw LIBFFI_BASE_8.0 @@ FUNC GLOBAL DEFAULT 144 code
+def ffi_java_raw_call LIBFFI_BASE_8.0 @@ FUNC GLOBAL DEFAULT 54 code
+def ffi_java_raw_size LIBFFI_BASE_8.0 @@ FUNC GLOBAL DEFAULT 64 code
+def ffi_java_raw_to_ptrarray LIBFFI_BASE_8.0 @@ FUNC GLOBAL DEFAULT 46 code
+def ffi_prep_cif LIBFFI_BASE_8.0 @@ FUNC GLOBAL DEFAULT 24 code
+def ffi_prep_cif_var LIBFFI_BASE_8.0 @@ FUNC GLOBAL DEFAULT 116 code
+def ffi_prep_closure LIBFFI_CLOSURE_8.0 @@ FUNC GLOBAL DEFAULT 16 code
+def ffi_prep_closure_loc LIBFFI_CLOSURE_8.0 @@ FUNC GLOBAL DEFAULT 120 code
+def ffi_prep_go_closure LIBFFI_GO_CLOSURE_8.0 @@ FUNC GLOBAL DEFAULT 64 code
+def ffi_prep_java_raw_closure LIBFFI_CLOSURE_8.0 @@ FUNC GLOBAL DEFAULT 16 code
+def ffi_prep_java_raw_closure_loc LIBFFI_CLOSURE_8.0 @@ FUNC GLOBAL DEFAULT 36 code
+def ffi_prep_raw_closure LIBFFI_CLOSURE_8.0 @@ FUNC GLOBAL DEFAULT 16 code
+def ffi_prep_raw_closure_loc LIBFFI_CLOSURE_8.0 @@ FUNC GLOBAL DEFAULT 36 code
+def ffi_ptrarray_to_raw LIBFFI_BASE_8.0 @@ FUNC GLOBAL DEFAULT 142 code
+def ffi_raw_call LIBFFI_BASE_8.0 @@ FUNC GLOBAL DEFAULT 54 code
+def ffi_raw_size LIBFFI_BASE_8.0 @@ FUNC GLOBAL DEFAULT 54 code
+def ffi_raw_to_ptrarray LIBFFI_BASE_8.0 @@ FUNC GLOBAL DEFAULT 86 code
+def ffi_type_complex_double LIBFFI_COMPLEX_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def ffi_type_complex_float LIBFFI_COMPLEX_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def ffi_type_double LIBFFI_BASE_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def ffi_type_float LIBFFI_BASE_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def ffi_type_pointer LIBFFI_BASE_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def ffi_type_sint16 LIBFFI_BASE_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def ffi_type_sint32 LIBFFI_BASE_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def ffi_type_sint64 LIBFFI_BASE_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def ffi_type_sint8 LIBFFI_BASE_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def ffi_type_uint16 LIBFFI_BASE_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def ffi_type_uint32 LIBFFI_BASE_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def ffi_type_uint64 LIBFFI_BASE_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def ffi_type_uint8 LIBFFI_BASE_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def ffi_type_void LIBFFI_BASE_8.0 @@ OBJECT GLOBAL DEFAULT 12 data
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __getdelim GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und access GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und endmntent GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ftruncate GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getmntent_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und hasmntopt GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memfd_create GLIBC_2.27 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkostemp GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und mmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und munmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_lock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_unlock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setmntent GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und statfs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sysconf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und unlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und write GLIBC_2.4 libc.so.6 FUNC GLOBAL

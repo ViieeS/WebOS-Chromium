@@ -1,0 +1,341 @@
+tvabi 1
+soname libnssutil3.so
+needed libplc4.so
+needed libplds4.so
+needed libnspr4.so
+needed libc.so.6
+needed libgcc_s.so.1
+verdef 1 base libnssutil3.so
+verdef 2 - NSSUTIL_3.12
+verdef 3 - NSSUTIL_3.12.3
+verdef 4 - NSSUTIL_3.12.5
+verdef 5 - NSSUTIL_3.12.7
+verdef 6 - NSSUTIL_3.13
+verdef 7 - NSSUTIL_3.14
+verdef 8 - NSSUTIL_3.15
+verdef 9 - NSSUTIL_3.17.1
+verdef 10 - NSSUTIL_3.21
+verdef 11 - NSSUTIL_3.24
+verdef 12 - NSSUTIL_3.25
+verdef 13 - NSSUTIL_3.31
+verdef 14 - NSSUTIL_3.33
+verdef 15 - NSSUTIL_3.38
+verdef 16 - NSSUTIL_3.39
+verdef 17 - NSSUTIL_3.59
+def ATOB_AsciiToData_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 42 code
+def ATOB_ConvertAsciiToItem_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 60 code
+def BTOA_ConvertItemToAscii_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 12 code
+def BTOA_DataToAscii_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 26 code
+def CERT_GenTime2FormattedAscii_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 92 code
+def DER_AsciiToTime_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 8 code
+def DER_DecodeTimeChoice_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 46 code
+def DER_EncodeTimeChoice_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 58 code
+def DER_Encode_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 78 code
+def DER_GeneralizedDayToAscii_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 44 code
+def DER_GeneralizedTimeToTime_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 108 code
+def DER_GetInteger_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 136 code
+def DER_GetUInteger NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 98 code
+def DER_LengthLength NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 38 code
+def DER_Lengths_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 198 code
+def DER_SetUInteger NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 112 code
+def DER_StoreHeader NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 128 code
+def DER_TimeChoiceDayToAscii_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 44 code
+def DER_TimeToGeneralizedTimeArena_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 500 code
+def DER_TimeToGeneralizedTime_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 8 code
+def DER_TimeToUTCTime_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 8 code
+def DER_UTCDayToAscii_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 44 code
+def DER_UTCTimeToAscii_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 44 code
+def DER_UTCTimeToTime_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 106 code
+def NSSBase64Decoder_Create_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 62 code
+def NSSBase64Decoder_Destroy_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 50 code
+def NSSBase64Decoder_Update_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 208 code
+def NSSBase64Encoder_Create_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 62 code
+def NSSBase64Encoder_Destroy_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 126 code
+def NSSBase64Encoder_Update_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 84 code
+def NSSBase64_DecodeBuffer_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 430 code
+def NSSBase64_EncodeItem_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 480 code
+def NSSRWLock_Destroy_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 46 code
+def NSSRWLock_HaveWriteLock_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSSRWLock_LockRead_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 80 code
+def NSSRWLock_LockWrite_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 82 code
+def NSSRWLock_New_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 100 code
+def NSSRWLock_UnlockRead_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 50 code
+def NSSRWLock_UnlockWrite_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 80 code
+def NSSUTIL_AddNSSFlagToModuleSpec NSSUTIL_3.39 @@ FUNC GLOBAL DEFAULT 516 code
+def NSSUTIL_ArgDecodeNumber NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 140 code
+def NSSUTIL_ArgFetchValue NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 144 code
+def NSSUTIL_ArgGetLabel NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 98 code
+def NSSUTIL_ArgGetParamValue NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 100 code
+def NSSUTIL_ArgHasFlag NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 80 code
+def NSSUTIL_ArgIsBlank NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 20 code
+def NSSUTIL_ArgParseCipherFlags NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 120 code
+def NSSUTIL_ArgParseModuleSpec NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 276 code
+def NSSUTIL_ArgParseModuleSpecEx NSSUTIL_3.21 @@ FUNC GLOBAL DEFAULT 328 code
+def NSSUTIL_ArgParseSlotFlags NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 104 code
+def NSSUTIL_ArgParseSlotInfo NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 464 code
+def NSSUTIL_ArgReadLong NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 58 code
+def NSSUTIL_ArgSkipParameter NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 46 code
+def NSSUTIL_ArgStrip NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 28 code
+def NSSUTIL_DoModuleDBFunction NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 196 code
+def NSSUTIL_DoubleEscape NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 56 code
+def NSSUTIL_DoubleEscapeSize NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 62 code
+def NSSUTIL_Escape NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 6 code
+def NSSUTIL_EscapeSize NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 52 code
+def NSSUTIL_GetVersion NSSUTIL_3.13 @@ FUNC GLOBAL DEFAULT 12 code
+def NSSUTIL_MkModuleSpec NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 16 code
+def NSSUTIL_MkNSSString NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 1088 code
+def NSSUTIL_MkSlotString NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 484 code
+def NSSUTIL_Quote NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 6 code
+def NSSUTIL_QuoteSize NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 52 code
+def NSS_GetAlgorithmPolicy NSSUTIL_3.12.3 @@ FUNC GLOBAL DEFAULT 72 code
+def NSS_Get_SECOID_AlgorithmIDTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_AnyTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_BMPStringTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_BitStringTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_BooleanTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_EnumeratedTemplate NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_GeneralizedTimeTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_IA5StringTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_IntegerTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_NullTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_ObjectIDTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_OctetStringTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_PointerToAnyTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_PointerToEnumeratedTemplate NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_PointerToGeneralizedTimeTemplate NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_PointerToOctetStringTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_PrintableStringTemplate NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_SequenceOfAnyTemplate NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_SequenceOfObjectIDTemplate NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_SetOfAnyTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_SkipTemplate NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_T61StringTemplate NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_UTF8StringTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_SEC_UniversalStringTemplate NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_Get_sgn_DigestInfoTemplate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def NSS_InitializePRErrorTable NSSUTIL_3.13 @@ FUNC GLOBAL DEFAULT 32 code
+def NSS_IsPolicyLocked NSSUTIL_3.59 @@ FUNC GLOBAL DEFAULT 12 code
+def NSS_LockPolicy NSSUTIL_3.59 @@ FUNC GLOBAL DEFAULT 16 code
+def NSS_PutEnv_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 18 code
+def NSS_SecureMemcmp NSSUTIL_3.12.5 @@ FUNC GLOBAL DEFAULT 40 code
+def NSS_SecureMemcmpZero NSSUTIL_3.33 @@ FUNC GLOBAL DEFAULT 26 code
+def NSS_SetAlgorithmPolicy NSSUTIL_3.12.3 @@ FUNC GLOBAL DEFAULT 84 code
+def PK11URI_CreateURI NSSUTIL_3.31 @@ FUNC GLOBAL DEFAULT 136 code
+def PK11URI_DestroyURI NSSUTIL_3.31 @@ FUNC GLOBAL DEFAULT 226 code
+def PK11URI_FormatURI NSSUTIL_3.31 @@ FUNC GLOBAL DEFAULT 272 code
+def PK11URI_GetPathAttribute NSSUTIL_3.31 @@ FUNC GLOBAL DEFAULT 14 code
+def PK11URI_GetQueryAttribute NSSUTIL_3.31 @@ FUNC GLOBAL DEFAULT 14 code
+def PK11URI_ParseURI NSSUTIL_3.31 @@ FUNC GLOBAL DEFAULT 212 code
+def PORT_Alloc_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 36 code
+def PORT_ArenaAlloc_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 168 code
+def PORT_ArenaGrow_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 190 code
+def PORT_ArenaMark_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 46 code
+def PORT_ArenaRelease_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 6 code
+def PORT_ArenaStrdup_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 38 code
+def PORT_ArenaUnmark_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 2 code
+def PORT_ArenaZAlloc_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 30 code
+def PORT_DestroyCheapArena NSSUTIL_3.24 @@ FUNC GLOBAL DEFAULT 56 code
+def PORT_FreeArena_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 140 code
+def PORT_Free_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 8 code
+def PORT_GetError_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 4 code
+def PORT_ISO88591_UTF8Conversion NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 4 code
+def PORT_InitCheapArena NSSUTIL_3.24 @@ FUNC GLOBAL DEFAULT 32 code
+def PORT_LoadLibraryFromOrigin NSSUTIL_3.12.5 @@ FUNC GLOBAL DEFAULT 270 code
+def PORT_NewArena_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 88 code
+def PORT_Realloc_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 30 code
+def PORT_RegExpCaseSearch NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 56 code
+def PORT_RegExpSearch NSSUTIL_3.12.7 @@ FUNC GLOBAL DEFAULT 56 code
+def PORT_RegExpValid NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 18 code
+def PORT_SetError_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 6 code
+def PORT_SetUCS2_ASCIIConversionFunction_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def PORT_SetUCS2_UTF8ConversionFunction_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def PORT_SetUCS4_UTF8ConversionFunction_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def PORT_Strdup_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 32 code
+def PORT_UCS2_ASCIIConversion_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 52 code
+def PORT_UCS2_UTF8Conversion_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 48 code
+def PORT_UCS4_UTF8Conversion NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 48 code
+def PORT_ZAllocAlignedOffset_Util NSSUTIL_3.33 @@ FUNC GLOBAL DEFAULT 34 code
+def PORT_ZAllocAligned_Util NSSUTIL_3.33 @@ FUNC GLOBAL DEFAULT 78 code
+def PORT_ZAlloc_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 40 code
+def PORT_ZFree_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 26 code
+def SECITEM_AllocArray NSSUTIL_3.15 @@ FUNC GLOBAL DEFAULT 226 code
+def SECITEM_AllocItem_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 174 code
+def SECITEM_ArenaDupItem_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 98 code
+def SECITEM_CompareItem_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 94 code
+def SECITEM_CopyItem_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 68 code
+def SECITEM_DupArray NSSUTIL_3.15 @@ FUNC GLOBAL DEFAULT 90 code
+def SECITEM_DupItem_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 8 code
+def SECITEM_FreeArray NSSUTIL_3.15 @@ FUNC GLOBAL DEFAULT 20 code
+def SECITEM_FreeItem_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 36 code
+def SECITEM_Hash NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 66 code
+def SECITEM_HashCompare NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 4 code
+def SECITEM_ItemsAreEqual_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 50 code
+def SECITEM_MakeItem NSSUTIL_3.38 @@ FUNC GLOBAL DEFAULT 22 code
+def SECITEM_ReallocItem NSSUTIL_3.12.3 @@ FUNC GLOBAL DEFAULT 82 code
+def SECITEM_ReallocItemV2 NSSUTIL_3.15 @@ FUNC GLOBAL DEFAULT 148 code
+def SECITEM_ZfreeArray NSSUTIL_3.15 @@ FUNC GLOBAL DEFAULT 20 code
+def SECITEM_ZfreeItem_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 40 code
+def SECOID_AddEntry_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 384 code
+def SECOID_AlgorithmIDTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 64 data
+def SECOID_CompareAlgorithmID_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 30 code
+def SECOID_CopyAlgorithmID_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 34 code
+def SECOID_DestroyAlgorithmID_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 38 code
+def SECOID_FindOIDByMechanism NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 44 code
+def SECOID_FindOIDByTag_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 32 code
+def SECOID_FindOIDTagDescription_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 12 code
+def SECOID_FindOIDTag_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 12 code
+def SECOID_FindOID_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 108 code
+def SECOID_GetAlgorithmTag_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 14 code
+def SECOID_Init NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 536 code
+def SECOID_KnownCertExtenOID NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 22 code
+def SECOID_SetAlgorithmID_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 160 code
+def SECOID_Shutdown NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 300 code
+def SEC_ASN1DecodeInteger_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 72 code
+def SEC_ASN1DecodeItem_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 18 code
+def SEC_ASN1Decode_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 52 code
+def SEC_ASN1DecoderAbort_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 16 code
+def SEC_ASN1DecoderClearFilterProc_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 10 code
+def SEC_ASN1DecoderClearNotifyProc_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 8 code
+def SEC_ASN1DecoderFinish_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 62 code
+def SEC_ASN1DecoderSetFilterProc_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 8 code
+def SEC_ASN1DecoderSetMaximumElementSize NSSUTIL_3.25 @@ FUNC GLOBAL DEFAULT 4 code
+def SEC_ASN1DecoderSetNotifyProc_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 6 code
+def SEC_ASN1DecoderStart_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 98 code
+def SEC_ASN1DecoderUpdate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 4320 code
+def SEC_ASN1EncodeInteger_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 6 code
+def SEC_ASN1EncodeItem_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 96 code
+def SEC_ASN1EncodeUnsignedInteger_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 6 code
+def SEC_ASN1Encode_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 38 code
+def SEC_ASN1EncoderAbort_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 16 code
+def SEC_ASN1EncoderClearNotifyProc_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 8 code
+def SEC_ASN1EncoderClearStreaming_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 6 code
+def SEC_ASN1EncoderClearTakeFromBuf_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 28 code
+def SEC_ASN1EncoderFinish_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 8 code
+def SEC_ASN1EncoderSetNotifyProc_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 6 code
+def SEC_ASN1EncoderSetStreaming_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 6 code
+def SEC_ASN1EncoderSetTakeFromBuf_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 6 code
+def SEC_ASN1EncoderStart_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 100 code
+def SEC_ASN1EncoderUpdate_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 1522 code
+def SEC_ASN1LengthLength_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 20 code
+def SEC_AnyTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_BMPStringTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_BitStringTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_BooleanTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_EnumeratedTemplate NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_GeneralizedTimeTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_IA5StringTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_IntegerTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_NullTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_ObjectIDTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_OctetStringTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_PointerToAnyTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_PointerToEnumeratedTemplate NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_PointerToGeneralizedTimeTemplate NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_PointerToOctetStringTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_PrintableStringTemplate NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_QuickDERDecodeItem_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 106 code
+def SEC_SequenceOfAnyTemplate NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_SequenceOfObjectIDTemplate NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_SetOfAnyTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_SkipTemplate NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_StringToOID NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 404 code
+def SEC_T61StringTemplate NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_UTF8StringTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SEC_UniversalStringTemplate NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 16 data
+def SGN_CompareDigestInfo_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 34 code
+def SGN_CopyDigestInfo_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 110 code
+def SGN_CreateDigestInfo_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 208 code
+def SGN_DecodeDigestInfo NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 124 code
+def SGN_DestroyDigestInfo_Util NSSUTIL_3.12 @@ FUNC GLOBAL DEFAULT 14 code
+def UTIL_SetForkState NSSUTIL_3.12.3 @@ FUNC GLOBAL DEFAULT 12 code
+def _NSSUTIL_EvaluateConfigDir NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 256 code
+def _NSSUTIL_GetSecmodName NSSUTIL_3.14 @@ FUNC GLOBAL DEFAULT 464 code
+def _SGN_VerifyPKCS1DigestInfo NSSUTIL_3.17.1 @@ FUNC GLOBAL DEFAULT 294 code
+def sgn_DigestInfoTemplate_Util NSSUTIL_3.12 @@ OBJECT GLOBAL DEFAULT 64 data
+und PL_ArenaAllocate - - FUNC GLOBAL
+und PL_ArenaGrow - - FUNC GLOBAL
+und PL_ArenaRelease - - FUNC GLOBAL
+und PL_ClearArenaPool - - FUNC GLOBAL
+und PL_CompareValues - - FUNC GLOBAL
+und PL_FinishArenaPool - - FUNC GLOBAL
+und PL_FreeArenaPool - - FUNC GLOBAL
+und PL_HashTableAdd - - FUNC GLOBAL
+und PL_HashTableDestroy - - FUNC GLOBAL
+und PL_HashTableLookup - - FUNC GLOBAL
+und PL_HashTableLookupConst - - FUNC GLOBAL
+und PL_InitArenaPool - - FUNC GLOBAL
+und PL_NewHashTable - - FUNC GLOBAL
+und PL_strcasecmp - - FUNC GLOBAL
+und PL_strlen - - FUNC GLOBAL
+und PL_strncasecmp - - FUNC GLOBAL
+und PL_strpbrk - - FUNC GLOBAL
+und PR_Access - - FUNC GLOBAL
+und PR_CallOnce - - FUNC GLOBAL
+und PR_Calloc - - FUNC GLOBAL
+und PR_Delete - - FUNC GLOBAL
+und PR_DestroyCondVar - - FUNC GLOBAL
+und PR_DestroyLock - - FUNC GLOBAL
+und PR_ErrorInstallTable - - FUNC GLOBAL
+und PR_ExplodeTime - - FUNC GLOBAL
+und PR_FormatTime - - FUNC GLOBAL
+und PR_Free - - FUNC GLOBAL
+und PR_GMTParameters - - FUNC GLOBAL
+und PR_GetCurrentThread - - FUNC GLOBAL
+und PR_GetDirectorySeparator - - FUNC GLOBAL
+und PR_GetEnvSecure - - FUNC GLOBAL
+und PR_GetError - - FUNC GLOBAL
+und PR_GetLibraryFilePathname - - FUNC GLOBAL
+und PR_ImplodeTime - - FUNC GLOBAL
+und PR_LoadLibraryWithFlags - - FUNC GLOBAL
+und PR_LocalTimeParameters - - FUNC GLOBAL
+und PR_Lock - - FUNC GLOBAL
+und PR_Malloc - - FUNC GLOBAL
+und PR_NewCondVar - - FUNC GLOBAL
+und PR_NewLock - - FUNC GLOBAL
+und PR_NotifyAllCondVar - - FUNC GLOBAL
+und PR_NotifyCondVar - - FUNC GLOBAL
+und PR_Realloc - - FUNC GLOBAL
+und PR_Rename - - FUNC GLOBAL
+und PR_SetError - - FUNC GLOBAL
+und PR_Unlock - - FUNC GLOBAL
+und PR_WaitCondVar - - FUNC GLOBAL
+und PR_smprintf - - FUNC GLOBAL
+und PR_smprintf_free - - FUNC GLOBAL
+und PR_snprintf - - FUNC GLOBAL
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_tolower_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_toupper_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fdopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und feof GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fgets GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stat GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und strcat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL

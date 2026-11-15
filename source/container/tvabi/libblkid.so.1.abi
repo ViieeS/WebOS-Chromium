@@ -1,0 +1,305 @@
+tvabi 1
+soname libblkid.so.1
+needed libgcc_s.so.1
+needed libc.so.6
+needed ld-linux.so.3
+verdef 1 base libblkid.so.1
+verdef 2 - BLKID_1.0
+verdef 3 - BLKID_2.15 BLKID_1.0
+verdef 4 - BLKID_2.17 BLKID_2.15
+verdef 5 - BLKID_2.18 BLKID_2.17
+verdef 6 - BLKID_2.20 BLKID_2.18
+verdef 7 - BLKID_2.21 BLKID_2.20
+verdef 8 - BLKID_2.23 BLKID_2.21
+verdef 9 - BLKID_2.25 BLKID_2.23
+verdef 10 - BLKID_2.30 BLKID_2.25
+verdef 11 - BLKID_2_31 BLKID_2.30
+verdef 12 - BLKID_2_36 BLKID_2_31
+verdef 13 - BLKID_2_37 BLKID_2_36
+def blkid_dev_devname BLKID_1.0 @@ FUNC GLOBAL DEFAULT 14 code
+def blkid_dev_has_tag BLKID_1.0 @@ FUNC GLOBAL DEFAULT 36 code
+def blkid_dev_iterate_begin BLKID_1.0 @@ FUNC GLOBAL DEFAULT 52 code
+def blkid_dev_iterate_end BLKID_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def blkid_dev_next BLKID_1.0 @@ FUNC GLOBAL DEFAULT 76 code
+def blkid_dev_set_search BLKID_1.0 @@ FUNC GLOBAL DEFAULT 162 code
+def blkid_devno_to_devname BLKID_1.0 @@ FUNC GLOBAL DEFAULT 540 code
+def blkid_devno_to_wholedisk BLKID_2.17 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_do_fullprobe BLKID_2.17 @@ FUNC GLOBAL DEFAULT 564 code
+def blkid_do_probe BLKID_2.15 @@ FUNC GLOBAL DEFAULT 436 code
+def blkid_do_safeprobe BLKID_2.15 @@ FUNC GLOBAL DEFAULT 564 code
+def blkid_do_wipe BLKID_2.21 @@ FUNC GLOBAL DEFAULT 600 code
+def blkid_encode_string BLKID_2.15 @@ FUNC GLOBAL DEFAULT 256 code
+def blkid_evaluate_spec BLKID_2.20 @@ FUNC GLOBAL DEFAULT 86 code
+def blkid_evaluate_tag BLKID_2.15 @@ FUNC GLOBAL DEFAULT 640 code
+def blkid_find_dev_with_tag BLKID_1.0 @@ FUNC GLOBAL DEFAULT 308 code
+def blkid_free_probe BLKID_2.15 @@ FUNC GLOBAL DEFAULT 196 code
+def blkid_gc_cache BLKID_1.0 @@ FUNC GLOBAL DEFAULT 256 code
+def blkid_get_cache BLKID_1.0 @@ FUNC GLOBAL DEFAULT 200 code
+def blkid_get_dev BLKID_1.0 @@ FUNC GLOBAL DEFAULT 628 code
+def blkid_get_dev_size BLKID_1.0 @@ FUNC GLOBAL DEFAULT 32 code
+def blkid_get_devname BLKID_1.0 @@ FUNC GLOBAL DEFAULT 328 code
+def blkid_get_library_version BLKID_1.0 @@ FUNC GLOBAL DEFAULT 36 code
+def blkid_get_tag_value BLKID_1.0 @@ FUNC GLOBAL DEFAULT 212 code
+def blkid_init_debug BLKID_2.23 @@ FUNC GLOBAL DEFAULT 564 code
+def blkid_known_fstype BLKID_1.0 @@ FUNC GLOBAL DEFAULT 48 code
+def blkid_known_pttype BLKID_2.17 @@ FUNC GLOBAL DEFAULT 44 code
+def blkid_new_probe BLKID_2.15 @@ FUNC GLOBAL DEFAULT 200 code
+def blkid_new_probe_from_filename BLKID_2.17 @@ FUNC GLOBAL DEFAULT 82 code
+def blkid_parse_tag_string BLKID_1.0 @@ FUNC GLOBAL DEFAULT 312 code
+def blkid_parse_version_string BLKID_1.0 @@ FUNC GLOBAL DEFAULT 58 code
+def blkid_partition_get_flags BLKID_2.18 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_partition_get_name BLKID_2.17 @@ FUNC GLOBAL DEFAULT 14 code
+def blkid_partition_get_partno BLKID_2.17 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_partition_get_size BLKID_2.17 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_partition_get_start BLKID_2.17 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_partition_get_table BLKID_2.17 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_partition_get_type BLKID_2.17 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_partition_get_type_string BLKID_2.17 @@ FUNC GLOBAL DEFAULT 14 code
+def blkid_partition_get_uuid BLKID_2.17 @@ FUNC GLOBAL DEFAULT 14 code
+def blkid_partition_is_extended BLKID_2.17 @@ FUNC GLOBAL DEFAULT 18 code
+def blkid_partition_is_logical BLKID_2.17 @@ FUNC GLOBAL DEFAULT 18 code
+def blkid_partition_is_primary BLKID_2.17 @@ FUNC GLOBAL DEFAULT 18 code
+def blkid_partitions_get_name BLKID_2.30 @@ FUNC GLOBAL DEFAULT 32 code
+def blkid_partlist_devno_to_partition BLKID_2.18 @@ FUNC GLOBAL DEFAULT 836 code
+def blkid_partlist_get_partition BLKID_2.17 @@ FUNC GLOBAL DEFAULT 26 code
+def blkid_partlist_get_partition_by_partno BLKID_2.25 @@ FUNC GLOBAL DEFAULT 58 code
+def blkid_partlist_get_table BLKID_2.18 @@ FUNC GLOBAL DEFAULT 16 code
+def blkid_partlist_numof_partitions BLKID_2.17 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_parttable_get_id BLKID_2.23 @@ FUNC GLOBAL DEFAULT 14 code
+def blkid_parttable_get_offset BLKID_2.17 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_parttable_get_parent BLKID_2.17 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_parttable_get_type BLKID_2.17 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_probe_all BLKID_1.0 @@ FUNC GLOBAL DEFAULT 212 code
+def blkid_probe_all_new BLKID_1.0 @@ FUNC GLOBAL DEFAULT 176 code
+def blkid_probe_all_removable BLKID_2.18 @@ FUNC GLOBAL DEFAULT 180 code
+def blkid_probe_enable_partitions BLKID_2.17 @@ FUNC GLOBAL DEFAULT 8 code
+def blkid_probe_enable_superblocks BLKID_2.17 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_probe_enable_topology BLKID_2.17 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_probe_filter_partitions_type BLKID_2.17 @@ FUNC GLOBAL DEFAULT 10 code
+def blkid_probe_filter_superblocks_type BLKID_2.17 @@ FUNC GLOBAL DEFAULT 10 code
+def blkid_probe_filter_superblocks_usage BLKID_2.17 @@ FUNC GLOBAL DEFAULT 224 code
+def blkid_probe_filter_types BLKID_2.15 @@ FUNC GLOBAL DEFAULT 10 code
+def blkid_probe_filter_usage BLKID_2.15 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_probe_get_devno BLKID_2.17 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_probe_get_fd BLKID_2.18 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_probe_get_offset BLKID_2.18 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_probe_get_partitions BLKID_2.17 @@ FUNC GLOBAL DEFAULT 8 code
+def blkid_probe_get_sectors BLKID_2.17 @@ FUNC GLOBAL DEFAULT 14 code
+def blkid_probe_get_sectorsize BLKID_2.17 @@ FUNC GLOBAL DEFAULT 48 code
+def blkid_probe_get_size BLKID_2.17 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_probe_get_topology BLKID_2.17 @@ FUNC GLOBAL DEFAULT 8 code
+def blkid_probe_get_value BLKID_2.15 @@ FUNC GLOBAL DEFAULT 140 code
+def blkid_probe_get_wholedisk_devno BLKID_2.18 @@ FUNC GLOBAL DEFAULT 82 code
+def blkid_probe_has_value BLKID_2.15 @@ FUNC GLOBAL DEFAULT 18 code
+def blkid_probe_hide_range BLKID_2_31 @@ FUNC GLOBAL DEFAULT 276 code
+def blkid_probe_invert_filter BLKID_2.15 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_probe_invert_partitions_filter BLKID_2.17 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_probe_invert_superblocks_filter BLKID_2.17 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_probe_is_wholedisk BLKID_2.18 @@ FUNC GLOBAL DEFAULT 48 code
+def blkid_probe_lookup_value BLKID_2.15 @@ FUNC GLOBAL DEFAULT 38 code
+def blkid_probe_numof_values BLKID_2.15 @@ FUNC GLOBAL DEFAULT 24 code
+def blkid_probe_reset_buffers BLKID_2_31 @@ FUNC GLOBAL DEFAULT 400 code
+def blkid_probe_reset_filter BLKID_2.15 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_probe_reset_hints BLKID_2_37 @@ FUNC GLOBAL DEFAULT 144 code
+def blkid_probe_reset_partitions_filter BLKID_2.17 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_probe_reset_superblocks_filter BLKID_2.17 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_probe_set_device BLKID_2.15 @@ FUNC GLOBAL DEFAULT 1716 code
+def blkid_probe_set_hint BLKID_2_37 @@ FUNC GLOBAL DEFAULT 476 code
+def blkid_probe_set_partitions_flags BLKID_2.17 @@ FUNC GLOBAL DEFAULT 8 code
+def blkid_probe_set_request BLKID_2.15 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_probe_set_sectorsize BLKID_2.30 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_probe_set_superblocks_flags BLKID_2.17 @@ FUNC GLOBAL DEFAULT 6 code
+def blkid_probe_step_back BLKID_2.23 @@ FUNC GLOBAL DEFAULT 264 code
+def blkid_put_cache BLKID_1.0 @@ FUNC GLOBAL DEFAULT 400 code
+def blkid_reset_probe BLKID_2.15 @@ FUNC GLOBAL DEFAULT 52 code
+def blkid_safe_string BLKID_2.15 @@ FUNC GLOBAL DEFAULT 372 code
+def blkid_send_uevent BLKID_2.15 @@ FUNC GLOBAL DEFAULT 552 code
+def blkid_superblocks_get_name BLKID_2.20 @@ FUNC GLOBAL DEFAULT 56 code
+def blkid_tag_iterate_begin BLKID_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def blkid_tag_iterate_end BLKID_1.0 @@ FUNC GLOBAL DEFAULT 22 code
+def blkid_tag_next BLKID_1.0 @@ FUNC GLOBAL DEFAULT 88 code
+def blkid_topology_get_alignment_offset BLKID_2.17 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_topology_get_dax BLKID_2_36 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_topology_get_logical_sector_size BLKID_2.17 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_topology_get_minimum_io_size BLKID_2.17 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_topology_get_optimal_io_size BLKID_2.17 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_topology_get_physical_sector_size BLKID_2.17 @@ FUNC GLOBAL DEFAULT 4 code
+def blkid_verify BLKID_1.0 @@ FUNC GLOBAL DEFAULT 1160 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __assert_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_get_mb_cur_max GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_tolower_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_atexit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __environ GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __fpending GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __isoc99_fscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und __isoc99_sscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und __isoc99_vfscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und __libc_current_sigrtmax GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __libc_current_sigrtmin GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __progname GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und __sched_cpualloc GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und __sched_cpufree GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und __tls_get_addr GLIBC_2.4 ld-linux.so.3 FUNC GLOBAL
+und __xpg_basename GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und _environ GLIBC_2.4 libc.so.6 OBJECT WEAK
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und access GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und asprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und closedir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dcgettext GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dirfd GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und dup2 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und environ GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und err GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und errx GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und execv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und execvp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und exit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und explicit_bzero GLIBC_2.25 libc.so.6 FUNC GLOBAL
+und faccessat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fchmod GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fcntl64 GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und fdopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fdopendir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und feof GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ferror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fgetc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fgets GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und flock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fork GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fstatat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fstatfs64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fsync GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getcwd GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getdtablesize GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getegid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und geteuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getgid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getgrgid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getgrnam_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getppid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpwnam_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpwuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpwuid_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getrandom GLIBC_2.25 libc.so.6 FUNC GLOBAL
+und gettimeofday GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gmtime_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ioctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und isatty GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und iswprint GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und jrand48 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und link GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und localeconv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und localtime_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und lseek64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mbrtowc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mbstowcs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkostemp64 GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und mktime GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und nanosleep GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und openat64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und opendir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pipe GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und posix_fadvise64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und prctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und program_invocation_short_name GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und puts GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und qsort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und random GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readdir64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readlinkat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realpath GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rename GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rewinddir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und secure_getenv GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und select GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sendfile64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setgid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigaction GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und srandom GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stdout GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stpcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcasecmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcspn GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strdup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strftime GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncasecmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strndup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strnlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strptime GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strsep GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strspn GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtod GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoimax GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtok GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtok_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtold GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoll GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoull GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoumax GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und syscall GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und time GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ttyname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und umask GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und uname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und unlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vasprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vsnprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und waitpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und warn GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und warnx GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und wcstombs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und wcswidth GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und wctomb GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und wcwidth GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und write GLIBC_2.4 libc.so.6 FUNC GLOBAL

@@ -1,0 +1,275 @@
+tvabi 1
+soname libdrm.so.2
+needed libgcc_s.so.1
+needed libc.so.6
+def drmAddBufs - - FUNC GLOBAL DEFAULT 56 code
+def drmAddContextPrivateMapping - - FUNC GLOBAL DEFAULT 40 code
+def drmAddContextTag - - FUNC GLOBAL DEFAULT 50 code
+def drmAddMap - - FUNC GLOBAL DEFAULT 62 code
+def drmAgpAcquire - - FUNC GLOBAL DEFAULT 26 code
+def drmAgpAlloc - - FUNC GLOBAL DEFAULT 64 code
+def drmAgpBase - - FUNC GLOBAL DEFAULT 48 code
+def drmAgpBind - - FUNC GLOBAL DEFAULT 40 code
+def drmAgpDeviceId - - FUNC GLOBAL DEFAULT 50 code
+def drmAgpEnable - - FUNC GLOBAL DEFAULT 38 code
+def drmAgpFree - - FUNC GLOBAL DEFAULT 44 code
+def drmAgpGetMode - - FUNC GLOBAL DEFAULT 48 code
+def drmAgpMemoryAvail - - FUNC GLOBAL DEFAULT 48 code
+def drmAgpMemoryUsed - - FUNC GLOBAL DEFAULT 48 code
+def drmAgpRelease - - FUNC GLOBAL DEFAULT 26 code
+def drmAgpSize - - FUNC GLOBAL DEFAULT 48 code
+def drmAgpUnbind - - FUNC GLOBAL DEFAULT 40 code
+def drmAgpVendorId - - FUNC GLOBAL DEFAULT 50 code
+def drmAgpVersionMajor - - FUNC GLOBAL DEFAULT 54 code
+def drmAgpVersionMinor - - FUNC GLOBAL DEFAULT 54 code
+def drmAuthMagic - - FUNC GLOBAL DEFAULT 38 code
+def drmAvailable - - FUNC GLOBAL DEFAULT 68 code
+def drmCheckModesettingSupported - - FUNC GLOBAL DEFAULT 268 code
+def drmClose - - FUNC GLOBAL DEFAULT 80 code
+def drmCloseBufferHandle - - FUNC GLOBAL DEFAULT 30 code
+def drmCloseOnce - - FUNC GLOBAL DEFAULT 100 code
+def drmCommandNone - - FUNC GLOBAL DEFAULT 28 code
+def drmCommandRead - - FUNC GLOBAL DEFAULT 34 code
+def drmCommandWrite - - FUNC GLOBAL DEFAULT 34 code
+def drmCommandWriteRead - - FUNC GLOBAL DEFAULT 34 code
+def drmCreateContext - - FUNC GLOBAL DEFAULT 48 code
+def drmCreateDrawable - - FUNC GLOBAL DEFAULT 46 code
+def drmCrtcGetSequence - - FUNC GLOBAL DEFAULT 62 code
+def drmCrtcQueueSequence - - FUNC GLOBAL DEFAULT 70 code
+def drmCtlInstHandler - - FUNC GLOBAL DEFAULT 40 code
+def drmCtlUninstHandler - - FUNC GLOBAL DEFAULT 40 code
+def drmDMA - - FUNC GLOBAL DEFAULT 106 code
+def drmDelContextTag - - FUNC GLOBAL DEFAULT 20 code
+def drmDestroyContext - - FUNC GLOBAL DEFAULT 40 code
+def drmDestroyDrawable - - FUNC GLOBAL DEFAULT 38 code
+def drmDevicesEqual - - FUNC GLOBAL DEFAULT 110 code
+def drmDropMaster - - FUNC GLOBAL DEFAULT 10 code
+def drmError - - FUNC GLOBAL DEFAULT 168 code
+def drmFinish - - FUNC GLOBAL DEFAULT 112 code
+def drmFree - - FUNC GLOBAL DEFAULT 4 code
+def drmFreeBufs - - FUNC GLOBAL DEFAULT 40 code
+def drmFreeBusid - - FUNC GLOBAL DEFAULT 4 code
+def drmFreeDevice - - FUNC GLOBAL DEFAULT 104 code
+def drmFreeDevices - - FUNC GLOBAL DEFAULT 36 code
+def drmFreeReservedContextList - - FUNC GLOBAL DEFAULT 4 code
+def drmFreeVersion - - FUNC GLOBAL DEFAULT 36 code
+def drmGetBufInfo - - FUNC GLOBAL DEFAULT 180 code
+def drmGetBusid - - FUNC GLOBAL DEFAULT 90 code
+def drmGetCap - - FUNC GLOBAL DEFAULT 48 code
+def drmGetClient - - FUNC GLOBAL DEFAULT 80 code
+def drmGetContextFlags - - FUNC GLOBAL DEFAULT 62 code
+def drmGetContextPrivateMapping - - FUNC GLOBAL DEFAULT 52 code
+def drmGetContextTag - - FUNC GLOBAL DEFAULT 34 code
+def drmGetDevice - - FUNC GLOBAL DEFAULT 8 code
+def drmGetDevice2 - - FUNC GLOBAL DEFAULT 72 code
+def drmGetDeviceFromDevId - - FUNC GLOBAL DEFAULT 428 code
+def drmGetDeviceNameFromFd - - FUNC GLOBAL DEFAULT 104 code
+def drmGetDeviceNameFromFd2 - - FUNC GLOBAL DEFAULT 200 code
+def drmGetDevices - - FUNC GLOBAL DEFAULT 10 code
+def drmGetDevices2 - - FUNC GLOBAL DEFAULT 268 code
+def drmGetEntry - - FUNC GLOBAL DEFAULT 108 code
+def drmGetFormatModifierName - - FUNC GLOBAL DEFAULT 136 code
+def drmGetFormatModifierVendor - - FUNC GLOBAL DEFAULT 56 code
+def drmGetHashTable - - FUNC GLOBAL DEFAULT 12 code
+def drmGetInterruptFromBusID - - FUNC GLOBAL DEFAULT 52 code
+def drmGetLibVersion - - FUNC GLOBAL DEFAULT 20 code
+def drmGetLock - - FUNC GLOBAL DEFAULT 112 code
+def drmGetMagic - - FUNC GLOBAL DEFAULT 48 code
+def drmGetMap - - FUNC GLOBAL DEFAULT 86 code
+def drmGetNodeTypeFromFd - - FUNC GLOBAL DEFAULT 144 code
+def drmGetPrimaryDeviceNameFromFd - - FUNC GLOBAL DEFAULT 6 code
+def drmGetRenderDeviceNameFromFd - - FUNC GLOBAL DEFAULT 6 code
+def drmGetReservedContextList - - FUNC GLOBAL DEFAULT 158 code
+def drmGetStats - - FUNC GLOBAL DEFAULT 1072 code
+def drmGetVersion - - FUNC GLOBAL DEFAULT 260 code
+def drmHandleEvent - - FUNC GLOBAL DEFAULT 212 code
+def drmHashCreate - - FUNC GLOBAL DEFAULT 24 code
+def drmHashDelete - - FUNC GLOBAL DEFAULT 60 code
+def drmHashDestroy - - FUNC GLOBAL DEFAULT 64 code
+def drmHashFirst - - FUNC GLOBAL DEFAULT 46 code
+def drmHashInsert - - FUNC GLOBAL DEFAULT 78 code
+def drmHashLookup - - FUNC GLOBAL DEFAULT 54 code
+def drmHashNext - - FUNC GLOBAL DEFAULT 84 code
+def drmIoctl - - FUNC GLOBAL DEFAULT 44 code
+def drmIsKMS - - FUNC GLOBAL DEFAULT 62 code
+def drmIsMaster - - FUNC GLOBAL DEFAULT 16 code
+def drmMalloc - - FUNC GLOBAL DEFAULT 8 code
+def drmMap - - FUNC GLOBAL DEFAULT 104 code
+def drmMapBufs - - FUNC GLOBAL DEFAULT 160 code
+def drmMarkBufs - - FUNC GLOBAL DEFAULT 226 code
+def drmModeAddFB - - FUNC GLOBAL DEFAULT 70 code
+def drmModeAddFB2 - - FUNC GLOBAL DEFAULT 36 code
+def drmModeAddFB2WithModifiers - - FUNC GLOBAL DEFAULT 152 code
+def drmModeAtomicAddProperty - - FUNC GLOBAL DEFAULT 140 code
+def drmModeAtomicAlloc - - FUNC GLOBAL DEFAULT 20 code
+def drmModeAtomicCommit - - FUNC GLOBAL DEFAULT 556 code
+def drmModeAtomicDuplicate - - FUNC GLOBAL DEFAULT 84 code
+def drmModeAtomicFree - - FUNC GLOBAL DEFAULT 26 code
+def drmModeAtomicGetCursor - - FUNC GLOBAL DEFAULT 12 code
+def drmModeAtomicMerge - - FUNC GLOBAL DEFAULT 128 code
+def drmModeAtomicSetCursor - - FUNC GLOBAL DEFAULT 6 code
+def drmModeAttachMode - - FUNC GLOBAL DEFAULT 54 code
+def drmModeConnectorSetProperty - - FUNC GLOBAL DEFAULT 50 code
+def drmModeCreateLease - - FUNC GLOBAL DEFAULT 76 code
+def drmModeCreatePropertyBlob - - FUNC GLOBAL DEFAULT 70 code
+def drmModeCrtcGetGamma - - FUNC GLOBAL DEFAULT 56 code
+def drmModeCrtcSetGamma - - FUNC GLOBAL DEFAULT 56 code
+def drmModeDestroyPropertyBlob - - FUNC GLOBAL DEFAULT 40 code
+def drmModeDetachMode - - FUNC GLOBAL DEFAULT 54 code
+def drmModeDirtyFB - - FUNC GLOBAL DEFAULT 50 code
+def drmModeFormatModifierBlobIterNext - - FUNC GLOBAL DEFAULT 194 code
+def drmModeFreeConnector - - FUNC GLOBAL DEFAULT 42 code
+def drmModeFreeCrtc - - FUNC GLOBAL DEFAULT 8 code
+def drmModeFreeEncoder - - FUNC GLOBAL DEFAULT 4 code
+def drmModeFreeFB - - FUNC GLOBAL DEFAULT 8 code
+def drmModeFreeFB2 - - FUNC GLOBAL DEFAULT 4 code
+def drmModeFreeModeInfo - - FUNC GLOBAL DEFAULT 8 code
+def drmModeFreeObjectProperties - - FUNC GLOBAL DEFAULT 30 code
+def drmModeFreePlane - - FUNC GLOBAL DEFAULT 24 code
+def drmModeFreePlaneResources - - FUNC GLOBAL DEFAULT 24 code
+def drmModeFreeProperty - - FUNC GLOBAL DEFAULT 36 code
+def drmModeFreePropertyBlob - - FUNC GLOBAL DEFAULT 24 code
+def drmModeFreeResources - - FUNC GLOBAL DEFAULT 42 code
+def drmModeGetConnector - - FUNC GLOBAL DEFAULT 4 code
+def drmModeGetConnectorCurrent - - FUNC GLOBAL DEFAULT 4 code
+def drmModeGetCrtc - - FUNC GLOBAL DEFAULT 116 code
+def drmModeGetEncoder - - FUNC GLOBAL DEFAULT 72 code
+def drmModeGetFB - - FUNC GLOBAL DEFAULT 84 code
+def drmModeGetFB2 - - FUNC GLOBAL DEFAULT 170 code
+def drmModeGetLease - - FUNC GLOBAL DEFAULT 140 code
+def drmModeGetPlane - - FUNC GLOBAL DEFAULT 222 code
+def drmModeGetPlaneResources - - FUNC GLOBAL DEFAULT 180 code
+def drmModeGetProperty - - FUNC GLOBAL DEFAULT 296 code
+def drmModeGetPropertyBlob - - FUNC GLOBAL DEFAULT 114 code
+def drmModeGetResources - - FUNC GLOBAL DEFAULT 436 code
+def drmModeListLessees - - FUNC GLOBAL DEFAULT 140 code
+def drmModeMoveCursor - - FUNC GLOBAL DEFAULT 54 code
+def drmModeObjectGetProperties - - FUNC GLOBAL DEFAULT 236 code
+def drmModeObjectSetProperty - - FUNC GLOBAL DEFAULT 54 code
+def drmModePageFlip - - FUNC GLOBAL DEFAULT 50 code
+def drmModePageFlipTarget - - FUNC GLOBAL DEFAULT 52 code
+def drmModeRevokeLease - - FUNC GLOBAL DEFAULT 52 code
+def drmModeRmFB - - FUNC GLOBAL DEFAULT 38 code
+def drmModeSetCrtc - - FUNC GLOBAL DEFAULT 104 code
+def drmModeSetCursor - - FUNC GLOBAL DEFAULT 56 code
+def drmModeSetCursor2 - - FUNC GLOBAL DEFAULT 64 code
+def drmModeSetPlane - - FUNC GLOBAL DEFAULT 78 code
+def drmMsg - - FUNC GLOBAL DEFAULT 120 code
+def drmOpen - - FUNC GLOBAL DEFAULT 6 code
+def drmOpenControl - - FUNC GLOBAL DEFAULT 60 code
+def drmOpenOnce - - FUNC GLOBAL DEFAULT 10 code
+def drmOpenOnceWithType - - FUNC GLOBAL DEFAULT 156 code
+def drmOpenRender - - FUNC GLOBAL DEFAULT 60 code
+def drmOpenWithType - - FUNC GLOBAL DEFAULT 108 code
+def drmPrimeFDToHandle - - FUNC GLOBAL DEFAULT 40 code
+def drmPrimeHandleToFD - - FUNC GLOBAL DEFAULT 44 code
+def drmRandom - - FUNC GLOBAL DEFAULT 44 code
+def drmRandomCreate - - FUNC GLOBAL DEFAULT 82 code
+def drmRandomDestroy - - FUNC GLOBAL DEFAULT 10 code
+def drmRandomDouble - - FUNC GLOBAL DEFAULT 36 code
+def drmRmMap - - FUNC GLOBAL DEFAULT 48 code
+def drmSLCreate - - FUNC GLOBAL DEFAULT 70 code
+def drmSLDelete - - FUNC GLOBAL DEFAULT 198 code
+def drmSLDestroy - - FUNC GLOBAL DEFAULT 86 code
+def drmSLDump - - FUNC GLOBAL DEFAULT 208 code
+def drmSLFirst - - FUNC GLOBAL DEFAULT 40 code
+def drmSLInsert - - FUNC GLOBAL DEFAULT 292 code
+def drmSLLookup - - FUNC GLOBAL DEFAULT 104 code
+def drmSLLookupNeighbors - - FUNC GLOBAL DEFAULT 178 code
+def drmSLNext - - FUNC GLOBAL DEFAULT 54 code
+def drmScatterGatherAlloc - - FUNC GLOBAL DEFAULT 52 code
+def drmScatterGatherFree - - FUNC GLOBAL DEFAULT 40 code
+def drmSetBusid - - FUNC GLOBAL DEFAULT 48 code
+def drmSetClientCap - - FUNC GLOBAL DEFAULT 36 code
+def drmSetContextFlags - - FUNC GLOBAL DEFAULT 64 code
+def drmSetInterfaceVersion - - FUNC GLOBAL DEFAULT 66 code
+def drmSetMaster - - FUNC GLOBAL DEFAULT 10 code
+def drmSetServerInfo - - FUNC GLOBAL DEFAULT 12 code
+def drmSwitchToContext - - FUNC GLOBAL DEFAULT 40 code
+def drmSyncobjCreate - - FUNC GLOBAL DEFAULT 38 code
+def drmSyncobjDestroy - - FUNC GLOBAL DEFAULT 30 code
+def drmSyncobjExportSyncFile - - FUNC GLOBAL DEFAULT 48 code
+def drmSyncobjFDToHandle - - FUNC GLOBAL DEFAULT 42 code
+def drmSyncobjHandleToFD - - FUNC GLOBAL DEFAULT 46 code
+def drmSyncobjImportSyncFile - - FUNC GLOBAL DEFAULT 36 code
+def drmSyncobjQuery - - FUNC GLOBAL DEFAULT 38 code
+def drmSyncobjQuery2 - - FUNC GLOBAL DEFAULT 40 code
+def drmSyncobjReset - - FUNC GLOBAL DEFAULT 36 code
+def drmSyncobjSignal - - FUNC GLOBAL DEFAULT 36 code
+def drmSyncobjTimelineSignal - - FUNC GLOBAL DEFAULT 38 code
+def drmSyncobjTimelineWait - - FUNC GLOBAL DEFAULT 76 code
+def drmSyncobjTransfer - - FUNC GLOBAL DEFAULT 54 code
+def drmSyncobjWait - - FUNC GLOBAL DEFAULT 72 code
+def drmUnlock - - FUNC GLOBAL DEFAULT 30 code
+def drmUnmap - - FUNC GLOBAL DEFAULT 4 code
+def drmUnmapBufs - - FUNC GLOBAL DEFAULT 50 code
+def drmUpdateDrawableInfo - - FUNC GLOBAL DEFAULT 50 code
+def drmWaitVBlank - - FUNC GLOBAL DEFAULT 188 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __getdelim GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __isoc99_fscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und __isoc99_sscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und access GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und asprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und chmod GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und chown GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und clock_gettime GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und closedir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und geteuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpagesize GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ioctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mkdir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und mknod GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und mmap64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und munmap GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open_memstream GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und opendir GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und printf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und qsort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readdir64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und readlink GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realpath GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und remove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strcasecmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strdup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncasecmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strndup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vasprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL

@@ -1,0 +1,15 @@
+tvabi 1
+soname libwayland-egl.so.1
+needed libgcc_s.so.1
+needed libc.so.6
+def wl_egl_window_create - - FUNC GLOBAL DEFAULT 42 code
+def wl_egl_window_destroy - - FUNC GLOBAL DEFAULT 22 code
+def wl_egl_window_get_attached_size - - FUNC GLOBAL DEFAULT 14 code
+def wl_egl_window_resize - - FUNC GLOBAL DEFAULT 38 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL

@@ -1,0 +1,98 @@
+tvabi 1
+soname libatomic.so.1
+needed libgcc_s.so.1
+needed libc.so.6
+verdef 1 base libatomic.so.1
+verdef 2 - LIBATOMIC_1.0
+verdef 3 - LIBATOMIC_1.1 LIBATOMIC_1.0
+verdef 4 - LIBATOMIC_1.2 LIBATOMIC_1.1
+def __atomic_add_fetch_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_add_fetch_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_add_fetch_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 44 code
+def __atomic_add_fetch_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 60 code
+def __atomic_and_fetch_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_and_fetch_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_and_fetch_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 44 code
+def __atomic_and_fetch_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 60 code
+def __atomic_compare_exchange LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 544 code
+def __atomic_compare_exchange_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 68 code
+def __atomic_compare_exchange_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 68 code
+def __atomic_compare_exchange_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 68 code
+def __atomic_compare_exchange_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 86 code
+def __atomic_exchange LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 414 code
+def __atomic_exchange_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 58 code
+def __atomic_exchange_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 62 code
+def __atomic_exchange_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 40 code
+def __atomic_exchange_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 52 code
+def __atomic_feraiseexcept LIBATOMIC_1.1 @@ FUNC GLOBAL DEFAULT 138 code
+def __atomic_fetch_add_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 50 code
+def __atomic_fetch_add_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 50 code
+def __atomic_fetch_add_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 48 code
+def __atomic_fetch_add_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 64 code
+def __atomic_fetch_and_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 54 code
+def __atomic_fetch_and_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 54 code
+def __atomic_fetch_and_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 52 code
+def __atomic_fetch_and_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 68 code
+def __atomic_fetch_nand_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 58 code
+def __atomic_fetch_nand_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 58 code
+def __atomic_fetch_nand_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 56 code
+def __atomic_fetch_nand_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 76 code
+def __atomic_fetch_or_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 54 code
+def __atomic_fetch_or_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 54 code
+def __atomic_fetch_or_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 52 code
+def __atomic_fetch_or_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 68 code
+def __atomic_fetch_sub_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 50 code
+def __atomic_fetch_sub_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 50 code
+def __atomic_fetch_sub_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 48 code
+def __atomic_fetch_sub_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 64 code
+def __atomic_fetch_xor_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 54 code
+def __atomic_fetch_xor_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 54 code
+def __atomic_fetch_xor_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 52 code
+def __atomic_fetch_xor_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 68 code
+def __atomic_is_lock_free LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 72 code
+def __atomic_load LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 188 code
+def __atomic_load_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 22 code
+def __atomic_load_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 22 code
+def __atomic_load_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 18 code
+def __atomic_load_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 18 code
+def __atomic_nand_fetch_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 50 code
+def __atomic_nand_fetch_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 50 code
+def __atomic_nand_fetch_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 48 code
+def __atomic_nand_fetch_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 68 code
+def __atomic_or_fetch_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_or_fetch_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_or_fetch_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 44 code
+def __atomic_or_fetch_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 60 code
+def __atomic_store LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 340 code
+def __atomic_store_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 18 code
+def __atomic_store_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 18 code
+def __atomic_store_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 18 code
+def __atomic_store_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 50 code
+def __atomic_sub_fetch_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_sub_fetch_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_sub_fetch_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 44 code
+def __atomic_sub_fetch_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 64 code
+def __atomic_test_and_set_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_test_and_set_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_test_and_set_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_test_and_set_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_xor_fetch_1 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_xor_fetch_2 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 46 code
+def __atomic_xor_fetch_4 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 44 code
+def __atomic_xor_fetch_8 LIBATOMIC_1.0 @@ FUNC GLOBAL DEFAULT 60 code
+def atomic_flag_clear LIBATOMIC_1.2 @@ FUNC GLOBAL DEFAULT 14 code
+def atomic_flag_clear_explicit LIBATOMIC_1.2 @@ FUNC GLOBAL DEFAULT 14 code
+def atomic_flag_test_and_set LIBATOMIC_1.2 @@ FUNC GLOBAL DEFAULT 28 code
+def atomic_flag_test_and_set_explicit LIBATOMIC_1.2 @@ FUNC GLOBAL DEFAULT 28 code
+def atomic_signal_fence LIBATOMIC_1.2 @@ FUNC GLOBAL DEFAULT 2 code
+def atomic_thread_fence LIBATOMIC_1.2 @@ FUNC GLOBAL DEFAULT 6 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_lock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_unlock GLIBC_2.4 libc.so.6 FUNC GLOBAL

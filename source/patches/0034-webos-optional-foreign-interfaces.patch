@@ -1,0 +1,26 @@
+# why: Some webOS 4 TVs have no wl_webos_foreign and wl_webos_exported interfaces, and the browser did not load because
+# patch 0025 references them. Use weak references and skip the foreign bind when the interface is missing.
+--- a/src/ui/ozone/platform/wayland/extensions/webos/host/wayland_extensions_webos_impl.cc
++++ b/src/ui/ozone/platform/wayland/extensions/webos/host/wayland_extensions_webos_impl.cc
+@@ -41,6 +41,11 @@
+ #include "ui/platform_window/platform_window_init_properties.h"
+ #include "ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.h"
+ 
++// chromium-native (patch 0034): webOS 4.4 TVs do not all have these interfaces. Weak references let the browser load
++// there. The foreign bind below is skipped when wl_webos_foreign_interface is absent.
++#pragma weak wl_webos_foreign_interface
++#pragma weak wl_webos_exported_interface
++
+ namespace ui {
+ 
+ // chromium-native (patch 0023) ----------------------------------------------------------------------------------
+@@ -316,7 +321,8 @@
+         input_manager.release(), connection_);
+   }
+   // chromium-native (patch 0023): hardware video export (see CnVideoExport above).
+-  if (!g_cn && CnHwVideo() && strcmp(interface, "wl_webos_foreign") == 0) {
++  if (!g_cn && CnHwVideo() && &wl_webos_foreign_interface != nullptr &&
++      strcmp(interface, "wl_webos_foreign") == 0) {
+     g_cn = new CnVideoExport();
+     g_cn->connection = connection_;
+     g_cn->foreign = static_cast<wl_webos_foreign*>(

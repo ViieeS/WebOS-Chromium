@@ -1,0 +1,385 @@
+tvabi 1
+soname libtirpc.so.3
+needed libpthread.so.0
+needed libgcc_s.so.1
+needed libc.so.6
+verdef 1 base libtirpc.so.3
+verdef 2 - TIRPC_0.3.0
+verdef 3 - TIRPC_0.3.1 TIRPC_0.3.0
+verdef 4 - TIRPC_0.3.2 TIRPC_0.3.1
+verdef 5 - TIRPC_0.3.3 TIRPC_0.3.2
+verdef 6 - TIRPC_PRIVATE
+def __getpublickey_LOCAL TIRPC_0.3.3 @@ OBJECT GLOBAL DEFAULT 4 data
+def __key_decryptsession_pk_LOCAL TIRPC_0.3.3 @@ OBJECT GLOBAL DEFAULT 4 data
+def __key_encryptsession_pk_LOCAL TIRPC_0.3.3 @@ OBJECT GLOBAL DEFAULT 4 data
+def __key_gendes_LOCAL TIRPC_0.3.3 @@ OBJECT GLOBAL DEFAULT 4 data
+def __libc_clntudp_bufcreate TIRPC_PRIVATE @@ FUNC GLOBAL DEFAULT 64 code
+def __rpc_createerr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 120 code
+def __rpc_dtbsize TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 44 code
+def __rpc_endconf TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 42 code
+def __rpc_fd2sockinfo TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 100 code
+def __rpc_fixup_addr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 68 code
+def __rpc_get_a_size TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 28 code
+def __rpc_get_local_uid TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 40 code
+def __rpc_get_t_size TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 44 code
+def __rpc_getconf TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 252 code
+def __rpc_getconfip TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 392 code
+def __rpc_nconf2fd TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 6 code
+def __rpc_nconf2fd_flags TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 64 code
+def __rpc_nconf2sockinfo TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 180 code
+def __rpc_rawcombuf TIRPC_0.3.0 @@ OBJECT GLOBAL DEFAULT 4 data
+def __rpc_seman2socktype TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 28 code
+def __rpc_setconf TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 172 code
+def __rpc_sockinfo2netid TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 148 code
+def __rpc_sockisbound TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 124 code
+def __rpc_socktype2seman TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 28 code
+def __rpc_taddr2uaddr_af TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 156 code
+def __rpc_uaddr2taddr_af TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 324 code
+def __rpcgettp TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 40 code
+def __svc_clean_idle TIRPC_PRIVATE @@ FUNC GLOBAL DEFAULT 4 code
+def _authenticate TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 16 code
+def _get_next_token TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 106 code
+def _gss_authenticate TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 208 code
+def _null_auth TIRPC_0.3.0 @@ OBJECT GLOBAL DEFAULT 12 data
+def _rpc_dtablesize TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 24 code
+def _seterr_reply TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 208 code
+def _svcauth_none TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def _svcauth_short TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def _svcauth_unix TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 356 code
+def authdes_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def authdes_pk_create TIRPC_0.3.3 @@ FUNC GLOBAL DEFAULT 4 code
+def authdes_seccreate TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def authnone_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 272 code
+def authunix_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 432 code
+def authunix_create_default TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 220 code
+def bindresvport TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def bindresvport_sa TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 796 code
+def callrpc TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 40 code
+def clnt_broadcast TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 152 code
+def clnt_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 16 code
+def clnt_create_timed TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 266 code
+def clnt_create_vers TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 24 code
+def clnt_create_vers_timed TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 284 code
+def clnt_dg_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 912 code
+def clnt_pcreateerror TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 48 code
+def clnt_perrno TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 44 code
+def clnt_perror TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 56 code
+def clnt_raw_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 320 code
+def clnt_spcreateerror TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 272 code
+def clnt_sperrno TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 28 code
+def clnt_sperror TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 384 code
+def clnt_tli_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 408 code
+def clnt_tp_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 16 code
+def clnt_tp_create_timed TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 196 code
+def clnt_vc_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 944 code
+def clntraw_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def clnttcp_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 36 code
+def clntudp_bufcreate TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 64 code
+def clntudp_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 38 code
+def clntunix_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 186 code
+def endnetconfig TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 204 code
+def endnetpath TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 80 code
+def freenetconfigent TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 32 code
+def get_myaddress TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 26 code
+def getnetconfig TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 412 code
+def getnetconfigent TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 696 code
+def getnetname TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 36 code
+def getnetpath TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 152 code
+def getpublicandprivatekey TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 300 code
+def getpublickey TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 28 code
+def getrpcport TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 104 code
+def host2netname TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 104 code
+def key_decryptsession TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 160 code
+def key_decryptsession_pk TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 124 code
+def key_encryptsession TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 160 code
+def key_encryptsession_pk TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 124 code
+def key_gendes TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 56 code
+def key_get_conv TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 148 code
+def key_secretkey_is_set TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 120 code
+def key_setnet TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 132 code
+def key_setsecret TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 132 code
+def libtirpc_set_debug TIRPC_PRIVATE @@ FUNC GLOBAL DEFAULT 80 code
+def nc_perror TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 48 code
+def nc_sperror TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 132 code
+def netname2host TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 172 code
+def netname2user TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 460 code
+def pmap_getmaps TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 188 code
+def pmap_getport TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 252 code
+def pmap_rmtcall TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 256 code
+def pmap_set TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 144 code
+def pmap_unset TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 88 code
+def registerrpc TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 32 code
+def rpc_broadcast TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 44 code
+def rpc_broadcast_exp TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 2172 code
+def rpc_call TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 508 code
+def rpc_control TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 48 code
+def rpc_createerr TIRPC_0.3.0 @@ OBJECT GLOBAL DEFAULT 16 data
+def rpc_nullproc TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 68 code
+def rpc_reg TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 724 code
+def rpcb_getaddr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 88 code
+def rpcb_getmaps TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 232 code
+def rpcb_gettime TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 332 code
+def rpcb_rmtcall TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 352 code
+def rpcb_set TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 232 code
+def rpcb_taddr2uaddr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 124 code
+def rpcb_uaddr2taddr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 148 code
+def rpcb_unset TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 168 code
+def rtime TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 320 code
+def setnetconfig TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 144 code
+def setnetpath TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 128 code
+def svc_auth_none TIRPC_PRIVATE @@ OBJECT GLOBAL DEFAULT 8 data
+def svc_auth_reg TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 124 code
+def svc_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 296 code
+def svc_dg_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 584 code
+def svc_dg_enablecache TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 240 code
+def svc_exit TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 64 code
+def svc_fd_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 224 code
+def svc_fdset TIRPC_0.3.0 @@ OBJECT GLOBAL DEFAULT 128 data
+def svc_getreq TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 28 code
+def svc_getreq_common TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 340 code
+def svc_getreq_poll TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 116 code
+def svc_getreqset TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 152 code
+def svc_max_pollfd TIRPC_0.3.3 @@ OBJECT GLOBAL DEFAULT 4 data
+def svc_maxfd TIRPC_0.3.0 @@ OBJECT GLOBAL DEFAULT 4 data
+def svc_pollfd TIRPC_0.3.3 @@ OBJECT GLOBAL DEFAULT 4 data
+def svc_raw_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 316 code
+def svc_reg TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 316 code
+def svc_register TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 204 code
+def svc_run TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 216 code
+def svc_sendreply TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 84 code
+def svc_tli_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 364 code
+def svc_tp_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 120 code
+def svc_unreg TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 124 code
+def svc_unregister TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 92 code
+def svc_vc_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 456 code
+def svcerr_auth TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 64 code
+def svcerr_decode TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 84 code
+def svcerr_noproc TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 84 code
+def svcerr_noprog TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 80 code
+def svcerr_progvers TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 88 code
+def svcerr_systemerr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 84 code
+def svcerr_weakauth TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 44 code
+def svcfd_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def svcraw_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def svctcp_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 12 code
+def svcudp_bufcreate TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 12 code
+def svcudp_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 16 code
+def svcunix_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 208 code
+def svcunixfd_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def taddr2uaddr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 26 code
+def uaddr2taddr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 26 code
+def user2netname TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 80 code
+def xdr_accepted_reply TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 152 code
+def xdr_array TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 184 code
+def xdr_authunix_parms TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 172 code
+def xdr_bool TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 80 code
+def xdr_bytes TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 172 code
+def xdr_callhdr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 152 code
+def xdr_callmsg TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 688 code
+def xdr_char TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 28 code
+def xdr_cryptkeyarg TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 30 code
+def xdr_cryptkeyarg2 TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 46 code
+def xdr_cryptkeyres TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 36 code
+def xdr_des_block TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 80 code
+def xdr_double TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 106 code
+def xdr_enum TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_float TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 68 code
+def xdr_free TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 20 code
+def xdr_getcredres TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 36 code
+def xdr_hyper TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_int TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 68 code
+def xdr_int16_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 70 code
+def xdr_int32_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 68 code
+def xdr_int64_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 104 code
+def xdr_int8_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 70 code
+def xdr_key_netstarg TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 48 code
+def xdr_key_netstres TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 36 code
+def xdr_keybuf TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 16 code
+def xdr_keystatus TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 14 code
+def xdr_long TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 32 code
+def xdr_longlong_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_netbuf TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 42 code
+def xdr_netnamestr TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 16 code
+def xdr_netobj TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 12 code
+def xdr_opaque TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 120 code
+def xdr_opaque_auth TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 104 code
+def xdr_pmap TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 120 code
+def xdr_pmaplist TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 188 code
+def xdr_pmaplist_ptr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_pointer TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 58 code
+def xdr_quad_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_reference TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 100 code
+def xdr_rejected_reply TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 128 code
+def xdr_replymsg TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 136 code
+def xdr_rmtcall_args TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 216 code
+def xdr_rmtcallres TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 144 code
+def xdr_rpcb TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 86 code
+def xdr_rpcb_entry TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 90 code
+def xdr_rpcb_entry_list_ptr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 132 code
+def xdr_rpcb_rmtcallargs TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 176 code
+def xdr_rpcb_rmtcallres TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 44 code
+def xdr_rpcb_stat TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 76 code
+def xdr_rpcb_stat_byvers TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 48 code
+def xdr_rpcblist TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_rpcblist_ptr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 132 code
+def xdr_rpcbs_addrlist TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 112 code
+def xdr_rpcbs_addrlist_ptr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 36 code
+def xdr_rpcbs_proc TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 48 code
+def xdr_rpcbs_rmtcalllist TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 248 code
+def xdr_rpcbs_rmtcalllist_ptr TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 36 code
+def xdr_short TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 70 code
+def xdr_sizeof TIRPC_0.3.3 @@ FUNC GLOBAL DEFAULT 120 code
+def xdr_string TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 208 code
+def xdr_u_char TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 28 code
+def xdr_u_hyper TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_u_int TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 68 code
+def xdr_u_int16_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 68 code
+def xdr_u_int32_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 68 code
+def xdr_u_int64_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 104 code
+def xdr_u_int8_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 68 code
+def xdr_u_long TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 32 code
+def xdr_u_longlong_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_u_quad_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_u_short TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 68 code
+def xdr_uint16_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_uint32_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_uint64_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_uint8_t TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_union TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 86 code
+def xdr_unixcred TIRPC_0.3.2 @@ FUNC GLOBAL DEFAULT 80 code
+def xdr_vector TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 50 code
+def xdr_void TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+def xdr_wrapstring TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 8 code
+def xdrmem_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 44 code
+def xdrrec_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 244 code
+def xdrrec_endofrecord TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 60 code
+def xdrrec_eof TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 166 code
+def xdrrec_skiprecord TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 206 code
+def xdrstdio_create TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 28 code
+def xprt_register TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 300 code
+def xprt_unregister TIRPC_0.3.0 @@ FUNC GLOBAL DEFAULT 4 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __assert_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __getdelim GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __isoc99_sscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und abort GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und accept GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und alarm GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und asprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und bind GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und connect GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und endgrent GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fcntl GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und feof GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fgets GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fread GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und freeaddrinfo GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und freeifaddrs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fseek GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fsync GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ftell GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getaddrinfo GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getdomainname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getdtablesize GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getegid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und geteuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getgrent GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getgroups GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gethostbyname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gethostname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getifaddrs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpeername GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpwuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getrlimit GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getservbyname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getsockname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getsockopt GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gettimeofday GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und if_nametoindex GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und inet_ntoa GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und inet_ntop GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und inet_pton GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ioctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und listen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und openlog GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und poll GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und printf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_destroy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_init GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_signal GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_cond_wait GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_getspecific GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_key_create GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_key_delete GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_mutex_lock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_mutex_unlock GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pthread_rwlock_rdlock GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_rwlock_unlock GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_rwlock_wrlock GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_setspecific GLIBC_2.34 libc.so.6 FUNC GLOBAL
+und pthread_sigmask GLIBC_2.32 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und rand_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und recvfrom GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und recvmsg GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und select GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sendmsg GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sendto GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setgrent GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und setsockopt GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sigfillset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und signal GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sleep GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und socket GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und sprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strcasecmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strdup GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strpbrk GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strsep GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtok_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und syslog GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und time GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und uname GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vsyslog GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und warn GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und warnx GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und write GLIBC_2.4 libc.so.6 FUNC GLOBAL

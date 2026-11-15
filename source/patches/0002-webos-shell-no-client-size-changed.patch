@@ -1,0 +1,14 @@
+# why: The TV's wl_webos_shell_surface has no client_size_changed event. Chromium's listener lists it third, which
+# shifts every later entry. Remove it; the window size comes from the configure and state events.
+diff --git a/src/ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.cc b/src/ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.cc
+index af9b874dae..d108a3d7ff 100644
+--- a/src/ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.cc
++++ b/src/ui/ozone/platform/wayland/extensions/webos/host/webos_shell_surface_wrapper.cc
+@@ -136,7 +136,6 @@ bool WebosShellSurfaceWrapper::Initialize() {
+   static const wl_webos_shell_surface_listener webos_shell_surface_listener = {
+       WebosShellSurfaceWrapper::StateChanged,
+       WebosShellSurfaceWrapper::PositionChanged,
+-      WebosShellSurfaceWrapper::ClientSizeChanged,
+       WebosShellSurfaceWrapper::Close, WebosShellSurfaceWrapper::Exposed,
+       WebosShellSurfaceWrapper::StateAboutToChange};
+ 

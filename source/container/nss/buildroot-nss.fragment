@@ -1,0 +1,13 @@
+BR2_PACKAGE_LIBNSS=y
+BR2_PACKAGE_LIBNSPR=y
+# The defconfig enables the LGTV meta-package, which selects glibc-polyfills (package/lgtv/Config.in) and makes
+# gcc-final depend on it. Both off: no polyfills, nothing from buildroot's glibc (design section 2.2).
+# BR2_PACKAGE_LGTV is not set
+# BR2_PACKAGE_GLIBC_POLYFILLS is not set
+# Speed: every package uses all cores, and per-package directories let independent packages build in parallel.
+BR2_JLEVEL=0
+BR2_PER_PACKAGE_DIRECTORIES=y
+# Download cache and ccache on the Modal Volume, so a preempted run restarts without re-downloading or recompiling.
+BR2_CCACHE=y
+BR2_CCACHE_DIR="/vol/cache/buildroot-ccache"
+BR2_DL_DIR="/vol/cache/buildroot-dl"

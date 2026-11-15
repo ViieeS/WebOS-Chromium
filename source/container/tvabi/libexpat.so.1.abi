@@ -1,0 +1,99 @@
+tvabi 1
+soname libexpat.so.1
+needed libgcc_s.so.1
+needed libc.so.6
+def XML_DefaultCurrent - - FUNC GLOBAL DEFAULT 38 code
+def XML_ErrorString - - FUNC GLOBAL DEFAULT 492 code
+def XML_ExpatVersion - - FUNC GLOBAL DEFAULT 12 code
+def XML_ExpatVersionInfo - - FUNC GLOBAL DEFAULT 20 code
+def XML_ExternalEntityParserCreate - - FUNC GLOBAL DEFAULT 1280 code
+def XML_FreeContentModel - - FUNC GLOBAL DEFAULT 12 code
+def XML_GetBase - - FUNC GLOBAL DEFAULT 8 code
+def XML_GetBuffer - - FUNC GLOBAL DEFAULT 368 code
+def XML_GetCurrentByteCount - - FUNC GLOBAL DEFAULT 22 code
+def XML_GetCurrentByteIndex - - FUNC GLOBAL DEFAULT 24 code
+def XML_GetCurrentColumnNumber - - FUNC GLOBAL DEFAULT 46 code
+def XML_GetCurrentLineNumber - - FUNC GLOBAL DEFAULT 48 code
+def XML_GetErrorCode - - FUNC GLOBAL DEFAULT 12 code
+def XML_GetFeatureList - - FUNC GLOBAL DEFAULT 12 code
+def XML_GetIdAttributeIndex - - FUNC GLOBAL DEFAULT 14 code
+def XML_GetInputContext - - FUNC GLOBAL DEFAULT 44 code
+def XML_GetParsingStatus - - FUNC GLOBAL DEFAULT 56 code
+def XML_GetSpecifiedAttributeCount - - FUNC GLOBAL DEFAULT 14 code
+def XML_MemFree - - FUNC GLOBAL DEFAULT 12 code
+def XML_MemMalloc - - FUNC GLOBAL DEFAULT 10 code
+def XML_MemRealloc - - FUNC GLOBAL DEFAULT 14 code
+def XML_Parse - - FUNC GLOBAL DEFAULT 316 code
+def XML_ParseBuffer - - FUNC GLOBAL DEFAULT 256 code
+def XML_ParserCreate - - FUNC GLOBAL DEFAULT 8 code
+def XML_ParserCreateNS - - FUNC GLOBAL DEFAULT 30 code
+def XML_ParserCreate_MM - - FUNC GLOBAL DEFAULT 4 code
+def XML_ParserFree - - FUNC GLOBAL DEFAULT 396 code
+def XML_ParserReset - - FUNC GLOBAL DEFAULT 642 code
+def XML_ResumeParser - - FUNC GLOBAL DEFAULT 140 code
+def XML_SetAttlistDeclHandler - - FUNC GLOBAL DEFAULT 8 code
+def XML_SetBase - - FUNC GLOBAL DEFAULT 96 code
+def XML_SetBillionLaughsAttackProtectionActivationThreshold - - FUNC GLOBAL DEFAULT 22 code
+def XML_SetBillionLaughsAttackProtectionMaximumAmplification - - FUNC GLOBAL DEFAULT 62 code
+def XML_SetCdataSectionHandler - - FUNC GLOBAL DEFAULT 8 code
+def XML_SetCharacterDataHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetCommentHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetDefaultHandler - - FUNC GLOBAL DEFAULT 12 code
+def XML_SetDefaultHandlerExpand - - FUNC GLOBAL DEFAULT 12 code
+def XML_SetDoctypeDeclHandler - - FUNC GLOBAL DEFAULT 8 code
+def XML_SetElementDeclHandler - - FUNC GLOBAL DEFAULT 8 code
+def XML_SetElementHandler - - FUNC GLOBAL DEFAULT 8 code
+def XML_SetEncoding - - FUNC GLOBAL DEFAULT 98 code
+def XML_SetEndCdataSectionHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetEndDoctypeDeclHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetEndElementHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetEndNamespaceDeclHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetEntityDeclHandler - - FUNC GLOBAL DEFAULT 8 code
+def XML_SetExternalEntityRefHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetExternalEntityRefHandlerArg - - FUNC GLOBAL DEFAULT 14 code
+def XML_SetHashSalt - - FUNC GLOBAL DEFAULT 34 code
+def XML_SetNamespaceDeclHandler - - FUNC GLOBAL DEFAULT 8 code
+def XML_SetNotStandaloneHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetNotationDeclHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetParamEntityParsing - - FUNC GLOBAL DEFAULT 28 code
+def XML_SetProcessingInstructionHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetReturnNSTriplet - - FUNC GLOBAL DEFAULT 26 code
+def XML_SetSkippedEntityHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetStartCdataSectionHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetStartDoctypeDeclHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetStartElementHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetStartNamespaceDeclHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetUnknownEncodingHandler - - FUNC GLOBAL DEFAULT 10 code
+def XML_SetUnparsedEntityDeclHandler - - FUNC GLOBAL DEFAULT 6 code
+def XML_SetUserData - - FUNC GLOBAL DEFAULT 18 code
+def XML_SetXmlDeclHandler - - FUNC GLOBAL DEFAULT 8 code
+def XML_StopParser - - FUNC GLOBAL DEFAULT 78 code
+def XML_UseForeignDTD - - FUNC GLOBAL DEFAULT 32 code
+def XML_UseParserAsHandlerArg - - FUNC GLOBAL DEFAULT 6 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __assert_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getpid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getrandom GLIBC_2.25 libc.so.6 FUNC GLOBAL
+und gettimeofday GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und open GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL

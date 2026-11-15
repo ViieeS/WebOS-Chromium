@@ -1,0 +1,44 @@
+# why: LSM sends pointer events only where a surface's input region contains the pointer, and on some TVs the Magic
+# Remote pointer never reached the window. The browser window's root surface now gets no input region (the whole
+# surface) instead of Chrome's rectangle.
+--- a/src/ui/ozone/platform/wayland/host/wayland_surface.cc
++++ b/src/ui/ozone/platform/wayland/host/wayland_surface.cc
+@@ -225,6 +225,16 @@ void WaylandSurface::UnsetRootWindow() {
+   root_window_ = nullptr;
+ }
+ 
++// chromium-native (patch 0045): on some webOS 4 TVs the Magic Remote pointer never reached the window.
++// LSM sends pointer events to a surface only where its input region contains the pointer
++// (WebOSSurfaceItem::contains() = inputRegionContains()). The root surface of a browser window now gets no input
++// region (NULL = the whole surface) instead of Chrome's own rectangle; other surfaces keep theirs.
++namespace {
++bool CnIsRoot(WaylandWindow* root_window, WaylandSurface* surface) {
++  return root_window && root_window->root_surface() == surface;
++}
++}  // namespace
++
+ void WaylandSurface::SetRootWindow(WaylandWindow* window) {
+   root_window_ = window;
+ }
+@@ -357,9 +380,9 @@ void WaylandSurface::set_input_region(
+ 
+   if (apply_state_immediately_) {
+     state_.input_region_px = pending_state_.input_region_px;
+     wl_surface_set_input_region(
+         surface_.get(),
+-        pending_state_.input_region_px.empty()
++        pending_state_.input_region_px.empty() || CnIsRoot(root_window_, this)
+             ? nullptr
+             : CreateAndAddRegion(pending_state_.input_region_px,
+                                  GetWaylandScale(pending_state_))
+@@ -608,9 +632,9 @@ std::optional<bool> WaylandSurface::ApplyPendingState() {
+     // Sets input region for input events to allow go through and
+     // for the compositor to ignore the parts of the input region that fall
+     // outside of the surface.
+     wl_surface_set_input_region(
+         surface_.get(),
+-        pending_state_.input_region_px.empty()
++        pending_state_.input_region_px.empty() || CnIsRoot(root_window_, this)
+             ? nullptr
+             : CreateAndAddRegion(pending_state_.input_region_px,
+                                  GetWaylandScale(pending_state_))

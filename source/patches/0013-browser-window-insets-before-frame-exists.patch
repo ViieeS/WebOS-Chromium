@@ -1,0 +1,44 @@
+# why: neva creates the webOS toplevel inside WaylandWindow::Initialize(), so SetSizeConstraints() and
+# TriggerStateChanges() reach CalculateInsetsInDIP() and UpdateFrameHints() before platform_window(), the native
+# widget and the frame view exist, and Chrome crashed on its first window. Skip those calls until they exist.
+diff --git a/src/chrome/browser/ui/views/frame/browser_desktop_window_tree_host_linux.cc b/src/chrome/browser/ui/views/frame/browser_desktop_window_tree_host_linux.cc
+index 81a993cde..81a10a7ad 100644
+--- a/src/chrome/browser/ui/views/frame/browser_desktop_window_tree_host_linux.cc
++++ b/src/chrome/browser/ui/views/frame/browser_desktop_window_tree_host_linux.cc
+@@ -169,6 +169,12 @@ void BrowserDesktopWindowTreeHostLinux::UpdateFrameHints() {
+   if (!browser_widget_) {
+     return;
+   }
++  // chromium-native: same as CalculateInsetsInDIP: during the early webOS
++  // toplevel creation there is no platform window pointer and no frame view
++  // yet. The hints are applied again on the next state/bounds change.
++  if (!platform_window() || !browser_widget_->GetFrameView()) {
++    return;
++  }
+ 
+   auto* window = platform_window();
+   auto window_state = window->GetPlatformWindowState();
+@@ -276,13 +282,19 @@ bool BrowserDesktopWindowTreeHostLinux::IsOverrideRedirect(
+ gfx::Insets BrowserDesktopWindowTreeHostLinux::CalculateInsetsInDIP(
+     ui::PlatformWindowState window_state) const {
+   // If we are not showing frame, the insets should be zero.
+-  if (!browser_widget_ ||
++  // chromium-native: on webOS the toplevel is created inside
++  // WaylandWindow::Initialize() (neva), so this is called before the native
++  // widget and the frame view exist. Treat that like "no frame".
++  if (!browser_widget_ || !native_widget_ ||
+       !IsShowingFrame(native_widget_->UseCustomFrame(), window_state)) {
+     return gfx::Insets();
+   }
+-
+-  return static_cast<BrowserFrameView*>(browser_widget_->GetFrameView())
+-      ->RestoredMirroredFrameBorderInsets();
++  auto* frame_view =
++      static_cast<BrowserFrameView*>(browser_widget_->GetFrameView());
++  if (!frame_view) {
++    return gfx::Insets();
++  }
++  return frame_view->RestoredMirroredFrameBorderInsets();
+ }
+ 
+ void BrowserDesktopWindowTreeHostLinux::OnWindowStateChanged(

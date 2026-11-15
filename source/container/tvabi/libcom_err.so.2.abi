@@ -1,0 +1,60 @@
+tvabi 1
+soname libcom_err.so.2
+needed libgcc_s.so.1
+needed libc.so.6
+needed ld-linux.so.3
+def _et_dynamic_list - - OBJECT GLOBAL DEFAULT 4 data
+def _et_list - - OBJECT GLOBAL DEFAULT 4 data
+def add_error_table - - FUNC GLOBAL DEFAULT 120 code
+def add_to_error_table - - FUNC GLOBAL DEFAULT 6 code
+def com_err - - FUNC GLOBAL DEFAULT 60 code
+def com_err_hook - - OBJECT GLOBAL DEFAULT 4 data
+def com_err_va - - FUNC GLOBAL DEFAULT 32 code
+def com_right - - FUNC GLOBAL DEFAULT 68 code
+def com_right_r - - FUNC GLOBAL DEFAULT 64 code
+def error_message - - FUNC GLOBAL DEFAULT 404 code
+def error_table_name - - FUNC GLOBAL DEFAULT 76 code
+def et_list_lock - - FUNC GLOBAL DEFAULT 4 code
+def et_list_unlock - - FUNC GLOBAL DEFAULT 4 code
+def free_error_table - - FUNC GLOBAL DEFAULT 22 code
+def init_error_table - - FUNC GLOBAL DEFAULT 92 code
+def initialize_error_table_r - - FUNC GLOBAL DEFAULT 70 code
+def remove_error_table - - FUNC GLOBAL DEFAULT 172 code
+def reset_com_err_hook - - FUNC GLOBAL DEFAULT 32 code
+def set_com_err_gettext - - FUNC GLOBAL DEFAULT 16 code
+def set_com_err_hook - - FUNC GLOBAL DEFAULT 40 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __tls_get_addr GLIBC_2.4 ld-linux.so.3 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fcntl GLIBC_2.28 libc.so.6 FUNC GLOBAL
+und fflush GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fileno GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fopen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fputs GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getegid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und geteuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getgid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getuid GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und isatty GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und prctl GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und secure_getenv GLIBC_2.17 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und stpcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtoul GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und tcgetattr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vfprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL

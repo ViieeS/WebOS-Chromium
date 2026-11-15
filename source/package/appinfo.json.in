@@ -1,0 +1,14 @@
+{
+ "id": "@APP_ID@",
+ "version": "@VERSION@",
+ "vendor": "chromium-native",
+ "type": "native",
+ "main": "bin/run",
+ "requiredMemory": 700,
+ "title": "@APP_TITLE@",
+ "icon": "icon.png",
+ "largeIcon": "largeIcon.png",
+ "iconColor": "#1d2433",
+ "splashBackground": "splash.png",
+ "disableBackHistoryAPI": true
+}

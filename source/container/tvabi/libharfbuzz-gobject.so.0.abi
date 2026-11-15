@@ -1,0 +1,81 @@
+tvabi 1
+soname libharfbuzz-gobject.so.0
+needed libharfbuzz.so.0
+needed libglib-2.0.so.0
+needed libgobject-2.0.so.0
+needed libgcc_s.so.1
+needed libc.so.6
+def hb_gobject_aat_layout_feature_selector_get_type - - FUNC GLOBAL DEFAULT 84 code
+def hb_gobject_aat_layout_feature_type_get_type - - FUNC GLOBAL DEFAULT 80 code
+def hb_gobject_blob_get_type - - FUNC GLOBAL DEFAULT 96 code
+def hb_gobject_buffer_cluster_level_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_buffer_content_type_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_buffer_diff_flags_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_buffer_flags_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_buffer_get_type - - FUNC GLOBAL DEFAULT 96 code
+def hb_gobject_buffer_serialize_flags_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_buffer_serialize_format_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_direction_get_type - - FUNC GLOBAL DEFAULT 84 code
+def hb_gobject_draw_funcs_get_type - - FUNC GLOBAL DEFAULT 100 code
+def hb_gobject_face_get_type - - FUNC GLOBAL DEFAULT 100 code
+def hb_gobject_feature_get_type - - FUNC GLOBAL DEFAULT 92 code
+def hb_gobject_font_funcs_get_type - - FUNC GLOBAL DEFAULT 100 code
+def hb_gobject_font_get_type - - FUNC GLOBAL DEFAULT 100 code
+def hb_gobject_glyph_flags_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_glyph_info_get_type - - FUNC GLOBAL DEFAULT 92 code
+def hb_gobject_glyph_position_get_type - - FUNC GLOBAL DEFAULT 92 code
+def hb_gobject_map_get_type - - FUNC GLOBAL DEFAULT 100 code
+def hb_gobject_memory_mode_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_ot_color_palette_flags_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_ot_layout_baseline_tag_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_ot_layout_glyph_class_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_ot_math_constant_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_ot_math_glyph_part_flags_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_ot_math_glyph_part_get_type - - FUNC GLOBAL DEFAULT 92 code
+def hb_gobject_ot_math_glyph_variant_get_type - - FUNC GLOBAL DEFAULT 92 code
+def hb_gobject_ot_math_kern_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_ot_meta_tag_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_ot_metrics_tag_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_ot_var_axis_flags_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_script_get_type - - FUNC GLOBAL DEFAULT 84 code
+def hb_gobject_segment_properties_get_type - - FUNC GLOBAL DEFAULT 92 code
+def hb_gobject_set_get_type - - FUNC GLOBAL DEFAULT 100 code
+def hb_gobject_shape_plan_get_type - - FUNC GLOBAL DEFAULT 100 code
+def hb_gobject_style_tag_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_unicode_combining_class_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_unicode_funcs_get_type - - FUNC GLOBAL DEFAULT 100 code
+def hb_gobject_unicode_general_category_get_type - - FUNC GLOBAL DEFAULT 88 code
+def hb_gobject_user_data_key_get_type - - FUNC GLOBAL DEFAULT 92 code
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __gmon_start__ - - NOTYPE WEAK
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und g_boxed_type_register_static - - FUNC GLOBAL
+und g_enum_register_static - - FUNC GLOBAL
+und g_flags_register_static - - FUNC GLOBAL
+und g_intern_static_string - - FUNC GLOBAL
+und g_once_init_enter - - FUNC GLOBAL
+und g_once_init_leave - - FUNC GLOBAL
+und hb_blob_destroy - - FUNC GLOBAL
+und hb_blob_reference - - FUNC GLOBAL
+und hb_buffer_destroy - - FUNC GLOBAL
+und hb_buffer_reference - - FUNC GLOBAL
+und hb_draw_funcs_destroy - - FUNC GLOBAL
+und hb_draw_funcs_reference - - FUNC GLOBAL
+und hb_face_destroy - - FUNC GLOBAL
+und hb_face_reference - - FUNC GLOBAL
+und hb_font_destroy - - FUNC GLOBAL
+und hb_font_funcs_destroy - - FUNC GLOBAL
+und hb_font_funcs_reference - - FUNC GLOBAL
+und hb_font_reference - - FUNC GLOBAL
+und hb_map_destroy - - FUNC GLOBAL
+und hb_map_reference - - FUNC GLOBAL
+und hb_set_destroy - - FUNC GLOBAL
+und hb_set_reference - - FUNC GLOBAL
+und hb_shape_plan_destroy - - FUNC GLOBAL
+und hb_shape_plan_reference - - FUNC GLOBAL
+und hb_unicode_funcs_destroy - - FUNC GLOBAL
+und hb_unicode_funcs_reference - - FUNC GLOBAL

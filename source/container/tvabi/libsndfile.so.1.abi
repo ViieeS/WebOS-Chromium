@@ -1,0 +1,193 @@
+tvabi 1
+soname libsndfile.so.1
+needed libFLAC.so.8
+needed libvorbis.so.0
+needed libvorbisenc.so.2
+needed libogg.so.0
+needed libm.so.6
+needed libgcc_s.so.1
+needed libc.so.6
+verdef 1 base libsndfile.so.1
+verdef 2 - libsndfile.so.1.0
+def sf_close libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 104 code
+def sf_command libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 3122 code
+def sf_current_byterate libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 312 code
+def sf_error libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 84 code
+def sf_error_number libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 88 code
+def sf_error_str libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 120 code
+def sf_format_check libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 1030 code
+def sf_get_chunk_data libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 140 code
+def sf_get_chunk_iterator libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 108 code
+def sf_get_chunk_size libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 136 code
+def sf_get_string libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 30 code
+def sf_next_chunk_iterator libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 112 code
+def sf_open libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 148 code
+def sf_open_fd libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 188 code
+def sf_open_virtual libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 344 code
+def sf_perror libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 116 code
+def sf_read_double libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 508 code
+def sf_read_float libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 508 code
+def sf_read_int libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 508 code
+def sf_read_raw libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 472 code
+def sf_read_short libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 504 code
+def sf_readf_double libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 512 code
+def sf_readf_float libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 512 code
+def sf_readf_int libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 512 code
+def sf_readf_short libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 504 code
+def sf_seek libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 640 code
+def sf_set_chunk libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 124 code
+def sf_set_string libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 112 code
+def sf_strerror libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 104 code
+def sf_version_string libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 12 code
+def sf_write_double libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 444 code
+def sf_write_float libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 444 code
+def sf_write_int libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 444 code
+def sf_write_raw libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 456 code
+def sf_write_short libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 444 code
+def sf_write_sync libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 8 code
+def sf_writef_double libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 432 code
+def sf_writef_float libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 432 code
+def sf_writef_int libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 432 code
+def sf_writef_short libsndfile.so.1.0 @@ FUNC GLOBAL DEFAULT 432 code
+und FLAC__StreamDecoderErrorStatusString - - OBJECT GLOBAL
+und FLAC__StreamDecoderStateString - - OBJECT GLOBAL
+und FLAC__StreamEncoderInitStatusString - - OBJECT GLOBAL
+und FLAC__metadata_object_delete - - FUNC GLOBAL
+und FLAC__metadata_object_new - - FUNC GLOBAL
+und FLAC__metadata_object_vorbiscomment_append_comment - - FUNC GLOBAL
+und FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair - - FUNC GLOBAL
+und FLAC__metadata_object_vorbiscomment_find_entry_from - - FUNC GLOBAL
+und FLAC__stream_decoder_delete - - FUNC GLOBAL
+und FLAC__stream_decoder_finish - - FUNC GLOBAL
+und FLAC__stream_decoder_get_decode_position - - FUNC GLOBAL
+und FLAC__stream_decoder_get_state - - FUNC GLOBAL
+und FLAC__stream_decoder_init_stream - - FUNC GLOBAL
+und FLAC__stream_decoder_new - - FUNC GLOBAL
+und FLAC__stream_decoder_process_single - - FUNC GLOBAL
+und FLAC__stream_decoder_process_until_end_of_metadata - - FUNC GLOBAL
+und FLAC__stream_decoder_seek_absolute - - FUNC GLOBAL
+und FLAC__stream_decoder_set_metadata_respond_all - - FUNC GLOBAL
+und FLAC__stream_encoder_delete - - FUNC GLOBAL
+und FLAC__stream_encoder_finish - - FUNC GLOBAL
+und FLAC__stream_encoder_init_stream - - FUNC GLOBAL
+und FLAC__stream_encoder_new - - FUNC GLOBAL
+und FLAC__stream_encoder_process_interleaved - - FUNC GLOBAL
+und FLAC__stream_encoder_set_bits_per_sample - - FUNC GLOBAL
+und FLAC__stream_encoder_set_channels - - FUNC GLOBAL
+und FLAC__stream_encoder_set_compression_level - - FUNC GLOBAL
+und FLAC__stream_encoder_set_metadata - - FUNC GLOBAL
+und FLAC__stream_encoder_set_sample_rate - - FUNC GLOBAL
+und _ITM_deregisterTMCloneTable - - NOTYPE WEAK
+und _ITM_registerTMCloneTable - - NOTYPE WEAK
+und __aeabi_unwind_cpp_pr0 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __aeabi_unwind_cpp_pr1 GCC_3.5 libgcc_s.so.1 FUNC GLOBAL
+und __assert_fail GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_b_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_tolower_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __ctype_toupper_loc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __cxa_finalize GLIBC_2.4 libc.so.6 FUNC WEAK
+und __errno_location GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __fprintf_chk GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __gmon_start__ - - NOTYPE WEAK
+und __isoc99_sscanf GLIBC_2.7 libc.so.6 FUNC GLOBAL
+und __memcpy_chk GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __memset_chk GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __printf_chk GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __snprintf_chk GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und __vsnprintf_chk GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und access GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und calloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und close GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fclose GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und floor GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und fmod GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und fopen64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fread GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und free GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und frexp GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und fseek GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fstat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und fsync GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ftruncate64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und fwrite GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und getenv GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gettimeofday GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und gmtime_r GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und lrint GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und lrintf GLIBC_2.4 libm.so.6 FUNC GLOBAL
+und lseek64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und malloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memcpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memmove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und memset GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und ogg_page_bos - - FUNC GLOBAL
+und ogg_page_eos - - FUNC GLOBAL
+und ogg_page_granulepos - - FUNC GLOBAL
+und ogg_page_packets - - FUNC GLOBAL
+und ogg_page_serialno - - FUNC GLOBAL
+und ogg_stream_clear - - FUNC GLOBAL
+und ogg_stream_flush - - FUNC GLOBAL
+und ogg_stream_init - - FUNC GLOBAL
+und ogg_stream_packetin - - FUNC GLOBAL
+und ogg_stream_packetout - - FUNC GLOBAL
+und ogg_stream_packetpeek - - FUNC GLOBAL
+und ogg_stream_pagein - - FUNC GLOBAL
+und ogg_stream_pageout - - FUNC GLOBAL
+und ogg_stream_reset - - FUNC GLOBAL
+und ogg_stream_reset_serialno - - FUNC GLOBAL
+und ogg_sync_buffer - - FUNC GLOBAL
+und ogg_sync_clear - - FUNC GLOBAL
+und ogg_sync_init - - FUNC GLOBAL
+und ogg_sync_pageseek - - FUNC GLOBAL
+und ogg_sync_reset - - FUNC GLOBAL
+und ogg_sync_wrote - - FUNC GLOBAL
+und open64 GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und pow GLIBC_2.29 libm.so.6 FUNC GLOBAL
+und putchar GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und puts GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und raise GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und read GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und realloc GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und remove GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und snprintf GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und stat64 GLIBC_2.33 libc.so.6 FUNC GLOBAL
+und stderr GLIBC_2.4 libc.so.6 OBJECT GLOBAL
+und strchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strcmp GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strerror GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strlen GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncat GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strncpy GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strrchr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strstr GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und strtol GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und time GLIBC_2.4 libc.so.6 FUNC GLOBAL
+und vorbis_analysis - - FUNC GLOBAL
+und vorbis_analysis_blockout - - FUNC GLOBAL
+und vorbis_analysis_buffer - - FUNC GLOBAL
+und vorbis_analysis_headerout - - FUNC GLOBAL
+und vorbis_analysis_init - - FUNC GLOBAL
+und vorbis_analysis_wrote - - FUNC GLOBAL
+und vorbis_bitrate_addblock - - FUNC GLOBAL
+und vorbis_bitrate_flushpacket - - FUNC GLOBAL
+und vorbis_block_clear - - FUNC GLOBAL
+und vorbis_block_init - - FUNC GLOBAL
+und vorbis_comment_add_tag - - FUNC GLOBAL
+und vorbis_comment_clear - - FUNC GLOBAL
+und vorbis_comment_init - - FUNC GLOBAL
+und vorbis_comment_query - - FUNC GLOBAL
+und vorbis_dsp_clear - - FUNC GLOBAL
+und vorbis_encode_init_vbr - - FUNC GLOBAL
+und vorbis_info_clear - - FUNC GLOBAL
+und vorbis_info_init - - FUNC GLOBAL
+und vorbis_packet_blocksize - - FUNC GLOBAL
+und vorbis_synthesis - - FUNC GLOBAL
+und vorbis_synthesis_blockin - - FUNC GLOBAL
+und vorbis_synthesis_headerin - - FUNC GLOBAL
+und vorbis_synthesis_init - - FUNC GLOBAL
+und vorbis_synthesis_pcmout - - FUNC GLOBAL
+und vorbis_synthesis_read - - FUNC GLOBAL
+und vorbis_synthesis_restart - - FUNC GLOBAL
+und vorbis_version_string - - FUNC GLOBAL
+und write GLIBC_2.4 libc.so.6 FUNC GLOBAL

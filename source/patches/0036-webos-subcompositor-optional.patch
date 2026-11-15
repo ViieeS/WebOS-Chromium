@@ -1,0 +1,92 @@
+# why: webOS 4 TVs have no wl_subcompositor, and CreateSubsurface hit a DCHECK and a null dereference. Return null
+# instead; bubbles and overlays that need a subsurface stay hidden.
+--- a/src/ui/ozone/platform/wayland/host/wayland_surface.cc
++++ b/src/ui/ozone/platform/wayland/host/wayland_surface.cc
+@@ -504,7 +504,15 @@
+     WaylandSurface* parent) {
+   DCHECK(parent);
+   wl_subcompositor* subcompositor = connection_->subcompositor();
+-  DCHECK(subcompositor);
++  if (!subcompositor) {
++    // chromium-native (patch 0036): a compositor without wl_subcompositor (webOS 4.4) cannot show subsurfaces.
++    static bool log_once = false;
++    if (!log_once) {
++      log_once = true;
++      LOG(ERROR) << "No wl_subcompositor: subsurfaces are off";
++    }
++    return wl::Object<wl_subsurface>();
++  }
+   wl::Object<wl_subsurface> subsurface(wl_subcompositor_get_subsurface(
+       subcompositor, surface_.get(), parent->surface_.get()));
+   return subsurface;
+--- a/src/ui/ozone/platform/wayland/host/wayland_subsurface.cc
++++ b/src/ui/ozone/platform/wayland/host/wayland_subsurface.cc
+@@ -63,6 +63,9 @@
+   }
+ 
+   CreateSubsurface();
++  if (!subsurface_) {
++    return false;
++  }
+   visible_ = true;
+   return true;
+ }
+@@ -91,7 +94,10 @@
+   wayland_surface_.SetRootWindow(parent_);
+ 
+   wl_subcompositor* subcompositor = connection_->subcompositor();
+-  DCHECK(subcompositor);
++  // chromium-native (patch 0036): without wl_subcompositor there is no subsurface; subsurface_ stays null.
++  if (!subcompositor) {
++    return;
++  }
+   subsurface_ = wayland_surface()->CreateSubsurface(parent_->root_surface());
+   position_dip_ = {0, 0};
+ 
+@@ -115,6 +121,10 @@
+     WaylandSubsurface* new_below,
+     WaylandSubsurface* new_above) {
+   bool needs_commit = Show();
++  if (!subsurface_) {
++    // chromium-native (patch 0036): no subsurface to position (no wl_subcompositor).
++    return false;
++  }
+ 
+   // Chromium positions quads in display::Display coordinates in physical
+   // pixels, but Wayland requires them to be in local surface coordinates a.k.a
+--- a/src/ui/ozone/platform/wayland/host/wayland_bubble.cc
++++ b/src/ui/ozone/platform/wayland/host/wayland_bubble.cc
+@@ -43,6 +43,10 @@
+   if (!weak_this) {
+     return;
+   }
++  // chromium-native (patch 0036): no subsurface (no wl_subcompositor), so the bubble stays hidden.
++  if (!subsurface_) {
++    return;
++  }
+   WaylandWindow::Show(inactive);
+ }
+ 
+@@ -150,7 +154,9 @@
+ 
+   subsurface_ =
+       root_surface()->CreateSubsurface(parent_window()->root_surface());
+-  DCHECK(subsurface_);
++  if (!subsurface_) {
++    return;
++  }
+ 
+   SetSubsurfacePosition();
+ 
+--- a/src/ui/ozone/platform/wayland/host/wayland_frame_manager.cc
++++ b/src/ui/ozone/platform/wayland/host/wayland_frame_manager.cc
+@@ -342,6 +342,9 @@
+           surface->Commit(false);
+         }
+       }
++    } else if (!connection_->subcompositor()) {
++      // chromium-native (patch 0036): no wl_subcompositor, so this overlay has no subsurface to show on. Skip it.
++      continue;
+     } else {
+       bool needs_commit = subsurface->ConfigureAndShowSurface(
+           config.bounds_rect, root_config.bounds_rect,
