@@ -20,9 +20,10 @@ done
 [ -n "$S" ] || for c in "$D/data" "/media/developer/$ID"; do w "$c" && { S=$c; break; }; done
 [ -n "$S" ] || S=$T
 mkdir -p "$S/profile" "$S/cache"
-chmod 700 "$S/profile" "$S/cache" 2>/dev/null
 # one-time move of a profile made by older versions in /tmp
 [ "$S" != "$T" ] && [ -d "$T/profile/Default" ] && [ ! -d "$S/profile/Default" ] && cp -a "$T/profile/." "$S/profile/" && rm -rf "$T/profile"
+# after the move: cp -a copies the RAM profile's own mode (755) onto the folder
+chmod 700 "$S/profile" "$S/cache" 2>/dev/null
 # Native apps get neither XDG_RUNTIME_DIR nor EGL_PLATFORM from SAM (webos-native-app-kit WEBOS-PLATFORM.md).
 export XDG_RUNTIME_DIR=/tmp/xdg EGL_PLATFORM=wayland
 export HOME=$S TMPDIR=$T/tmp XDG_CACHE_HOME=$S/cache XDG_CONFIG_HOME=$S
