@@ -1,15 +1,15 @@
 {
   "id": "org.nativechromium.browser",
-  "version": "0.0.65",
+  "version": "0.0.66",
   "type": "native",
   "title": "Chromium",
   "appDescription": "Native Chromium with the full Chrome UI, GPU rendering and hardware video decoding",
   "iconUri": "https://raw.githubusercontent.com/sarahahzub/WebOS-Chromium/main/assets/icon.png",
   "sourceUrl": "https://github.com/sarahahzub/WebOS-Chromium",
   "rootRequired": false,
-  "ipkUrl": "https://github.com/sarahahzub/WebOS-Chromium/releases/download/v0.0.65/org.nativechromium.browser_0.0.65_arm.ipk",
+  "ipkUrl": "https://github.com/sarahahzub/WebOS-Chromium/releases/download/v0.0.66/org.nativechromium.browser_0.0.66_arm.ipk",
   "ipkHash": {
-    "sha256": "0ebd6f1a624ea08e108ac59b390e6fb5988e9b6173187e2231afe068f1214c88"
+    "sha256": "9ffad27d56f296f0d1f75edf4d959f7a4ca2e3cbb496dca5e5a364cf60b34514"
   },
-  "ipkSize": 107315078
+  "ipkSize": 108491662
 }

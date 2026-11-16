@@ -6,7 +6,9 @@
   -> dl/ipk/<APP_ID>_<version>_arm.ipk  (+ .sha256)
 
 IPK = ar archive with members debian-binary, control.tar.gz, data.tar.gz (bare member names; GNU ar's trailing '/'
-breaks installs). data.tar.gz holds ./usr/palm/applications/<APP_ID>/...; the directory name must equal appinfo id.
+breaks installs). data.tar.gz holds usr/palm/applications/<APP_ID>/... and usr/palm/packages/<APP_ID>/packageinfo.json,
+as LG's ares-package writes them (no "./" prefix): webosbrew's apps-repo checks read the package that way. The
+directory name must equal the appinfo id.
 APP_ID, APP_TITLE come from config.env. Never put anything from the TV rootfs into the IPK.
 """
 import argparse
@@ -112,11 +114,13 @@ def main():
         files.update(tree(os.path.join(tmp, "browser"), "browser"))
     # SIZE (2026-10-29): the TV's appstore partition had 33 MB free. Like the Firefox port, ship one UI locale
     # (114 locales were 121 MB installed) and drop files this build never uses: Vulkan SwiftShader (Vulkan and the GPU
-    # are disabled in run.sh), 200% UI scale resources (the window is 1280x720 at scale 1), headless resources.
+    # are disabled in run.sh), headless resources.
+    # chrome_200_percent.pak has to stay: the UI is drawn at 1.5x, which loads the 2x icons. Without it Chromium
+    # paints its yellow "missing image" square in Settings and elsewhere (seen on the TV with 0.0.65).
     keep = {"browser/locales/%s.pak" % l for l in a.locales.split(",")}
     # (2026-10-31) also: about_credits.html (18.8 MB build output; chrome://credits is served from resources.pak),
     # and the Vulkan loader (Vulkan is off).
-    drop = {"browser/libvk_swiftshader.so", "browser/vk_swiftshader_icd.json", "browser/chrome_200_percent.pak",
+    drop = {"browser/libvk_swiftshader.so", "browser/vk_swiftshader_icd.json",
             "browser/headless_command_resources.pak", "browser/about_credits.html", "browser/libvulkan.so.1"}
     for rel in list(files):
         if (rel.startswith("browser/locales/") and rel not in keep) or rel in drop:
@@ -149,11 +153,11 @@ def main():
         icon = os.path.join(HERE, name)
         if os.path.isfile(icon):
             files[name] = (open(icon, "rb").read(), 0o644)
-    base = "./usr/palm/applications/" + app_id
+    base = "usr/palm/applications/" + app_id
     # data/: the browser profile, cache and lastlog (bin/run.sh). The installer extracts the app folder as root with
     # the modes in this archive, so the app's own user can only write to a folder that comes writable from here.
     # run.sh keeps the profile and cache themselves private (mode 700, owned by the app's user).
-    ents = [("./usr", None, 0o755), ("./usr/palm", None, 0o755), ("./usr/palm/applications", None, 0o755),
+    ents = [("usr", None, 0o755), ("usr/palm", None, 0o755), ("usr/palm/applications", None, 0o755),
             (base, None, 0o755), (base + "/data", None, 0o1777)]
     dirs = set()
     for rel in sorted(files):
@@ -165,11 +169,16 @@ def main():
                 ents.append((base + "/" + d, None, 0o755))
         data, mode = files[rel]
         ents.append((base + "/" + rel, data, mode))
+    # packageinfo.json: which app (and services) the package holds, as ares-package writes it. webosbrew-ipk-verify
+    # (apps-repo PR check) opens a package through this file.
+    pkg = "usr/palm/packages/" + app_id
+    pinfo = json.dumps({"id": app_id, "version": a.version, "app": app_id, "services": []}, indent=2).encode() + b"\n"
+    ents += [("usr/palm/packages", None, 0o755), (pkg, None, 0o755), (pkg + "/packageinfo.json", pinfo, 0o644)]
     kib = sum(len(d) for d, _ in files.values()) // 1024 + 1
     control = (f"Package: {app_id}\nVersion: {a.version}\nSection: misc\nPriority: optional\nArchitecture: arm\n"
                f"Installed-Size: {kib}\nMaintainer: chromium-native\nDescription: {title} (native webOS Chromium)\n"
                "webOS-Package-Format-Version: 2\nwebOS-Packager-Version: x.y.x\n")
-    data = ar([("debian-binary", b"2.0\n"), ("control.tar.gz", tgz([("./control", control.encode(), 0o644)])),
+    data = ar([("debian-binary", b"2.0\n"), ("control.tar.gz", tgz([("control", control.encode(), 0o644)])),
                ("data.tar.gz", tgz(ents))])
     os.makedirs(a.out, exist_ok=True)
     out = os.path.join(a.out, f"{app_id}_{a.version}_arm.ipk")

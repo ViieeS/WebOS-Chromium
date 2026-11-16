@@ -102,6 +102,12 @@ Reported working by testers:
 How fast it is depends a lot on the model. If you try it on another TV, please report it with the TV compatibility
 issue template, whether it works or not.
 
+## New in 0.0.66
+
+- Icons in Settings and other pages show properly. In 0.0.65 they were yellow squares.
+- The package now passes webosbrew's checks for Homebrew Channel's main repository.
+- After an update from 0.0.48 or older, the moved profile is private to the app right away.
+
 ## New in 0.0.65
 
 The first major release. Everything in it was tested in [Chromium Beta](#beta) first.
