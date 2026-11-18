@@ -1,0 +1,33 @@
+# why: HEVC never reached the NDL renderer (patch 0023), which already maps it to NDL's codec 2. The type check asks
+# IsDecoderHevcProfileSupported(), which reads the profile cache the GPU process fills from hardware decoders (VAAPI).
+# The TV has none, so canPlayType() and MediaSource.isTypeSupported() said no. On webOS, with $CN_MEDIA_SOCK set (the
+# renderer factory's own condition), HEVC Main and Main 10 are supported. A 4K HEVC file plays on an LG C1, 0 dropped.
+diff -ru a/src/media/base/supported_types.cc b/src/media/base/supported_types.cc
+--- a/src/media/base/supported_types.cc	2026-11-18 21:00:00
++++ b/src/media/base/supported_types.cc	2026-11-18 21:00:00
+@@ -4,6 +4,8 @@
+
+ #include "media/base/supported_types.h"
+
++#include <stdlib.h>
++
+ #include "base/command_line.h"
+ #include "base/feature_list.h"
+ #include "base/logging.h"
+@@ -233,6 +235,16 @@
+     return false;
+   }
+
++#if defined(OS_WEBOS)
++  // LG's decoder plays HEVC through the NDL renderer, which is in use when the
++  // launcher exported $CN_MEDIA_SOCK (CnNdlRendererFactory::Enabled). There is
++  // no VAAPI, so the profile cache below never lists HEVC.
++  if (const char* sock = getenv("CN_MEDIA_SOCK"); sock && *sock) {
++    return type.profile == HEVCPROFILE_MAIN ||
++           type.profile == HEVCPROFILE_MAIN10;
++  }
++#endif  // defined(OS_WEBOS)
++
+ #if BUILDFLAG(ENABLE_PLATFORM_HEVC)
+ #if BUILDFLAG(PLATFORM_HAS_OPTIONAL_HEVC_DECODE_SUPPORT)
+ #if BUILDFLAG(IS_CHROMEOS)

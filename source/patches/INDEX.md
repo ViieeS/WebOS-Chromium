@@ -48,6 +48,7 @@ Applied in name order on top of webOS-ports/chromium151 at the commit in `config
 | `0052-webos-egl-buffer-scale-without-ui-scale.patch` | Clicks with the pointer landed in the wrong place (at half the pointer's position) with the 1080p window from patch 0032. |
 | `0053-webos-no-caption-buttons.patch` | The window is always full screen on webOS, yet the tab strip showed minimise, maximise and close buttons, and minimise left no way back. |
 | `0054-neva-vizfmp-swap-needs-compositor.patch` | adblock-tester.com crashed the tab ("Aw, Snap!") in 0.0.66: neva's NotifyVizFMPSwap() used the LayerTreeHost of a WebView that does not composite and has none. |
+| `0055-webos-hwvideo-hevc-type-check.patch` | Hardware video. HEVC never reached the NDL renderer: the type check asked for a GPU-process hardware decoder the TV does not have. |
 | `0056-armv8-aarch32-fpu-and-tune.patch` | Opt-in (arm_version = 8): a build for ARMv8 TVs gets the ARMv8 FPU and Cortex-A55 scheduling, which GN args cannot set in M151. No change with the default args. |
 | `0057-webos-back-and-exit.patch` | The remote's Back and Chrome's Exit behave like a TV app. |
 | `0058-wayland-watcher-exit-hang.patch` | Chrome's exit could hang after its window closed (black screen until bin/run killed it, 3 of 5 exits in the twin). |
