@@ -46,3 +46,4 @@ Applied in name order on top of webOS-ports/chromium151 at the commit in `config
 | `0049-webos-media-playstate-file.patch` | Chrome's media session calls to com.webos.service.mediacontroller fail without a luna handle, so webOS never knew media was playing and the screen saver came on. |
 | `0050-glibc224-sandbox-seals-ptrace.patch` | glibc 2.24 (webOS 4) has no F_ADD_SEALS/F_GET_SEALS/F_SEAL_* constants and, on ARM, no PTRACE_GET_THREAD_AREA/PTRACE_GETVFPREGS. |
 | `0052-webos-egl-buffer-scale-without-ui-scale.patch` | Clicks with the pointer landed in the wrong place (at half the pointer's position) with the 1080p window from patch 0032. |
+| `0054-neva-vizfmp-swap-needs-compositor.patch` | adblock-tester.com crashed the tab ("Aw, Snap!") in 0.0.66: neva's NotifyVizFMPSwap() used the LayerTreeHost of a WebView that does not composite and has none. |
