@@ -29,8 +29,16 @@ export XDG_RUNTIME_DIR=/tmp/xdg EGL_PLATFORM=wayland
 export HOME=$S TMPDIR=$T/tmp XDG_CACHE_HOME=$S/cache XDG_CONFIG_HOME=$S
 export LANG=${LANG:-en_US.UTF-8}
 # No Google API keys in a Chromium build: "no" hides the "Google API keys are missing" bar (Chromium's documented
-# opt-out). Sync stays unavailable either way.
-export GOOGLE_API_KEY=no GOOGLE_DEFAULT_CLIENT_ID=no GOOGLE_DEFAULT_CLIENT_SECRET=no
+# opt-out), and patch 0059 then sends nothing to accounts.google.com. For trying Google sign-in and sync with your own
+# keys (see the README): $S/google-keys with the three lines GOOGLE_API_KEY=..., GOOGLE_DEFAULT_CLIENT_ID=... and
+# GOOGLE_DEFAULT_CLIENT_SECRET=... (owned by the app's user, mode 600). Then sync is not turned off either.
+GK=no GC=no GS=no SYNC_OFF=--disable-sync
+if [ -f "$S/google-keys" ]; then
+	k() { sed -n "s/^$1=\([A-Za-z0-9._-]*\)[[:space:]]*\$/\1/p" "$S/google-keys" | head -1; }
+	a=$(k GOOGLE_API_KEY) b=$(k GOOGLE_DEFAULT_CLIENT_ID) c=$(k GOOGLE_DEFAULT_CLIENT_SECRET)
+	[ -n "$a" ] && [ -n "$b" ] && [ -n "$c" ] && GK=$a GC=$b GS=$c SYNC_OFF=
+fi
+export GOOGLE_API_KEY=$GK GOOGLE_DEFAULT_CLIENT_ID=$GC GOOGLE_DEFAULT_CLIENT_SECRET=$GS
 # Chrome's --class becomes the Wayland app id; patch 0011 sends it as the webOS "appId" window property (LSM only
 # shows windows with the launched app's id).
 APPID_FLAGS="--class=$ID"
@@ -44,6 +52,7 @@ ulimit -c 0
 cd "$T"
 # after a kill: no "restore pages?" bubble
 P=$S/profile/Default/Preferences
+NEWPROF=; [ -f "$P" ] || NEWPROF=1   # Chrome has never run with this profile (used by the handover below)
 [ -f "$P" ] && sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/; s/"exited_cleanly":false/"exited_cleanly":true/' "$P"
 # Start page: Chrome's own New Tab page. The bookmarks bar is on: a new profile starts with that preference, an
 # existing profile gets it once if it never had a bookmark_bar setting.
@@ -67,6 +76,62 @@ fi
 # pages shared the one renderer and the TV was swapping. Each launch starts with only the start page.
 rm -rf "$S/profile/Default/Sessions" "$S/profile/Default/Current Session" "$S/profile/Default/Current Tabs" \
 	"$S/profile/Default/Last Session" "$S/profile/Default/Last Tabs"
+# New app id (0.0.67): Chromium moved from org.nativechromium.browser to io.github.sarahahzub.chromium. The new app
+# runs as another user and can't read the old profile (700), so the old id's last release (it has bin/moved-to) leaves
+# copies of the bookmarks, history and their icons in <old app>/data/handover at every start and opens moved.html.
+# The new app copies them into its profile once (for the files it doesn't have yet; see "Order" below for users who
+# open the new app first). Only bookmarks and history move (owner's decision, 2026-11-19). Saved passwords and cookies
+# don't move. Other apps can read the copies until the old app is removed (the page says so).
+HF="Bookmarks History History-journal History-wal Favicons Favicons-journal Favicons-wal"
+MOVED_URL=
+if [ -f "$D/bin/moved-to" ]; then
+	for HO in "$D/data/handover" "/media/developer/$ID/handover"; do
+		rm -rf "$HO.new" && mkdir -p "$HO.new" 2>/dev/null || continue
+		for f in $HF; do [ -f "$S/profile/Default/$f" ] && cp "$S/profile/Default/$f" "$HO.new/"; done
+		chmod 755 "$HO.new"; chmod 644 "$HO.new"/* 2>/dev/null
+		rm -rf "$HO" && mv "$HO.new" "$HO" && break
+	done
+	MOVED_URL=file://$D/moved.html
+fi
+case "$ID" in io.github.sarahahzub.chromium) OLD=org.nativechromium.browser ;; *) OLD= ;; esac
+# Order: users may open the new app before the old one has left its copy. Chrome then makes its own (empty) History
+# and Favicons, which a fill-only import would never replace. So when a new profile starts while the old app is
+# installed without a copy, .handover-wait records the time, and for 14 days the copy replaces those files when it
+# turns up. After 14 days History and Favicons are only filled in when missing, so weeks of use in the new app are
+# never overwritten. Bookmarks come over whenever the new app has no bookmarks of its own.
+HWAIT=$S/profile/.handover-wait
+if [ -n "$OLD" ] && [ ! -f "$S/profile/.handover-done" ]; then
+	WAIT=
+	if [ -f "$HWAIT" ]; then
+		t=$(cat "$HWAIT" 2>/dev/null); now=$(date +%s)
+		case "$t" in ''|*[!0-9]*) t=0 ;; esac
+		if [ $((now - t)) -lt 1209600 ]; then WAIT=1; else rm -f "$HWAIT"; fi
+	fi
+	HAVE=
+	for HO in "/media/developer/apps/usr/palm/applications/$OLD/data/handover" "/media/developer/$OLD/handover"; do
+		[ -f "$HO/Bookmarks" ] || [ -f "$HO/History" ] || continue
+		HAVE=1
+		for f in Bookmarks History Favicons; do
+			[ -f "$HO/$f" ] || continue
+			if [ "$f" = Bookmarks ]; then   # never over bookmarks the user made in the new app
+				grep -q '"type": *"url"' "$S/profile/Default/$f" 2>/dev/null && continue
+			elif [ -s "$S/profile/Default/$f" ]; then
+				[ -n "$WAIT" ] || continue
+			fi
+			cp "$HO/$f" "$S/profile/Default/$f"
+			rm -f "$S/profile/Default/$f-journal" "$S/profile/Default/$f-wal" "$S/profile/Default/$f-shm"
+			for x in journal wal; do   # SQLite's log of that file (History is in WAL mode): newer rows may be only there
+				[ -f "$HO/$f-$x" ] && cp "$HO/$f-$x" "$S/profile/Default/"
+			done
+		done
+		echo "$(date) from $HO" > "$S/profile/.handover-done"
+		rm -f "$HWAIT"
+		break
+	done
+	# no copy yet, a new profile, and the old app is installed: wait for its copy (see above)
+	[ -z "$HAVE" ] && [ -n "$NEWPROF" ] && [ -f "/media/developer/apps/usr/palm/applications/$OLD/appinfo.json" ] &&
+		date +%s > "$HWAIT"
+fi
 
 if [ -x "$B/chrome" ]; then
 	# UI scale: a 1920x1080 window at the panel's resolution with the UI laid out at 1.5x (1280x720 DIP), so text is
@@ -149,6 +214,7 @@ if [ -x "$B/chrome" ]; then
 		printf '%s' "$1" | grep -q '"fullscreen"[[:space:]]*:[[:space:]]*true' && FULL=--start-fullscreen
 		shift ;;
 	esac
+	[ -n "$URL" ] || URL=$MOVED_URL
 	# Last log on flash, so logs survive a forced restart and users without root can read them: a memory line
 	# (MemAvailable, SwapFree, RSS of all chrome processes) once a minute in RAM ($T/mem.txt); every 5 minutes and when
 	# the browser ends, the tail of browser.log, media.log and mem.txt go to $S/lastlog. Each start moves the previous
@@ -211,6 +277,8 @@ if [ -x "$B/chrome" ]; then
 	# saver guard answers webOS's screen saver requests from it.
 	export CN_PLAYSTATE_FILE=$T/playstate
 	echo 0 > "$CN_PLAYSTATE_FILE"
+	# NetworkTimeServiceQuerying off: Chrome asked clients2.google.com for the time at every start (the TV keeps its
+	# own clock). Patch 0059 stops the other background requests to Google.
 	exec "$B/chrome" \
 		--load-extension="$EXT" \
 		--mse-video-buffer-size-limit-mb=40 --mse-audio-buffer-size-limit-mb=6 \
@@ -224,7 +292,7 @@ if [ -x "$B/chrome" ]; then
 		--mem-pressure-gpu-cache-size-reduction-factor=4 \
 		--disable-component-extensions-with-background-pages --disable-background-networking --num-raster-threads=1 \
 		--enable-features=NetworkServiceInProcess2 \
-		--disable-features=Translate,OptimizationHints,MediaRouter,BackForwardCache,Vulkan,ContextualTasks,ContextualTasksContext,ContextualTasksSidePanel,PreloadTopChromeWebUI,SpareRendererForSitePerProcess,SpareRenderer,OptimizationGuideModelDownloading,IsolateOrigins,site-per-process,WebUIToolbar,WebUIToolbarWebView,WebUIToolbarInternalWebView,WebUIReloadButton,WebUILocationBar,AudioServiceOutOfProcess,WebUIOmniboxPopup,WebUIOmniboxAimPopup,WebUIOmniboxFullPopup,DisableLoadExtensionCommandLineSwitch,HardwareMediaKeyHandling$WEBGPU_OFF --disable-sync \
+		--disable-features=Translate,OptimizationHints,MediaRouter,BackForwardCache,Vulkan,ContextualTasks,ContextualTasksContext,ContextualTasksSidePanel,PreloadTopChromeWebUI,SpareRendererForSitePerProcess,SpareRenderer,OptimizationGuideModelDownloading,IsolateOrigins,site-per-process,WebUIToolbar,WebUIToolbarWebView,WebUIToolbarInternalWebView,WebUIReloadButton,WebUILocationBar,AudioServiceOutOfProcess,WebUIOmniboxPopup,WebUIOmniboxAimPopup,WebUIOmniboxFullPopup,DisableLoadExtensionCommandLineSwitch,HardwareMediaKeyHandling,NetworkTimeServiceQuerying$WEBGPU_OFF $SYNC_OFF \
 		--js-flags="--max-old-space-size=192 --optimize-for-size" \
 		--no-first-run --no-default-browser-check --disable-component-update --disable-breakpad \
 		--password-store=basic --autoplay-policy=no-user-gesture-required \

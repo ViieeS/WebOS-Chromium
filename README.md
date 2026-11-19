@@ -2,7 +2,7 @@
 
 <h1 align="center">WebOS Chromium</h1>
 
-<p align="center">Chromium with the full Chrome interface, running natively on LG webOS TVs.<br>
+<p align="center"><b>Chromium Browser</b>: Chromium with the full Chrome interface, running natively on LG webOS TVs.<br>
 GPU drawing and hardware video. No root needed.<br>
 <b>Runs on webOS 4.4 and newer.</b></p>
 
@@ -38,6 +38,12 @@ and the launcher passes it to the decoder unchanged.
 The browser comes with TV Tools, an extension made for the TV. Its button is pinned to the toolbar: press it for
 quick settings, or open All settings for the full page. Everything can be changed or turned off.
 
+TV Tools changes pages: on every site it answers the site's video checks (MediaSource, `canPlayType`,
+`mediaCapabilities`) and removes streams above your limit from HLS and DASH playlists, which means it wraps `fetch`
+and `XMLHttpRequest`. In TV mode it sends the webOS TV user agent and hides `navigator.userAgentData`. It keeps its
+settings for each site in that site's localStorage, under the key `__tvtools_cfg`. If a site misbehaves, turn TV
+Tools off for that site from its toolbar button to see whether it's the cause.
+
 | Setting | Options | What it does |
 |---|---|---|
 | Lite mode | Off, On | Lighter pages: no animations, images and frames load when you scroll to them, muted videos don't start by themselves. |
@@ -68,18 +74,30 @@ DASH (`.mpd`) playlists before the player reads them. At least the smallest stre
    ```
    https://raw.githubusercontent.com/sarahahzub/WebOS-Chromium/main/webosbrew/apps.json
    ```
-3. Back in the app list, open Chromium and select Install.
+3. Back in the app list, open Chromium Browser and select Install.
 
-New releases show up there as updates. Updating keeps your bookmarks and settings. If you come from 0.0.48 or
-older, update before you restart the TV: those versions kept the profile in memory, and the update moves it to flash.
+New releases show up there as updates. Updating keeps your bookmarks and settings.
+
+### Moving from the old Chromium app
+
+Up to 0.0.66 the app was called Chromium, with the id `org.nativechromium.browser`. From 1.0.0 it's **Chromium
+Browser**, `io.github.sarahahzub.chromium`, because Homebrew Channel's main repository wants app ids under a name
+the developer owns. webOS can't rename an installed app, so it's a new app:
+
+1. Update the old app in Homebrew Channel. Its last update, 0.0.67, is called **Chromium (old)** and has a small OLD
+   badge. Open it once: it shows a "Chromium has moved" page and leaves a copy of your bookmarks and history.
+2. Install Chromium Browser and open it. Your bookmarks and history come over by themselves, even if you opened
+   Chromium Browser first.
+3. Saved passwords and site logins don't move, so sign in again. Then remove Chromium (old). Until you do, the copy
+   of your bookmarks and history stays in its folder, where other apps on the TV can read it.
 
 ### Developer Mode
 
 1. Turn on Developer Mode on the TV (LG's Developer Mode app) and connect your PC with `ares-setup-device`.
-2. Download `org.nativechromium.browser_<version>_arm.ipk` from
+2. Download `io.github.sarahahzub.chromium_<version>_arm.ipk` from
    [Releases](https://github.com/sarahahzub/WebOS-Chromium/releases).
-3. `ares-install -d <your-tv> org.nativechromium.browser_<version>_arm.ipk`
-4. Open Chromium from the TV's app list.
+3. `ares-install -d <your-tv> io.github.sarahahzub.chromium_<version>_arm.ipk`
+4. Open Chromium Browser from the TV's app list.
 
 ## Supported TVs
 
@@ -101,6 +119,20 @@ Reported working by testers:
 
 How fast it is depends a lot on the model. If you try it on another TV, please report it with the TV compatibility
 issue template, whether it works or not.
+
+## New in 1.0.0
+
+- A new app, Chromium Browser, with its own id (see [Moving from the old Chromium app](#moving-from-the-old-chromium-app)).
+  Versions go on as 1.1.0, 1.2.0 and so on.
+- Back works like in a TV app: back to the previous page, and on the first page "Press Back again to exit". Exit in
+  the 3-dot menu closes the app; it used to leave a black screen.
+- The arrows work in pop-ups ("Bookmark added", the account menu, permission prompts) and on Chrome's own pages such
+  as History and Settings.
+- The warning about the missing sandbox shows at every start, with Hide, and from the third start also "Don't show
+  again". See [Known limitations](#known-limitations).
+- Fewer background requests to Google: no network time checks, no cloud policy push messages, no AI model
+  downloads, and no account checks while sync isn't set up. The account menu says sync isn't available.
+- The package includes the licences of Chromium, NSS and NSPR, and Chromium's full credits.
 
 ## New in 0.0.66
 
@@ -130,15 +162,22 @@ is a Beta build that held up.
 |---|---|
 | Arrows | Move focus on the page. Up from the top of a page goes to the toolbar, Up again to the tabs. |
 | OK | Click. On a text field it opens LG's keyboard. |
-| Back | Closes menus and popups, then goes back. On a page that uses the arrows itself (like a video player) it jumps to the toolbar. |
+| Back | Closes menus and popups, leaves fullscreen, then goes back. A page that uses Back itself (like YouTube's TV interface) gets it first. On the first page it shows "Press Back again to exit"; a second Back closes the app. |
 | Magic Remote pointer | Works as a mouse. |
 
 ## Known limitations
 
-- No Chromium sandbox. The TV's kernel has no user namespaces and a Developer Mode app can't be setuid, so Chromium
-  runs with `--no-sandbox`. It still runs as its own user inside webOS's app jail.
+- **No Chromium sandbox.** The TV's kernel has no user namespaces or seccomp, and a Developer Mode app can't be
+  setuid, so Chromium runs with `--no-sandbox`. All sites share one page process, and the GPU and network code run
+  in the browser process. A page that exploits a bug in Chromium could reach everything the browser holds: cookies
+  and logins for every site, and saved passwords (stored without a system keyring). The browser still runs as its
+  own user inside webOS's app jail. Keep it updated, and think twice before signing in to important accounts or
+  saving passwords on the TV. A warning bar says this at every start (it has a Hide button, and from the third start
+  "Don't show again").
+- Google traffic that stays: the New Tab page talks to www.google.com and www.gstatic.com because Google is the
+  default search engine. Choosing another search engine in Settings stops that.
 - No DRM: there's no Widevine, so Netflix, Prime Video and similar sites won't play.
-- No Google account sync. Chromium builds have no Google API keys.
+- No Google account sync. Chromium builds have no Google API keys, so the account menu says sync isn't available.
 - Memory: the TV shares its RAM between all running apps (about 630 MB on our test TV), so several heavy tabs get
   slow.
 - Cloudflare checks can take a while on a TV.

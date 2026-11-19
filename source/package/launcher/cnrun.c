@@ -898,8 +898,15 @@ static void screensaver_guard(const char *tdir) {
   ss_unregister();
   _exit(0);
 }
-static volatile sig_atomic_t got_chld, got_term;
-static void on_sig(int s) { if (s == SIGCHLD) got_chld = 1; else got_term = s; }
+// SIGUSR1 / SIGUSR2 come from Chrome (patch 0057, which finds us through CN_LAUNCHER_PID): show "Press Back again to
+// exit", and end the app (Chrome quit; if it is still running 3 s later it gets SIGTERM, after 8 s SIGKILL).
+static volatile sig_atomic_t got_chld, got_term, got_toast, got_quit;
+static void on_sig(int s) {
+  if (s == SIGCHLD) got_chld = 1;
+  else if (s == SIGUSR1) got_toast = 1;
+  else if (s == SIGUSR2) got_quit = 1;
+  else got_term = s;
+}
 
 int main(int argc, char **argv) {
   char exe[512] = {0};
@@ -998,8 +1005,12 @@ int main(int argc, char **argv) {
 
   struct sigaction sa; memset(&sa, 0, sizeof sa); sa.sa_handler = on_sig;
   sigaction(SIGCHLD, &sa, NULL); sigaction(SIGTERM, &sa, NULL); sigaction(SIGINT, &sa, NULL); sigaction(SIGHUP, &sa, NULL);
+  sigaction(SIGUSR1, &sa, NULL); sigaction(SIGUSR2, &sa, NULL);
+  { char pid[16]; snprintf(pid, sizeof pid, "%d", (int)getpid()); setenv("CN_LAUNCHER_PID", pid, 1); }
   struct timespec t0; clock_gettime(CLOCK_MONOTONIC, &t0);
   int term_seen = 0;
+  struct timespec quit_t = {0, 0}; int quit_step = 0;  // 1 = SIGTERM sent, 2 = SIGKILL sent
+  pid_t toast_pid = -1;
   pid_t child = fork();
   if (child == 0) {
     if (ls >= 0) close(ls);
@@ -1019,9 +1030,27 @@ int main(int argc, char **argv) {
   int status = 0;
   for (;;) {
     if (got_term) { kill(child, got_term); got_term = 0; term_seen = 1; }
+    if (got_toast) {
+      got_toast = 0;
+      if (toast_pid < 0) {  // in a child: luna-send must not hold up the media socket
+        toast_pid = fork();
+        if (toast_pid == 0) { if (ls >= 0) close(ls); toast("Press Back again to exit"); _exit(0); }
+      }
+    }
+    if (got_quit) {
+      got_quit = 0;
+      if (!quit_t.tv_sec) { clock_gettime(CLOCK_MONOTONIC, &quit_t); L("chrome is quitting"); }
+    }
+    if (quit_t.tv_sec) {
+      struct timespec n; clock_gettime(CLOCK_MONOTONIC, &n);
+      long ms = (n.tv_sec - quit_t.tv_sec) * 1000 + (n.tv_nsec - quit_t.tv_nsec) / 1000000;
+      if (ms >= 8000 && quit_step < 2) { L("chrome still running %ld ms after quitting: SIGKILL", ms); kill(child, SIGKILL); quit_step = 2; }
+      else if (ms >= 3000 && quit_step < 1) { L("chrome still running %ld ms after quitting: SIGTERM", ms); kill(child, SIGTERM); quit_step = 1; term_seen = 1; }
+    }
     if (got_chld) {
       got_chld = 0;
       if (ssg > 0 && waitpid(ssg, NULL, WNOHANG) == ssg) ssg = -1;
+      if (toast_pid > 0 && waitpid(toast_pid, NULL, WNOHANG) == toast_pid) toast_pid = -1;
       if (waitpid(child, &status, WNOHANG) == child) break;
     }
     struct pollfd pf[MAXC + 2]; int n = 0, wl_idx = -1, cmap[MAXC + 2];
