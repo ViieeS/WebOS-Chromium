@@ -1,0 +1,15 @@
+NSS and NSPR
+============
+
+The lib/ folder of this app holds NSS 3.125 and NSPR 4.38.2 from Mozilla, built unmodified apart from two
+build-system patches from openlgtv's buildroot. They are under the Mozilla Public License 2.0 (MPL-2.0.txt).
+
+Source:
+  NSS 3.125   https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_125_RTM/src/
+  NSPR 4.38.2 https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v4.38.2/src/
+
+How they are built: source/NOTICE-nss.md and source/container/build-nss-sdk.sh in
+https://github.com/sarahahzub/WebOS-Chromium.
+
+Files: libnss3.so libnssutil3.so libsmime3.so libssl3.so libsoftokn3.so libfreebl3.so libnssckbi.so
+       libnspr4.so libplc4.so libplds4.so

@@ -1,0 +1,119 @@
+# why: Chrome's exit could hang after its window closed (black screen until bin/run killed it, 3 of 5 exits in the
+# twin). Stack samples of the hung browser: the main thread joins the Wayland watcher thread ("wayland-fd") in
+# WaylandEventWatcher's destructor, while that thread waits, untimed, for a task it posted to the main thread
+# (WlDisplayDispatchPendingQueue), which the main thread no longer runs. The watcher thread now waits in 500 ms
+# steps and gives up when the watcher stops. The thread is joined in WaylandEventWatcherGlib's destructor, before
+# its GPollFD is freed: joined later, a thread still in GLib wrote into the freed memory (heap corruption at exit).
+diff --git a/src/ui/events/platform/wayland/wayland_event_watcher.cc b/src/ui/events/platform/wayland/wayland_event_watcher.cc
+index 0e94679..b112c17 100644
+--- a/src/ui/events/platform/wayland/wayland_event_watcher.cc
++++ b/src/ui/events/platform/wayland/wayland_event_watcher.cc
+@@ -6,17 +6,20 @@
+ 
+ #include <wayland-client-core.h>
+ 
++#include <atomic>
+ #include <cstring>
+ 
+ #include "base/check.h"
+ #include "base/environment.h"
+ #include "base/logging.h"
++#include "base/memory/ref_counted.h"
+ #include "base/nix/xdg_util.h"
+ #include "base/strings/string_util.h"
+ #include "base/strings/stringprintf.h"
+ #include "base/synchronization/waitable_event.h"
+ #include "base/task/current_thread.h"
+ #include "base/threading/thread.h"
++#include "base/time/time.h"
+ #include "components/crash/core/common/crash_key.h"
+ #include "third_party/re2/src/re2/re2.h"
+ 
+@@ -24,6 +27,9 @@ namespace ui {
+ 
+ namespace {
+ 
++// chromium-native (patch 0058): set when the (one) watcher is being destroyed.
++std::atomic<bool> g_cn_watcher_shutting_down{false};
++
+ // Formats the |message| by removing '@' char followed by any digits until the
+ // next char. Also removes new line, tab and carriage-return.
+ void FormatErrorMessage(std::string* message) {
+@@ -144,6 +150,13 @@ WaylandEventWatcher::~WaylandEventWatcher() {
+   DCHECK(!watching_);
+ }
+ 
++void WaylandEventWatcher::StopThread() {
++  // chromium-native (patch 0058): let the watcher thread leave a wait for the
++  // UI thread (see WlDisplayDispatchPendingQueue), then join it.
++  g_cn_watcher_shutting_down.store(true);
++  thread_.reset();
++}
++
+ void WaylandEventWatcher::SetShutdownCb(
+     base::OnceCallback<void()> shutdown_cb) {
+   DCHECK(shutdown_cb_.is_null());
+@@ -302,12 +315,28 @@ void WaylandEventWatcher::WlDisplayCancelRead() {
+ void WaylandEventWatcher::WlDisplayDispatchPendingQueue() {
+   if (use_threaded_polling_ &&
+       watching_thread_task_runner_->BelongsToCurrentThread()) {
+-    base::WaitableEvent event;
++    // chromium-native (patch 0058): `event` is shared with the UI thread, and
++    // a timed wait. When the UI thread is already shutting down it never runs
++    // the task (it is waiting in thread_->Stop() for this thread), and an
++    // untimed Wait() hung Chrome's exit with the window gone. The task signals
++    // before it dispatches, so a missed signal only means the events are
++    // dispatched later or, at exit, not at all.
++    auto event = base::MakeRefCounted<base::RefCountedData<base::WaitableEvent>>();
+     auto cb = base::BindOnce(
+-        &WaylandEventWatcher::WlDisplayDispatchPendingQueueInternal, weak_this_,
+-        &event);
++        [](base::WeakPtr<WaylandEventWatcher> watcher,
++           scoped_refptr<base::RefCountedData<base::WaitableEvent>> event) {
++          event->data.Signal();
++          if (watcher) {
++            watcher->WlDisplayDispatchPendingQueueInternal(nullptr);
++          }
++        },
++        weak_this_, event);
+     ui_thread_task_runner_->PostTask(FROM_HERE, std::move(cb));
+-    event.Wait();
++    while (!event->data.TimedWait(base::Milliseconds(500))) {
++      if (g_cn_watcher_shutting_down.load()) {
++        return;
++      }
++    }
+   } else {
+     WlDisplayDispatchPendingQueueInternal(nullptr);
+   }
+diff --git a/src/ui/events/platform/wayland/wayland_event_watcher.h b/src/ui/events/platform/wayland/wayland_event_watcher.h
+index 63b55f5..48006ab 100644
+--- a/src/ui/events/platform/wayland/wayland_event_watcher.h
++++ b/src/ui/events/platform/wayland/wayland_event_watcher.h
+@@ -64,6 +64,11 @@ class WaylandEventWatcher {
+   void RoundTripQueue();
+ 
+  protected:
++  // chromium-native (patch 0058): stops and joins the watcher thread. A
++  // subclass calls it in its destructor, before its own members go away: the
++  // thread may still be inside GLib with the subclass's poll record.
++  void StopThread();
++
+   WaylandEventWatcher(wl_display* display,
+                       wl_event_queue* event_queue,
+                       bool use_threaded_polling);
+diff --git a/src/ui/events/platform/wayland/wayland_event_watcher_glib.cc b/src/ui/events/platform/wayland/wayland_event_watcher_glib.cc
+index e7f914e..5fc90ed 100644
+--- a/src/ui/events/platform/wayland/wayland_event_watcher_glib.cc
++++ b/src/ui/events/platform/wayland/wayland_event_watcher_glib.cc
+@@ -81,6 +81,10 @@ WaylandEventWatcherGlib::WaylandEventWatcherGlib(wl_display* display,
+ 
+ WaylandEventWatcherGlib::~WaylandEventWatcherGlib() {
+   StopProcessingEvents();
++  // chromium-native (patch 0058): join the watcher thread now. Before, it was
++  // joined in ~WaylandEventWatcher, after wayland_poll_ was freed: a thread
++  // still in GLib wrote into the freed GPollFD (heap corruption at exit).
++  StopThread();
+ }
+ 
+ bool WaylandEventWatcherGlib::StartWatchingFD(int fd) {

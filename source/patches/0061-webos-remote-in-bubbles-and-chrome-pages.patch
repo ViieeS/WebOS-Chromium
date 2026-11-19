@@ -1,0 +1,225 @@
+# why: The remote's arrows did nothing in bubbles and dialogs, and on chrome://history neither Up nor Back responded.
+# - Bubbles and dialogs ("Bookmark added", the profile menu, permission prompts) are widgets of their own, outside the
+#   browser window's key handler (patch 0017), and views moves focus there only with Tab. One aura::Env handler now
+#   moves focus with the arrows in any dialog widget: Up/Left back, Down/Right forward; text fields keep Left/Right
+#   until the caret is at the end; web contents in a bubble and open menus keep their keys.
+# - chrome://history's list keeps Up at its first row, and the page takes Escape (Back) to clear its selection. On
+#   chrome:// pages Up/Down now run our spatial navigation first, and Back closes a dialog or menu open in the page,
+#   else goes back (patch 0057). While a text field has focus the page gets its keys first, as before.
+# - The navigation script looks one screen beyond the visible part for Up/Down (long lists scroll with the focus) and
+#   stays inside an open dialog or menu.
+diff --git a/src/chrome/browser/ui/views/frame/browser_view.cc b/src/chrome/browser/ui/views/frame/browser_view.cc
+index febe28c..65960db 100644
+--- a/src/chrome/browser/ui/views/frame/browser_view.cc
++++ b/src/chrome/browser/ui/views/frame/browser_view.cc
+@@ -401,6 +401,7 @@
+ #if defined(USE_AURA)
+ #include "chrome/browser/ui/views/theme_profile_key.h"
+ #include "ui/aura/client/window_parenting_client.h"
++#include "ui/aura/env.h"  // chromium-native (patch 0061)
+ #include "ui/aura/window.h"
+ #include "ui/aura/window_observer.h"
+ #include "ui/events/event_handler.h"
+@@ -1155,6 +1156,59 @@ class TvRemoteKeyHandler : public ui::EventHandler, public aura::WindowObserver
+   raw_ptr<BrowserView> view_;
+   raw_ptr<aura::Window> window_;
+ };
++
++// chromium-native (patch 0061): bubbles and dialogs ("Bookmark added", the
++// profile menu, permission prompts) are widgets of their own, outside the
++// browser window's handler above, and views moves focus in them only with Tab,
++// which the remote doesn't have. Here the arrows move focus between their
++// controls: Up and Left go back, Down and Right forward. In a text field Left
++// and Right move the caret until it reaches the end. Web contents in a bubble
++// (extension popups, tab search) and open menus keep their keys. One handler
++// for all windows (aura::Env), installed with the first browser window.
++class TvDialogKeyHandler : public ui::EventHandler {
++ public:
++  void OnKeyEvent(ui::KeyEvent* event) override {
++    if (event->type() != ui::EventType::kKeyPressed ||
++        (event->flags() & (ui::EF_SHIFT_DOWN | ui::EF_CONTROL_DOWN |
++                           ui::EF_ALT_DOWN | ui::EF_COMMAND_DOWN))) {
++      return;
++    }
++    const ui::KeyboardCode key = event->key_code();
++    if (key != ui::VKEY_UP && key != ui::VKEY_DOWN && key != ui::VKEY_LEFT &&
++        key != ui::VKEY_RIGHT) {
++      return;
++    }
++    if (views::MenuController::GetActiveInstance()) {
++      return;
++    }
++    aura::Window* target = static_cast<aura::Window*>(event->target());
++    views::Widget* widget =
++        target ? views::Widget::GetWidgetForNativeView(target) : nullptr;
++    if (!widget || !widget->widget_delegate() ||
++        !widget->widget_delegate()->AsDialogDelegate()) {
++      return;  // the browser window (handled above), menus, the omnibox popup
++    }
++    views::FocusManager* fm = widget->GetFocusManager();
++    views::View* fv = fm ? fm->GetFocusedView() : nullptr;
++    if (!fv || views::IsViewClass<views::WebView>(fv)) {
++      return;
++    }
++    if (key == ui::VKEY_LEFT || key == ui::VKEY_RIGHT) {
++      if (auto* tf = views::AsViewClass<views::Textfield>(fv)) {
++        const size_t len = tf->GetText().size();
++        const gfx::Range r = tf->GetSelectedRange();
++        const bool all = len == 0 || (r.GetMin() == 0 && r.GetMax() == len);
++        const bool at_edge =
++            r.is_empty() && r.start() == (key == ui::VKEY_LEFT ? 0 : len);
++        if (!all && !at_edge) {
++          return;  // move the caret
++        }
++      }
++    }
++    fm->AdvanceFocus(/*reverse=*/key == ui::VKEY_UP || key == ui::VKEY_LEFT);
++    event->StopPropagation();
++  }
++};
+ }  // namespace
+ #endif  // defined(USE_AURA)
+ 
+@@ -1234,14 +1288,26 @@ constexpr char16_t kTvWebUiNavScript[] = uR"JS((function(d, edge) {
+   const vgap = (r) => Math.max(0, Math.max(r.top, o.top) - Math.min(r.bottom, o.bottom));
+   const ocx = (o.left + o.right) / 2, ocy = (o.top + o.bottom) / 2;
+   let best = null, bestScore = 1e9;
++  // chromium-native (patch 0061): with a dialog or menu open in the page, only
++  // its own controls count. Up/Down also look a screen beyond the visible part,
++  // so long lists (chrome://history renders rows ahead) scroll with the focus.
++  let dlg = null;
++  const findDialog = (root) => {
++    for (const el of root.querySelectorAll('*')) {
++      if (el.matches('dialog[open]') && el.getBoundingClientRect().width > 0) dlg = el;
++      if (el.shadowRoot) findDialog(el.shadowRoot);
++    }
++  };
++  findDialog(document);
++  const vert = d === 'up' || d === 'down';
+   const walk = (root) => {
+     for (const el of root.querySelectorAll('*')) {
+       if (el.shadowRoot) walk(el.shadowRoot);
+       if (el === cur || !el.matches(sel) || el.tabIndex < 0 || el.disabled ||
+           el.inert) continue;
+       const r = el.getBoundingClientRect();
+-      if (r.width < 4 || r.height < 4 || r.bottom < 0 || r.top > H ||
+-          r.right < 0 || r.left > W) continue;
++      if (r.width < 4 || r.height < 4 || r.bottom < (vert ? -H : 0) ||
++          r.top > (vert ? 2 * H : H) || r.right < 0 || r.left > W) continue;
+       let main, side;
+       if (d === 'down') {
+         if (r.top < o.bottom - 4) continue;
+@@ -1267,7 +1333,11 @@ constexpr char16_t kTvWebUiNavScript[] = uR"JS((function(d, edge) {
+       if (score < bestScore) { bestScore = score; best = el; }
+     }
+   };
+-  walk(document);
++  // cr-dialog and cr-action-menu keep their <dialog> in a shadow root and the
++  // controls in light DOM (slotted): search from the host element.
++  const scope = dlg ? (dlg.getRootNode().host || dlg) : document;
++  walk(scope);
++  if (scope.shadowRoot) walk(scope.shadowRoot);
+   if (!best) return false;
+   best.focus({focusVisible: true});
+   best.scrollIntoView({block: 'nearest', inline: 'nearest'});
+@@ -1297,13 +1367,55 @@ void BrowserView::RunTvWebUiNav(const char* direction, bool from_edge) {
+             const bool did_move =
+                 moved.is_string() || (moved.is_bool() && moved.GetBool());
+             if (view && up && !did_move) {
+-              view->FocusToolbar();
++              TvFocusAbovePage(view.get());  // infobars, else the toolbar
+             }
+           },
+           weak_ptr_factory_.GetWeakPtr(), up),
+       ISOLATED_WORLD_ID_CHROME_INTERNAL);
+ }
+ 
++namespace {
++// chromium-native (patch 0061): the remote's Back on a chrome:// page. A dialog
++// or menu open in the page closes (as Escape would); else "back" (patch 0057).
++constexpr char16_t kTvWebUiBackScript[] = uR"JS((function() {
++  let open = null;
++  const walk = (root) => {
++    for (const el of root.querySelectorAll('*')) {
++      if ((el.matches('dialog[open]') || el.matches(':popover-open')) &&
++          el.getBoundingClientRect().width > 0) open = el;
++      if (el.shadowRoot) walk(el.shadowRoot);
++    }
++  };
++  walk(document);
++  if (!open) return false;
++  if (open.matches(':popover-open')) open.hidePopover();
++  else if (open.requestClose) open.requestClose();
++  else open.close();
++  return true;
++})())JS";
++
++// True while a text field has focus (in the page or the omnibox): then the page
++// keeps its keys (the New Tab page's search box uses Up/Down for suggestions).
++bool TvFocusInTextField(views::Widget* widget) {
++  ui::InputMethod* im = widget ? widget->GetInputMethod() : nullptr;
++  ui::TextInputClient* client = im ? im->GetTextInputClient() : nullptr;
++  return client && client->GetTextInputType() != ui::TEXT_INPUT_TYPE_NONE;
++}
++
++void TvRunWebUiBack(BrowserView* view, content::WebContents* contents) {
++  contents->GetPrimaryMainFrame()->ExecuteJavaScriptInIsolatedWorld(
++      kTvWebUiBackScript,
++      base::BindOnce(
++          [](base::WeakPtr<BrowserView> view, base::Value closed) {
++            if (view && !(closed.is_bool() && closed.GetBool())) {
++              TvRemoteBack(view.get());
++            }
++          },
++          view->GetAsWeakPtr()),
++      ISOLATED_WORLD_ID_CHROME_INTERNAL);
++}
++}  // namespace
++
+ bool BrowserView::HandleTvRemoteKey(ui::KeyEvent* event) {
+   if (event->type() != ui::EventType::kKeyPressed ||
+       (event->flags() & (ui::EF_SHIFT_DOWN | ui::EF_CONTROL_DOWN |
+@@ -3497,6 +3609,28 @@ content::KeyboardEventProcessingResult BrowserView::PreHandleKeyboardEvent(
+     return content::KeyboardEventProcessingResult::NOT_HANDLED;
+   }
+ 
++  // chromium-native (webOS, patch 0061): Chrome's own pages use the arrows and
++  // Escape themselves. chrome://history's list keeps Up at its first row, and
++  // the page takes Escape (the remote's Back) to clear its selection, so there
++  // neither Up to the toolbar nor Back did anything. On chrome:// pages Up and
++  // Down run our spatial navigation (patch 0017) and Back closes a dialog or
++  // menu open in the page, else goes back (patch 0057). Left/Right, and all
++  // keys while a text field has focus, still go to the page first.
++  if (event.GetType() == blink::WebInputEvent::Type::kRawKeyDown &&
++      !(event.GetModifiers() & blink::WebInputEvent::kKeyModifiers) &&
++      !IsFullscreen() && IsTvWebUiPage(GetActiveWebContents()) &&
++      !TvFocusInTextField(GetWidget())) {
++    const int key = event.windows_key_code;
++    if (key == ui::VKEY_UP || key == ui::VKEY_DOWN) {
++      RunTvWebUiNav(key == ui::VKEY_UP ? "up" : "down", /*from_edge=*/false);
++      return content::KeyboardEventProcessingResult::HANDLED;
++    }
++    if (key == ui::VKEY_ESCAPE) {
++      TvRunWebUiBack(this, GetActiveWebContents());
++      return content::KeyboardEventProcessingResult::HANDLED;
++    }
++  }
++
+   ui::Accelerator accelerator =
+       ui::GetAcceleratorFromNativeWebKeyboardEvent(event);
+ 
+@@ -5244,6 +5378,14 @@ void BrowserView::AddedToWidget() {
+     tv_remote_key_handler_ = std::make_unique<TvRemoteKeyHandler>(
+         this, GetWidget()->GetNativeWindow());
+   }
++  // chromium-native (patch 0061): arrows in bubbles and dialogs, once per
++  // process (it lives as long as the process).
++  static TvDialogKeyHandler* tv_dialog_keys = nullptr;
++  if (!tv_dialog_keys) {
++    tv_dialog_keys = new TvDialogKeyHandler();
++    aura::Env::GetInstance()->AddPreTargetHandler(
++        tv_dialog_keys, ui::EventTarget::Priority::kSystem);
++  }
+ #endif
+ 
+   // Stow a pointer to the browser's profile onto the window handle so that we

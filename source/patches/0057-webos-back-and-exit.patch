@@ -1,0 +1,266 @@
+# why: The remote's Back and Chrome's Exit behave like a TV app. Back goes to the page first (YouTube on TV uses it);
+# a Back the page doesn't use goes back in history, and on a tab's first page it shows "Press Back again to exit"
+# (a webOS toast from bin/run) and a second Back within 3 s closes the app. Exit, and Chrome quitting in any other
+# way, ask bin/run to end the app (SIGUSR2): Chrome's own exit left a black window on the TV. Infobars such as the
+# --no-sandbox warning (patch 0027) can be reached with the arrows: Down from the toolbar, Up from the page.
+diff --git a/src/chrome/browser/lifetime/application_lifetime_desktop.cc b/src/chrome/browser/lifetime/application_lifetime_desktop.cc
+index 2cbba56..e2237f3 100644
+--- a/src/chrome/browser/lifetime/application_lifetime_desktop.cc
++++ b/src/chrome/browser/lifetime/application_lifetime_desktop.cc
+@@ -4,6 +4,9 @@
+ 
+ #include "chrome/browser/lifetime/application_lifetime_desktop.h"
+ 
++#include <signal.h>
++#include <stdlib.h>
++
+ #include <optional>
+ 
+ #include "base/auto_reset.h"
+@@ -13,6 +16,7 @@
+ #include "base/functional/callback_helpers.h"
+ #include "base/no_destructor.h"
+ #include "base/process/process.h"
++#include "base/strings/string_number_conversions.h"
+ #include "base/threading/hang_watcher.h"
+ #include "base/time/time.h"
+ #include "base/types/strong_alias.h"
+@@ -71,6 +75,18 @@ namespace chrome {
+ 
+ namespace {
+ 
++// chromium-native (patch 0057): the app's launcher (bin/run, pid in
++// CN_LAUNCHER_PID) ends the app when Chrome quits. Chrome's own exit left a
++// black window behind on the TV; the launcher stops Chrome if it is still
++// running a few seconds later, then exits, and webOS closes the app.
++void CnAskLauncherToQuit() {
++  int pid = 0;
++  const char* s = getenv("CN_LAUNCHER_PID");
++  if (s && base::StringToInt(s, &pid) && pid > 1) {
++    kill(pid, SIGUSR2);
++  }
++}
++
+ base::RepeatingCallbackList<void(bool)>& GetClosingAllBrowsersCallbackList() {
+   static base::NoDestructor<base::RepeatingCallbackList<void(bool)>>
+       callback_list;
+@@ -442,6 +458,7 @@ void OnAppExiting() {
+     return;
+   }
+   notified = true;
++  CnAskLauncherToQuit();
+   HandleAppExitingForPlatform();
+ }
+ 
+diff --git a/src/chrome/browser/ui/browser_command_controller.cc b/src/chrome/browser/ui/browser_command_controller.cc
+index a457075..11157d0 100644
+--- a/src/chrome/browser/ui/browser_command_controller.cc
++++ b/src/chrome/browser/ui/browser_command_controller.cc
+@@ -4,7 +4,9 @@
+ 
+ #include "chrome/browser/ui/browser_command_controller.h"
+ 
++#include <signal.h>
+ #include <stddef.h>
++#include <stdlib.h>
+ 
+ #include <algorithm>
+ #include <string>
+@@ -20,6 +22,7 @@
+ #include "base/metrics/user_metrics.h"
+ #include "base/notimplemented.h"
+ #include "base/strings/strcat.h"
++#include "base/strings/string_number_conversions.h"
+ #include "base/time/time.h"
+ #include "build/branding_buildflags.h"
+ #include "build/build_config.h"
+@@ -197,6 +200,18 @@ namespace chrome {
+ 
+ namespace {
+ 
++// chromium-native (patch 0057): the app's launcher (bin/run, pid in
++// CN_LAUNCHER_PID) ends the app when Chrome quits. Chrome's own exit left a
++// black window behind on the TV; the launcher stops Chrome if it is still
++// running a few seconds later, then exits, and webOS closes the app.
++void CnAskLauncherToQuit() {
++  int pid = 0;
++  const char* s = getenv("CN_LAUNCHER_PID");
++  if (s && base::StringToInt(s, &pid) && pid > 1) {
++    kill(pid, SIGUSR2);
++  }
++}
++
+ // Ensures that - if we have not popped up an infobar to prompt the user to e.g.
+ // reload the current page - that the content pane of the browser is refocused.
+ void AppInfoDialogClosedCallback(SessionID session_id,
+@@ -878,6 +893,7 @@ void BrowserCommandController::HandleCommandWithDisposition(
+     }
+ #endif
+     case IDC_EXIT:
++      CnAskLauncherToQuit();
+       Exit();
+       break;
+ 
+diff --git a/src/chrome/browser/ui/views/frame/browser_view.cc b/src/chrome/browser/ui/views/frame/browser_view.cc
+index a2ed774..e40e552 100644
+--- a/src/chrome/browser/ui/views/frame/browser_view.cc
++++ b/src/chrome/browser/ui/views/frame/browser_view.cc
+@@ -4,7 +4,9 @@
+ 
+ #include "chrome/browser/ui/views/frame/browser_view.h"
+ 
++#include <signal.h>
+ #include <stdint.h>
++#include <stdlib.h>
+ 
+ #include <algorithm>
+ #include <memory>
+@@ -1156,6 +1158,52 @@ class TvRemoteKeyHandler : public ui::EventHandler, public aura::WindowObserver
+ }  // namespace
+ #endif  // defined(USE_AURA)
+ 
++namespace {
++// chromium-native (patch 0057): the infobars (e.g. the --no-sandbox warning
++// from patch 0027) sit between the toolbar and the page. True if any is open
++// (the container's last child is its shadow).
++bool TvHasInfoBars(BrowserView* view) {
++  InfoBarContainerView* bars = view->infobar_container();
++  return bars && bars->GetVisible() && bars->children().size() > 1;
++}
++
++// chromium-native (patch 0057): Up from the page: the infobars if any are
++// open, else the toolbar.
++void TvFocusAbovePage(BrowserView* view) {
++  if (TvHasInfoBars(view)) {
++    view->infobar_container()->SetPaneFocusAndFocusDefault();
++  } else {
++    view->FocusToolbar();
++  }
++}
++
++// chromium-native (patch 0057): the remote's Back on a page that did not use
++// it: back in history; on the tab's first page (the New Tab page after start)
++// bin/run shows "Press Back again to exit" (SIGUSR1, see
++// package/launcher/cnrun.c) and a second Back within 3 s closes the app.
++void TvRemoteBack(BrowserView* view) {
++  static base::TimeTicks exit_armed;
++  Browser* browser = view->browser();
++  if (chrome::CanGoBack(browser)) {
++    exit_armed = base::TimeTicks();
++    chrome::GoBack(browser, WindowOpenDisposition::CURRENT_TAB);
++    return;
++  }
++  const base::TimeTicks now = base::TimeTicks::Now();
++  if (!exit_armed.is_null() && now - exit_armed < base::Seconds(3)) {
++    exit_armed = base::TimeTicks();
++    chrome::ExecuteCommand(browser, IDC_EXIT);
++    return;
++  }
++  exit_armed = now;
++  int pid = 0;
++  const char* s = getenv("CN_LAUNCHER_PID");
++  if (s && base::StringToInt(s, &pid) && pid > 1) {
++    kill(pid, SIGUSR1);
++  }
++}
++}  // namespace
++
+ namespace {
+ // chromium-native (webOS, patch 0017): Blink's spatial navigation does not look
+ // into shadow DOM, and Chrome's own pages (New Tab page, settings, history) are
+@@ -1318,6 +1366,39 @@ bool BrowserView::HandleTvRemoteKey(ui::KeyEvent* event) {
+   views::View* tabs = horizontal_tab_strip_region_view_.get();
+   const bool in_tabs = tabs && tabs->GetVisible() && tabs->Contains(fv);
+   const bool in_toolbar = toolbar_ && toolbar_->Contains(fv);
++  // chromium-native (patch 0057): infobars sit between the toolbar and the
++  // page. Up and Down first move between buttons stacked in a bar (the
++  // --no-sandbox bar, patch 0027), then Up goes to the toolbar, Down and Back
++  // to the page; Left/Right and OK stay with the bar's buttons. The
++  // container's last child is its shadow.
++  InfoBarContainerView* bars = infobar_container_.get();
++  const bool has_bars = TvHasInfoBars(this);
++  if (has_bars && bars->Contains(fv)) {
++    if (key == ui::VKEY_UP || key == ui::VKEY_DOWN) {
++      const bool up = key == ui::VKEY_UP;
++      views::View* next = fm->GetNextFocusableView(fv, GetWidget(), up,
++                                                   /*dont_loop=*/true);
++      if (next && bars->Contains(next)) {
++        const gfx::Rect a = fv->GetBoundsInScreen();
++        const gfx::Rect b = next->GetBoundsInScreen();
++        if (up ? b.bottom() <= a.y() : b.y() >= a.bottom()) {
++          next->RequestFocus();
++          return true;
++        }
++      }
++    }
++    if (key == ui::VKEY_UP) {
++      FocusToolbar();
++      return true;
++    }
++    if (key == ui::VKEY_DOWN || key == ui::VKEY_ESCAPE) {
++      if (views::View* p = GetActiveContentsWebView()) {
++        p->RequestFocus();
++      }
++      return true;
++    }
++    return false;
++  }
+   if (!in_tabs && !in_toolbar) {
+     return false;  // the page, menus and dialogs handle their own keys
+   }
+@@ -1349,6 +1430,8 @@ bool BrowserView::HandleTvRemoteKey(ui::KeyEvent* event) {
+       }
+       if (in_tabs) {
+         FocusToolbar();
++      } else if (has_bars) {
++        bars->SetPaneFocusAndFocusDefault();
+       } else if (page) {
+         page->RequestFocus();
+         // Chrome's own pages: focus their first element (patch 0017).
+@@ -3428,18 +3511,6 @@ content::KeyboardEventProcessingResult BrowserView::PreHandleKeyboardEvent(
+   // - If the |browser_| is not for an app, and the |accelerator| is associated
+   //   with the browser, and it is not a reserved one, do nothing.
+ 
+-  // chromium-native (webOS, patch 0020): the remote's Back (evdev 412 =
+-  // Escape) on a page moves focus to the toolbar, so the browser UI is always
+-  // reachable even when a page (YouTube's player) keeps the arrow keys.
+-  // In fullscreen the page gets it (Escape leaves fullscreen there).
+-  if (event.GetType() == blink::WebInputEvent::Type::kRawKeyDown &&
+-      event.windows_key_code == ui::VKEY_ESCAPE &&
+-      !(event.GetModifiers() & blink::WebInputEvent::kKeyModifiers) &&
+-      !IsFullscreen()) {
+-    FocusToolbar();
+-    return content::KeyboardEventProcessingResult::HANDLED;
+-  }
+-
+   if (browser_->is_type_app() || browser_->is_type_app_popup()) {
+     // Let all keys fall through to a v1 app's web content, even accelerators.
+     // We don't use NOT_HANDLED_IS_SHORTCUT here. If we do that, the app
+@@ -3525,10 +3596,17 @@ void BrowserView::HandleDragEnded() {
+ bool BrowserView::HandleKeyboardEvent(const NativeWebKeyboardEvent& event) {
+   // chromium-native (webOS, patch 0017): keys the page did not use. UP at the
+   // top of the page moves focus to the toolbar; the remote's Back (Escape)
+-  // goes back in history when it can.
++  // goes back in history when it can (patch 0057).
+   if (event.GetType() == blink::WebInputEvent::Type::kRawKeyDown &&
+       !(event.GetModifiers() & blink::WebInputEvent::kKeyModifiers)) {
+     const int key = event.windows_key_code;
++    // The page gets Back first (YouTube on TV uses it); a Back it did not use
++    // goes back. A fullscreen video takes Escape before the page (Browser's
++    // exclusive access handling), so Back still leaves fullscreen first.
++    if (key == ui::VKEY_ESCAPE) {
++      TvRemoteBack(this);
++      return true;
++    }
+     // Chrome's own pages (shadow DOM): our own spatial navigation; UP above
+     // the first element still reaches the toolbar.
+     if (IsTvWebUiPage(GetActiveWebContents()) &&
+@@ -3542,7 +3620,7 @@ bool BrowserView::HandleKeyboardEvent(const NativeWebKeyboardEvent& event) {
+       return true;
+     }
+     if (key == ui::VKEY_UP) {
+-      FocusToolbar();
++      TvFocusAbovePage(this);
+       return true;
+     }
+   }
