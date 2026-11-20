@@ -26,7 +26,7 @@ Applied in name order on top of webOS-ports/chromium151 at the commit in `config
 | `0024-webos-hwvideo-viz-hole.patch` | Hardware video, part 2. The TV shows the video on a plane below the window, so viz must leave a transparent hole. |
 | `0025-webos-hwvideo-video-window.patch` | Hardware video, part 3. LSM shows the video plane only for a video window exported from the app window's own surface. |
 | `0026-webos-hwvideo-rgba-output.patch` | Hardware video, part 4. The TV's PowerVR driver reports 0 for GL_ALPHA_BITS (not part of GLES 3) although the EGL config has 8 alpha bits, so viz drew opaque pixels over the hole. |
-| `0027-no-sandbox-warning.patch` | Removes the "unsupported command-line flag" bars for --no-sandbox and --disable-site-isolation-trials; the flags themselves stay. |
+| `0027-no-sandbox-warning.patch` | Chrome's warning bar for --no-sandbox shows at every start, as in stock Chrome, without the X. |
 | `0028-neva-null-webcontents-delegate.patch` | neva's app-runtime code calls web_contents->GetDelegate()->GetAllowLocalResourceLoad() without a null check, which crashes when a tab commits its first navigation before it has a delegate (for example DevTools opening about:blank). |
 | `0030-webos-menus-fit-browser-window.patch` | neva builds with USE_SINGLE_WINDOW_MODE, so menus are child windows inside the browser window, but MenuController skips screen fitting on Wayland and uses the display bounds. |
 | `0031-glibc-compat-older-tvs.patch` | One build for older TVs (glibc 2.24, libwayland 1.10 and newer). |
@@ -46,4 +46,11 @@ Applied in name order on top of webOS-ports/chromium151 at the commit in `config
 | `0049-webos-media-playstate-file.patch` | Chrome's media session calls to com.webos.service.mediacontroller fail without a luna handle, so webOS never knew media was playing and the screen saver came on. |
 | `0050-glibc224-sandbox-seals-ptrace.patch` | glibc 2.24 (webOS 4) has no F_ADD_SEALS/F_GET_SEALS/F_SEAL_* constants and, on ARM, no PTRACE_GET_THREAD_AREA/PTRACE_GETVFPREGS. |
 | `0052-webos-egl-buffer-scale-without-ui-scale.patch` | Clicks with the pointer landed in the wrong place (at half the pointer's position) with the 1080p window from patch 0032. |
+| `0053-webos-no-caption-buttons.patch` | The window is always full screen on webOS, yet the tab strip showed minimise, maximise and close buttons, and minimise left no way back. |
 | `0054-neva-vizfmp-swap-needs-compositor.patch` | adblock-tester.com crashed the tab ("Aw, Snap!") in 0.0.66: neva's NotifyVizFMPSwap() used the LayerTreeHost of a WebView that does not composite and has none. |
+| `0056-armv8-aarch32-fpu-and-tune.patch` | Opt-in (arm_version = 8): a build for ARMv8 TVs gets the ARMv8 FPU and Cortex-A55 scheduling, which GN args cannot set in M151. No change with the default args. |
+| `0057-webos-back-and-exit.patch` | The remote's Back and Chrome's Exit behave like a TV app. |
+| `0058-wayland-watcher-exit-hang.patch` | Chrome's exit could hang after its window closed (black screen until bin/run killed it, 3 of 5 exits in the twin). |
+| `0059-no-google-background-services.patch` | Less talking to Google in the background (apps-repo review, measured with a net log in the twin): no FCM invalidation listeners (cloud policy and remote commands, which a TV never has; they checked in and registered with android.clients.google.com and mtalk.google.com at every start), no requests to accounts.google.com while no OAuth client is set up (ListAccounts at every start; signing in can't work without keys, and with the user's own keys the block steps aside), and no on-device AI models manifest (update.googleapis.com and edgedl.me.gvt1.com at every start). |
+| `0060-profile-menu-signin-unavailable.patch` | Without Google API keys, signing in to the browser and sync can't work, but the account menu offered "Sign in to Chromium" anyway. |
+| `0061-webos-remote-in-bubbles-and-chrome-pages.patch` | The remote's arrows did nothing in bubbles and dialogs, and on chrome://history neither Up nor Back responded. |

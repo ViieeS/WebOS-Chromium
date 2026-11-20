@@ -1,4 +1,4 @@
-<h3>Chromium for your LG TV</h3>
+<h3>Chromium Browser for your LG TV</h3>
 <p>Chromium with the full Chrome interface, running natively on webOS: tabs, address bar, menus, bookmarks,
 history, downloads and extensions from the Chrome Web Store. No root needed.</p>
 
@@ -18,6 +18,24 @@ history, downloads and extensions from the Chrome Web Store. No root needed.</p>
 <h3>Which TVs</h3>
 <p>webOS 4.4 (2018-2019 models) and newer. Check Settings &gt; Support &gt; TV Information &gt; webOS TV Version.
 On older TVs the app shows a message and closes.</p>
+
+<h3>Moving from the old Chromium app</h3>
+<p>Chromium (old), <code>org.nativechromium.browser</code>, gets no more updates. Open it once after its last update
+(0.0.67), then install Chromium Browser: your bookmarks and history come over by themselves. Saved passwords and site
+logins don't move. Then remove Chromium (old).</p>
+
+<h3>No sandbox</h3>
+<p>Chromium's sandbox can't run in a Developer Mode app (the TV's kernel has no user namespaces or seccomp), so the
+browser runs without it. All sites share one page process, and the GPU and network code run in the browser process.
+A page that exploits a bug in Chromium could reach everything the browser holds: cookies and logins for every site,
+and saved passwords (stored without a system keyring). Keep the browser updated, and think twice before signing in
+to important accounts or saving passwords on the TV.</p>
+
+<h3>TV Tools changes pages</h3>
+<p>On every site it answers the site's video checks (MediaSource, canPlayType, mediaCapabilities) and removes streams
+above your quality limit from HLS and DASH playlists, which means it wraps fetch and XMLHttpRequest. In TV mode it
+sends the webOS TV user agent and hides navigator.userAgentData. It keeps its settings for each site in that site's
+localStorage (key __tvtools_cfg). If a site misbehaves, turn TV Tools off for that site from its toolbar button.</p>
 
 <h3>Good to know</h3>
 <ul>
