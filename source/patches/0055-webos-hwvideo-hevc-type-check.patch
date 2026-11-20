@@ -2,19 +2,21 @@
 # IsDecoderHevcProfileSupported(), which reads the profile cache the GPU process fills from hardware decoders (VAAPI).
 # The TV has none, so canPlayType() and MediaSource.isTypeSupported() said no. On webOS, with $CN_MEDIA_SOCK set (the
 # renderer factory's own condition), HEVC Main and Main 10 are supported. A 4K HEVC file plays on an LG C1, 0 dropped.
+# Not on webOS 4 (CN_NDL_API=old): the old decoder takes only H.264 (patch 0039) and there is no software HEVC decoder.
 diff -ru a/src/media/base/supported_types.cc b/src/media/base/supported_types.cc
 --- a/src/media/base/supported_types.cc	2026-11-18 21:00:00
 +++ b/src/media/base/supported_types.cc	2026-11-18 21:00:00
-@@ -4,6 +4,8 @@
+@@ -4,6 +4,9 @@
 
  #include "media/base/supported_types.h"
 
 +#include <stdlib.h>
++#include <string.h>
 +
  #include "base/command_line.h"
  #include "base/feature_list.h"
  #include "base/logging.h"
-@@ -233,6 +235,16 @@
+@@ -233,6 +236,20 @@
      return false;
    }
 
@@ -23,6 +25,10 @@ diff -ru a/src/media/base/supported_types.cc b/src/media/base/supported_types.cc
 +  // launcher exported $CN_MEDIA_SOCK (CnNdlRendererFactory::Enabled). There is
 +  // no VAAPI, so the profile cache below never lists HEVC.
 +  if (const char* sock = getenv("CN_MEDIA_SOCK"); sock && *sock) {
++    // webOS 4 (CN_NDL_API=old): the old decoder takes only H.264 (patch 0039),
++    // and this build has no software HEVC decoder.
++    if (const char* api = getenv("CN_NDL_API"); api && !strcmp(api, "old"))
++      return false;
 +    return type.profile == HEVCPROFILE_MAIN ||
 +           type.profile == HEVCPROFILE_MAIN10;
 +  }
