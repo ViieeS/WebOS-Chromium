@@ -1,0 +1,19 @@
+# why: adblock-tester.com crashed the tab ("Aw, Snap!", SIGSEGV) 2-5 s after load, in 0.0.66 too. neva's
+# WebFrameWidgetImpl::NotifyVizFMPSwap() queues a swap promise on widget_base_->LayerTreeHost() without a check, and a
+# WebView that does not composite has none: PaintTiming::SetFirstContentfulPaint -> ChromeClientImpl::NotifyVizFMPSwap
+# -> cc::SwapPromiseManager::QueueSwapPromise with this = 0x1e8. It now returns early on !View()->does_composite(),
+# as every other LayerTreeHost user in web_frame_widget_impl.cc does. The code comes from webOS-ports/chromium151.
+diff -ru a/src/third_party/blink/renderer/core/frame/web_frame_widget_impl.cc b/src/third_party/blink/renderer/core/frame/web_frame_widget_impl.cc
+--- a/src/third_party/blink/renderer/core/frame/web_frame_widget_impl.cc	2026-11-18 21:00:00
++++ b/src/third_party/blink/renderer/core/frame/web_frame_widget_impl.cc	2026-11-18 21:00:00
+@@ -4031,6 +4031,10 @@
+
+ void WebFrameWidgetImpl::NotifyVizFMPSwap(bool is_first_contentful_paint,
+                                           bool did_reset_container_state) {
++  // A WebView that does not composite has no LayerTreeHost (the same guard as
++  // the other LayerTreeHost users in this file).
++  if (!View()->does_composite() || !widget_base_->LayerTreeHost())
++    return;
+   widget_base_->LayerTreeHost()->QueueSwapPromise(
+       std::make_unique<VizFMPPromise>(is_first_contentful_paint,
+                                       did_reset_container_state));
