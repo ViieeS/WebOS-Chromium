@@ -204,6 +204,16 @@ if [ -x "$B/chrome" ]; then
 	# WebGPU is off by default (see above); media.opts "webgpu=on" turns it on.
 	WEBGPU_OFF=,WebGPUService,WebGPUBlobCache
 	grep -q 'webgpu=on' "$T/media.opts" 2>/dev/null && WEBGPU_OFF=
+	# Omnibox for a TV, opt-in with media.opts "omnibox=lite": about 160 -> 90 ms from a key to the screen on an LG C1.
+	# Fewer autocomplete providers (no calculator, @bookmarks/@history/@tabs or recently closed tabs; HistoryFuzzy stays,
+	# typo matching over history costs nothing measurable), 5 rows, suggest requests after a 400 ms pause, and no ML
+	# scoring, AI Mode or preconnect. Without it the omnibox is Chrome's own.
+	OMNI_OFF= OMNI_ON= OMNI_TRIAL=
+	if grep -q 'omnibox=lite' "$T/media.opts" 2>/dev/null; then
+		OMNI_OFF=,OmniboxDynamicMaxAutocomplete,OmniboxRichAutocompletion,MlUrlScoring,UrlScoringModel,MlUrlScoreCaching,AimEnabled,AllowAiModeMatches,OmniboxMiaZPS,PreconnectNonSearchOmniboxSuggestions
+		OMNI_ON=,OmniboxUIExperimentMaxAutocompleteMatches:UIMaxAutocompleteMatches/5
+		OMNI_TRIAL="--force-fieldtrials=OmniboxBundledExperimentV1/TV/ --force-fieldtrial-params=OmniboxBundledExperimentV1.TV:DisableProviders/201221632/SuggestPollingDelayMs/400/MeasureSuggestPollingDelayFromLastKeystroke/true"
+	fi
 	# Launch parameters arrive as one JSON argument, e.g. {"target": "https://...", "fullscreen": true} (LG's own browser
 	# reads "target"). Only http(s) targets are opened; "fullscreen": true adds --start-fullscreen.
 	URL= FULL=
@@ -291,8 +301,8 @@ if [ -x "$B/chrome" ]; then
 		--enable-threaded-compositing --force-gpu-mem-available-mb=128 --gpu-program-cache-size-kb=2048 \
 		--mem-pressure-gpu-cache-size-reduction-factor=4 \
 		--disable-component-extensions-with-background-pages --disable-background-networking --num-raster-threads=1 \
-		--enable-features=NetworkServiceInProcess2 \
-		--disable-features=Translate,OptimizationHints,MediaRouter,BackForwardCache,Vulkan,ContextualTasks,ContextualTasksContext,ContextualTasksSidePanel,PreloadTopChromeWebUI,SpareRendererForSitePerProcess,SpareRenderer,OptimizationGuideModelDownloading,IsolateOrigins,site-per-process,WebUIToolbar,WebUIToolbarWebView,WebUIToolbarInternalWebView,WebUIReloadButton,WebUILocationBar,AudioServiceOutOfProcess,WebUIOmniboxPopup,WebUIOmniboxAimPopup,WebUIOmniboxFullPopup,DisableLoadExtensionCommandLineSwitch,HardwareMediaKeyHandling,NetworkTimeServiceQuerying$WEBGPU_OFF $SYNC_OFF \
+		--enable-features=NetworkServiceInProcess2$OMNI_ON $OMNI_TRIAL \
+		--disable-features=Translate,OptimizationHints,MediaRouter,BackForwardCache,Vulkan,ContextualTasks,ContextualTasksContext,ContextualTasksSidePanel,PreloadTopChromeWebUI,SpareRendererForSitePerProcess,SpareRenderer,OptimizationGuideModelDownloading,IsolateOrigins,site-per-process,WebUIToolbar,WebUIToolbarWebView,WebUIToolbarInternalWebView,WebUIReloadButton,WebUILocationBar,AudioServiceOutOfProcess,WebUIOmniboxPopup,WebUIOmniboxAimPopup,WebUIOmniboxFullPopup,DisableLoadExtensionCommandLineSwitch,HardwareMediaKeyHandling,NetworkTimeServiceQuerying$OMNI_OFF$WEBGPU_OFF $SYNC_OFF \
 		--js-flags="--max-old-space-size=192 --optimize-for-size" \
 		--no-first-run --no-default-browser-check --disable-component-update --disable-breakpad \
 		--password-store=basic --autoplay-policy=no-user-gesture-required \
