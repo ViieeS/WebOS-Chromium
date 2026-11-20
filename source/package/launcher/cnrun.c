@@ -924,7 +924,7 @@ int main(int argc, char **argv) {
   snprintf(script, sizeof script, "%s/run.sh", bin);
   if (tv_too_old(tdir, bin)) return 1;
   // troubleshooting options: /tmp/<appid>/media.opts, words: nohw (no hardware video), gpu=on|off (run.sh),
-  // gpuprobe / nogpuprobe (GPU report), noss (no screen saver guard), webgpu=on (run.sh)
+  // gpuprobe / nogpuprobe (GPU report), noss (no screen saver guard), webgpu=on, omnibox=lite (run.sh)
   char opts[256] = {0}, optp[700]; snprintf(optp, sizeof optp, "%s/media.opts", tdir);
   FILE *of = fopen(optp, "r"); if (of) { if (!fgets(opts, sizeof opts, of)) opts[0] = 0; fclose(of); }
   if (!getenv("XDG_RUNTIME_DIR")) setenv("XDG_RUNTIME_DIR", "/tmp/xdg", 1);
