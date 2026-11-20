@@ -1,15 +1,15 @@
 {
   "id": "org.nativechromium.browser",
-  "version": "0.0.66",
+  "version": "0.0.67",
   "type": "native",
-  "title": "Chromium",
-  "appDescription": "Native Chromium with the full Chrome UI, GPU rendering and hardware video decoding",
-  "iconUri": "https://raw.githubusercontent.com/sarahahzub/WebOS-Chromium/main/assets/icon.png",
+  "title": "Chromium (old)",
+  "appDescription": "Last update of the old Chromium app. Install Chromium Browser: your bookmarks and history move over",
+  "iconUri": "https://raw.githubusercontent.com/sarahahzub/WebOS-Chromium/main/assets/icon-old.png",
   "sourceUrl": "https://github.com/sarahahzub/WebOS-Chromium",
   "rootRequired": false,
-  "ipkUrl": "https://github.com/sarahahzub/WebOS-Chromium/releases/download/v0.0.66/org.nativechromium.browser_0.0.66_arm.ipk",
+  "ipkUrl": "https://github.com/sarahahzub/WebOS-Chromium/releases/download/v0.0.67/org.nativechromium.browser_0.0.67_arm.ipk",
   "ipkHash": {
-    "sha256": "9ffad27d56f296f0d1f75edf4d959f7a4ca2e3cbb496dca5e5a364cf60b34514"
+    "sha256": "3a6ee5f58eb4980800f443fa1fccf60dd8a1a6b386c44a0799da7fd26547a6a8"
   },
-  "ipkSize": 108491662
+  "ipkSize": 110434480
 }
