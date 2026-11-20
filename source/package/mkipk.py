@@ -18,6 +18,7 @@ import io
 import json
 import os
 import subprocess
+import sys
 import tarfile
 import tempfile
 
@@ -32,7 +33,7 @@ def config():
         line = line.split("#", 1)[0].strip()
         if "=" in line:
             k, v = line.split("=", 1)
-            c[k] = v
+            c[k] = v.strip().strip('"')  # the shell scripts source this file, so values with spaces are quoted
     return c
 
 
@@ -104,9 +105,16 @@ def main():
     ap.add_argument("--lib-dir", default="",
                     help="folder with the NSS and NSPR libraries listed in container/nss/ship-list.txt; shipped as lib/<name>")
     ap.add_argument("--locales", default="en-US", help="UI locales to ship, comma separated (run.sh uses --lang=en-US)")
+    ap.add_argument("--app-id", default="", help="app id instead of APP_ID from config.env")
+    ap.add_argument("--title", default="", help="app title instead of APP_TITLE from config.env")
+    ap.add_argument("--badge", default="",
+                    help="small label on the launcher icons, e.g. OLD for the old app id's last release (needs Pillow)")
+    ap.add_argument("--moved-to", default="",
+                    help="last release under an old app id: the app id it moved to. Adds bin/moved-to (run.sh then hands "
+                         "bookmarks and history over and opens moved.html)")
     a = ap.parse_args()
     c = config()
-    app_id, title = c["APP_ID"], c["APP_TITLE"]
+    app_id, title = a.app_id or c["APP_ID"], a.title or c["APP_TITLE"]
     assert all(p.isdigit() for p in a.version.split(".")) and a.version.count(".") == 2, "version must be x.y.z"
     files = {}
     with tempfile.TemporaryDirectory() as tmp:
@@ -122,9 +130,14 @@ def main():
     # and the Vulkan loader (Vulkan is off).
     drop = {"browser/libvk_swiftshader.so", "browser/vk_swiftshader_icd.json",
             "browser/headless_command_resources.pak", "browser/about_credits.html", "browser/libvulkan.so.1"}
+    # Chromium's credits (every third-party licence, as chrome://credits) ship compressed in licenses/ (2 MB, not 19 MB)
+    credits = files.get("browser/about_credits.html")
+    if credits:
+        files["licenses/chromium-credits.html.gz"] = (gzip.compress(credits[0], 9, mtime=0), 0o644)
     for rel in list(files):
         if (rel.startswith("browser/locales/") and rel not in keep) or rel in drop:
             del files[rel]
+    assert "licenses/chromium-credits.html.gz" in files, "browser.tar.zst has no about_credits.html"
     assert keep <= set(files), "locale pak missing: %s" % (keep - set(files))
     if a.start:
         files.update(tree(a.start, "start"))
@@ -136,6 +149,9 @@ def main():
     lic = os.path.join(ROOT, "package", "licenses")
     if os.path.isdir(lic):
         files.update(tree(lic, "licenses"))
+    if a.moved_to:
+        files["bin/moved-to"] = (a.moved_to.encode() + b"\n", 0o644)
+        files["moved.html"] = (open(os.path.join(HERE, "moved.html"), "rb").read(), 0o644)
     info = open(os.path.join(HERE, "appinfo.json.in")).read()
     info = info.replace("@APP_ID@", app_id).replace("@VERSION@", a.version).replace("@APP_TITLE@", title)
     json.loads(info)
@@ -153,6 +169,13 @@ def main():
         icon = os.path.join(HERE, name)
         if os.path.isfile(icon):
             files[name] = (open(icon, "rb").read(), 0o644)
+    if a.badge:  # small grey label on the launcher icons (tools/beta/badge.py, needs Pillow)
+        with tempfile.TemporaryDirectory() as tmp:
+            for name in ("icon.png", "largeIcon.png"):
+                out = os.path.join(tmp, name)
+                subprocess.run([sys.executable, os.path.join(ROOT, "tools", "beta", "badge.py"), os.path.join(HERE, name),
+                                out, a.badge, "small"], check=True)
+                files[name] = (open(out, "rb").read(), 0o644)
     base = "usr/palm/applications/" + app_id
     # data/: the browser profile, cache and lastlog (bin/run.sh). The installer extracts the app folder as root with
     # the modes in this archive, so the app's own user can only write to a folder that comes writable from here.

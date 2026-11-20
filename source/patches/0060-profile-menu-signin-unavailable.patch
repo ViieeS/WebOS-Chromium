@@ -1,0 +1,77 @@
+# why: Without Google API keys, signing in to the browser and sync can't work, but the account menu offered
+# "Sign in to Chromium" anyway. Without keys (bin/run.sh sets the client id to "no") the menu says "Sync isn't
+# available in this browser. You can still sign in on Google websites." and grays the button out. With the user's
+# own keys (bin/run.sh's google-keys file) the menu is unchanged.
+diff --git a/src/chrome/browser/ui/views/profiles/profile_menu_view.cc b/src/chrome/browser/ui/views/profiles/profile_menu_view.cc
+index 485d5c4..1d62c60 100644
+--- a/src/chrome/browser/ui/views/profiles/profile_menu_view.cc
++++ b/src/chrome/browser/ui/views/profiles/profile_menu_view.cc
+@@ -98,6 +98,7 @@
+ #include "components/user_education/common/new_badge/new_badge_controller.h"
+ #include "components/vector_icons/vector_icons.h"
+ #include "device/fido/public/features.h"
++#include "google_apis/google_api_keys.h"
+ #include "net/base/url_util.h"
+ #include "ui/base/interaction/element_tracker.h"
+ #include "ui/base/l10n/l10n_util.h"
+@@ -113,6 +114,7 @@
+ #include "ui/gfx/paint_vector_icon.h"
+ #include "ui/strings/grit/ui_strings.h"
+ #include "ui/views/accessibility/view_accessibility.h"
++#include "ui/views/controls/button/md_text_button.h"
+ #include "ui/views/widget/widget.h"
+ 
+ #if BUILDFLAG(ENABLE_DICE_SUPPORT)
+@@ -130,6 +132,19 @@
+ 
+ namespace {
+ 
++// chromium-native (patch 0060): without Google API keys (bin/run.sh sets the
++// client id to "no"; the user can add their own), signing in to the browser
++// and sync can't work, so the menu says so and grays the button out.
++bool CnSigninUnavailable() {
++  const std::string& id =
++      google_apis::GetOAuth2ClientID(google_apis::CLIENT_MAIN);
++  return !google_apis::HasOAuthClientConfigured() || id.empty() || id == "no";
++}
++
++}  // namespace
++
++namespace {
++
+ std::u16string GetSyncErrorButtonText(
+     Profile* profile,
+     syncer::SyncService::UserActionableError error) {
+@@ -755,6 +770,15 @@ ProfileMenuView::GetIdentitySectionParams(const ProfileAttributesEntry& entry) {
+   switch (signin_util::GetSignedInState(identity_manager)) {
+     case signin_util::SignedInState::kSignedOut:
+     case signin_util::SignedInState::kWebOnlySignedIn: {
++      if (CnSigninUnavailable()) {
++        params.subtitle =
++            u"Sync isn't available in this browser. You can still sign in on "
++            u"Google websites.";
++        params.button_text =
++            l10n_util::GetStringUTF16(IDS_PROFILE_MENU_SIGNIN_PROMO_BUTTON);
++        params.button_action = base::DoNothing();  // disabled below
++        break;
++      }
+       AccountInfo account_info_for_promos =
+           signin_ui_util::GetSingleAccountForPromos(identity_manager);
+       if (!CanOfferSignin(&profile(), account_info_for_promos.gaia,
+@@ -955,6 +979,16 @@ void ProfileMenuView::BuildIdentityWithCallToAction() {
+   }
+ 
+   SetProfileIdentityWithCallToAction(GetIdentitySectionParams(*entry));
++  // chromium-native (patch 0060): grayed out, see CnSigninUnavailable().
++  const signin_util::SignedInState state = signin_util::GetSignedInState(
++      IdentityManagerFactory::GetForProfile(&profile()));
++  if (CnSigninUnavailable() &&
++      (state == signin_util::SignedInState::kSignedOut ||
++       state == signin_util::SignedInState::kWebOnlySignedIn)) {
++    if (views::MdTextButton* button = GetIdentityButtonForTesting()) {
++      button->SetEnabled(false);
++    }
++  }
+ }
+ 
+ void ProfileMenuView::MaybeBuildBatchUploadButton() {
