@@ -289,6 +289,9 @@ if [ -x "$B/chrome" ]; then
 	echo 0 > "$CN_PLAYSTATE_FILE"
 	# NetworkTimeServiceQuerying off: Chrome asked clients2.google.com for the time at every start (the TV keeps its
 	# own clock). Patch 0059 stops the other background requests to Google.
+	# AimEnabled, AllowAiModeMatches, OmniboxMiaZPS off (1.1.0, issue #26): no "AI Mode" button or suggestions in the
+	# address bar or the New Tab page's search box. AimEnabled is the switch the AI Mode eligibility check reads for
+	# both. Google search itself stays as it is.
 	exec "$B/chrome" \
 		--load-extension="$EXT" \
 		--mse-video-buffer-size-limit-mb=40 --mse-audio-buffer-size-limit-mb=6 \
@@ -302,7 +305,7 @@ if [ -x "$B/chrome" ]; then
 		--mem-pressure-gpu-cache-size-reduction-factor=4 \
 		--disable-component-extensions-with-background-pages --disable-background-networking --num-raster-threads=1 \
 		--enable-features=NetworkServiceInProcess2$OMNI_ON $OMNI_TRIAL \
-		--disable-features=Translate,OptimizationHints,MediaRouter,BackForwardCache,Vulkan,ContextualTasks,ContextualTasksContext,ContextualTasksSidePanel,PreloadTopChromeWebUI,SpareRendererForSitePerProcess,SpareRenderer,OptimizationGuideModelDownloading,IsolateOrigins,site-per-process,WebUIToolbar,WebUIToolbarWebView,WebUIToolbarInternalWebView,WebUIReloadButton,WebUILocationBar,AudioServiceOutOfProcess,WebUIOmniboxPopup,WebUIOmniboxAimPopup,WebUIOmniboxFullPopup,DisableLoadExtensionCommandLineSwitch,HardwareMediaKeyHandling,NetworkTimeServiceQuerying$OMNI_OFF$WEBGPU_OFF $SYNC_OFF \
+		--disable-features=Translate,OptimizationHints,MediaRouter,BackForwardCache,Vulkan,ContextualTasks,ContextualTasksContext,ContextualTasksSidePanel,PreloadTopChromeWebUI,SpareRendererForSitePerProcess,SpareRenderer,OptimizationGuideModelDownloading,IsolateOrigins,site-per-process,WebUIToolbar,WebUIToolbarWebView,WebUIToolbarInternalWebView,WebUIReloadButton,WebUILocationBar,AudioServiceOutOfProcess,WebUIOmniboxPopup,WebUIOmniboxAimPopup,WebUIOmniboxFullPopup,DisableLoadExtensionCommandLineSwitch,HardwareMediaKeyHandling,NetworkTimeServiceQuerying,AimEnabled,AllowAiModeMatches,OmniboxMiaZPS$OMNI_OFF$WEBGPU_OFF $SYNC_OFF \
 		--js-flags="--max-old-space-size=192 --optimize-for-size" \
 		--no-first-run --no-default-browser-check --disable-component-update --disable-breakpad \
 		--password-store=basic --autoplay-policy=no-user-gesture-required \
