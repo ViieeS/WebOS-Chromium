@@ -11,7 +11,7 @@ index 65960db..1cb5785 100644
  // for all windows (aura::Env), installed with the first browser window.
  class TvDialogKeyHandler : public ui::EventHandler {
   public:
-+  // chromium-native (patch 0062): a pointer press in any window may open LG's
++  // chromium-native (patch 0063): a pointer press in any window may open LG's
 +  // keyboard on a text field: extension popups and dialogs too, not only the
 +  // browser window (TvRemoteKeyHandler), so a login form in an extension's
 +  // popup gets the keyboard.
@@ -41,7 +41,7 @@ index 65960db..1cb5785 100644
    }
 +
 + private:
-+  // chromium-native (patch 0062): OK on a text field outside the browser
++  // chromium-native (patch 0063): OK on a text field outside the browser
 +  // window (an extension popup, a dialog) opens LG's keyboard, as
 +  // BrowserView::HandleTvRemoteKey does in the browser window. The next OK on
 +  // the same field, or Enter while our keyboard is shown, goes through.
