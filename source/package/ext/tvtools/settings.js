@@ -15,7 +15,8 @@ var TV_DEFAULTS = {
   customUA: "",
   desktopSites: [],     // host names that always get the normal (desktop) user agent
   googleDesktop: true,  // Google search gets the desktop user agent (with the TV one it drops udm=14, the "Web" filter)
-  lite: false,          // lite mode: no animations, lazy images, no muted autoplay
+  lite: "auto",         // "auto" | "on" | "off": no animations, lazy images, no muted autoplay, plus V8 lite mode
+                        // (set by run.sh at start). Auto = on when the TV had less than 200 MB free at start.
   discardMinutes: 0,    // unload background tabs after this many minutes; 0 = never
   tabLimit: 0,          // close the least recently used tab above this many tabs; 0 = no limit
   pauseHidden: false    // pause videos when their tab goes to the background
@@ -41,7 +42,13 @@ function tvUserAgent(s) {
 // memory). With a hardware decoder for H.264 only (webOS 4, NDL API 1): H.264 up to 1080p30; other codecs would be
 // decoded in software, and 1080p VP9/AV1 in software filled an 844 MB TV until webOS closed the app (2026-11-04).
 // Without it (software decoding): H.264 up to 720p30, the only thing the CPU decodes smoothly.
-function tvEffective(s, hardware, host, hwH264) {
+// Lite mode setting: "auto", "on" or "off" (before 1.1.1 it was false/true; false was the default, so it becomes Auto).
+function tvLiteSetting(v) {
+  if (v === true || v === "on") return "on";
+  return v === "off" ? "off" : "auto";
+}
+
+function tvEffective(s, hardware, host, hwH264, lowMem) {
   var hw = hardware !== false, h264hw = hw && hwH264 === true;
   return {
     enabled: !tvHostIn(host, s.disabledSites),
@@ -50,15 +57,17 @@ function tvEffective(s, hardware, host, hwH264) {
     maxFps: s.maxFps === "auto" ? (hw && !h264hw ? 60 : 30) : Number(s.maxFps),
     h264Only: s.codec === "h264" || (s.codec === "auto" && (!hw || h264hw)),
     ua: tvHostIn(host, s.desktopSites) || (s.googleDesktop !== false && tvIsGoogle(host)) ? null : tvUserAgent(s),
-    lite: !!s.lite,
+    lite: tvLiteSetting(s.lite) === "on" || (tvLiteSetting(s.lite) === "auto" && lowMem === true),
     pauseHidden: !!s.pauseHidden
   };
 }
 
 function tvLoad() {
-  return chrome.storage.local.get(["settings", "hardware", "hwH264"]).then(function (r) {
-    return { settings: Object.assign({}, TV_DEFAULTS, r.settings || {}), hardware: r.hardware !== false,
-             hwH264: r.hwH264 === true };
+  return chrome.storage.local.get(["settings", "hardware", "hwH264", "lowMem", "freeMB"]).then(function (r) {
+    var s = Object.assign({}, TV_DEFAULTS, r.settings || {});
+    s.lite = tvLiteSetting(s.lite);
+    return { settings: s, hardware: r.hardware !== false, hwH264: r.hwH264 === true, lowMem: r.lowMem === true,
+             freeMB: typeof r.freeMB === "number" ? r.freeMB : null };
   });
 }
 

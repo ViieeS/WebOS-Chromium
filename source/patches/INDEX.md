@@ -56,3 +56,5 @@ Applied in name order on top of webOS-ports/chromium151 at the commit in `config
 | `0060-profile-menu-signin-unavailable.patch` | Without Google API keys, signing in to the browser and sync can't work, but the account menu offered "Sign in to Chromium" anyway. |
 | `0061-webos-remote-in-bubbles-and-chrome-pages.patch` | The remote's arrows did nothing in bubbles and dialogs, and on chrome://history neither Up nor Back responded. |
 | `0063-webos-keyboard-in-extension-popups.patch` | LG's keyboard never opened in extension popups (for example Windscribe's login form): text fields there got neither a pointer press nor OK through to the keyboard. |
+| `0064-webos-memory-pressure.patch` | The browser never noticed low memory. |
+| `0065-webos-hwvideo-nested-hole.patch` | Hardware video showed the page's background (white or grey) instead of the picture on farsi film sites (farsiplex.com, farsiland.buzz; jwplayer). |

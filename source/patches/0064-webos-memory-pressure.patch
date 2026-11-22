@@ -1,0 +1,163 @@
+# why: The browser never noticed low memory. Desktop Linux has no system memory pressure evaluator and leaves urgent
+# tab discarding to the kernel's OOM killer, so Chromium kept every cache and background tab until webOS's memory
+# manager (memchute) closed the whole app (seen on the owner's TV at MemAvailable ~60-75 MB). On webOS an evaluator
+# now reads MemAvailable every 2 s (moderate < 160 MB, critical < 100 MB; CN_MEM_MODERATE_MB / CN_MEM_CRITICAL_MB
+# override), so caches are purged, and the urgent page discarding policy unloads background tabs on critical pressure.
+# Level changes are logged as "cn-mem:" in browser.log.
+diff --git a/src/chrome/browser/performance_manager/chrome_browser_main_extra_parts_performance_manager.cc b/src/chrome/browser/performance_manager/chrome_browser_main_extra_parts_performance_manager.cc
+index f474593..1b75b42 100644
+--- a/src/chrome/browser/performance_manager/chrome_browser_main_extra_parts_performance_manager.cc
++++ b/src/chrome/browser/performance_manager/chrome_browser_main_extra_parts_performance_manager.cc
+@@ -207,14 +207,17 @@ void ChromeBrowserMainExtraPartsPerformanceManager::CreatePoliciesAndDecorators(
+ 
+   graph->PassToGraph(FormInteractionTabHelper::CreateGraphObserver());
+ 
+-#if URGENT_DISCARDING_FROM_PERFORMANCE_MANAGER()
++// chromium-native (patch 0064): on webOS too. Desktop Linux leaves urgent
++// discarding to the kernel's OOM killer, but on a TV webOS's memory manager
++// closes the whole app first; unloading background tabs keeps it alive.
++#if URGENT_DISCARDING_FROM_PERFORMANCE_MANAGER() || defined(OS_WEBOS)
+   if (!base::FeatureList::IsEnabled(
+           performance_manager::features::kDisableTabDiscarding)) {
+     graph->PassToGraph(
+         std::make_unique<
+             performance_manager::policies::UrgentPageDiscardingPolicy>());
+   }
+-#endif  // URGENT_DISCARDING_FROM_PERFORMANCE_MANAGER()
++#endif  // URGENT_DISCARDING_FROM_PERFORMANCE_MANAGER() || defined(OS_WEBOS)
+ 
+   graph->PassToGraph(std::make_unique<
+                      performance_manager::policies::BackgroundTabLoadingPolicy>(
+diff --git a/src/components/memory_pressure/system_memory_pressure_evaluator.cc b/src/components/memory_pressure/system_memory_pressure_evaluator.cc
+index f6f5a15..d352740 100644
+--- a/src/components/memory_pressure/system_memory_pressure_evaluator.cc
++++ b/src/components/memory_pressure/system_memory_pressure_evaluator.cc
+@@ -10,7 +10,14 @@
+ #include "base/feature_list.h"
+ #include "build/build_config.h"
+ 
+-#if BUILDFLAG(IS_FUCHSIA)
++#if defined(OS_WEBOS)
++#include <stdio.h>
++#include <stdlib.h>
++
++#include "base/functional/bind.h"
++#include "base/logging.h"
++#include "base/timer/timer.h"
++#elif BUILDFLAG(IS_FUCHSIA)
+ #include "components/memory_pressure/system_memory_pressure_evaluator_fuchsia.h"
+ #elif BUILDFLAG(IS_APPLE)
+ #include "components/memory_pressure/system_memory_pressure_evaluator_mac.h"
+@@ -23,11 +30,111 @@ namespace memory_pressure {
+ const base::TimeDelta SystemMemoryPressureEvaluator::kRenotifyVotePeriod =
+     base::Seconds(5);
+ 
++#if defined(OS_WEBOS)
++namespace {
++
++// chromium-native (patch 0064): desktop Linux has no system evaluator, so the
++// browser never saw memory pressure and kept every cache and tab until
++// webOS's memory manager (memchute) closed the whole app. This one reads
++// MemAvailable every 2 s: below CN_MEM_MODERATE_MB (default 160) moderate,
++// below CN_MEM_CRITICAL_MB (default 100) critical. Leaving a level needs
++// 20 MB more than entering it. Critical is re-sent every 5 s, moderate every
++// 30 s, as on Windows. Listeners then purge caches, and urgent discarding
++// unloads background tabs (patch 0064, ChromeBrowserMainExtraParts...).
++class SystemMemoryPressureEvaluatorWebos
++    : public SystemMemoryPressureEvaluator {
++ public:
++  explicit SystemMemoryPressureEvaluatorWebos(
++      std::unique_ptr<MemoryPressureVoter> voter)
++      : SystemMemoryPressureEvaluator(std::move(voter)),
++        moderate_kb_(EnvMb("CN_MEM_MODERATE_MB", 160) * 1024),
++        critical_kb_(EnvMb("CN_MEM_CRITICAL_MB", 100) * 1024) {
++    LOG(WARNING) << "cn-mem: memory pressure from MemAvailable, moderate < "
++                 << moderate_kb_ / 1024 << " MB, critical < "
++                 << critical_kb_ / 1024 << " MB";
++    timer_.Start(
++        FROM_HERE, base::Seconds(2),
++        base::BindRepeating(&SystemMemoryPressureEvaluatorWebos::Check,
++                            base::Unretained(this)));
++  }
++
++ private:
++  static long EnvMb(const char* name, long def) {
++    const char* v = getenv(name);
++    const long n = v ? atol(v) : 0;
++    return n > 0 ? n : def;
++  }
++
++  static long AvailableKb() {
++    FILE* f = fopen("/proc/meminfo", "re");
++    if (!f) {
++      return -1;
++    }
++    char line[128];
++    long kb = -1;
++    while (fgets(line, sizeof(line), f)) {
++      if (sscanf(line, "MemAvailable: %ld kB", &kb) == 1) {
++        break;
++      }
++      kb = -1;
++    }
++    fclose(f);
++    return kb;
++  }
++
++  void Check() {
++    const long kb = AvailableKb();
++    if (kb < 0) {
++      return;
++    }
++    const base::MemoryPressureLevel old = current_vote();
++    const long slack = 20 * 1024;
++    base::MemoryPressureLevel level = base::MEMORY_PRESSURE_LEVEL_NONE;
++    if (kb < critical_kb_ ||
++        (old == base::MEMORY_PRESSURE_LEVEL_CRITICAL &&
++         kb < critical_kb_ + slack)) {
++      level = base::MEMORY_PRESSURE_LEVEL_CRITICAL;
++    } else if (kb < moderate_kb_ ||
++               (old != base::MEMORY_PRESSURE_LEVEL_NONE &&
++                kb < moderate_kb_ + slack)) {
++      level = base::MEMORY_PRESSURE_LEVEL_MODERATE;
++    }
++    const base::TimeTicks now = base::TimeTicks::Now();
++    bool notify = false;
++    if (level != old) {
++      notify = true;
++      LOG(WARNING) << "cn-mem: pressure " << static_cast<int>(old) << " -> "
++                   << static_cast<int>(level) << ", MemAvailable "
++                   << kb / 1024 << " MB";
++    } else if (level == base::MEMORY_PRESSURE_LEVEL_CRITICAL) {
++      notify = now - last_notify_ >= base::Seconds(5);
++    } else if (level == base::MEMORY_PRESSURE_LEVEL_MODERATE) {
++      notify = now - last_notify_ >= base::Seconds(30);
++    }
++    SetCurrentVote(level);
++    SendCurrentVote(notify);
++    if (notify) {
++      last_notify_ = now;
++    }
++  }
++
++  const long moderate_kb_;
++  const long critical_kb_;
++  base::TimeTicks last_notify_;
++  base::RepeatingTimer timer_;
++};
++
++}  // namespace
++#endif  // defined(OS_WEBOS)
++
+ // static
+ std::unique_ptr<SystemMemoryPressureEvaluator>
+ SystemMemoryPressureEvaluator::CreateDefaultSystemEvaluator(
+     MultiSourceMemoryPressureMonitor* monitor) {
+-#if BUILDFLAG(IS_FUCHSIA)
++#if defined(OS_WEBOS)
++  return std::make_unique<SystemMemoryPressureEvaluatorWebos>(
++      monitor->CreateVoter());
++#elif BUILDFLAG(IS_FUCHSIA)
+   return std::make_unique<
+       memory_pressure::SystemMemoryPressureEvaluatorFuchsia>(
+       monitor->CreateVoter());

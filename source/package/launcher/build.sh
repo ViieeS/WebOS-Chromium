@@ -43,8 +43,10 @@ void wl_display_get_error(void) {}
 EOF
 $CC -shared -fPIC -Wl,-soname,libwayland-client.so.0 -o $W/libwayland-client.so $W/stub.c
 mkdir -p "$(dirname "$OUT")"
+# -rdynamic exports StarfishMediaAPIs::Load and ::Feed from the launcher, so the dynamic linker binds LG's NDL library
+# to cnrun.c's cn_smp_load / cn_smp_feed (LG's buffered Starfish player instead of NDL's game-streaming one).
 $CC -O2 -Wall -fPIE -pie -I$W -I$W/inc -o "$OUT" cnrun.c $W/webos-foreign-protocol.c $W/wayland-protocol.c \
-	-L$W -lwayland-client -ldl
+	-L$W -lwayland-client -ldl -rdynamic
 arm-linux-gnueabi-strip "$OUT"
 v=$(arm-linux-gnueabi-readelf -V "$OUT" | grep -oE "GLIBC_[0-9.]+" | sort -uV | tail -1)
 interp=$(arm-linux-gnueabi-readelf -l "$OUT" | grep -o "/lib/ld-linux[^]]*")

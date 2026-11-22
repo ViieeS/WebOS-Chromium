@@ -127,6 +127,146 @@ static int ndl_open_lib(void) {
 }
 static void load_cb(int type, long long num, const char *str) { L("ndl callback type=%d num=%lld str=%s", type, num, str ? str : "-"); }
 
+// ---- LG's Starfish player ----
+// NDL API 2 is a wrapper around LG's Starfish media pipeline: NDL_DirectMediaLoad builds a JSON message and passes
+// it to StarfishMediaAPIs::Load (libplayerAPIs), and NDL_DirectVideoPlay / AudioPlay call StarfishMediaAPIs::Feed.
+// NDL always loads Starfish's game-streaming player ("DIRECTMEDIA-ES-PLAYER", lowDelayMode and isGameMode true).
+// cnrun exports both functions under their mangled names (-rdynamic in build.sh), so the dynamic linker binds NDL's
+// calls to cn_smp_load / cn_smp_feed below, which replace the load message and fix up the feeds.
+typedef _Bool (*smp_load_fn)(void *, const char *, void (*)(int, long long, const char *));
+__attribute__((visibility("default"))) _Bool cn_smp_load(void *self, const char *payload,
+                                                           void (*cb)(int, long long, const char *))
+    __asm__("_ZN17StarfishMediaAPIs4LoadEPKcPFvixS1_E");
+// Default since 1.1.1 (media.opts "smp=game" turns it off): load LG's normal buffered player ("BUFFERSTREAM", the one LG's own
+// web runtime and SS4S's Starfish backend use) instead of NDL's game-streaming "DIRECTMEDIA-ES-PLAYER". The message
+// is rebuilt from NDL's (codec, size, PCM rate, window id) in the form SS4S sends (mariotaku/ss4s
+// modules/webos/smp/src/smp_player.c, LGPL-3.0; only the JSON keys are taken). BUFFERSTREAM takes nanosecond
+// timestamps, NDL feeds milliseconds, so cn_smp_feed below scales them. NDL's game mode showed H.264/HEVC with
+// B-frames in bursts (#12, #17: 24 and 30 fps clips with B-frames stuttered, without B-frames they were smooth);
+// with BUFFERSTREAM the same clips play smoothly (owner's TV, 2026-11-22). webOS 4 (NDL API 1) never gets here.
+static int smp_buffer, smp_feeds_logged;
+static long long smp_pts_scale = 1;
+static int smp_json_int(const char *s, const char *key, int def) {
+  char pat[64]; snprintf(pat, sizeof pat, "\"%s\":", key);
+  const char *p = strstr(s, pat); return p ? atoi(p + strlen(pat)) : def;
+}
+static void smp_json_str(const char *s, const char *key, char *out, size_t n) {
+  char pat[64]; snprintf(pat, sizeof pat, "\"%s\":\"", key);
+  const char *p = strstr(s, pat); out[0] = 0; if (!p) return;
+  p += strlen(pat); size_t i = 0; while (p[i] && p[i] != '"' && i + 1 < n) { out[i] = p[i]; i++; } out[i] = 0;
+}
+static char *smp_buffer_payload(const char *in) {
+  char vcodec[16], acodec[16], win[64], app[128];
+  const char *v = strstr(in, "\"codec\":{");
+  smp_json_str(v ? v : in, "video", vcodec, sizeof vcodec); smp_json_str(v ? v : in, "audio", acodec, sizeof acodec);
+  smp_json_str(in, "windowId", win, sizeof win); smp_json_str(in, "appId", app, sizeof app);
+  // adaptiveStreaming max size: the largest picture the decoder is set up for. Not the first picture's size: YouTube
+  // starts a stream at 426x240 and switches to 1080p in the same stream (the TV reset during that, 2026-11-22). NDL
+  // sends 1920x1080 (or more for 4K streams); take the larger of that and the stream's own size.
+  int w = smp_json_int(in, "videoWidth", 1920), h = smp_json_int(in, "videoHeight", 1080);
+  const char *as = strstr(in, "\"adaptiveStreaming\":");
+  int mw = as ? smp_json_int(as, "maxWidth", 1920) : 1920, mh = as ? smp_json_int(as, "maxHeight", 1080) : 1080;
+  if (mw < 1920) mw = 1920;
+  if (mh < 1080) mh = 1080;
+  if (w < mw) w = mw;
+  if (h < mh) h = mh;
+  const char *ps = strstr(in, "\"pcmInfo\":");
+  int rate = ps ? smp_json_int(ps, "sampleRate", 1) : 1;
+  static const double khz[] = { 48, 48, 44.1, 32, 24, 16, 12, 8, 22.05 };
+  double k = (rate >= 0 && rate <= 8) ? khz[rate] : 48;
+  if (!vcodec[0]) return NULL;
+  char aud[64] = "", pcm[160] = "";
+  if (acodec[0]) {
+    snprintf(aud, sizeof aud, ",\"audio\":\"%s\"", acodec);
+    snprintf(pcm, sizeof pcm, ",\"pcmInfo\":{\"channelMode\":\"stereo\",\"format\":\"S16LE\",\"sampleRate\":%.2f,"
+             "\"bitsPerSample\":16,\"layout\":\"interleaved\"}", k);
+  }
+  char *out = malloc(2048); if (!out) return NULL;
+  snprintf(out, 2048,
+    "{\"args\":[{\"mediaTransportType\":\"BUFFERSTREAM\",\"option\":{\"appId\":\"%s\",\"windowId\":\"%s\","
+    "\"externalStreamingInfo\":{\"contents\":{\"codec\":{\"video\":\"%s\"%s},"
+    "\"esInfo\":{\"pauseAtDecodeTime\":true,\"ptsToDecode\":0,\"seperatedPTS\":true},\"format\":\"RAW\",\"provider\":\"Chrome\""
+    "%s},"
+    "\"streamQualityInfo\":true,\"audioSync\":true,\"streamQualityInfoCorruptedFrame\":true,\"streamQualityInfoNonFlushable\":true,"
+    "\"restartStreaming\":false,\"bufferingCtrInfo\":{\"bufferMaxLevel\":0,\"bufferMinLevel\":0,\"preBufferByte\":0,"
+    "\"qBufferLevelAudio\":0,\"qBufferLevelVideo\":0,\"srcBufferLevelAudio\":{\"minimum\":1,\"maximum\":1048576},"
+    "\"srcBufferLevelVideo\":{\"minimum\":1,\"maximum\":8388608}}},"
+    "\"needAudio\":false,\"queryPosition\":false,"
+    "\"adaptiveStreaming\":{\"audioOnly\":false,\"maxWidth\":%d,\"maxHeight\":%d,\"maxFrameRate\":60}}}]}",
+    app, win, vcodec, aud, pcm, w, h);
+  return out;
+}
+_Bool cn_smp_load(void *self, const char *payload, void (*cb)(int, long long, const char *)) {
+  static smp_load_fn real;
+  if (!real) {
+    void *h = dlopen("libplayerAPIs.so.1", RTLD_NOW | RTLD_LOCAL);
+    if (h) *(void **)&real = dlsym(h, "_ZN17StarfishMediaAPIs4LoadEPKcPFvixS1_E");
+    if (!real) { L("smp: libplayerAPIs Load not found (%s)", dlerror()); return 0; }
+  }
+  const char *msg = payload ? payload : "";
+  char *c = NULL;
+  smp_feeds_logged = 0; smp_pts_scale = 1;
+  // BUFFERSTREAM needs cn_smp_feed (ns timestamps). It only gets NDL's feeds when libplayerAPIs has Feed under the
+  // C++11 string ABI name we export; an older library (other webOS releases) would leave the feeds in ms with a
+  // BUFFERSTREAM load. Then keep NDL's own player.
+  static int feed_ok = -1;
+  if (feed_ok < 0) {
+    void *h = dlopen("libplayerAPIs.so.1", RTLD_NOW | RTLD_LOCAL);
+    feed_ok = h && dlsym(h, "_ZN17StarfishMediaAPIs4FeedB5cxx11EPKc");
+    if (!feed_ok) L("smp: libplayerAPIs has no C++11 Feed, NDL's own player stays");
+  }
+  if (smp_buffer && feed_ok && (c = smp_buffer_payload(msg))) {
+    L("smp load from NDL: %s", msg);
+    msg = c; smp_pts_scale = 1000000;  // ms -> ns
+  }
+  L("smp load%s: %s", c ? " (BUFFERSTREAM)" : " (NDL's game player)", msg);
+  _Bool r = real(self, msg, cb);
+  L("smp load = %d", r);
+  free(c);
+  return r;
+}
+
+// StarfishMediaAPIs::Feed returns a std::string: on 32-bit ARM the caller passes the return slot first, then `this`.
+// Exported like Load above, so NDL's per-frame Feed lands here: it logs the first feeds of a stream and, for
+// BUFFERSTREAM, scales "pts" (ms from NDL) to ns.
+typedef void (*smp_feed_fn)(void *, void *, const char *);
+__attribute__((visibility("default"))) void cn_smp_feed(void *ret, void *self, const char *payload)
+    __asm__("_ZN17StarfishMediaAPIs4FeedB5cxx11EPKc");
+void cn_smp_feed(void *ret, void *self, const char *payload) {
+  static smp_feed_fn real;
+  if (!real) {
+    void *h = dlopen("libplayerAPIs.so.1", RTLD_NOW | RTLD_LOCAL);
+    if (h) *(void **)&real = dlsym(h, "_ZN17StarfishMediaAPIs4FeedB5cxx11EPKc");
+    if (!real) { L("smp: libplayerAPIs Feed not found (%s)", dlerror()); abort(); }
+  }
+  char buf[256]; const char *msg = payload;
+  const char *p = payload ? strstr(payload, "\"pts\":") : NULL;
+  if (p && smp_pts_scale != 1) {
+    long long pts = atoll(p + 6); const char *e = p + 6; while (*e == '-' || (*e >= '0' && *e <= '9')) e++;
+    int n = snprintf(buf, sizeof buf, "%.*s\"pts\":%lld%s", (int)(p - payload), payload, pts * smp_pts_scale, e);
+    if (n > 0 && n < (int)sizeof buf) msg = buf;
+  }
+  real(ret, self, msg);
+  // the result is a libstdc++ std::string (C++11 ABI): its first word points at the characters
+  const char *res = ret ? *(const char *const *)ret : NULL;
+  // BUFFERSTREAM answers "BufferFull" when its queue is full; NDL then drops the frame (a lost reference frame
+  // smears the picture). Wait and send the same frame again (up to 2 s); the launcher stops reading the socket
+  // meanwhile, so the renderer waits too.
+  for (int i = 0; smp_pts_scale != 1 && res && strstr(res, "BufferFull") && i < 400; i++) {
+    usleep(5000);
+    // destroy the old result by hand before constructing the next one in the same slot: a std::string on 32-bit
+    // libstdc++ is {char *p; size_t n; char local[16]}, and p points at local unless the text is longer than 15
+    // bytes ({"returnValue":"BufferFull"} is), in which case operator new allocated it (operator delete = free)
+    char *old = *(char **)ret; if (old != (char *)ret + 8) free(old);
+    real(ret, self, msg);
+    res = *(const char *const *)ret;
+  }
+  static int bad_logged;
+  int ok = res && strstr(res, "Ok");
+  if (smp_feeds_logged < 6) { smp_feeds_logged++; L("smp feed: %s -> %s", msg, res ? res : "?"); }
+  else if (!ok && bad_logged < 20) { bad_logged++; L("smp feed not ok: %s -> %s", msg, res ? res : "?"); }
+}
+
 // ---- Wayland: one exported VIDEO window for the app's lifetime ----
 static struct wl_display *dpy;
 static struct wl_compositor *comp;
@@ -924,9 +1064,12 @@ int main(int argc, char **argv) {
   snprintf(script, sizeof script, "%s/run.sh", bin);
   if (tv_too_old(tdir, bin)) return 1;
   // troubleshooting options: /tmp/<appid>/media.opts, words: nohw (no hardware video), gpu=on|off (run.sh),
-  // gpuprobe / nogpuprobe (GPU report), noss (no screen saver guard), webgpu=on, omnibox=lite (run.sh)
+  // gpuprobe / nogpuprobe (GPU report), noss (no screen saver guard), smp=game (NDL's game-streaming player), webgpu=on, omnibox=lite (run.sh)
   char opts[256] = {0}, optp[700]; snprintf(optp, sizeof optp, "%s/media.opts", tdir);
-  FILE *of = fopen(optp, "r"); if (of) { if (!fgets(opts, sizeof opts, of)) opts[0] = 0; fclose(of); }
+  // the whole file (run.sh reads its options from any line), newlines shown as spaces in the log
+  FILE *of = fopen(optp, "r");
+  if (of) { size_t n = fread(opts, 1, sizeof opts - 1, of); opts[n] = 0; fclose(of); for (char *c = opts; *c; c++) if (*c == '\n') *c = ' '; }
+  smp_buffer = strstr(opts, "smp=game") == NULL;  // default since 1.1.1; media.opts "smp=game" = NDL's own
   if (!getenv("XDG_RUNTIME_DIR")) setenv("XDG_RUNTIME_DIR", "/tmp/xdg", 1);
   L("cnrun app=%s script=%s opts=%s", app_id, script, opts);
   // LG's NDL registers its media pipeline with $APPID; without it the pipeline had appId "" and LG's media policy
