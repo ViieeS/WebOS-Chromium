@@ -1,0 +1,194 @@
+name: Build WebOS Chromium
+run-name: WebOS Chromium v${{ inputs.version }}
+# Builds the browser from sarahahzub/WebOS-Chromium source/ on GitHub-hosted runners, then the IPK with a build
+# provenance attestation. Steps follow source/BUILDING.md; the container scripts run unchanged in ci/Dockerfile.
+on:
+  workflow_dispatch:
+    inputs:
+      source_repo: { description: "Repo with source/", default: "sarahahzub/WebOS-Chromium", required: true }
+      source_ref: { description: "Branch, tag or commit", default: "main", required: true }
+      version: { description: "IPK version (x.y.z)", default: "1.1.0", required: true }
+      hours: { description: "Build hours per job (a job stops at 6 h)", default: "4.9", required: true }
+      seed_run: { description: "Optional: run id whose build folders to continue from, when no cached build folder fits", default: "", required: false }
+permissions:
+  contents: read
+concurrency: { group: build, cancel-in-progress: false }
+jobs:
+  resolve:
+    name: Source commit
+    runs-on: ubuntu-24.04
+    outputs:
+      sha: ${{ steps.r.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { repository: "${{ inputs.source_repo }}", ref: "${{ inputs.source_ref }}", path: wc }
+      - id: r
+        run: |
+          sha=$(git -C wc rev-parse HEAD)
+          echo "sha=$sha" >> $GITHUB_OUTPUT
+          title=$(sed -n 's/^APP_TITLE="\{0,1\}\([^"#]*\)"\{0,1\}.*/\1/p' wc/source/config.env | sed 's/ *$//')
+          echo "Building **${title:-Chromium Browser} ${{ inputs.version }}** from [${{ inputs.source_repo }}@${sha:0:7}](https://github.com/${{ inputs.source_repo }}/tree/$sha)" >> $GITHUB_STEP_SUMMARY
+
+  source:
+    name: Chromium source (setup-source.sh)
+    needs: resolve
+    runs-on: ubuntu-24.04
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+      - id: prep
+        uses: ./.github/actions/prepare
+        with: { source_repo: "${{ inputs.source_repo }}", sha: "${{ needs.resolve.outputs.sha }}" }
+      - id: have
+        uses: actions/cache/restore@v4
+        with: { key: "${{ steps.prep.outputs.src_key }}", lookup-only: true, path: "/home/runner/cnci/vol/snap/src.tar.zst\n/home/runner/cnci/vol/snap/src.json" }
+      - if: steps.have.outputs.cache-hit != 'true'
+        env: { BUILD_ID: "ci-${{ github.run_id }}-source" }
+        run: bash ci/crun.sh setup-source.sh
+      - if: steps.have.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with: { key: "${{ steps.prep.outputs.src_key }}", path: "/home/runner/cnci/vol/snap/src.tar.zst\n/home/runner/cnci/vol/snap/src.json" }
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: logs-source, path: /home/runner/cnci/vol/logs/, if-no-files-found: ignore, retention-days: 14 }
+
+  tools:
+    name: Sysroot and builtins
+    needs: [resolve, source]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - id: prep
+        uses: ./.github/actions/prepare
+        with: { source_repo: "${{ inputs.source_repo }}", sha: "${{ needs.resolve.outputs.sha }}" }
+      - id: have
+        uses: actions/cache/restore@v4
+        with:
+          key: "${{ steps.prep.outputs.tools_key }}"
+          lookup-only: true
+          path: "/home/runner/cnci/vol/snap/sysroot-compat.tar.zst\n/home/runner/cnci/vol/snap/sysroot-compat.json\n/home/runner/cnci/vol/snap/builtins.tar.zst\n/home/runner/cnci/vol/snap/builtins.json"
+      - if: steps.have.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with: { key: "${{ steps.prep.outputs.src_key }}", fail-on-cache-miss: true, path: "/home/runner/cnci/vol/snap/src.tar.zst\n/home/runner/cnci/vol/snap/src.json" }
+      - if: steps.have.outputs.cache-hit != 'true'
+        run: |
+          BUILD_ID=ci-${{ github.run_id }}-sysroot bash ci/crun.sh build-sysroot.sh
+          BUILD_ID=ci-${{ github.run_id }}-sysroot-compat bash ci/crun.sh build-sysroot-compat.sh
+          BUILD_ID=ci-${{ github.run_id }}-builtins bash ci/crun.sh build-builtins.sh
+      - if: steps.have.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          key: "${{ steps.prep.outputs.tools_key }}"
+          path: "/home/runner/cnci/vol/snap/sysroot-compat.tar.zst\n/home/runner/cnci/vol/snap/sysroot-compat.json\n/home/runner/cnci/vol/snap/builtins.tar.zst\n/home/runner/cnci/vol/snap/builtins.json"
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: logs-tools, path: /home/runner/cnci/vol/logs/, if-no-files-found: ignore, retention-days: 14 }
+
+  nss:
+    name: NSS and NSPR (build-nss-sdk.sh)
+    needs: resolve
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - id: prep
+        uses: ./.github/actions/prepare
+        with: { source_repo: "${{ inputs.source_repo }}", sha: "${{ needs.resolve.outputs.sha }}", docker: "false" }
+      - id: have
+        uses: actions/cache/restore@v4
+        with: { key: "${{ steps.prep.outputs.nss_key }}", lookup-only: true, path: /home/runner/cnci/nss }
+      - if: steps.have.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq zstd file patch make gcc g++ binutils > /dev/null
+          id=$(NSS_UPLOAD=0 bash wc/source/container/build-nss-sdk.sh | tail -1)
+          cp "$HOME/nssjob/out/$id/nss.tar.zst" "$HOME/nssjob/out/$id/nss.sha256" "$HOME/nssjob/out/$id/build.log" /home/runner/cnci/nss/
+          cat "$HOME/nssjob/out/$id/nss-report.txt"
+      - if: steps.have.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with: { key: "${{ steps.prep.outputs.nss_key }}", path: /home/runner/cnci/nss }
+
+  launcher:
+    name: Launcher (package/launcher/build.sh)
+    needs: resolve
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { repository: "${{ inputs.source_repo }}", ref: "${{ needs.resolve.outputs.sha }}", path: wc }
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq libwayland-dev binutils-arm-linux-gnueabi > /dev/null
+          curl -fsSL https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz | tar -xJ -C $HOME
+          cd wc/source/package/launcher && ZIG=$HOME/zig-linux-x86_64-0.13.0/zig OUT=$GITHUB_WORKSPACE/launcher/cnrun sh build.sh
+          sha256sum $GITHUB_WORKSPACE/launcher/cnrun
+      - uses: actions/upload-artifact@v4
+        with: { name: launcher, path: launcher/cnrun, retention-days: 30 }
+
+  default:
+    name: Browser (ARMv7, every TV from webOS 4.4)
+    needs: [resolve, tools, nss, launcher]
+    permissions: { contents: read, actions: read, id-token: write, attestations: write }
+    uses: ./.github/workflows/variant.yml
+    with:
+      source_repo: ${{ inputs.source_repo }}
+      sha: ${{ needs.resolve.outputs.sha }}
+      variant: default
+      version: ${{ inputs.version }}
+      hours: ${{ inputs.hours }}
+      seed_run: ${{ inputs.seed_run }}
+
+  # The end summary and the two artifacts a run keeps: webos-chromium-<version> (the IPK) and logs-<version>
+  # (everything else: build logs, SHA256SUMS, ABI and NSS reports, launcher). The other artifacts are hand-overs
+  # between jobs and are deleted here.
+  result:
+    name: Result
+    needs: [resolve, default]
+    if: always() && needs.resolve.result == 'success'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { pattern: "logs-*", path: all }
+      - uses: actions/download-artifact@v4
+        with: { pattern: "extra-*", path: all }
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with: { name: launcher, path: all/launcher }
+      - name: One logs artifact
+        uses: actions/upload-artifact@v4
+        with: { name: "logs-${{ inputs.version }}", path: all/, retention-days: 30 }
+      - name: Summary
+        env:
+          DEF: ${{ needs.default.result }}
+          VER: ${{ inputs.version }}
+        run: |
+          {
+            echo "## Result"
+            echo
+            if ls all/extra-*/ROW.md > /dev/null 2>&1; then
+              echo "| Build | IPK | Size | SHA-256 | Provenance |"
+              echo "|---|---|---|---|---|"
+              for d in all/extra-*/; do
+                [ -f "$d/ROW.md" ] || continue
+                u=$(cat "$d/ATTESTATION.txt" 2>/dev/null)
+                echo "$(tr -d '\n' < "$d/ROW.md") ${u:+[attestation]($u)} |"
+              done
+              echo
+              echo "Verify an IPK: \`gh attestation verify <file> -R ${{ github.repository }}\`"
+              echo
+            fi
+            case "$DEF" in success) ;; *) echo "**The build failed** ($DEF): see the logs artifact."; echo ;; esac
+            echo "Artifacts: the IPK in **webos-chromium-$VER**, everything else in **logs-$VER**."
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Delete the hand-over artifacts
+        env: { GH_TOKEN: "${{ github.token }}", VER: "${{ inputs.version }}" }
+        run: |
+          gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts?per_page=100" \
+            --jq '.artifacts[] | "\(.id) \(.name)"' |
+          while read -r id name; do
+            case "$name" in "webos-chromium-$VER"|"logs-$VER") continue ;; esac
+            gh api -X DELETE "repos/${{ github.repository }}/actions/artifacts/$id" && echo "deleted $name"
+          done
