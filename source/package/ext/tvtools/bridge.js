@@ -15,7 +15,7 @@
   }
 
   function refresh() {
-    tvLoad().then(function (r) { push(tvEffective(r.settings, r.hardware, host, r.hwH264)); }).catch(function () {});
+    tvLoad().then(function (r) { push(tvEffective(r.settings, r.hardware, host, r.hwH264, r.lowMem)); }).catch(function () {});
   }
 
   refresh();

@@ -46,7 +46,7 @@ Tools off for that site from its toolbar button to see whether it's the cause.
 
 | Setting | Options | What it does |
 |---|---|---|
-| Lite mode | Off, On | Lighter pages: no animations, images and frames load when you scroll to them, muted videos don't start by themselves. |
+| Lite mode | Auto (default), Off, On | Lighter pages: no animations, images and frames load when you scroll to them, muted videos don't start by themselves, and JavaScript uses less memory but runs slower (about 25% in Speedometer). Auto turns it on only when the TV had less than 200 MB free when the browser opened. The JavaScript part changes the next time the browser opens. |
 | Website version | TV (default), Desktop, Custom | TV asks sites for their TV layout (YouTube opens its TV interface, made for the remote). Desktop asks for normal pages. Custom sends a user agent you type in. |
 | Per-site version | TV or desktop for the current site | Keeps one site on its desktop version. A site that shows a Cloudflare check switches to desktop by itself. |
 | Maximum video resolution | Auto, 4K, 1080p, 720p, 480p, 360p | Limits video quality on every site, not only YouTube. 4K is opt-in and can stutter when a video starts. |
@@ -65,18 +65,34 @@ TV Tools says no; that's how YouTube and most players choose. It also removes th
 DASH (`.mpd`) playlists before the player reads them. At least the smallest stream always stays, and a plain single
 `.mp4` plays as it is.
 
+### Flags for testing
+
+For testing, a few switches can be set over SSH (Developer Mode or a rooted TV) in
+`/tmp/io.github.sarahahzub.chromium/media.opts`, one per line. The folder appears after the browser has opened once.
+Close and reopen the browser to apply them. A TV restart clears them.
+
+| Flag | What it does |
+|---|---|
+| `js=lite` | Lite mode on, whatever TV Tools is set to: both the lighter pages and the slower, smaller JavaScript. |
+| `js=full` | Lite mode off, whatever TV Tools is set to. |
+| `omnibox=lite` | A lighter address bar for the remote: 5 suggestions, fewer suggestion sources, and suggestions only after a short pause in typing. On an LG C1 it reacts in about 90 ms instead of 160 ms. |
+
+For example: `echo js=full >> /tmp/io.github.sarahahzub.chromium/media.opts`
+
 ## Install
 
 ### Homebrew Channel
 
+Chromium Browser is in Homebrew Channel's main repository.
+
 1. Install [Homebrew Channel](https://github.com/webosbrew/webos-homebrew-channel) on the TV (no root needed).
-2. In Homebrew Channel, go to Settings → Add repository and enter:
-   ```
-   https://raw.githubusercontent.com/sarahahzub/WebOS-Chromium/main/webosbrew/apps.json
-   ```
-3. Back in the app list, open Chromium Browser and select Install.
+2. Open Homebrew Channel, find **Chromium Browser** in the app list and select Install.
 
 New releases show up there as updates. Updating keeps your bookmarks and settings.
+
+If you added this project's own repository (`.../WebOS-Chromium/main/webosbrew/apps.json`) earlier, keep it until
+you've [moved from the old Chromium app](#moving-from-the-old-chromium-app): the old app's last update is only there.
+After that you can remove it in Homebrew Channel's settings.
 
 ### Moving from the old Chromium app
 
@@ -120,6 +136,19 @@ Reported working by testers:
 How fast it is depends a lot on the model. If you try it on another TV, please report it with the TV compatibility
 issue template, whether it works or not.
 
+## New in 1.1.0
+
+- Smoother hardware video on webOS 5 and newer: video now goes to LG's buffered player, so videos that stuttered
+  in 1.0.0 (often films) play smoothly.
+- Video on some sites showed a white or grey box instead of the picture. Fixed.
+- Low memory: the browser frees memory from background tabs when the TV runs low. If one page still takes all the
+  memory, its tab shows "Aw, Snap!" and can be reloaded, instead of the TV resetting.
+- Lite mode is now Auto (the new default), Off or On, and also makes JavaScript use less memory. Auto turns it on
+  only when the TV had less than 200 MB free when the browser opened.
+- LG's keyboard opens in extension popups, for example a VPN extension's sign-in form.
+- The address bar reacts faster again on some TVs (thanks [@ViieeS](https://github.com/ViieeS), #27).
+- TV Tools 2.4.1.
+
 ## New in 1.0.0
 
 - A new app, Chromium Browser, with its own id (see [Moving from the old Chromium app](#moving-from-the-old-chromium-app)).
@@ -140,21 +169,7 @@ issue template, whether it works or not.
 - The package now passes webosbrew's checks for Homebrew Channel's main repository.
 - After an update from 0.0.48 or older, the moved profile is private to the app right away.
 
-## New in 0.0.65
-
-The first major release. Everything in it was tested in [Chromium Beta](#beta) first.
-
-- Works on webOS 4.4 and newer.
-- Many fixes and improvements under the hood.
-- Bookmarks, logins and settings are kept on flash. 0.0.48 and older kept them in memory and lost them at every
-  reboot.
-- Fully open source now, see [Building from source](#building-from-source).
-
-## Beta
-
-[Chromium Beta](https://github.com/sarahahzub/Beta-Apps) gets new builds first. It installs next to this app, with
-its own icon (orange B), bookmarks and settings, so trying it never touches your normal install. Each Stable release
-is a Beta build that held up.
+Older versions: [Releases](https://github.com/sarahahzub/WebOS-Chromium/releases).
 
 ## Using it with the remote
 
@@ -196,38 +211,6 @@ What we're working towards, in no fixed order and without dates:
 - Lower memory use, so more tabs fit on TVs with little RAM.
 - 4K video without having to turn it on in TV Tools.
 - Smoother video and faster pages on older TVs.
-
-## Benchmarks
-
-Measured on the LG 43UR7500PSC (webOS 10.3.1) with 0.0.39 to 0.0.42, with Live TV and LG's preloaded apps running
-in the background as usual.
-
-| Test | Result |
-|---|---|
-| Download / installed size | 105 MB / 178 MB |
-| Memory, idle on the New Tab page | 138 MB (86 MB in RAM, 51 MB in swap) |
-| CPU while the browser is idle | no extra load (87% idle) |
-| YouTube AV1 1080p60, hardware decoded | 0 dropped of 3,914 frames |
-| YouTube TV interface, 1080p60, hardware decoded (0.0.41) | 0 dropped of 5,299 frames |
-
-Earlier dev build 0.0.36 (2026-10-31):
-
-| Test | Result |
-|---|---|
-| Memory, idle on the New Tab page | 105 MB (49 MB in RAM, 56 MB in swap) |
-| CPU while the browser is idle | no extra load (66% idle without the browser, 65-73% with it) |
-| Wikipedia article | 204 MB, loaded in 6.2 s |
-| Google search results | 293 MB, loaded in 14.2 s |
-| YouTube home page | 315 MB, loaded in 21.2 s |
-| BBC News | 333 MB, ready in 24.0 s |
-| YouTube AV1 1080p60, hardware decoded | 0 dropped of 9,330 frames, with LG's background apps keeping the CPU busy |
-| Memory while playing that video | 292 MB |
-| Speedometer 3.0 (1 iteration) | 0.71 |
-| Splash screen | 0.8 s after launch |
-| Launch to New Tab page | about 3 s, or about 12 s when the TV first has to free memory |
-
-Only 40 to 110 MB was free during these tests and the TV was swapping a lot, so read the page times and the
-Speedometer score as "a busy TV in daily use", not as a CPU benchmark.
 
 ## Building from source
 

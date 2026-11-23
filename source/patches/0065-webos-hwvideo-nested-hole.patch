@@ -1,0 +1,49 @@
+# why: Hardware video showed the page's background (white or grey) instead of the picture on farsi film sites
+# (farsiplex.com, farsiland.buzz; jwplayer). Two causes, both in viz:
+# 1. Video two or more compositing layers deep: patch 0024 draws the render pass with the video hole with kSrc into
+#    its parent, but only that pass; the pass around it was blended into the root and the root's background filled
+#    the hole again (test page: video in two nested opacity layers). Now every pass that draws a marked pass is
+#    marked too (render passes come in draw order, children before parents, so one sweep marks the chain).
+# 2. A backdrop filter on a layer around the player (farsiplex: div.dtsingle has backdrop-filter: saturate(1.8)
+#    blur(15px)): Skia starts that layer with the filtered page behind it, so the hole showed the blurred body colour
+#    (the grey box). Passes that carry a video hole now skip their backdrop filter.
+--- a/src/components/viz/service/display/direct_renderer.cc
++++ b/src/components/viz/service/display/direct_renderer.cc
+@@ -5,4 +5,5 @@
+ #include "components/viz/service/display/direct_renderer.h"
+ #include "components/viz/common/quads/video_hole_draw_quad.h"
++#include "components/viz/common/quads/aggregated_render_pass_draw_quad.h"  // chromium-native (patch 0065)
+ 
+ #include <sys/socket.h>  // chromium-native (patch 0023)
+@@ -246,9 +247,20 @@ void DirectRenderer::DrawFrame(
+   cn_hole_passes_.clear();
+   if (getenv("CN_MEDIA_SOCK")) {
+     for (const auto& pass : *render_passes_in_draw_order) {
+       for (const DrawQuad* q : pass->quad_list) {
++        // chromium-native (patch 0065): a pass that draws a pass with a video
++        // hole carries the hole too, so it is drawn with kSrc into its own
++        // parent as well (video two or more layers deep).
++        if (q->material == DrawQuad::Material::kAggregatedRenderPass) {
++          if (pass.get() != root_render_pass &&
++              cn_hole_passes_.contains(
++                  AggregatedRenderPassDrawQuad::MaterialCast(q)->render_pass_id)) {
++            cn_hole_passes_.insert(pass->id);
++          }
++          continue;
++        }
+         if (q->material != DrawQuad::Material::kVideoHole) {
+           continue;
+         }
+         root_render_pass->has_transparent_background = true;
+         gfx::Transform t = pass->transform_to_root_target;
+--- a/src/components/viz/service/display/skia_renderer.cc
++++ b/src/components/viz/service/display/skia_renderer.cc
+@@ -3227,3 +3227,7 @@ SkiaRenderer::DrawRPDQParams SkiaRenderer::CalculateRPDQParams(
+   // Convert CC image filters for the backdrop into a SkImageFilter root node
+-  if (!quad->backdrop_filters.IsEmpty()) {
++  // chromium-native (patch 0065): no backdrop filter on a pass that carries a
++  // video hole. Skia fills such a layer with the filtered backdrop (the page
++  // behind it) and the transparent hole showed that instead of the TV's plane.
++  if (!quad->backdrop_filters.IsEmpty() &&
++      !(CnHwVideo() && cn_hole_passes_.contains(quad->render_pass_id))) {
+     rpdq_params.backdrop_filter_quality = quad->backdrop_filter_quality;

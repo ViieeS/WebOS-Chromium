@@ -180,6 +180,52 @@ if [ -x "$B/chrome" ]; then
 		[ $n = 1 ] && touch "$T/.started"
 	done ) </dev/null >/dev/null 2>&1 &
 	rm -f "$T/.started"
+	# Memory guard (1.1.1): on a TV with about 250 MB free, one heavy page (a VPN sign-in, 2026-11-21) took the last
+	# free memory in 30 seconds. The TV swapped until its watchdog reset it ("cpuAbnormal"), before webOS closed the
+	# app. Chrome's own memory pressure (patch 0064) only discards background tabs. This loop checks once a second and
+	# kills the biggest renderer only when the TV is thrashing: for 4 seconds in a row under 100 MB free, it either
+	# swapped in 8000 pages (32 MB) a second or was stalled on memory 25% of the time (Linux PSI,
+	# /proc/pressure/memory), or free memory is under 12 MB. Low free memory alone is normal on these TVs (a page or
+	# YouTube runs at 20-40 MB free with a few MB/s of swap); the reset came after 30+ s at about 50 MB/s. The killed
+	# renderer's tabs show "Aw, Snap!" and can be reloaded; the TV keeps working. Kills, and near misses (at most one line
+	# per 5 s), go to $T/guard.log. media.opts "guard=off" turns it off. $$ becomes Chrome's pid after the exec below,
+	# so the loop ends with Chrome.
+	if ! grep -q 'guard=off' "$T/media.opts" 2>/dev/null; then
+		( GMB=12 GST=25 GSW=8000 GHI=100 n=0 lf= lu= lw= cool=0 near=0
+		  while sleep 1; do
+			kill -0 $$ 2>/dev/null || exit 0
+			a=0; while read -r k v _; do [ "$k" = MemAvailable: ] && { a=$((v / 1024)); break; }; done < /proc/meminfo
+			f=; while read -r k _ _ _ t; do [ "$k" = full ] && f=${t#total=}; done < /proc/pressure/memory
+			w=; while read -r k v; do [ "$k" = pswpin ] && { w=$v; break; }; done < /proc/vmstat
+			read -r u _ < /proc/uptime; u=${u%.*}${u#*.}   # centiseconds
+			s=0 sw=0
+			if [ -n "$lu" ] && [ "$u" -gt "$lu" ]; then
+				[ -n "$f" ] && [ -n "$lf" ] && s=$(( (f - lf) / ((u - lu) * 100) ))   # % of the time stalled
+				[ -n "$w" ] && [ -n "$lw" ] && sw=$(( (w - lw) * 100 / (u - lu) ))   # pages swapped in per second
+			fi
+			lf=$f lw=$w lu=$u
+			if [ "$a" -lt $GHI ] && { [ "$s" -ge $GST ] || [ "$sw" -ge $GSW ]; }; then n=$((n + 1)); else n=0; fi
+			[ $near -gt 0 ] && near=$((near - 1))
+			if [ $near = 0 ] && { [ "$s" -ge 10 ] || [ "$sw" -ge 4000 ]; }; then
+				echo "$(date '+%F %T') near: MemAvailable $a MB, stall $s%, swap-in $sw pages/s" >> "$T/guard.log"; near=5
+				[ "$(wc -l < "$T/guard.log")" -gt 400 ] && { tail -n 200 "$T/guard.log" > "$T/guard.tmp"; mv -f "$T/guard.tmp" "$T/guard.log"; }
+			fi
+			[ $cool -gt 0 ] && { cool=$((cool - 1)); continue; }
+			[ "$a" -lt $GMB ] || [ $n -ge 4 ] || continue
+			big= bk=0
+			for c in /proc/[0-9]*; do
+				[ "$c/exe" -ef "$B/chrome" ] || continue
+				grep -q -- '--type=renderer' "$c/cmdline" 2>/dev/null || continue
+				grep -q -- '--extension-process' "$c/cmdline" 2>/dev/null && continue   # pages only, not TV Tools or other extensions
+				r=0; while read -r k v _; do case "$k" in VmRSS:|VmSwap:) r=$((r + v)) ;; esac; done < "$c/status"
+				[ "$r" -gt "$bk" ] && { bk=$r; big=${c#/proc/}; }
+			done
+			[ -n "$big" ] || continue
+			kill -9 "$big" 2>/dev/null
+			echo "$(date '+%F %T') killed renderer $big ($((bk / 1024)) MB RAM+swap): MemAvailable $a MB, stall $s%, swap-in $sw pages/s, $n s" >> "$T/guard.log"
+			n=0 cool=10
+		  done ) </dev/null >/dev/null 2>&1 &
+	fi
 	# Hardware video (patch 0023): the launcher exports CN_MEDIA_SOCK when LG's NDL is usable. The built-in TV Tools
 	# extension reads hw.json: its "Auto" video limit is any codec up to 1080p60 with hardware decoding, H.264 up to
 	# 720p30 without. The installed ext/ is read-only, so TV Tools runs from a copy in the data folder (refreshed when the
@@ -234,7 +280,7 @@ if [ -x "$B/chrome" ]; then
 		rm -rf "$CL.prev"; [ -d "$CL" ] && mv "$CL" "$CL.prev"; mkdir -p "$CL"
 		( save() {
 			tail -n 400 "$T/browser.log" > "$CL/browser.log" 2>/dev/null; cp -f "$T/media.log" "$CL/media.log" 2>/dev/null
-			cp -f "$T/mem.txt" "$CL/mem.txt" 2>/dev/null
+			cp -f "$T/mem.txt" "$CL/mem.txt" 2>/dev/null; cp -f "$T/guard.log" "$CL/guard.log" 2>/dev/null
 		  }
 		  : > "$T/mem.txt"; m=0
 		  while sleep 60; do
@@ -257,7 +303,34 @@ if [ -x "$B/chrome" ]; then
 	if [ "$CN_NDL_API" = old ]; then
 		H264=true; grep -q '^bad' "$T/hw.state" 2>/dev/null && HW=false
 	fi
-	HWJ="{\"hardware\": $HW, \"h264\": $H264}"
+	# Lite mode (1.1.1). TV Tools' "Lite mode" setting is Auto (default), On or Off. On: V8 lite mode (no optimizing
+	# compilers, less memory per script, slower JavaScript; a Proton sign-in went from 296 to ~140 MB in one renderer)
+	# and TV Tools' page tweaks (no animations, lazy images, no muted autoplay). Auto: both when the TV has less than
+	# 200 MB free as Chrome starts (2026-11-22: only when it is really needed; lite costs ~26% JS speed in
+	# Speedometer 3.1, 0.844 -> 0.626 on a 43UR7500, which has 190-380 MB free at start). V8 flags are set at
+	# start, so a change applies the next time the browser opens. The setting is read from TV Tools' storage (the
+	# newest "lite" entry in its LevelDB files; nothing readable = Auto). media.opts "js=lite" / "js=full" override it
+	# (tests). The decision goes to TV Tools in hw.json ("lowmem", "freeMB") and to $T/lite.txt.
+	LITE_SET=auto
+	LX="$S/profile/Default/Local Extension Settings/$TVT"
+	for f in $(cd "$LX" 2>/dev/null && ls -t -- *.log *.ldb 2>/dev/null); do
+		v=$(grep -a -o -E '"lite":("(auto|on|off)"|true|false)' "$LX/$f" 2>/dev/null | tail -1)
+		[ -n "$v" ] || continue
+		case "$v" in *'"on"'|*true) LITE_SET=on ;; *'"off"') LITE_SET=off ;; esac
+		break
+	done
+	grep -q 'js=lite' "$T/media.opts" 2>/dev/null && LITE_SET=on
+	grep -q 'js=full' "$T/media.opts" 2>/dev/null && LITE_SET=off
+	FREE=0; while read -r k v _; do [ "$k" = MemAvailable: ] && { FREE=$((v / 1024)); break; }; done < /proc/meminfo
+	LOWMEM=false; [ "$FREE" -lt 200 ] && LOWMEM=true
+	# a media.opts override sets TV Tools' page tweaks too (its Auto follows "lowmem"), so js=lite / js=full switch
+	# both parts of lite mode (before: js=full left the page tweaks to free memory, tests were not comparable)
+	grep -q 'js=lite' "$T/media.opts" 2>/dev/null && LOWMEM=true
+	grep -q 'js=full' "$T/media.opts" 2>/dev/null && LOWMEM=false
+	JS_LITE=
+	case "$LITE_SET" in on) JS_LITE=" --lite-mode" ;; auto) [ $LOWMEM = true ] && JS_LITE=" --lite-mode" ;; esac
+	echo "lite setting $LITE_SET, ${FREE} MB free at start, V8 lite mode $([ -n "$JS_LITE" ] && echo on || echo off)" > "$T/lite.txt"
+	HWJ="{\"hardware\": $HW, \"h264\": $H264, \"lowmem\": $LOWMEM, \"freeMB\": $FREE}"
 	[ "$(cat "$EXT/hw.json" 2>/dev/null)" = "$HWJ" ] || echo "$HWJ" > "$EXT/hw.json" 2>/dev/null
 	# A failure during this session: switch hw.json to software too (TV Tools reads it when its worker starts again).
 	# $$ becomes Chrome's pid after the exec below, so the watcher ends with Chrome.
@@ -287,8 +360,20 @@ if [ -x "$B/chrome" ]; then
 	# saver guard answers webOS's screen saver requests from it.
 	export CN_PLAYSTATE_FILE=$T/playstate
 	echo 0 > "$CN_PLAYSTATE_FILE"
+	# Memory pressure (patch 0064): a 1.25 GB TV (580 MB of it reserved for video) runs Chrome at 40-90 MB free. With
+	# the patch's defaults (critical < 100 MB) Chrome was at "critical" all the time and every 5 s did a full garbage
+	# collection and cache purge in every renderer, which pulled swapped pages back in (thousands of pages a second)
+	# and dropped buffered video. Here it reacts only when memory is really short.
+	export CN_MEM_MODERATE_MB=${CN_MEM_MODERATE_MB:-50} CN_MEM_CRITICAL_MB=${CN_MEM_CRITICAL_MB:-20}
+	# media.opts "mempressure=off" (test, 2026-11-21): thresholds of 1 MB, so patch 0064 never reports pressure. For
+	# checking whether the toolbar area going black for a moment under memory load comes from Chrome's purge on
+	# memory pressure.
+	grep -q 'mempressure=off' "$T/media.opts" 2>/dev/null && export CN_MEM_MODERATE_MB=1 CN_MEM_CRITICAL_MB=1
 	# NetworkTimeServiceQuerying off: Chrome asked clients2.google.com for the time at every start (the TV keeps its
 	# own clock). Patch 0059 stops the other background requests to Google.
+	# AimEnabled, AllowAiModeMatches, OmniboxMiaZPS off (1.1.0, issue #26): no "AI Mode" button or suggestions in the
+	# address bar or the New Tab page's search box. AimEnabled is the switch the AI Mode eligibility check reads for
+	# both. Google search itself stays as it is.
 	exec "$B/chrome" \
 		--load-extension="$EXT" \
 		--mse-video-buffer-size-limit-mb=40 --mse-audio-buffer-size-limit-mb=6 \
@@ -302,8 +387,8 @@ if [ -x "$B/chrome" ]; then
 		--mem-pressure-gpu-cache-size-reduction-factor=4 \
 		--disable-component-extensions-with-background-pages --disable-background-networking --num-raster-threads=1 \
 		--enable-features=NetworkServiceInProcess2$OMNI_ON $OMNI_TRIAL \
-		--disable-features=Translate,OptimizationHints,MediaRouter,BackForwardCache,Vulkan,ContextualTasks,ContextualTasksContext,ContextualTasksSidePanel,PreloadTopChromeWebUI,SpareRendererForSitePerProcess,SpareRenderer,OptimizationGuideModelDownloading,IsolateOrigins,site-per-process,WebUIToolbar,WebUIToolbarWebView,WebUIToolbarInternalWebView,WebUIReloadButton,WebUILocationBar,AudioServiceOutOfProcess,WebUIOmniboxPopup,WebUIOmniboxAimPopup,WebUIOmniboxFullPopup,DisableLoadExtensionCommandLineSwitch,HardwareMediaKeyHandling,NetworkTimeServiceQuerying$OMNI_OFF$WEBGPU_OFF $SYNC_OFF \
-		--js-flags="--max-old-space-size=192 --optimize-for-size" \
+		--disable-features=Translate,OptimizationHints,MediaRouter,BackForwardCache,Vulkan,ContextualTasks,ContextualTasksContext,ContextualTasksSidePanel,PreloadTopChromeWebUI,SpareRendererForSitePerProcess,SpareRenderer,OptimizationGuideModelDownloading,IsolateOrigins,site-per-process,WebUIToolbar,WebUIToolbarWebView,WebUIToolbarInternalWebView,WebUIReloadButton,WebUILocationBar,AudioServiceOutOfProcess,WebUIOmniboxPopup,WebUIOmniboxAimPopup,WebUIOmniboxFullPopup,DisableLoadExtensionCommandLineSwitch,HardwareMediaKeyHandling,NetworkTimeServiceQuerying,AimEnabled,AllowAiModeMatches,OmniboxMiaZPS$OMNI_OFF$WEBGPU_OFF $SYNC_OFF \
+		--js-flags="--max-old-space-size=192 --optimize-for-size$JS_LITE" \
 		--no-first-run --no-default-browser-check --disable-component-update --disable-breakpad \
 		--password-store=basic --autoplay-policy=no-user-gesture-required \
 		--enable-neva-ime --enable-spatial-navigation --hide-crash-restore-bubble --start-maximized --lang=en-US \

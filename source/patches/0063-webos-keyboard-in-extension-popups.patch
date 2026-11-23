@@ -1,0 +1,76 @@
+# why: LG's keyboard never opened in extension popups (for example Windscribe's login form): text fields there got
+# neither a pointer press nor OK through to the keyboard. Patch 0017 opens the keyboard only on OK or a pointer press
+# seen by the browser window's own key handler, and an extension popup or dialog is a widget of its own. The
+# aura::Env handler of patch 0061 now allows the keyboard after a pointer press in any window, and OK on a text field
+# outside the browser window opens it (a second OK, or Enter while the keyboard is shown, goes through).
+diff --git a/src/chrome/browser/ui/views/frame/browser_view.cc b/src/chrome/browser/ui/views/frame/browser_view.cc
+index 65960db..1cb5785 100644
+--- a/src/chrome/browser/ui/views/frame/browser_view.cc
++++ b/src/chrome/browser/ui/views/frame/browser_view.cc
+@@ -1167,6 +1167,16 @@ class TvRemoteKeyHandler : public ui::EventHandler, public aura::WindowObserver
+ // for all windows (aura::Env), installed with the first browser window.
+ class TvDialogKeyHandler : public ui::EventHandler {
+  public:
++  // chromium-native (patch 0063): a pointer press in any window may open LG's
++  // keyboard on a text field: extension popups and dialogs too, not only the
++  // browser window (TvRemoteKeyHandler), so a login form in an extension's
++  // popup gets the keyboard.
++  void OnMouseEvent(ui::MouseEvent* event) override {
++    if (event->type() == ui::EventType::kMousePressed &&
++        event->IsOnlyLeftMouseButton()) {
++      ui::InputMethodNevaObserver::AllowShowOnce();
++    }
++  }
+   void OnKeyEvent(ui::KeyEvent* event) override {
+     if (event->type() != ui::EventType::kKeyPressed ||
+         (event->flags() & (ui::EF_SHIFT_DOWN | ui::EF_CONTROL_DOWN |
+@@ -1174,6 +1184,10 @@ class TvDialogKeyHandler : public ui::EventHandler {
+       return;
+     }
+     const ui::KeyboardCode key = event->key_code();
++    if (key == ui::VKEY_RETURN) {
++      OnReturn(event);
++      return;
++    }
+     if (key != ui::VKEY_UP && key != ui::VKEY_DOWN && key != ui::VKEY_LEFT &&
+         key != ui::VKEY_RIGHT) {
+       return;
+@@ -1208,6 +1222,38 @@ class TvDialogKeyHandler : public ui::EventHandler {
+     fm->AdvanceFocus(/*reverse=*/key == ui::VKEY_UP || key == ui::VKEY_LEFT);
+     event->StopPropagation();
+   }
++
++ private:
++  // chromium-native (patch 0063): OK on a text field outside the browser
++  // window (an extension popup, a dialog) opens LG's keyboard, as
++  // BrowserView::HandleTvRemoteKey does in the browser window. The next OK on
++  // the same field, or Enter while our keyboard is shown, goes through.
++  void OnReturn(ui::KeyEvent* event) {
++    aura::Window* target = static_cast<aura::Window*>(event->target());
++    views::Widget* widget =
++        target ? views::Widget::GetWidgetForNativeView(target) : nullptr;
++    if (!widget || BrowserView::GetBrowserViewForNativeWindow(
++                       widget->GetTopLevelWidget()->GetNativeWindow())) {
++      return;  // the browser window: BrowserView::HandleTvRemoteKey
++    }
++    ui::InputMethod* im = widget->GetInputMethod();
++    ui::TextInputClient* client = im ? im->GetTextInputClient() : nullptr;
++    if (!client || client->GetTextInputType() == ui::TEXT_INPUT_TYPE_NONE) {
++      keyboard_client_ = 0;
++      return;
++    }
++    const uintptr_t id = reinterpret_cast<uintptr_t>(client);
++    if (keyboard_client_ != id &&
++        !ui::InputMethodNevaObserver::KeyboardShown()) {
++      keyboard_client_ = id;
++      ui::InputMethodNevaObserver::AllowShowOnce();
++      im->SetVirtualKeyboardVisibilityIfEnabled(true);
++      event->StopPropagation();
++      return;
++    }
++    keyboard_client_ = 0;
++  }
++  uintptr_t keyboard_client_ = 0;
+ };
+ }  // namespace
+ #endif  // defined(USE_AURA)

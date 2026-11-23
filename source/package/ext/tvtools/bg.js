@@ -4,11 +4,15 @@
 importScripts("settings.js");
 
 // run.sh writes hw.json next to this file: {"hardware": true} when the TV's hardware decoder is in use, plus
-// "h264": true when it decodes only H.264 (webOS 4, NDL API 1).
+// "h264": true when it decodes only H.264 (webOS 4, NDL API 1), and "lowmem" / "freeMB": whether the TV had less than
+// 200 MB free when the browser started (Lite mode "Auto" is then on) and how much.
 fetch(chrome.runtime.getURL("hw.json"))
   .then(function (r) { return r.json(); })
-  .then(function (j) { return chrome.storage.local.set({ hardware: j.hardware !== false, hwH264: j.h264 === true }); })
-  .catch(function () { return chrome.storage.local.set({ hardware: true, hwH264: false }); });
+  .then(function (j) {
+    return chrome.storage.local.set({ hardware: j.hardware !== false, hwH264: j.h264 === true, lowMem: j.lowmem === true,
+                                      freeMB: typeof j.freeMB === "number" ? j.freeMB : null });
+  })
+  .catch(function () { return chrome.storage.local.set({ hardware: true, hwH264: false, lowMem: false, freeMB: null }); });
 
 // USER AGENT for network requests (page.js covers navigator.userAgent). One dynamic rule: the TV or custom user
 // agent on every request, except to and from the sites set to "desktop version". Client hints that would still say

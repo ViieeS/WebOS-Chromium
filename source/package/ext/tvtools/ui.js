@@ -4,8 +4,10 @@
 var TV_GROUPS = [
   {
     id: "lite", title: "Lite mode", section: "browsing",
-    help: "Lighter pages: no animations, images load when you scroll to them, muted videos don't start by themselves.",
-    options: [[false, "Off"], [true, "On"]]
+    help: "Lighter pages: no animations, images load when you scroll to them, muted videos don't start by themselves, " +
+      "and JavaScript uses less memory but runs slower. Auto turns it on when the TV had less than 200 MB free when " +
+      "the browser opened. The JavaScript part changes the next time the browser opens.",
+    options: [["auto", "Auto"], ["off", "Off"], ["on", "On"]]
   },
   {
     id: "uaMode", title: "Website version", section: "browsing",
@@ -43,8 +45,12 @@ var TV_GROUPS = [
   }
 ];
 
-function tvAutoText(id, hw, h264hw) {
+function tvAutoText(id, hw, h264hw, lowMem, freeMB) {
   h264hw = hw && h264hw === true;
+  if (id === "lite") {
+    var mb = typeof freeMB === "number" ? " (" + freeMB + " MB free at start)" : "";
+    return (lowMem ? "Auto = On" : "Auto = Off") + mb;
+  }
   if (id === "maxRes") return hw ? "Auto = 1080p" : "Auto = 720p";
   if (id === "maxFps") return hw && !h264hw ? "Auto = 60 fps" : "Auto = 30 fps";
   if (id === "codec") return hw && !h264hw ? "Auto = any codec the TV decodes" : "Auto = H.264";
@@ -88,7 +94,7 @@ function tvRender(root, state, opts) {
         seg.appendChild(b);
       });
       row.appendChild(seg);
-      var note = tvAutoText(g.id, state.hardware, state.hwH264);
+      var note = tvAutoText(g.id, state.hardware, state.hwH264, state.lowMem, state.freeMB);
       if (note && String(state.settings[g.id]) === "auto") row.appendChild(tvEl("div", "hint", note));
       if (g.id === "maxRes" && String(state.settings.maxRes) === "2160")
         row.appendChild(tvEl("div", "hint", "4K may stutter or lag, especially when a video starts."));
