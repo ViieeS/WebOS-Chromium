@@ -59,3 +59,4 @@ Applied in name order on top of webOS-ports/chromium151 at the commit in `config
 | `0063-webos-keyboard-in-extension-popups.patch` | LG's keyboard never opened in extension popups (for example Windscribe's login form): text fields there got neither a pointer press nor OK through to the keyboard. |
 | `0064-webos-memory-pressure.patch` | The browser never noticed low memory. |
 | `0065-webos-hwvideo-nested-hole.patch` | Hardware video showed the page's background (white or grey) instead of the picture on farsi film sites (farsiplex.com, farsiland.buzz; jwplayer). |
+| `0066-exit-without-library-destructors.patch` | With the GPU on, every exit crashed (SIGSEGV): in `exit()` the Mali EGL driver's destructor touched Wayland objects of a display Chrome had already disconnected, and the launcher then turned the GPU off for good (`gpu.state`). Chrome now leaves with `_exit()`. |
