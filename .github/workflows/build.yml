@@ -1,13 +1,12 @@
 name: Build WebOS Chromium
 run-name: WebOS Chromium v${{ inputs.version }}
-# Builds the browser from sarahahzub/WebOS-Chromium source/ on GitHub-hosted runners, then the IPK with a build
-# provenance attestation. Steps follow source/BUILDING.md; the container scripts run unchanged in ci/Dockerfile.
+# Builds the browser from this repo's source/ on the main branch, on GitHub-hosted runners, then the IPK with a build
+# provenance attestation, and attaches the IPK to a pre-release v<version> (not offered as an update: see ci/README.md).
+# Steps follow source/BUILDING.md; the container scripts run unchanged in ci/Dockerfile.
 on:
   workflow_dispatch:
     inputs:
-      source_repo: { description: "Repo with source/", default: "sarahahzub/WebOS-Chromium", required: true }
-      source_ref: { description: "Branch, tag or commit", default: "main", required: true }
-      version: { description: "IPK version (x.y.z)", default: "1.1.0", required: true }
+      version: { description: "IPK version (x.y.z), new for every build", required: true }
       hours: { description: "Build hours per job (a job stops at 6 h)", default: "4.9", required: true }
       seed_run: { description: "Optional: run id whose build folders to continue from, when no cached build folder fits", default: "", required: false }
 permissions:
@@ -20,14 +19,21 @@ jobs:
     outputs:
       sha: ${{ steps.r.outputs.sha }}
     steps:
+      - name: Main branch and a new version only
+        env: { GH_TOKEN: "${{ github.token }}", VER: "${{ inputs.version }}" }
+        run: |
+          [ "$GITHUB_REF" = refs/heads/main ] || { echo "::error::Start the build from the main branch (got $GITHUB_REF)"; exit 1; }
+          echo "$VER" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$' || { echo "::error::version must be x.y.z (got $VER)"; exit 1; }
+          pre=$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/v$VER" --jq '.prerelease' 2>/dev/null || echo none)
+          [ "$pre" != false ] || { echo "::error::v$VER is already a published release: use a new version"; exit 1; }
       - uses: actions/checkout@v4
-        with: { repository: "${{ inputs.source_repo }}", ref: "${{ inputs.source_ref }}", path: wc }
+        with: { ref: "${{ github.sha }}", path: wc }
       - id: r
         run: |
           sha=$(git -C wc rev-parse HEAD)
           echo "sha=$sha" >> $GITHUB_OUTPUT
           title=$(sed -n 's/^APP_TITLE="\{0,1\}\([^"#]*\)"\{0,1\}.*/\1/p' wc/source/config.env | sed 's/ *$//')
-          echo "Building **${title:-Chromium Browser} ${{ inputs.version }}** from [${{ inputs.source_repo }}@${sha:0:7}](https://github.com/${{ inputs.source_repo }}/tree/$sha)" >> $GITHUB_STEP_SUMMARY
+          echo "Building **${title:-Chromium Browser} ${{ inputs.version }}** from [${{ github.repository }}@${sha:0:7}](https://github.com/${{ github.repository }}/tree/$sha)" >> $GITHUB_STEP_SUMMARY
 
   source:
     name: Chromium source (setup-source.sh)
@@ -38,7 +44,7 @@ jobs:
       - uses: actions/checkout@v4
       - id: prep
         uses: ./.github/actions/prepare
-        with: { source_repo: "${{ inputs.source_repo }}", sha: "${{ needs.resolve.outputs.sha }}" }
+        with: { source_repo: "${{ github.repository }}", sha: "${{ needs.resolve.outputs.sha }}" }
       - id: have
         uses: actions/cache/restore@v4
         with: { key: "${{ steps.prep.outputs.src_key }}", lookup-only: true, path: "/home/runner/cnci/vol/snap/src.tar.zst\n/home/runner/cnci/vol/snap/src.json" }
@@ -61,7 +67,7 @@ jobs:
       - uses: actions/checkout@v4
       - id: prep
         uses: ./.github/actions/prepare
-        with: { source_repo: "${{ inputs.source_repo }}", sha: "${{ needs.resolve.outputs.sha }}" }
+        with: { source_repo: "${{ github.repository }}", sha: "${{ needs.resolve.outputs.sha }}" }
       - id: have
         uses: actions/cache/restore@v4
         with:
@@ -94,7 +100,7 @@ jobs:
       - uses: actions/checkout@v4
       - id: prep
         uses: ./.github/actions/prepare
-        with: { source_repo: "${{ inputs.source_repo }}", sha: "${{ needs.resolve.outputs.sha }}", docker: "false" }
+        with: { source_repo: "${{ github.repository }}", sha: "${{ needs.resolve.outputs.sha }}", docker: "false" }
       - id: have
         uses: actions/cache/restore@v4
         with: { key: "${{ steps.prep.outputs.nss_key }}", lookup-only: true, path: /home/runner/cnci/nss }
@@ -116,7 +122,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
-        with: { repository: "${{ inputs.source_repo }}", ref: "${{ needs.resolve.outputs.sha }}", path: wc }
+        with: { repository: "${{ github.repository }}", ref: "${{ needs.resolve.outputs.sha }}", path: wc }
       - run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq libwayland-dev binutils-arm-linux-gnueabi > /dev/null
           curl -fsSL https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz | tar -xJ -C $HOME
@@ -131,12 +137,27 @@ jobs:
     permissions: { contents: read, actions: read, id-token: write, attestations: write }
     uses: ./.github/workflows/variant.yml
     with:
-      source_repo: ${{ inputs.source_repo }}
+      source_repo: ${{ github.repository }}
       sha: ${{ needs.resolve.outputs.sha }}
       variant: default
       version: ${{ inputs.version }}
       hours: ${{ inputs.hours }}
       seed_run: ${{ inputs.seed_run }}
+
+  # The IPK and its manifest on the pre-release v<version>, notes from README.md's "## New in <version>" (ci/release.sh).
+  # Not "latest", so no TV is offered it until Actions > Publish update.
+  release:
+    name: Pre-release
+    needs: [resolve, default]
+    runs-on: ubuntu-24.04
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: "${{ needs.resolve.outputs.sha }}" }
+      - uses: actions/download-artifact@v4
+        with: { name: "webos-chromium-${{ inputs.version }}", path: ipk }
+      - env: { GH_TOKEN: "${{ github.token }}" }
+        run: bash ci/release.sh "${{ inputs.version }}" "${{ needs.resolve.outputs.sha }}" ipk .
 
   # The end summary and the two artifacts a run keeps: webos-chromium-<version> (the IPK) and logs-<version>
   # (everything else: build logs, SHA256SUMS, ABI and NSS reports, launcher). The other artifacts are hand-overs

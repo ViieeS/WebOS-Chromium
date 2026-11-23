@@ -1,0 +1,47 @@
+name: Publish update
+run-name: Publish v${{ inputs.version }} as the update
+# After testing a pre-release from "Build WebOS Chromium": makes v<version> the latest release (Homebrew Channel's main
+# repository reads releases/latest/download/<id>.manifest.json, about every 3 hours) and points webosbrew/apps.json
+# (this project's own Homebrew repository) at it. Started by hand only.
+on:
+  workflow_dispatch:
+    inputs:
+      version: { description: "Version to offer to every TV (x.y.z, a tested pre-release)", required: true }
+permissions:
+  contents: write
+concurrency: { group: publish, cancel-in-progress: false }
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-24.04
+    env: { GH_TOKEN: "${{ github.token }}", VER: "${{ inputs.version }}" }
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main }
+      - name: Check the release
+        run: |
+          [ "$GITHUB_REF" = refs/heads/main ] || { echo "::error::Start it from the main branch"; exit 1; }
+          id=$(sed -n 's/^APP_ID=\([^ #]*\).*/\1/p' source/config.env)
+          gh release download "v$VER" -p "$id.manifest.json" -O manifest.json
+          gh release view "v$VER" --json assets --jq '.assets[].name' | grep -qx "${id}_${VER}_arm.ipk" ||
+            { echo "::error::v$VER has no ${id}_${VER}_arm.ipk"; exit 1; }
+          python3 -c 'import json,sys; m=json.load(open("manifest.json")); assert m["version"]==sys.argv[1], m["version"]' "$VER"
+          echo "ID=$id" >> $GITHUB_ENV
+      - name: Latest release
+        run: gh release edit "v$VER" --prerelease=false --draft=false --latest
+      - name: webosbrew/apps.json
+        env:
+          NAME: ${{ github.actor }}
+          MAIL: ${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com
+        run: |
+          python3 - "$ID" <<'EOF'
+          import json, sys
+          p = "webosbrew/apps.json"; d = json.load(open(p)); m = json.load(open("manifest.json"))
+          pkg = next(x for x in d["packages"] if x["id"] == sys.argv[1])
+          pkg["manifest"] = m
+          json.dump(d, open(p, "w"), indent=2); open(p, "a").write("\n")
+          EOF
+          if git diff --quiet webosbrew/apps.json; then echo "apps.json already at $VER"; exit 0; fi
+          git -c user.name="$NAME" -c user.email="$MAIL" commit -qm "webosbrew: Chromium Browser $VER" webosbrew/apps.json
+          git push origin HEAD:main
+          echo "Published **v$VER**: latest release, and webosbrew/apps.json points at it." >> $GITHUB_STEP_SUMMARY
