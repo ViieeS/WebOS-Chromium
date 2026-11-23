@@ -1,10 +1,27 @@
 # CI build
 
 `.github/workflows/build.yml` builds the browser IPK from `source/` on GitHub-hosted runners, so anyone can see how
-an IPK was made. It only runs when started by hand: **Actions → Build WebOS Chromium → Run workflow** (inputs: source
-repo, branch or commit, IPK version).
+an IPK was made. It builds the main branch only, and only when started by hand.
 
-The branch is resolved to one commit at the start, and every job builds that commit:
+## Release steps
+
+1. Change `main`: push to it directly, or merge a pull request. Add a `## New in <version>` section to `README.md`
+   for the release notes.
+2. **Actions → Build WebOS Chromium → Run workflow** on `main`, with a new version (x.y.z). A version that is
+   already a published release is refused.
+3. The build ends with a **pre-release** `v<version>`: the IPK, its manifest, and the `## New in <version>` section
+   of `README.md` as notes (no notes if there is no such section). A pre-release is never the latest release, so
+   no TV is offered it yet. Running the build again with the same version replaces that pre-release.
+4. Test the IPK from the pre-release on a TV.
+5. **Actions → Publish update → Run workflow** with the version. It makes `v<version>` the latest release and
+   points `webosbrew/apps.json` at it (one commit on `main` under your name). Homebrew Channel's main repository
+   reads the latest release's manifest when it rebuilds, every 3 hours (at 41 minutes past) and on every change to
+   it, so TVs see the update within about 3 hours; this project's own repository (`webosbrew/apps.json`) right
+   away.
+
+## Build jobs
+
+The main branch is resolved to one commit at the start, and every job builds that commit:
 
 | Job | What | Script from `source/` |
 |---|---|---|
@@ -15,6 +32,7 @@ The branch is resolved to one commit at the start, and every job builds that com
 | Launcher | `bin/run` | `package/launcher/build.sh` |
 | Build part 1, 2, ... | the browser, about 5 hours per job (a hosted job stops at 6 hours); each part continues the previous one's build folder (at most 5 parts) | `container/build.sh` |
 | IPK and provenance | the IPK, plus a signed build provenance attestation | `package/mkipk.py` |
+| Pre-release | the IPK and its manifest on the pre-release `v<version>`, notes from `README.md` | `ci/release.sh` |
 | Result | the end summary (IPK, sha256, how to verify); one logs artifact; deletes the hand-overs between jobs | |
 
 `args.gn` is used as it is, except `cc_wrapper = ""` (no ccache: the build folder carries the state between jobs);
