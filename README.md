@@ -141,7 +141,8 @@ issue template, whether it works or not.
 
 - webOS 4 TVs (2018-2019): hardware video now goes to LG's buffered player, so videos no longer play in short
   bursts. If video misbehaves, `smp=ndl` in `media.opts` brings back the old way (see [Flags for testing](#flags-for-testing)).
-- webOS 5 and newer: no change.
+- Closing the browser no longer crashes on TVs where it did (seen on an LG C1, webOS 6). The crash also made the
+  browser turn the GPU off for every later start (thanks [@ViieeS](https://github.com/ViieeS), #30).
 
 ## New in 1.1.0
 
