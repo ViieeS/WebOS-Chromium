@@ -381,7 +381,7 @@ static int winid_fd = -1;
 static struct {
   void (*ctor)(void *, const char *), (*dtor)(void *), (*feed)(void *, void *, const char *);
   const char *(*media_id)(void *);
-  _Bool (*fg)(void *), (*play)(void *), (*eos)(void *), (*unload)(void *);
+  _Bool (*fg)(void *), (*play)(void *), (*eos)(void *), (*unload)(void *), (*seek)(void *, const char *);
   _Bool (*load)(void *, const char *, void (*)(int, long long, const char *));
   long (*acb_create)(void);
   _Bool (*acb_init)(long, int, const char *, void (*)(long, long, long, long, long, const char *));
@@ -401,6 +401,9 @@ static volatile int sf_ready, sf_acb_playing;  // "load completed" seen; ACB tol
                                                // answers "Invalid State" to PLAYING before it, Beanjar webOS 4.4.3)
 static unsigned char *sf_blocks[4]; // player objects; never freed (a late callback may still refer to one)
 static int sf_next_block;
+// media.opts switches for tuning (2026-11-24): sfpause=0 (pauseAtDecodeTime false), sfplay=first (Play at the first
+// frame fed instead of at "load completed"), sfseek (Seek to the first frame's time before feeding it)
+static int sf_opt_nopause, sf_opt_playfirst, sf_opt_seek, sf_played;
 
 // Looks up everything the direct player needs; any missing symbol leaves it off. acb: also libAcbAPI.
 static int sf_setup(int acb) {
@@ -414,6 +417,7 @@ static int sf_setup(int acb) {
   F(play, "_ZN17StarfishMediaAPIs4PlayEv"); F(eos, "_ZN17StarfishMediaAPIs7pushEOSEv");
   F(unload, "_ZN17StarfishMediaAPIs6UnloadEv");
 #undef F
+  *(void **)&sf.seek = dlsym(p, "_ZN17StarfishMediaAPIs4SeekEPKc");
   if (!acb) return 1;
   void *a = dlopen("libAcbAPI.so.1", RTLD_NOW | RTLD_GLOBAL);
   if (!a) { L("direct player: %s", dlerror()); return 0; }
@@ -461,9 +465,16 @@ static void sf_event(int type, long long num, const char *str) {
   if (!api) return;
   long task = 0;
   switch (type) {
+  case 0x31: {  // frames LG's player showed in the last 200 ms (Wren's notes: 4-5 at 24 fps): logged every 5 s
+    static long long shown, ticks;
+    shown += num;
+    if (++ticks % 25 == 0) { L("direct player: %lld frames shown in 5 s (%.1f fps)", shown, shown / 5.0); shown = 0; }
+    break;
+  }
   case 0x16:  // load completed: the player is ready, start it
     if (acb) { sf.acb_sink(acb, 0); sf.acb_state(acb, SF_ACB_FOREGROUND, SF_PLAYSTATE_LOADED, &task); }
-    L("direct player: load completed, play = %d", sf.play(api));
+    if (!sf_played) { sf_played = 1; L("direct player: load completed, play = %d", sf.play(api)); }
+    else L("direct player: load completed (playing since the first frame)");
     sf_ready = 1;
     if (acb && sf_fed > 0 && !sf_acb_playing) {
       sf_acb_playing = 1;
@@ -501,7 +512,7 @@ static int sf_open(const struct cn_open *o, const char *window) {
       return 0;
     }
   }
-  sf_events_logged = 0; sf_feeds_logged = 0; sf_fed = 0; sf_ready = 0; sf_acb_playing = 0;
+  sf_events_logged = 0; sf_feeds_logged = 0; sf_fed = 0; sf_ready = 0; sf_acb_playing = 0; sf_played = 0;
   sf_audio = o->audio_rate > 0;
   pthread_mutex_lock(&sf_mu); sf_api = api; sf_acb = acb; pthread_mutex_unlock(&sf_mu);
   sf.fg(api);
@@ -519,14 +530,14 @@ static int sf_open(const struct cn_open *o, const char *window) {
   snprintf(msg, sizeof msg,
     "{\"args\":[{\"mediaTransportType\":\"BUFFERSTREAM\",\"option\":{\"appId\":\"%s\"%s,"
     "\"externalStreamingInfo\":{\"contents\":{\"codec\":{\"video\":\"%s\"%s},"
-    "\"esInfo\":{\"pauseAtDecodeTime\":true,\"ptsToDecode\":0,\"seperatedPTS\":true},\"format\":\"RAW\",\"provider\":\"Chrome\"%s},"
+    "\"esInfo\":{\"pauseAtDecodeTime\":%s,\"ptsToDecode\":0,\"seperatedPTS\":true},\"format\":\"RAW\",\"provider\":\"Chrome\"%s},"
     "\"streamQualityInfo\":true,\"audioSync\":%s,\"streamQualityInfoCorruptedFrame\":true,\"streamQualityInfoNonFlushable\":true,"
     "\"restartStreaming\":false,\"bufferingCtrInfo\":{\"bufferMaxLevel\":0,\"bufferMinLevel\":0,\"preBufferByte\":0,"
     "\"qBufferLevelAudio\":0,\"qBufferLevelVideo\":0,\"srcBufferLevelAudio\":{\"minimum\":1,\"maximum\":1048576},"
     "\"srcBufferLevelVideo\":{\"minimum\":1,\"maximum\":8388608}}},"
     "\"needAudio\":false,\"queryPosition\":false,"
     "\"adaptiveStreaming\":{\"audioOnly\":false,\"maxWidth\":%d,\"maxHeight\":%d,\"maxFrameRate\":60}}}]}",
-    app_id, win, codec, aud, pcm, sf_audio ? "true" : "false", w, h);
+    app_id, win, codec, aud, sf_opt_nopause ? "false" : "true", pcm, sf_audio ? "true" : "false", w, h);
   L("direct player (%s): load %s", sf_mode == SF_ACB ? "ACB" : "window", msg);
   _Bool r = sf.load(api, msg, sf_event);
   L("direct player: load = %d, media id %s", r, mid ? mid : "?");
@@ -545,6 +556,13 @@ static void sf_send(int video, const void *p, unsigned int n, long long pts_ms) 
   void *api = sf_api; if (!api) return;
   if (!video && !sf_audio) return;
   char json[160], res[128];
+  if (video && sf_fed == 0) {
+    if (sf_opt_seek && sf.seek && pts_ms > 0) {
+      char ms[32]; snprintf(ms, sizeof ms, "%lld", pts_ms);
+      L("direct player: seek %s ms = %d", ms, sf.seek(api, ms));
+    }
+    if (sf_opt_playfirst && !sf_played) { sf_played = 1; L("direct player: play at the first frame = %d", sf.play(api)); }
+  }
   snprintf(json, sizeof json, "{\"bufferAddr\":\"%p\",\"bufferSize\":%u,\"pts\":%lld,\"esData\":%d}",
            p, n, pts_ms * 1000000LL, video ? 1 : 2);
   sf_call_feed(api, json, res, sizeof res);
@@ -1349,7 +1367,11 @@ int main(int argc, char **argv) {
     // On webOS 5+ only with media.opts "smp=direct" (tests), with the exported window.
     if (ndl_mode == 1 && !strstr(opts, "smp=ndl")) sf_mode = sf_setup(1) ? SF_ACB : SF_OFF;
     else if (ndl_mode == 2 && strstr(opts, "smp=direct")) sf_mode = sf_setup(0) ? SF_WINDOW : SF_OFF;
-    L("direct player: %s", sf_mode == SF_ACB ? "on (ACB)" : sf_mode == SF_WINDOW ? "on (exported window)" : "off");
+    sf_opt_nopause = strstr(opts, "sfpause=0") != NULL; sf_opt_playfirst = strstr(opts, "sfplay=first") != NULL;
+    sf_opt_seek = strstr(opts, "sfseek") != NULL;
+    L("direct player: %s%s%s%s", sf_mode == SF_ACB ? "on (ACB)" : sf_mode == SF_WINDOW ? "on (exported window)" : "off",
+      sf_opt_nopause ? ", pauseAtDecodeTime false" : "", sf_opt_playfirst ? ", play at the first frame" : "",
+      sf_opt_seek ? ", seek to the first frame" : "");
     // API 1 has no exported window, so the compositor probe is only for API 2
     if (ndl_mode == 2) exported_set_property = probe_set_property();
     setenv("CN_EXPORTED_SET_PROPERTY", exported_set_property ? "1" : "0", 1);
