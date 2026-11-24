@@ -75,6 +75,7 @@ Close and reopen the browser to apply them. A TV restart clears them.
 |---|---|
 | `js=lite` | Lite mode on, whatever TV Tools is set to: both the lighter pages and the slower, smaller JavaScript. |
 | `js=full` | Lite mode off, whatever TV Tools is set to. |
+| `smp=ndl` | webOS 4 only: hardware video through LG's older NDL player instead of the buffered player (1.1.0 and older). |
 | `omnibox=lite` | A lighter address bar for the remote: 5 suggestions, fewer suggestion sources, and suggestions only after a short pause in typing. On an LG C1 it reacts in about 90 ms instead of 160 ms. |
 
 For example: `echo js=full >> /tmp/io.github.sarahahzub.chromium/media.opts`
@@ -136,6 +137,12 @@ Reported working by testers:
 How fast it is depends a lot on the model. If you try it on another TV, please report it with the TV compatibility
 issue template, whether it works or not.
 
+## New in 1.1.1
+
+- webOS 4 TVs (2018-2019): hardware video now goes to LG's buffered player, so videos no longer play in short
+  bursts. If video misbehaves, `smp=ndl` in `media.opts` brings back the old way (see [Flags for testing](#flags-for-testing)).
+- webOS 5 and newer: no change.
+
 ## New in 1.1.0
 
 - Smoother hardware video on webOS 5 and newer: video now goes to LG's buffered player, so videos that stuttered
@@ -162,12 +169,6 @@ issue template, whether it works or not.
 - Fewer background requests to Google: no network time checks, no cloud policy push messages, no AI model
   downloads, and no account checks while sync isn't set up. The account menu says sync isn't available.
 - The package includes the licences of Chromium, NSS and NSPR, and Chromium's full credits.
-
-## New in 0.0.66
-
-- Icons in Settings and other pages show properly. In 0.0.65 they were yellow squares.
-- The package now passes webosbrew's checks for Homebrew Channel's main repository.
-- After an update from 0.0.48 or older, the moved profile is private to the app right away.
 
 Older versions: [Releases](https://github.com/sarahahzub/WebOS-Chromium/releases).
 
