@@ -10,6 +10,7 @@
 | NSS 3.125, NSPR 4.38.2 (shipped in the app as shared libraries) | MPL-2.0 | Mozilla | see `NOTICE-nss.md` |
 | openlgtv buildroot-nc4 SDK (compiler for NSS/NSPR) | GPL-2.0 and others | https://github.com/openlgtv/buildroot-nc4 | only used to build, none of it ships |
 | wayland-scanner 1.18 (Ubuntu package) | MIT | Ubuntu | only used to build |
+| References for the launcher's video code (`package/launcher/cnrun.c`) | facts only: function names, call order, JSON keys | SS4S (https://github.com/mariotaku/ss4s, LGPL-3.0), webosbrew/webos-userland headers (Unlicense), webosbrew's media guide, Wren (https://github.com/sostk/webos-wpe-browser, GPL-3.0) | no code from them is included; each use is credited in a comment |
 
 The app links against libraries the TV already has: glibc, libwayland, EGL/GLES, luna-service2 and LG's NDL media
 library. None of LG's files are in this source or in the IPK.
