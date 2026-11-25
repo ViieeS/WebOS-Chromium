@@ -137,7 +137,7 @@ Reported working by testers:
 How fast it is depends a lot on the model. If you try it on another TV, please report it with the TV compatibility
 issue template, whether it works or not.
 
-## New in 1.1.2
+## New in 1.1.4
 
 - Full screen (F11, the menu's full screen button, or a site's own full screen button) no longer goes back to the
   normal window by itself a few seconds later. It happened on some TVs, for example webOS 6 (#39).

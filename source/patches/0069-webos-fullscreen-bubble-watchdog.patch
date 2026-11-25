@@ -1,0 +1,36 @@
+# why: Full screen (F11, the menu's button, or a page's requestFullscreen) went back to the normal window by itself
+# 1.5-3 s later on some TVs (issue #39, 43NANO756PR webOS 6; every time in Beanjar on webOS 4.4-10.3, never on a
+# 43UR7500). Patch 0068's trace showed Chrome's own ExclusiveAccessManager::ExitExclusiveAccess() each time: the
+# "Press Esc to exit full screen" bubble starts a 1.5 s watchdog and, if its first frame is not reported presented
+# by then, treats the GPU as hung and leaves full screen. On a slow TV (or with the GPU off) the presentation feedback
+# comes later or not at all. On webOS the watchdog now keeps full screen and starts the bubble's normal hide timer.
+# The bubble is a child of the full screen window, so it is drawn with it; a TV has no other app behind to spoof.
+diff --git a/src/chrome/browser/ui/views/exclusive_access_bubble_views.cc b/src/chrome/browser/ui/views/exclusive_access_bubble_views.cc
+index 2faedce..55f9cd3 100644
+--- a/src/chrome/browser/ui/views/exclusive_access_bubble_views.cc
++++ b/src/chrome/browser/ui/views/exclusive_access_bubble_views.cc
+@@ -7,6 +7,7 @@
+ #include <utility>
+ 
+ #include "base/i18n/case_conversion.h"
++#include "base/logging.h"  // chromium-native (patch 0069)
+ #include "base/location.h"
+ #include "base/strings/utf_string_conversions.h"
+ #include "base/task/single_thread_task_runner.h"
+@@ -463,5 +464,16 @@ void ExclusiveAccessBubbleViews::RunHideCallbackIfNeeded(
+ }
+ 
+ void ExclusiveAccessBubbleViews::OnPresentationTimeout() {
++#if defined(OS_WEBOS)
++  // chromium-native (patch 0069): on webOS the bubble's first frame is often
++  // reported presented later than 1.5 s (slower TVs, and every time in
++  // Beanjar), and Chrome then left full screen by itself (issue #39). The
++  // bubble is a child of the full screen window and is drawn with it, so keep
++  // full screen and hide the bubble on its normal timer, as if it had been
++  // presented.
++  LOG(WARNING) << "cn-fs: bubble presentation timeout, staying full screen";
++  StartHideTimer();
++#else
+   bubble_view_context_->GetExclusiveAccessManager()->ExitExclusiveAccess();
++#endif
+ }
