@@ -137,6 +137,11 @@ Reported working by testers:
 How fast it is depends a lot on the model. If you try it on another TV, please report it with the TV compatibility
 issue template, whether it works or not.
 
+## New in 1.1.2
+
+- Full screen (F11, the menu's full screen button, or a site's own full screen button) no longer goes back to the
+  normal window by itself a few seconds later. It happened on some TVs, for example webOS 6 (#39).
+
 ## New in 1.1.1
 
 - webOS 4 TVs (2018-2019): hardware video now goes to LG's buffered player, so videos no longer play in short
@@ -156,20 +161,6 @@ issue template, whether it works or not.
 - LG's keyboard opens in extension popups, for example a VPN extension's sign-in form.
 - The address bar reacts faster again on some TVs (thanks [@ViieeS](https://github.com/ViieeS), #27).
 - TV Tools 2.4.1.
-
-## New in 1.0.0
-
-- A new app, Chromium Browser, with its own id (see [Moving from the old Chromium app](#moving-from-the-old-chromium-app)).
-  Versions go on as 1.1.0, 1.2.0 and so on.
-- Back works like in a TV app: back to the previous page, and on the first page "Press Back again to exit". Exit in
-  the 3-dot menu closes the app; it used to leave a black screen.
-- The arrows work in pop-ups ("Bookmark added", the account menu, permission prompts) and on Chrome's own pages such
-  as History and Settings.
-- The warning about the missing sandbox shows at every start, with Hide, and from the third start also "Don't show
-  again". See [Known limitations](#known-limitations).
-- Fewer background requests to Google: no network time checks, no cloud policy push messages, no AI model
-  downloads, and no account checks while sync isn't set up. The account menu says sync isn't available.
-- The package includes the licences of Chromium, NSS and NSPR, and Chromium's full credits.
 
 Older versions: [Releases](https://github.com/sarahahzub/WebOS-Chromium/releases).
 
