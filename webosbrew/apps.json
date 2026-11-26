@@ -12,18 +12,18 @@
       "iconUri": "https://raw.githubusercontent.com/sarahahzub/WebOS-Chromium/main/assets/icon.png",
       "manifest": {
         "id": "io.github.sarahahzub.chromium",
-        "version": "1.1.1",
+        "version": "1.1.5",
         "type": "native",
         "title": "Chromium Browser",
         "appDescription": "Native Chromium with the full Chrome UI, GPU rendering and hardware video decoding",
         "iconUri": "https://raw.githubusercontent.com/sarahahzub/WebOS-Chromium/main/assets/icon.png",
         "sourceUrl": "https://github.com/sarahahzub/WebOS-Chromium",
         "rootRequired": false,
-        "ipkUrl": "https://github.com/sarahahzub/WebOS-Chromium/releases/download/v1.1.1/io.github.sarahahzub.chromium_1.1.1_arm.ipk",
+        "ipkUrl": "https://github.com/sarahahzub/WebOS-Chromium/releases/download/v1.1.5/io.github.sarahahzub.chromium_1.1.5_arm.ipk",
         "ipkHash": {
-          "sha256": "b8f3b38bc459be1939e10f75608cb847afb00d9624c36c6d2e47e05849a93463"
+          "sha256": "c0fa15e8068d0367bd86c69999e71605e105689d555cb422138c60d4d83fd2c5"
         },
-        "ipkSize": 110447448
+        "ipkSize": 110448972
       },
       "shortDescription": "Native Chromium with GPU drawing and hardware video. webOS 4.4 and newer",
       "fullDescriptionUrl": "https://raw.githubusercontent.com/sarahahzub/WebOS-Chromium/main/webosbrew/description.html"
