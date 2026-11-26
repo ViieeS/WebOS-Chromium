@@ -31,8 +31,9 @@ var TV_GROUPS = [
   },
   {
     id: "discardMinutes", title: "Unload background tabs after", section: "memory",
-    help: "Frees memory. An unloaded tab reloads when you open it again.",
-    options: [[0, "Never"], [5, "5 min"], [15, "15 min"], [30, "30 min"], [60, "1 hour"]]
+    help: "Frees memory. An unloaded tab reloads when you open it again. Auto: tabs unused for 30 minutes (10 while Lite mode is " +
+      "on), and the least recently used one at once when the TV runs low on memory.",
+    options: [["auto", "Auto"], [0, "Never"], [5, "5 min"], [15, "15 min"], [30, "30 min"], [60, "1 hour"]]
   },
   {
     id: "tabLimit", title: "Maximum open tabs", section: "memory",
@@ -45,8 +46,12 @@ var TV_GROUPS = [
   }
 ];
 
-function tvAutoText(id, hw, h264hw, lowMem, freeMB) {
+function tvAutoText(id, hw, h264hw, lowMem, freeMB, settings) {
   h264hw = hw && h264hw === true;
+  if (id === "discardMinutes") {
+    return settings && tvLiteOn(settings, lowMem) ? "Auto = after 10 min (Lite mode is on), and when memory is low"
+                                                  : "Auto = after 30 min, and when memory is low";
+  }
   if (id === "lite") {
     var mb = typeof freeMB === "number" ? " (" + freeMB + " MB free at start)" : "";
     return (lowMem ? "Auto = On" : "Auto = Off") + mb;
@@ -94,7 +99,7 @@ function tvRender(root, state, opts) {
         seg.appendChild(b);
       });
       row.appendChild(seg);
-      var note = tvAutoText(g.id, state.hardware, state.hwH264, state.lowMem, state.freeMB);
+      var note = tvAutoText(g.id, state.hardware, state.hwH264, state.lowMem, state.freeMB, state.settings);
       if (note && String(state.settings[g.id]) === "auto") row.appendChild(tvEl("div", "hint", note));
       if (g.id === "maxRes" && String(state.settings.maxRes) === "2160")
         row.appendChild(tvEl("div", "hint", "4K may stutter or lag, especially when a video starts."));

@@ -101,19 +101,44 @@ chrome.tabs.onCreated.addListener(function (tab) {
   tvLoad().then(function (r) { enforceTabLimit(r.settings, tab.id); });
 });
 
-chrome.alarms.create("tvtools-discard", { periodInMinutes: 1 });
+// TAB UNLOADING, every 30 s: tabs not used for the set minutes. With "Auto" (2.5.0): when the TV has less than
+// TV_LOW_MEMORY_MB available, the least recently used background tab (one per check; all tabs share one renderer, so
+// this frees memory before webOS closes the app or the memory guard ends that renderer and every tab with it), and
+// every tab unused for 30 minutes (10 while Lite mode is on). Never the visible tab, a tab playing sound, a pinned tab, or one already unloaded.
+// MemAvailable from run.sh (mem.json, every 5 s). chrome.system.memory is no use here: on Linux it reports
+// MemFree + Cached, about 1 GB on a 1.2 GB TV with 150 MB available.
+function tvAvailableMB() {
+  return fetch(chrome.runtime.getURL("mem.json"), { cache: "no-store" })
+    .then(function (r) { return r.json(); })
+    .then(function (j) { return typeof j.availMB === "number" && j.availMB > 0 ? j.availMB : null; })
+    .catch(function () { return null; });
+}
+
+chrome.alarms.create("tvtools-discard", { periodInMinutes: 0.5 });
 chrome.alarms.onAlarm.addListener(function (alarm) {
   if (alarm.name !== "tvtools-discard") return;
   tvLoad().then(function (r) {
-    var minutes = Number(r.settings.discardMinutes) || 0;
-    if (minutes <= 0) return;
-    var cutoff = Date.now() - minutes * 60000;
-    return chrome.tabs.query({}).then(function (tabs) {
-      tabs.forEach(function (t) {
-        // Never the visible tab, a tab playing sound, a pinned tab, or one already unloaded.
-        if (t.active || t.audible || t.pinned || t.discarded || !t.lastAccessed) return;
-        if (t.lastAccessed < cutoff) chrome.tabs.discard(t.id).catch(function () {});
+    var d = tvDiscard(r.settings, r.lowMem);
+    if (d.minutes <= 0 && !d.onLowMemory) return;
+    return Promise.all([chrome.tabs.query({}), d.onLowMemory ? tvAvailableMB() : null]).then(function (res) {
+      var tabs = res[0].filter(function (t) {
+        return !t.active && !t.audible && !t.pinned && !t.discarded && t.lastAccessed;
       });
+      var cutoff = Date.now() - d.minutes * 60000, done = {};
+      if (d.minutes > 0) {
+        tabs.forEach(function (t) {
+          if (t.lastAccessed < cutoff) { done[t.id] = true; chrome.tabs.discard(t.id).catch(function () {}); }
+        });
+      }
+      var mb = res[1];
+      if (typeof mb === "number" && mb < TV_LOW_MEMORY_MB) {
+        var oldest = tabs.filter(function (t) { return !done[t.id]; })
+          .sort(function (a, b) { return a.lastAccessed - b.lastAccessed; })[0];
+        if (oldest) {
+          console.log("TV Tools: " + Math.round(mb) + " MB available, unloading tab " + oldest.id);
+          chrome.tabs.discard(oldest.id).catch(function () {});
+        }
+      }
     });
   });
 });

@@ -17,10 +17,17 @@ var TV_DEFAULTS = {
   googleDesktop: true,  // Google search gets the desktop user agent (with the TV one it drops udm=14, the "Web" filter)
   lite: "auto",         // "auto" | "on" | "off": no animations, lazy images, no muted autoplay, plus V8 lite mode
                         // (set by run.sh at start). Auto = on when the TV had less than 200 MB free at start.
-  discardMinutes: 0,    // unload background tabs after this many minutes; 0 = never
+  discardMinutes: "auto", // unload background tabs after this many minutes; 0 = never. "auto" (2.5.0): after 30
+                        // minutes (10 while Lite mode is on), and the oldest one when the TV runs low on memory
   tabLimit: 0,          // close the least recently used tab above this many tabs; 0 = no limit
-  pauseHidden: false    // pause videos when their tab goes to the background
+  pauseHidden: false,   // pause videos when their tab goes to the background
+  settingsVersion: 2    // 2 (2.5.0): discardMinutes may be "auto"
 };
+
+// Tab unloading for "auto": minutes (Lite mode on / off), and below how many MB available the oldest background tab
+// goes. Chrome's Memory Saver does the time part too, but even its "aggressive" level waits 2 hours. 100 MB: webOS's memory manager closes the whole app at about 60-75 MB available (owner's 43UR7500), and
+// Chrome's own urgent discarding (patch 0064) acts only at critical pressure, below 20 MB (run.sh).
+var TV_LITE_DISCARD_MINUTES = 10, TV_DISCARD_MINUTES = 30, TV_LOW_MEMORY_MB = 100;
 
 // true when `host` is `site` or one of its subdomains
 function tvHostIn(host, list) {
@@ -62,10 +69,28 @@ function tvEffective(s, hardware, host, hwH264, lowMem) {
   };
 }
 
+// Lite mode in effect: On, or Auto on a TV that had less than 200 MB free when the browser opened.
+function tvLiteOn(s, lowMem) {
+  var l = tvLiteSetting(s.lite);
+  return l === "on" || (l === "auto" && lowMem === true);
+}
+
+// Minutes after which background tabs are unloaded (0 = never), and whether low memory unloads one at once.
+function tvDiscard(s, lowMem) {
+  if (s.discardMinutes === "auto") {
+    return { minutes: tvLiteOn(s, lowMem) ? TV_LITE_DISCARD_MINUTES : TV_DISCARD_MINUTES, onLowMemory: true };
+  }
+  return { minutes: Number(s.discardMinutes) || 0, onLowMemory: false };
+}
+
 function tvLoad() {
   return chrome.storage.local.get(["settings", "hardware", "hwH264", "lowMem", "freeMB"]).then(function (r) {
     var s = Object.assign({}, TV_DEFAULTS, r.settings || {});
     s.lite = tvLiteSetting(s.lite);
+    // Settings saved before 2.5.0 hold discardMinutes 0, the old default "Never": they move to Auto once.
+    if (r.settings && !(r.settings.settingsVersion >= 2) && Number(r.settings.discardMinutes) === 0) {
+      s.discardMinutes = "auto";
+    }
     return { settings: s, hardware: r.hardware !== false, hwH264: r.hwH264 === true, lowMem: r.lowMem === true,
              freeMB: typeof r.freeMB === "number" ? r.freeMB : null };
   });

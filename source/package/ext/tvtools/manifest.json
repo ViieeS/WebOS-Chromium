@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "TV Tools",
   "short_name": "TV Tools",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "Video quality limits for every site, TV website versions, lite mode and memory savers for the TV.",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxtNQcY3ihcrb1LMtYAJPoYOVDFB5sH5CS+fItFgXXaxuw3rU5Hu/R/1vfBy2DiHKO2XdhqtN6I5HrYdmgFR+ZYd2I92kndqErjOagrNjAdhjXpaU6pp6j89icNdXJbP9fd4y5vQ7qOel4+cZkukHYNl4Fh5dMrPvHQn7sRqERNmkaaOGOv9194XvNGXCdB+Vrhb6sall4VHfo2BXLgeDPQl/5+YmjhYYk8H9IK23Jx/5eQtOhp+hpYjjYRAH17iROWuFXvKf5Of41QzXjqU1ZQhZoOmSJtGXx63NXO6RkiwTInYCRBbh9nEuxQIVx/gjf+haECqtttq3GgjBxpR7kwIDAQAB",
   "icons": {

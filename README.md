@@ -53,7 +53,7 @@ Tools off for that site from its toolbar button to see whether it's the cause.
 | Maximum frame rate | Auto, 60 fps, 30 fps | Skips streams above that frame rate. |
 | Video codec | Auto, H.264 only | H.264 only is the safest choice if a video won't play. |
 | Per-site video limits | On or off for the current site | Lets a site make its own choice. |
-| Unload background tabs | Never, 5 min, 15 min, 30 min, 1 hour | Frees memory from tabs you haven't looked at. They reload when you open them. |
+| Unload background tabs | Auto (default), Never, 5 min, 15 min, 30 min, 1 hour | Frees memory from tabs you haven't looked at. They reload when you open them. Auto: after 30 minutes (10 while Lite mode is on), and the least recently used one at once when the TV has less than 100 MB free. |
 | Maximum open tabs | No limit, 3, 5, 8, 10 | Opening one more tab closes the one you used least recently. |
 | Pause videos in background tabs | Off, On | Pauses a video when you switch tabs. |
 
@@ -137,6 +137,16 @@ Reported working by testers:
 How fast it is depends a lot on the model. If you try it on another TV, please report it with the TV compatibility
 issue template, whether it works or not.
 
+## New in 1.1.6
+
+- Less running out of memory: when the TV has less than 100 MB free, background tabs are unloaded one at a time
+  (the visible tab, tabs playing sound and pinned tabs stay), and tabs you haven't used for 30 minutes are unloaded
+  too (10 with Lite mode on). They reload when you open them. TV Tools > Unload background tabs > Auto, the new
+  default.
+- With less than 200 MB free, the browser trims its caches every 3 minutes (not while a video plays), instead of
+  waiting until memory is almost gone.
+- TV Tools 2.5.0.
+
 ## New in 1.1.5
 
 - Full screen (F11, the menu's full screen button, or a site's own full screen button) no longer goes back to the
@@ -150,19 +160,6 @@ issue template, whether it works or not.
   bursts. If video misbehaves, `smp=ndl` in `media.opts` brings back the old way (see [Flags for testing](#flags-for-testing)).
 - Closing the browser no longer crashes on TVs where it did (seen on an LG C1, webOS 6). The crash also made the
   browser turn the GPU off for every later start (thanks [@ViieeS](https://github.com/ViieeS), #30).
-
-## New in 1.1.0
-
-- Smoother hardware video on webOS 5 and newer: video now goes to LG's buffered player, so videos that stuttered
-  in 1.0.0 (often films) play smoothly.
-- Video on some sites showed a white or grey box instead of the picture. Fixed.
-- Low memory: the browser frees memory from background tabs when the TV runs low. If one page still takes all the
-  memory, its tab shows "Aw, Snap!" and can be reloaded, instead of the TV resetting.
-- Lite mode is now Auto (the new default), Off or On, and also makes JavaScript use less memory. Auto turns it on
-  only when the TV had less than 200 MB free when the browser opened.
-- LG's keyboard opens in extension popups, for example a VPN extension's sign-in form.
-- The address bar reacts faster again on some TVs (thanks [@ViieeS](https://github.com/ViieeS), #27).
-- TV Tools 2.4.1.
 
 Older versions: [Releases](https://github.com/sarahahzub/WebOS-Chromium/releases).
 

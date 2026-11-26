@@ -247,6 +247,16 @@ if [ -x "$B/chrome" ]; then
 		rm -rf "$S/ext" && mkdir -p "$S/ext" && cp -r "$D/ext/tvtools" "$EXT" && echo "$V $X" > "$S/ext/.version" ||
 			EXT=$D/ext/tvtools
 	fi
+	# Free memory for TV Tools (2.5.0): its "Unload background tabs" Auto unloads the least recently used background tab
+	# below 100 MB available. Chrome's extension API (system.memory) reports MemFree + Cached on Linux, about 1 GB on a
+	# 1.2 GB TV that has 150 MB available, so this loop writes MemAvailable every 5 s to $T/mem.json (RAM, written to a
+	# temporary file and renamed), and $EXT/mem.json links to it.
+	ln -sf "$T/mem.json" "$EXT/mem.json" 2>/dev/null
+	( while sleep 5; do
+		kill -0 $$ 2>/dev/null || exit 0
+		a=0; while read -r k v _; do [ "$k" = MemAvailable: ] && { a=$((v / 1024)); break; }; done < /proc/meminfo
+		echo "{\"availMB\": $a}" > "$T/mem.json.tmp" && mv -f "$T/mem.json.tmp" "$T/mem.json"
+	  done ) </dev/null >/dev/null 2>&1 &
 	# GPU check: the launcher sets CN_GPU=off on TVs where its GPU check fails; Chrome then draws in software.
 	GPU_OFF=; [ "$CN_GPU" = off ] && GPU_OFF=--disable-gpu
 	# WebGPU is off by default (see above); media.opts "webgpu=on" turns it on.
@@ -369,8 +379,8 @@ if [ -x "$B/chrome" ]; then
 	export CN_MEM_MODERATE_MB=${CN_MEM_MODERATE_MB:-50} CN_MEM_CRITICAL_MB=${CN_MEM_CRITICAL_MB:-20}
 	# media.opts "mempressure=off" (test, 2026-11-21): thresholds of 1 MB, so patch 0064 never reports pressure. For
 	# checking whether the toolbar area going black for a moment under memory load comes from Chrome's purge on
-	# memory pressure.
-	grep -q 'mempressure=off' "$T/media.opts" 2>/dev/null && export CN_MEM_MODERATE_MB=1 CN_MEM_CRITICAL_MB=1
+	# memory pressure. Also turns off patch 0070's timed purge.
+	grep -q 'mempressure=off' "$T/media.opts" 2>/dev/null && export CN_MEM_MODERATE_MB=1 CN_MEM_CRITICAL_MB=1 CN_MEM_PURGE_MB=1
 	# NetworkTimeServiceQuerying off: Chrome asked clients2.google.com for the time at every start (the TV keeps its
 	# own clock). Patch 0059 stops the other background requests to Google.
 	# AimEnabled, AllowAiModeMatches, OmniboxMiaZPS off (1.1.0, issue #26): no "AI Mode" button or suggestions in the

@@ -1,0 +1,77 @@
+# why: Caches were trimmed only at memory pressure (patch 0064: moderate below 50 MB, critical below 20 MB in run.sh),
+# and Blink's own purge runs only in renderers that went to the background, so while the browser was in front its
+# caches grew until webOS's memory manager closed the app at ~60-75 MB available. Low-memory Chromium builds trim on a
+# timer instead (microbrowser: every 45 s). With no pressure but less than CN_MEM_PURGE_MB available (default 200), the
+# webOS evaluator now sends one moderate notification at most every CN_MEM_PURGE_S seconds (default 180), so the
+# memory pressure listeners trim their caches, never while a video plays (patch 0049's play state). The next check
+# goes back to "none". Logged as "cn-mem: purge". CN_MEM_PURGE_MB=1 (media.opts mempressure=off) turns it off.
+diff --git a/src/components/memory_pressure/system_memory_pressure_evaluator.cc b/src/components/memory_pressure/system_memory_pressure_evaluator.cc
+index 2f626a0..f99d6ba 100644
+--- a/src/components/memory_pressure/system_memory_pressure_evaluator.cc
++++ b/src/components/memory_pressure/system_memory_pressure_evaluator.cc
+@@ -48,7 +48,9 @@ class SystemMemoryPressureEvaluatorWebos
+       std::unique_ptr<MemoryPressureVoter> voter)
+       : SystemMemoryPressureEvaluator(std::move(voter)),
+         moderate_kb_(EnvMb("CN_MEM_MODERATE_MB", 160) * 1024),
+-        critical_kb_(EnvMb("CN_MEM_CRITICAL_MB", 100) * 1024) {
++        critical_kb_(EnvMb("CN_MEM_CRITICAL_MB", 100) * 1024),
++        purge_kb_(EnvMb("CN_MEM_PURGE_MB", 200) * 1024),
++        purge_every_(base::Seconds(EnvMb("CN_MEM_PURGE_S", 180))) {
+     LOG(WARNING) << "cn-mem: memory pressure from MemAvailable, moderate < "
+                  << moderate_kb_ / 1024 << " MB, critical < "
+                  << critical_kb_ / 1024 << " MB";
+@@ -82,6 +84,21 @@ class SystemMemoryPressureEvaluatorWebos
+     return kb;
+   }
+ 
++  // chromium-native (patch 0070): playing media sessions, from the file patch
++  // 0049 keeps up to date (run.sh: CN_PLAYSTATE_FILE). No purge while
++  // something plays: a purge's garbage collection can make video stutter.
++  static bool MediaPlaying() {
++    const char* path = getenv("CN_PLAYSTATE_FILE");
++    FILE* f = path ? fopen(path, "re") : nullptr;
++    if (!f) {
++      return false;
++    }
++    int n = 0;
++    const bool ok = fscanf(f, "%d", &n) == 1;
++    fclose(f);
++    return ok && n > 0;
++  }
++
+   void Check() {
+     const long kb = AvailableKb();
+     if (kb < 0) {
+@@ -111,6 +128,21 @@ class SystemMemoryPressureEvaluatorWebos
+     } else if (level == base::MEMORY_PRESSURE_LEVEL_MODERATE) {
+       notify = now - last_notify_ >= base::Seconds(30);
+     }
++    // chromium-native (patch 0070): with no pressure but less than
++    // CN_MEM_PURGE_MB available (default 200), one moderate notification at
++    // most every CN_MEM_PURGE_S seconds (default 180), so caches are trimmed
++    // while the browser is in front, before memory gets critical (Blink purges
++    // only renderers that went to the background). CN_MEM_PURGE_MB=1 turns it
++    // off. The next check sends "none" again.
++    if (level == base::MEMORY_PRESSURE_LEVEL_NONE && kb < purge_kb_ &&
++        now - last_purge_ >= purge_every_ && !MediaPlaying()) {
++      last_purge_ = now;
++      LOG(WARNING) << "cn-mem: purge, MemAvailable " << kb / 1024 << " MB";
++      SetCurrentVote(base::MEMORY_PRESSURE_LEVEL_MODERATE);
++      SendCurrentVote(true);
++      last_notify_ = now;
++      return;
++    }
+     SetCurrentVote(level);
+     SendCurrentVote(notify);
+     if (notify) {
+@@ -120,7 +152,10 @@ class SystemMemoryPressureEvaluatorWebos
+ 
+   const long moderate_kb_;
+   const long critical_kb_;
++  const long purge_kb_;
++  const base::TimeDelta purge_every_;
+   base::TimeTicks last_notify_;
++  base::TimeTicks last_purge_;
+   base::RepeatingTimer timer_;
+ };
+ 
