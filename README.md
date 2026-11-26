@@ -137,10 +137,12 @@ Reported working by testers:
 How fast it is depends a lot on the model. If you try it on another TV, please report it with the TV compatibility
 issue template, whether it works or not.
 
-## New in 1.1.4
+## New in 1.1.5
 
 - Full screen (F11, the menu's full screen button, or a site's own full screen button) no longer goes back to the
   normal window by itself a few seconds later. It happened on some TVs, for example webOS 6 (#39).
+- Pages use proper fonts: real bold, a serif and a monospace font, and a clearer address bar, instead of LG's TV
+  font for everything (thanks [@ViieeS](https://github.com/ViieeS), #22).
 
 ## New in 1.1.1
 

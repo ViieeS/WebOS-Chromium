@@ -1,6 +1,6 @@
 # why: Full screen (F11, the menu's button, or a page's requestFullscreen) went back to the normal window by itself
 # 1.5-3 s later on some TVs (issue #39, 43NANO756PR webOS 6; every time in Beanjar on webOS 4.4-10.3, never on a
-# 43UR7500). Patch 0068's trace showed Chrome's own ExclusiveAccessManager::ExitExclusiveAccess() each time: the
+# 43UR7500). A diagnostic build's trace showed Chrome's own ExclusiveAccessManager::ExitExclusiveAccess() each time: the
 # "Press Esc to exit full screen" bubble starts a 1.5 s watchdog and, if its first frame is not reported presented
 # by then, treats the GPU as hung and leaves full screen. On a slow TV (or with the GPU off) the presentation feedback
 # comes later or not at all. On webOS the watchdog now keeps full screen and starts the bubble's normal hide timer.
