@@ -119,7 +119,7 @@ index 1b74453..25d4ab0 100644
    }
  
 diff --git a/src/ui/ozone/platform/wayland/host/wayland_toplevel_window.cc b/src/ui/ozone/platform/wayland/host/wayland_toplevel_window.cc
-index e5a4ad5..b1e354a 100644
+index ad8e1d4..7b1b2a9 100644
 --- a/src/ui/ozone/platform/wayland/host/wayland_toplevel_window.cc
 +++ b/src/ui/ozone/platform/wayland/host/wayland_toplevel_window.cc
 @@ -245,6 +245,9 @@ void WaylandToplevelWindow::SetFullscreen(bool fullscreen,
@@ -150,10 +150,10 @@ index e5a4ad5..b1e354a 100644
 +  LOG(WARNING) << "cn-fs: wayland trigger " << static_cast<int>(previous_state)
 +               << " -> " << static_cast<int>(window_state);
    ForceApplyWindowStateDoNotUse(window_state);
- #if defined(USE_NEVA_APPRUNTIME)
-   // chromium-native (patch 0067): webOS's SetFullscreen() above set the window
+   auto weak_this = AsWeakPtr();
+   delegate()->OnWindowStateChanged(previous_state, window_state);
 diff --git a/src/ui/ozone/platform/wayland/host/wayland_window.cc b/src/ui/ozone/platform/wayland/host/wayland_window.cc
-index 2146214..dd2553d 100644
+index 05a61ed..9ec5f61 100644
 --- a/src/ui/ozone/platform/wayland/host/wayland_window.cc
 +++ b/src/ui/ozone/platform/wayland/host/wayland_window.cc
 @@ -1604,6 +1604,15 @@ void WaylandWindow::RequestState(PlatformWindowDelegate::State state,
