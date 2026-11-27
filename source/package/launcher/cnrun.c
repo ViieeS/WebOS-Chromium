@@ -1154,8 +1154,8 @@ static int gpu_probe(int limit_ms) {
 
 // ---- GPU verdict files ----
 // gpuprobe.result in /tmp: this boot's probe verdict (a slow or hanging driver costs that time once per boot).
-// gpu.state in <app>/data (else /tmp): "bad" after Chrome crashed soon after an automatic GPU-on start; the GPU then
-// stays off on this TV. Both start with this launcher's build id, so a new app version probes and tries again.
+// gpu.state in <app>/data (else /tmp): "crash" after Chrome crashed soon after an automatic GPU-on start, "bad" after
+// the second such crash in a row. Then the GPU stays off on this TV. Both start with this launcher's build id, so a new app version probes and tries again.
 static const char cn_build_id[] = __DATE__ " " __TIME__;
 static char gpu_state[700];
 static int auto_gpu;
@@ -1168,6 +1168,33 @@ static int read_verdict(const char *path, char *out, size_t n) {
   }
   fclose(f);
   return ok;
+}
+// media.opts holds words separated by spaces or newlines: "webgpu=on" must not read as "gpu=on"
+static int opt_word(const char *opts, const char *w) {
+  size_t n = strlen(w);
+  for (const char *p = opts; (p = strstr(p, w)); p += n)
+    if ((p == opts || strchr(" \t\r\n", p[-1])) && (!p[n] || strchr(" \t\r\n", p[n]))) return 1;
+  return 0;
+}
+// The last n lines of path into media.log, and into `also` when it is open.
+static void log_tail(const char *path, int n, FILE *also) {
+  char ring[20][200]; int count = 0;
+  if (n > 20) n = 20;
+  FILE *f = fopen(path, "r");
+  if (!f) { L("no %s", path); return; }
+  while (fgets(ring[count % n], sizeof ring[0], f)) {
+    char *line = ring[count % n];
+    size_t len = strcspn(line, "\n");
+    if (line[len] != '\n' && !feof(f)) { int c; while ((c = fgetc(f)) != EOF && c != '\n') {} }  // cut a long line
+    line[len] = 0;
+    count++;
+  }
+  fclose(f);
+  int first = count > n ? count - n : 0;
+  for (int i = first; i < count; i++) {
+    L("browser.log: %s", ring[i % n]);
+    if (also) fprintf(also, "%s\n", ring[i % n]);
+  }
 }
 static int write_verdict(const char *path, const char *v) {
   FILE *f = fopen(path, "w");
@@ -1398,8 +1425,8 @@ int main(int argc, char **argv) {
     { char d[640]; snprintf(d, sizeof d, "%s/data", ad);
       if (!access(d, W_OK)) snprintf(gpu_state, sizeof gpu_state, "%s/gpu.state", d);
       else snprintf(gpu_state, sizeof gpu_state, "%s/gpu.state", tdir); }
-    if (strstr(opts, "gpu=on")) { on = 1; why = "media.opts gpu=on"; }
-    else if (strstr(opts, "gpu=off")) { on = 0; why = "media.opts gpu=off"; }
+    if (opt_word(opts, "gpu=on")) { on = 1; why = "media.opts gpu=on"; }
+    else if (opt_word(opts, "gpu=off")) { on = 0; why = "media.opts gpu=off"; }
     else {
       int r = egl_platform_display_check();
       on = r == 0;
@@ -1409,7 +1436,7 @@ int main(int argc, char **argv) {
         // what that path needs (gpuprobe), and not after the GPU crashed Chrome at an earlier start.
         int pr;
         if (read_verdict(gpu_state, v, sizeof v) && !strncmp(v, "bad", 3)) {
-          on = 0; why = "EGL 1.4 driver; Chrome crashed with the GPU on at an earlier start (gpu.state)";
+          on = 0; why = "EGL 1.4 driver; Chrome crashed twice with the GPU on at earlier starts (gpu.state)";
         } else if (strstr(opts, "nogpuprobe")) {
           on = 0; why = "EGL 1.4 driver, GPU probe turned off (nogpuprobe)";
         } else {
@@ -1504,18 +1531,43 @@ int main(int argc, char **argv) {
   if (ssg > 0) { kill(ssg, SIGTERM); waitpid(ssg, NULL, 0); }
   if (ls >= 0) unlink(sock);
   L("chrome exited, status %d", status);
-  // Automatic GPU-on start that ended on its own soon after start (crash or error exit, not a close by webOS):
-  // next start uses the GPU off. Delete gpu.state (or install a new version) to try the GPU again.
-  if (auto_gpu && !term_seen) {
-    struct timespec t1; clock_gettime(CLOCK_MONOTONIC, &t1);
-    long secs = (long)(t1.tv_sec - t0.tv_sec);
-    int crashed = WIFSIGNALED(status) && WTERMSIG(status) != SIGTERM && WTERMSIG(status) != SIGKILL &&
-                  WTERMSIG(status) != SIGINT && WTERMSIG(status) != SIGHUP;
-    int failed = WIFEXITED(status) && WEXITSTATUS(status) != 0;
-    if (secs < 60 && (crashed || failed)) {
-      char v2[96]; snprintf(v2, sizeof v2, "bad (status %d after %ld s)", status, secs);
-      L("gpu: Chrome ended after %ld s with the GPU on; the next start uses the GPU off (%s %s)", secs, gpu_state,
-        write_verdict(gpu_state, v2) ? "written" : "NOT written");
+  struct timespec t1; clock_gettime(CLOCK_MONOTONIC, &t1);
+  long secs = (long)(t1.tv_sec - t0.tv_sec);
+  // An early end on its own keeps Chrome's last words: the next start truncates browser.log and media.log, so they
+  // also go to early-exit.log next to gpu.state (flash when the app folder is writable).
+  if (!term_seen && secs < 60 && status != 0) {
+    char bl[700], ee[720];
+    snprintf(bl, sizeof bl, "%s/browser.log", tdir);
+    snprintf(ee, sizeof ee, "%.*s/early-exit.log", (int)(strrchr(gpu_state, '/') - gpu_state), gpu_state);
+    FILE *ef = fopen(ee, "w");
+    if (ef) fprintf(ef, "status %d after %ld s, launcher %s\n", status, secs, cn_build_id);
+    log_tail(bl, 20, ef);
+    if (ef) fclose(ef);
+  }
+  // Automatic GPU-on start that crashed soon after start: two in a row turn the GPU off for this launcher build.
+  // Only a crash signal counts. An error exit is Chrome refusing to start (seen once: status 1 after 0 s, the GPU
+  // never touched), and one crash can be a one-off. A run that does not crash early clears the count. Delete
+  // gpu.state (or install a new version) to try the GPU again.
+  if (auto_gpu) {
+    int sig = WIFSIGNALED(status) && !term_seen ? WTERMSIG(status) : 0;  // a close by webOS also clears the count
+    int crashed = sig == SIGSEGV || sig == SIGBUS || sig == SIGILL || sig == SIGABRT || sig == SIGFPE || sig == SIGTRAP;
+    char v[128];
+    int again = read_verdict(gpu_state, v, sizeof v) && !strncmp(v, "crash", 5);
+    if (secs < 60 && crashed && again) {
+      char v2[96]; snprintf(v2, sizeof v2, "bad (signal %d after %ld s, second crash)", sig, secs);
+      if (write_verdict(gpu_state, v2)) {
+        L("gpu: Chrome crashed again after %ld s with the GPU on; the next start uses the GPU off (%s)", secs, gpu_state);
+        toast("Chromium crashed twice with the GPU on and will draw without it");
+      } else {
+        L("gpu: Chrome crashed again after %ld s with the GPU on, but %s could not be written: the GPU stays on", secs,
+          gpu_state);
+      }
+    } else if (secs < 60 && crashed) {
+      char v2[96]; snprintf(v2, sizeof v2, "crash (signal %d after %ld s)", sig, secs);
+      L("gpu: Chrome crashed after %ld s with the GPU on; the GPU stays on unless the next start crashes too (%s %s)",
+        secs, gpu_state, write_verdict(gpu_state, v2) ? "written" : "NOT written");
+    } else if (again) {
+      L("gpu: Chrome ran without an early crash; crash count cleared (%s)", unlink(gpu_state) ? "NOT removed" : "removed");
     }
   }
   return WIFEXITED(status) ? WEXITSTATUS(status) : 1;
